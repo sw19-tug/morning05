@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/btt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Touch The Block"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="31dp" />
+
+    <Button
+        android:id="@+id/btt_start_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="654dp" />
+
+    <Button
+        android:id="@+id/btt_pause_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pause"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="654dp" />
+
+    <Button
+        android:id="@+id/btt_stop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Stop"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="654dp" />
 </android.support.constraint.ConstraintLayout>
