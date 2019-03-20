@@ -15,7 +15,6 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.v4.graphics.drawable.IconCompat.getResources;
 
 
 /**
@@ -39,15 +38,23 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_field00)).perform(click());
 
     }
-    @Test void testNoTextInFields(){
-        onView(withId(R.id.bt_field00)).check(matches(withText("")));
+    @Test
+    public void testNoTextInFields(){
+       onView(withId(R.id.bt_field00)).check(matches(withText("")));
     }
-    /*@Test void testBoardOnStart(){
+
+    @Test
+    public void testBoardOnStart(){
+        final Context context = InstrumentationRegistry.getTargetContext();
+
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++){
-                String buttonID = "bt_field" + i + "" + j;
 
-                int resourceID = getResources().getIdentifier(buttonID, "id", getActivity().getPackageName());
+               String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+
+                onView(withId(resourceID)).check(matches(withText("")));
             }
-    }*/
+    }
 }
