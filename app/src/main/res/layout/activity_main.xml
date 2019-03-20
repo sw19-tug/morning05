@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_title"
-            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="20dp"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="36sp"
             android:textStyle="bold" />
 
@@ -28,10 +28,10 @@
             android:id="@+id/bt_tictactoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TicTacToe"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorWhite"
             android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:text="TicTacToe"
+            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -39,10 +39,10 @@
             android:id="@+id/bt_hangman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
             android:text="Hangman"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorAccent"
-            android:layout_margin="5dp"
             tools:layout_editor_absoluteX="15dp"
             tools:layout_editor_absoluteY="72dp" />
 
@@ -50,12 +50,35 @@
             android:id="@+id/bt_touchtheblock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TouchTheBlock"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorWhite"
             android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:text="TouchTheBlock"
+            android:textColor="@color/colorWhite"
+            tools:layout_editor_absoluteX="14dp"
+            tools:layout_editor_absoluteY="135dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/bt_switchLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="90dp"
+            android:background="@color/colorAccent"
+            android:text="@string/bt_switchLang"
+            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
     </LinearLayout>
+
+
 </LinearLayout>
 
