@@ -34,4 +34,11 @@ public class TouchTheBlockActivityEspressoTest {
     public void check_Title(){
         onView(ViewMatchers.withId(R.id.btt_title)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void checkBlockIsVisible () {
+        onView(withId(R.id.btt_start_button)).perform(click());
+
+        onView(ViewMatchers.withId(R.id.gameblock)).check(matches(isDisplayed()));
+    }
 }
