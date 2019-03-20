@@ -3,7 +3,8 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-
+import org.junit.Rule;
+import android.support.test.rule.ActivityTestRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,6 +22,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  */
 @RunWith(AndroidJUnit4.class)
 public class TicTacToeInstrumentedTest {
+    @Rule
+    public ActivityTestRule<TicTacToeActivity> activityTestRule = new ActivityTestRule<>(TicTacToeActivity.class);
+
     @Test
     public void testTextViewVisible() {
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
