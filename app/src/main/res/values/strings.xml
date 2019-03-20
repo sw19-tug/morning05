@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SW19-morning05</string>
+    <string name="touch_the_block">Touch The Block</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
+    <string name="button">Why</string>
 </resources>

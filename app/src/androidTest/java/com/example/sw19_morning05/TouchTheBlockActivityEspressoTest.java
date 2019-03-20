@@ -21,7 +21,8 @@ import static org.hamcrest.Matchers.not;
 public class TouchTheBlockActivityEspressoTest {
 
     @Rule
-    public ActivityTestRule<TouchTheBlockActivity> ActivityTestRule = new ActivityTestRule<>(TouchTheBlockActivity.class);
+    public ActivityTestRule<TouchTheBlockActivity> ActivityTestRule =
+            new ActivityTestRule<>(TouchTheBlockActivity.class);
 
     @Test
     public void check_Button(){
