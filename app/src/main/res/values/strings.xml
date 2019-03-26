@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">SW19-morning05</string>
+    <string name="app_name">Games - SW19 \'morning05\'</string> #SW19-morning05
     <string name="touch_the_block">Touch The Block</string>
     <string name="pause">Pause</string>
     <string name="stop">Stop</string>
     <string name="start">Start</string>
     <string name="button">Why</string>
+
+    <string name="title_activity_touch_the_block">TouchTheBlockActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="touch_the_block_button">touch the block</string>
+    <string name="google_button">google</string>
 </resources>
