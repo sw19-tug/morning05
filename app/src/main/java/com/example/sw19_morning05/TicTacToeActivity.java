@@ -30,17 +30,31 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
             }
         }
 
+        TextView tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
+        tv_currentPlayer.setText("Player X turn!");
+
         //initialize board
         for(int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 board[i][j] = -1;
             }
         }
+
+        Button reset_button = findViewById(R.id.bt_reset);
+        reset_button.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         int viewId = view.getId();
+
+        if(R.id.bt_reset == viewId)
+        {
+            resetBoard();
+            return;
+        }
+
+
         String text;
         TextView tv_currentPlayer;
         tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
@@ -145,5 +159,24 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
         }
 
         return 0;
+    }
+
+    public void resetBoard()
+    {
+        TextView tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
+        tv_currentPlayer.setText("Player X turn!");
+        currentPlayer = 1;
+
+        //initialize board
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = -1;
+
+                buttons[i][j].setText("");
+
+                buttons[i][j].setEnabled(true);
+            }
+        }
+
     }
 }
