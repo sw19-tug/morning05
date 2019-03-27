@@ -59,7 +59,7 @@ public class TicTacToeInstrumentedTest {
             }
     }
     @Test
-    public void testIfRightSignIsPlacedOnClick(){
+    public void staticTestIfRightSignIsPlacedOnClick(){
         int counter = 0;
         for(int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -67,7 +67,7 @@ public class TicTacToeInstrumentedTest {
                 int resourceID = context.getResources().getIdentifier(
                         buttonID, "id", context.getPackageName());
                 onView(withId(resourceID)).perform(click());
-                if ((i % 2) == 0) { //player 1
+                if ((counter % 2) == 0) { //player 1
                     onView(withId(resourceID)).check(matches(withText("X")));
                 } else { //player 2
                     onView(withId(resourceID)).check(matches(withText("O")));

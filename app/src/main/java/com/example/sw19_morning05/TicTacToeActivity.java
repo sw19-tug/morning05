@@ -14,6 +14,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
     Button buttonOne;
     Button buttons[] = new Button[9];
+    int currentPlayer = 1;  // Player 1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,22 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
     @Override
     public void onClick(View view) {
+        int viewId = view.getId();
+
+        for(int i = 0; i < 9; i++){
+            if(buttons[i].getId() == viewId){
+                if(currentPlayer == 1) {
+                    buttons[i].setText("X");
+                    currentPlayer = 0;
+                    break;
+                }
+                else{
+                    buttons[i].setText("O");
+                    currentPlayer = 1;
+                    break;
+                }
+            }
+        }
 
     }
 }
