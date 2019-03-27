@@ -9,20 +9,20 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
-    private MainThread thread;
+public class TTBGamePanel extends SurfaceView implements SurfaceHolder.Callback
+{
+    private TTBMainThread thread;
+    private TTBRectPlayer player; //player is the spawned rectangle
+    private Point playerPoint;    //point where the rectangle spawns
 
-    private RectPlayer player;
-    private Point playerPoint;
-
-    public GamePanel(Context context)
+    public TTBGamePanel(Context context)
     {
         super(context);
         getHolder().addCallback(this);
 
-        thread = new MainThread(getHolder(), this);
+        thread = new TTBMainThread(getHolder(), this);
 
-        player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(50, 50, 255));
+        player = new TTBRectPlayer(new Rect(100, 100, 200, 200), Color.rgb(50, 50, 255));
         playerPoint = new Point(1050, 1750);
         setFocusable(true);
     }
@@ -36,7 +36,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder)
     {
-        thread = new MainThread(getHolder(), this);
+        thread = new TTBMainThread(getHolder(), this);
 
         thread.setRunning(true);
         thread.start();

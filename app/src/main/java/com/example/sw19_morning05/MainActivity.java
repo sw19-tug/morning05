@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), TouchTheBlockActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), TTBActivity.class);
                 startActivity(startIntent);
             }
         });

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TouchTheBlockActivity"
+            android:name=".TTBActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_touch_the_block"
             android:theme="@style/FullscreenTheme"></activity>
@@ -19,13 +19,6 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".TouchTheBlockActivity2">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
