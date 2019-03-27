@@ -19,6 +19,18 @@
         android:textSize="50sp"
         android:textColor="@color/colorPrimary"/>
 
+    <TextView
+        android:id="@+id/tv_currentPlayer"
+        android:text="Player X turn!"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"/>
+
     <GridLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

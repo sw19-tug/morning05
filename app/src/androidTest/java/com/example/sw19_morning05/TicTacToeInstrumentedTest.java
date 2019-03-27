@@ -89,9 +89,9 @@ public class TicTacToeInstrumentedTest {
                         buttonID, "id", context.getPackageName());
                 onView(withId(resourceID)).perform(click());
                 if ((counter % 2) == 0) { //player 1
-                    onView(withId(R.id.tv_current_player)).check(matches(withText("Player X turn!")));
+                    onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player O turn!")));
                 } else { //player 2
-                    onView(withId(R.id.tv_current_player)).check(matches(withText("Player O turn!")));
+                    onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player X turn!")));
                 }
                 counter = counter + 1;
             }

@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-
-
+import android.widget.TextView;
 
 
 public class TicTacToeActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -37,21 +36,26 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     @Override
     public void onClick(View view) {
         int viewId = view.getId();
+        String text;
+        TextView tv_currentPlayer;
+        tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
 
         for(int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++){
                 if(buttons[i][j].getId() == viewId){
                     if(currentPlayer == 1) {
                         buttons[i][j].setText("X");
+                        text = "Player O turn!";
                     }
                     else{
                         buttons[i][j].setText("O");
+                        text = "Player X turn!";
                     }
 
                     buttons[i][j].setEnabled(false);
                     board[i][j] = currentPlayer;
                     currentPlayer = (currentPlayer == 1) ? 0 : 1;
-
+                    tv_currentPlayer.setText(text);
                     break;
                 }
 
