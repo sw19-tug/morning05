@@ -63,14 +63,15 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
         int points = 1;
         int score = Score.getScore(context);
         Score.incrementScore(context, points);
-        Assert.assertTrue(Score.getScore(context) == score + points);
+        Assert.assertEquals((score + points), Score.getScore(context));
     }
+
     @Test
     public void testDecrementScore() {
         Context context = activityTestRule.getActivity().getApplicationContext();
         int points = 1;
         int score = Score.getScore(context);
         Score.decrementScore(context, points);
-        Assert.assertTrue(Score.getScore(context) == score - points);
+        Assert.assertEquals((score - points), Score.getScore(context));
     }
 }
