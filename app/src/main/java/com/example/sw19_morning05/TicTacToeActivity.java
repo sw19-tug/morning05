@@ -14,7 +14,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     Button buttons[][] = new Button[3][3];
     int board[][] = new int [3][3];
 
-    int currentPlayer = 1;  // 1 = Player 1, 0 = Player 2
+    int currentPlayer = 1;  // 1 = Player 1, 2 = Player 2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
                     buttons[i][j].setEnabled(false);
                     board[i][j] = currentPlayer;
-                    currentPlayer = (currentPlayer == 1) ? 0 : 1;
+                    currentPlayer = (currentPlayer == 1) ? 2 : 1;
                     tv_currentPlayer.setText(text);
                     break;
                 }
