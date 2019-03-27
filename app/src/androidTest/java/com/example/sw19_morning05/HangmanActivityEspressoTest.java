@@ -127,4 +127,10 @@ public class HangmanActivityEspressoTest {
         onView(withId(R.id.button_m)).perform(ViewActions.click());
         onView(withId(R.id.button_m)).check(matches(not(isEnabled())));
     }
+
+    @Test
+    public void testIfWordExists()
+    {
+        onView(withId(R.id.Word)).check(matches(isDisplayed()));
+    }
 }
