@@ -7,12 +7,12 @@ import android.graphics.Rect;
 
 public class TTBRectPlayer implements TTBGameObject
 {
-    private Rect rectangle;
+    private Rect moving_block;
     private int color;
 
-    public TTBRectPlayer(Rect rectangle, int color)
+    public TTBRectPlayer(Rect moving_block, int color)
     {
-        this.rectangle = rectangle;
+        this.moving_block = moving_block;
         this.color = color;
     }
 
@@ -21,7 +21,7 @@ public class TTBRectPlayer implements TTBGameObject
     {
         Paint paint = new Paint();
         paint.setColor(color);
-        canvas.drawRect(rectangle, paint);
+        canvas.drawRect(moving_block, paint);
     }
 
     @Override
@@ -31,6 +31,7 @@ public class TTBRectPlayer implements TTBGameObject
 
     public void update(Point point)
     {
-        rectangle.set(point.x, point.y, point.x + rectangle.width(), point.y + rectangle.height());
+        moving_block.set(point.x, point.y, point.x + moving_block.width(),
+                point.y + moving_block.height());
     }
 }
