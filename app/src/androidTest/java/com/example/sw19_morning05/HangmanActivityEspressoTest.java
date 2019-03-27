@@ -1,5 +1,6 @@
 package com.example.sw19_morning05;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.test.InstrumentationRegistry;
@@ -7,7 +8,9 @@ import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,6 +21,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
@@ -131,6 +135,12 @@ public class HangmanActivityEspressoTest {
     @Test
     public void testIfWordExists()
     {
-        onView(withId(R.id.Word)).check(matches(isDisplayed()));
+        onView(withId(R.id.word)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testWordShown()
+    {
+        onView(withId(R.id.word)).check(matches(not(withText(""))));
     }
 }

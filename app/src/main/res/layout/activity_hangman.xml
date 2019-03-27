@@ -251,4 +251,26 @@
             android:text="M" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/word_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/keyb_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="word"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

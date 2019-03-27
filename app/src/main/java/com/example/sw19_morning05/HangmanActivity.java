@@ -7,6 +7,9 @@ import android.widget.Button;
 
 public class HangmanActivity extends AppCompatActivity {
 
+
+    public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
