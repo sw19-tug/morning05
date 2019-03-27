@@ -40,7 +40,31 @@ public class TicTacToeInstrumentedTest {
     public void testFieldbuttonClickable(){
         onView(withId(R.id.bt_field00)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_field00)).perform(click());
+    }
+    @Test
+    public void testResetbutton(){
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+        onView(withId(R.id.bt_field12)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field20)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field22)).perform(click());
+        onView(withId(R.id.bt_field21)).perform(click());
 
+        onView(withId(R.id.bt_reset)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_reset)).perform(click());
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player X turn!")));
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                onView(withId(resourceID)).check(matches(isEnabled()));
+                onView(withId(resourceID)).check(matches(withText("")));
+            }
+        }
     }
     @Test
     public void testNoTextInFields(){
