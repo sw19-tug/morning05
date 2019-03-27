@@ -1,11 +1,13 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.TextView;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.Rule;
@@ -52,6 +54,16 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
 
     @Test
     public void testShowPoints() {
-        onView(withId(R.id.tv_points)).check(matches(isDisplayed()));
+        onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void testIncrementScore() {
+        Context context = activityTestRule.getActivity().getApplicationContext();
+        int points = 1;
+        int score = Score.getScore(context);
+        Score.incrementScore(context, points);
+        Assert.assertTrue(Score.getScore(context) == score + points);
+    }
+
 }
