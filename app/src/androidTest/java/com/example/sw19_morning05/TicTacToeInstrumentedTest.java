@@ -31,9 +31,10 @@ public class TicTacToeInstrumentedTest {
     public ActivityTestRule<TicTacToeActivity> activityTestRule = new ActivityTestRule<>(TicTacToeActivity.class);
 
     @Test
-    public void testTextViewVisible() {
+    public void testTextViewsVisible() {
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_header)).check(matches(withText("Tic Tac Toe")));
+        onView(withId(R.id.tv_currentPlayer)).check(matches(isDisplayed()));
     }
     @Test
     public void testFieldbuttonClickable(){
@@ -48,8 +49,6 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testBoardOnStart(){
-        //final Context context = InstrumentationRegistry.getTargetContext();
-
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++){
 
@@ -60,10 +59,11 @@ public class TicTacToeInstrumentedTest {
                 onView(withId(resourceID)).check(matches(withText("")));
             }
     }
+
     @Test
     public void staticTestIfRightSignIsPlacedOnClick(){
         int counter = 0;
-        for(int i = 0; i < 3; i++) {
+        for(int i = 1; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 String buttonID = "bt_field" + i + "" + j;
                 int resourceID = context.getResources().getIdentifier(
@@ -75,9 +75,18 @@ public class TicTacToeInstrumentedTest {
                     onView(withId(resourceID)).check(matches(withText("O")));
                 }
                 counter = counter + 1;
+
+                if(counter == 6)
+                {
+                    break;
+                }
+
+
             }
         }
     }
+
+
     @Test
     public void testIfTextViewCorrect(){
         int counter = 0;
@@ -94,6 +103,11 @@ public class TicTacToeInstrumentedTest {
                     onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player X turn!")));
                 }
                 counter = counter + 1;
+
+                if(counter == 4)
+                {
+                    break;
+                }
             }
         }
     }
@@ -118,4 +132,51 @@ public class TicTacToeInstrumentedTest {
             }
         }
     }
+
+    @Test
+    public void testNoWinnerYet(){
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player X turn!")));
+    }
+
+    @Test
+    public void testDraw(){
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+        onView(withId(R.id.bt_field12)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field20)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field22)).perform(click());
+        onView(withId(R.id.bt_field21)).perform(click());
+
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Draw!")));
+    }
+
+    @Test
+    public void testPlayer01Winner01(){
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player X wins!")));
+    }
+
+    @Test
+    public void testPlayer02Winner01(){
+        onView(withId(R.id.bt_field12)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field20)).perform(click());
+        onView(withId(R.id.bt_field21)).perform(click());
+        onView(withId(R.id.bt_field00)).perform(click());
+
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player O wins!")));
+    }
+
 }
