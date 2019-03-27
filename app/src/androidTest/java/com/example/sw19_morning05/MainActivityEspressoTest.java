@@ -50,4 +50,8 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
         onView(withId(R.id.tv_title)).check(matches(not(withText(englishTitle))));
     }
 
+    @Test
+    public void testShowPoints() {
+        onView(withId(R.id.tv_points)).check(matches(isDisplayed()));
+    }
 }
