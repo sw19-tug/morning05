@@ -2,4 +2,5 @@
     <string name="app_name">SW19-morning05</string>
     <string name="app_title">Mini Games</string>
     <string name="bt_switchLang">Switch to German</string>
+    <string name="tv_score_text">Score:</string>
 </resources>

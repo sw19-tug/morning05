@@ -1,11 +1,14 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.TextView;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.Rule;
@@ -50,4 +53,40 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
         onView(withId(R.id.tv_title)).check(matches(not(withText(englishTitle))));
     }
 
+    @Test
+    public void testShowPoints() {
+        onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testIncrementScore() {
+        Context context = activityTestRule.getActivity().getApplicationContext();
+        int points = 1;
+        int score = Score.getScore(context);
+        Score.incrementScore(context, points);
+        Assert.assertEquals((score + points), Score.getScore(context));
+    }
+
+    @Test
+    public void testDecrementScore() {
+        Context context = activityTestRule.getActivity().getApplicationContext();
+        int points = 1;
+        int score = Score.getScore(context);
+        Score.decrementScore(context, points);
+        Assert.assertEquals((score - points), Score.getScore(context));
+    }
+
+    @Test
+    public void testShowCorrectPointsAfterChange() {
+        Context context = activityTestRule.getActivity().getApplicationContext();
+        int points = 3;
+
+        TextView score = activityTestRule.getActivity().findViewById(R.id.tv_score);
+        String scoreText = score.getText().toString();
+        Score.incrementScore(context, points);
+        Intent intent = activityTestRule.getActivity().getIntent();
+        activityTestRule.getActivity().finish();
+        activityTestRule.getActivity().startActivity(intent);
+        onView(withId(R.id.tv_score)).check(matches(not(withText(scoreText))));
+    }
 }
