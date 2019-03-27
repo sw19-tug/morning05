@@ -1,7 +1,5 @@
 package com.example.sw19_morning05;
 
-
-//iimport android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -47,6 +45,8 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
         TextView tv_currentPlayer;
         tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
 
+        int return_value_winner;
+
         for(int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++){
                 if(buttons[i][j].getId() == viewId){
@@ -61,11 +61,28 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
                     buttons[i][j].setEnabled(false);
                     board[i][j] = currentPlayer;
-                    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                    return_value_winner = calculateWinner(board);
+
+                    if(return_value_winner == 1)
+                    {
+                        text = "Player X wins!";
+                    }
+                    else if(return_value_winner == 2)
+                    {
+                        text = "Player O wins!";
+                    }
+                    else if(return_value_winner == 0)
+                    {
+                        text = "Draw!";
+                    }
+                    else
+                    {
+                        currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                    }
+
                     tv_currentPlayer.setText(text);
                     break;
                 }
-
             }
         }
 
@@ -75,14 +92,14 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     {
         // horizontal
         for(int i = 0; i < 3; i++){
-           if((board[i][0] == board[i][1]) && (board[i][1] == board[i][2])) {
-               if(board[i][0] == 1){
-                   return 1;
-               }
-               if(board[i][0] == 2){
-                   return 2;
-               }
-           }
+            if((board[i][0] == board[i][1]) && (board[i][1] == board[i][2])) {
+                if(board[i][0] == 1){
+                    return 1;
+                }
+                if(board[i][0] == 2){
+                    return 2;
+                }
+            }
         }
         // vertikal
         for(int i = 0; i < 3; i++){
@@ -116,6 +133,4 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
         return 0;
     }
-
 }
-
