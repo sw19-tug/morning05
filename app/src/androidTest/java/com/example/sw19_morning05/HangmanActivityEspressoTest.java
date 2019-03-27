@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +23,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
@@ -141,6 +143,39 @@ public class HangmanActivityEspressoTest {
     @Test
     public void testWordShown()
     {
-        onView(withId(R.id.word)).check(matches(not(withText(""))));
+        onView(withId(R.id.word)).check(matches(not(withText("word"))));
+    }
+
+    @Test
+    public void testCheckIfNoUnderlinesAnnymore()
+    {
+        onView(withId(R.id.button_q)).perform(ViewActions.click());
+        onView(withId(R.id.button_w)).perform(ViewActions.click());
+        onView(withId(R.id.button_e)).perform(ViewActions.click());
+        onView(withId(R.id.button_r)).perform(ViewActions.click());
+        onView(withId(R.id.button_t)).perform(ViewActions.click());
+        onView(withId(R.id.button_z)).perform(ViewActions.click());
+        onView(withId(R.id.button_u)).perform(ViewActions.click());
+        onView(withId(R.id.button_i)).perform(ViewActions.click());
+        onView(withId(R.id.button_o)).perform(ViewActions.click());
+        onView(withId(R.id.button_p)).perform(ViewActions.click());
+        onView(withId(R.id.button_a)).perform(ViewActions.click());
+        onView(withId(R.id.button_s)).perform(ViewActions.click());
+        onView(withId(R.id.button_d)).perform(ViewActions.click());
+        onView(withId(R.id.button_f)).perform(ViewActions.click());
+        onView(withId(R.id.button_g)).perform(ViewActions.click());
+        onView(withId(R.id.button_h)).perform(ViewActions.click());
+        onView(withId(R.id.button_j)).perform(ViewActions.click());
+        onView(withId(R.id.button_k)).perform(ViewActions.click());
+        onView(withId(R.id.button_l)).perform(ViewActions.click());
+        onView(withId(R.id.button_y)).perform(ViewActions.click());
+        onView(withId(R.id.button_x)).perform(ViewActions.click());
+        onView(withId(R.id.button_c)).perform(ViewActions.click());
+        onView(withId(R.id.button_v)).perform(ViewActions.click());
+        onView(withId(R.id.button_b)).perform(ViewActions.click());
+        onView(withId(R.id.button_n)).perform(ViewActions.click());
+        onView(withId(R.id.button_m)).perform(ViewActions.click());
+
+        onView(withId((R.id.word))).check(matches(not(withText(containsString("_")))));
     }
 }

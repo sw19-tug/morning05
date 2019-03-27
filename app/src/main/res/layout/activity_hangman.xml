@@ -41,6 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+////testIfButtonsExist
+
         <Button
             android:id="@+id/button_q"
             android:layout_width="40dp"

@@ -4,18 +4,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class HangmanActivity extends AppCompatActivity {
 
 
     public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY"};
 
-    @Override
+    @Override  //testIfTitleExists
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
-
+        //Test testButtonPressedGoesDisabled
         final Button button_a = (Button) findViewById(R.id.button_a);
         button_a.setOnClickListener(new View.OnClickListener()
         {
@@ -223,5 +225,39 @@ public class HangmanActivity extends AppCompatActivity {
                 button_z.setEnabled(false);
             }
         });
+
+
+        //Test WordShown
+        setWordView();
+
+    }
+
+    void setWordView()
+    {
+        String place_holder = "";
+
+        int random = randomWithRange(0,word_list.length);
+
+        TextView word_view = findViewById(R.id.word);
+
+        String word = word_list[random];
+
+        int temp = word.length() + word.length() - 1;
+
+
+        for(int i = 0; i <= temp; i++)
+        {
+            if(i % 2 == 1)
+                place_holder += "_";
+            else
+                place_holder += " ";
+        }
+        word_view.setText(place_holder);
+    }
+
+    int randomWithRange(int min, int max)
+    {
+        int range = (max - min) + 1;
+        return (int)(Math.random() * range) + min;
     }
 }
