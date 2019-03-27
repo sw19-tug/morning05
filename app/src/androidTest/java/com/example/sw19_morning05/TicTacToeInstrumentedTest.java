@@ -24,6 +24,7 @@ import static android.support.test.espresso.action.ViewActions.click;
  */
 @RunWith(AndroidJUnit4.class)
 public class TicTacToeInstrumentedTest {
+    final Context context = InstrumentationRegistry.getTargetContext();
     @Rule
     public ActivityTestRule<TicTacToeActivity> activityTestRule = new ActivityTestRule<>(TicTacToeActivity.class);
 
@@ -45,7 +46,7 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testBoardOnStart(){
-        final Context context = InstrumentationRegistry.getTargetContext();
+        //final Context context = InstrumentationRegistry.getTargetContext();
 
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++){
@@ -56,5 +57,23 @@ public class TicTacToeInstrumentedTest {
 
                 onView(withId(resourceID)).check(matches(withText("")));
             }
+    }
+    @Test
+    public void testIfRightSignIsPlacedOnClick(){
+        int counter = 0;
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                onView(withId(resourceID)).perform(click());
+                if ((i % 2) == 0) { //player 1
+                    onView(withId(resourceID)).check(matches(withText("X")));
+                } else { //player 2
+                    onView(withId(resourceID)).check(matches(withText("O")));
+                }
+                counter = counter + 1;
+            }
+        }
     }
 }
