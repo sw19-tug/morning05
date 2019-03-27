@@ -58,6 +58,10 @@
             tools:layout_editor_absoluteY="135dp" />
 
         <TextView
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
             android:id="@+id/tv_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -2,4 +2,5 @@
     <string name="app_name">SW19-morning05</string>
     <string name="app_title">Spielesammlung</string>
     <string name="bt_switchLang">Wechsle zu Englisch</string>
+    <string name="tv_score_text">Punkte:</string>
 </resources>

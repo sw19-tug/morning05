@@ -1,6 +1,7 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
@@ -82,9 +83,10 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
 
         TextView score = activityTestRule.getActivity().findViewById(R.id.tv_score);
         String scoreText = score.getText().toString();
-
         Score.incrementScore(context, points);
-
+        Intent intent = activityTestRule.getActivity().getIntent();
+        activityTestRule.getActivity().finish();
+        activityTestRule.getActivity().startActivity(intent);
         onView(withId(R.id.tv_score)).check(matches(not(withText(scoreText))));
     }
 }
