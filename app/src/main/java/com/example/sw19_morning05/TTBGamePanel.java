@@ -22,8 +22,8 @@ public class TTBGamePanel extends SurfaceView implements SurfaceHolder.Callback
 
         thread = new TTBMainThread(getHolder(), this);
 
-        player = new TTBRectPlayer(new Rect(100, 100, 200, 200), Color.rgb(50, 50, 255));
-        playerPoint = new Point(1050, 1750);
+        player = new TTBRectPlayer(new Rect(0, 0, 300, 300), Color.rgb(50, 50, 255));
+        playerPoint = new Point(500, 900);
         setFocusable(true);
     }
 
