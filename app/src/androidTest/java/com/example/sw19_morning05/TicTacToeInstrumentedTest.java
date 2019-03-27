@@ -168,6 +168,24 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
+    public void testButtonsDisabledAfterWin(){
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                onView(withId(resourceID)).check(matches(not(isEnabled())));
+            }
+        }
+    }
+
+    @Test
     public void testPlayer02Winner01(){
         onView(withId(R.id.bt_field12)).perform(click());
         onView(withId(R.id.bt_field10)).perform(click());

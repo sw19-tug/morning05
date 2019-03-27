@@ -66,10 +66,12 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                     if(return_value_winner == 1)
                     {
                         text = "Player X wins!";
+                        disableBoardAfterEndOfGame(board);
                     }
                     else if(return_value_winner == 2)
                     {
                         text = "Player O wins!";
+                        disableBoardAfterEndOfGame(board);
                     }
                     else if(return_value_winner == 0)
                     {
@@ -86,6 +88,17 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
             }
         }
 
+    }
+
+    public void disableBoardAfterEndOfGame(int board[][])
+    {
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(board[i][j] == -1){
+                    buttons[i][j].setEnabled(false);
+                }
+            }
+        }
     }
 
     public static int calculateWinner(int board[][])
