@@ -78,6 +78,25 @@ public class TicTacToeInstrumentedTest {
             }
         }
     }
+    @Test
+    public void testIfTextViewCorrect(){
+        int counter = 0;
+        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                onView(withId(resourceID)).perform(click());
+                if ((counter % 2) == 0) { //player 1
+                    onView(withId(R.id.tv_current_player)).check(matches(withText("Player X turn!")));
+                } else { //player 2
+                    onView(withId(R.id.tv_current_player)).check(matches(withText("Player O turn!")));
+                }
+                counter = counter + 1;
+            }
+        }
+    }
 
     @Test
     public void testIfButtonsAreDisabledAfterClicked(){
