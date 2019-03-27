@@ -12,20 +12,15 @@ import android.widget.Button;
 
 public class TicTacToeActivity extends AppCompatActivity  implements View.OnClickListener {
 
-    Button buttonOne;
-    Button buttons[] = new Button[9];
-    int currentPlayer = 1;  // Player 1
+    Button buttons[][] = new Button[3][3];
+    int board[][] = new int [3][3];
+
+    int currentPlayer = 1;  // 1 = Player 1, 0 = Player 2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tictactoe);
-
-        buttonOne = findViewById(R.id.bt_field00);
-
-        //Button bt_field00 = (Button) findViewById(R.id.bt_field00);
-
-        int button_count = 0;
 
         for(int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++){
@@ -33,10 +28,8 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 int resourceID = getResources().getIdentifier(
                         buttonID, "id", getPackageName());
 
-                buttons[button_count] =  findViewById(resourceID);
-                buttons[button_count].setOnClickListener(this);
-
-                button_count++;
+                buttons[i][j] = findViewById(resourceID);
+                buttons[i][j].setOnClickListener(this);
             }
         }
     }
@@ -45,21 +38,27 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     public void onClick(View view) {
         int viewId = view.getId();
 
-        for(int i = 0; i < 9; i++){
-            if(buttons[i].getId() == viewId){
-                if(currentPlayer == 1) {
-                    buttons[i].setText("X");
-                    currentPlayer = 0;
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++){
+                if(buttons[i][j].getId() == viewId){
+                    if(currentPlayer == 1) {
+                        buttons[i][j].setText("X");
+                    }
+                    else{
+                        buttons[i][j].setText("O");
+                    }
+
+                    buttons[i][j].setEnabled(false);
+                    board[i][j] = currentPlayer;
+                    currentPlayer = (currentPlayer == 1) ? 0 : 1;
+
                     break;
                 }
-                else{
-                    buttons[i].setText("O");
-                    currentPlayer = 1;
-                    break;
-                }
+
             }
         }
 
     }
+
 }
 

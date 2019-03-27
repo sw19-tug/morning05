@@ -12,9 +12,11 @@ import static android.app.PendingIntent.getActivity;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.action.ViewActions.click;
+import static org.hamcrest.Matchers.not;
 
 
 /**
@@ -73,6 +75,27 @@ public class TicTacToeInstrumentedTest {
                     onView(withId(resourceID)).check(matches(withText("O")));
                 }
                 counter = counter + 1;
+            }
+        }
+    }
+
+    @Test
+    public void testIfButtonsAreDisabledAfterClicked(){
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                onView(withId(resourceID)).perform(click());
+            }
+        }
+
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                onView(withId(resourceID)).check(matches(not(isEnabled())));
             }
         }
     }
