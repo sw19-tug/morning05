@@ -74,4 +74,17 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
         Score.decrementScore(context, points);
         Assert.assertEquals((score - points), Score.getScore(context));
     }
+
+    @Test
+    public void testShowCorrectPointsAfterChange() {
+        Context context = activityTestRule.getActivity().getApplicationContext();
+        int points = 3;
+
+        TextView score = activityTestRule.getActivity().findViewById(R.id.tv_score);
+        String scoreText = score.getText().toString();
+
+        Score.incrementScore(context, points);
+
+        onView(withId(R.id.tv_score)).check(matches(not(withText(scoreText))));
+    }
 }
