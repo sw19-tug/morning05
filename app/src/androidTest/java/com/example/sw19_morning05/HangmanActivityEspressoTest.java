@@ -18,7 +18,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -80,57 +82,57 @@ public class HangmanActivityEspressoTest {
     @Test
     public void testButtonPressedGoesDisabled()
     {
-        onView(withId(R.id.button_q)).perform(ViewActions.click());
+        onView(withId(R.id.button_q)).perform(click());
         onView(withId(R.id.button_q)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_w)).perform(ViewActions.click());
+        onView(withId(R.id.button_w)).perform(click());
         onView(withId(R.id.button_w)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_e)).perform(ViewActions.click());
+        onView(withId(R.id.button_e)).perform(click());
         onView(withId(R.id.button_e)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_r)).perform(ViewActions.click());
+        onView(withId(R.id.button_r)).perform(click());
         onView(withId(R.id.button_r)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_t)).perform(ViewActions.click());
+        onView(withId(R.id.button_t)).perform(click());
         onView(withId(R.id.button_t)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_z)).perform(ViewActions.click());
+        onView(withId(R.id.button_z)).perform(click());
         onView(withId(R.id.button_z)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_u)).perform(ViewActions.click());
+        onView(withId(R.id.button_u)).perform(click());
         onView(withId(R.id.button_u)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_i)).perform(ViewActions.click());
+        onView(withId(R.id.button_i)).perform(click());
         onView(withId(R.id.button_i)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_o)).perform(ViewActions.click());
+        onView(withId(R.id.button_o)).perform(click());
         onView(withId(R.id.button_o)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_p)).perform(ViewActions.click());
+        onView(withId(R.id.button_p)).perform(click());
         onView(withId(R.id.button_p)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_a)).perform(ViewActions.click());
+        onView(withId(R.id.button_a)).perform(click());
         onView(withId(R.id.button_a)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_s)).perform(ViewActions.click());
+        onView(withId(R.id.button_s)).perform(click());
         onView(withId(R.id.button_s)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_d)).perform(ViewActions.click());
+        onView(withId(R.id.button_d)).perform(click());
         onView(withId(R.id.button_d)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_f)).perform(ViewActions.click());
+        onView(withId(R.id.button_f)).perform(click());
         onView(withId(R.id.button_f)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_g)).perform(ViewActions.click());
+        onView(withId(R.id.button_g)).perform(click());
         onView(withId(R.id.button_g)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_h)).perform(ViewActions.click());
+        onView(withId(R.id.button_h)).perform(click());
         onView(withId(R.id.button_h)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_j)).perform(ViewActions.click());
+        onView(withId(R.id.button_j)).perform(click());
         onView(withId(R.id.button_j)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_k)).perform(ViewActions.click());
+        onView(withId(R.id.button_k)).perform(click());
         onView(withId(R.id.button_k)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_l)).perform(ViewActions.click());
+        onView(withId(R.id.button_l)).perform(click());
         onView(withId(R.id.button_l)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_y)).perform(ViewActions.click());
+        onView(withId(R.id.button_y)).perform(click());
         onView(withId(R.id.button_y)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_x)).perform(ViewActions.click());
+        onView(withId(R.id.button_x)).perform(click());
         onView(withId(R.id.button_x)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_c)).perform(ViewActions.click());
+        onView(withId(R.id.button_c)).perform(click());
         onView(withId(R.id.button_c)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_v)).perform(ViewActions.click());
+        onView(withId(R.id.button_v)).perform(click());
         onView(withId(R.id.button_v)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_b)).perform(ViewActions.click());
+        onView(withId(R.id.button_b)).perform(click());
         onView(withId(R.id.button_b)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_n)).perform(ViewActions.click());
+        onView(withId(R.id.button_n)).perform(click());
         onView(withId(R.id.button_n)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_m)).perform(ViewActions.click());
+        onView(withId(R.id.button_m)).perform(click());
         onView(withId(R.id.button_m)).check(matches(not(isEnabled())));
     }
 
@@ -149,32 +151,32 @@ public class HangmanActivityEspressoTest {
     @Test
     public void testCheckIfNoUnderlinesAnnymore()
     {
-        onView(withId(R.id.button_q)).perform(ViewActions.click());
-        onView(withId(R.id.button_w)).perform(ViewActions.click());
-        onView(withId(R.id.button_e)).perform(ViewActions.click());
-        onView(withId(R.id.button_r)).perform(ViewActions.click());
-        onView(withId(R.id.button_t)).perform(ViewActions.click());
-        onView(withId(R.id.button_z)).perform(ViewActions.click());
-        onView(withId(R.id.button_u)).perform(ViewActions.click());
-        onView(withId(R.id.button_i)).perform(ViewActions.click());
-        onView(withId(R.id.button_o)).perform(ViewActions.click());
-        onView(withId(R.id.button_p)).perform(ViewActions.click());
-        onView(withId(R.id.button_a)).perform(ViewActions.click());
-        onView(withId(R.id.button_s)).perform(ViewActions.click());
-        onView(withId(R.id.button_d)).perform(ViewActions.click());
-        onView(withId(R.id.button_f)).perform(ViewActions.click());
-        onView(withId(R.id.button_g)).perform(ViewActions.click());
-        onView(withId(R.id.button_h)).perform(ViewActions.click());
-        onView(withId(R.id.button_j)).perform(ViewActions.click());
-        onView(withId(R.id.button_k)).perform(ViewActions.click());
-        onView(withId(R.id.button_l)).perform(ViewActions.click());
-        onView(withId(R.id.button_y)).perform(ViewActions.click());
-        onView(withId(R.id.button_x)).perform(ViewActions.click());
-        onView(withId(R.id.button_c)).perform(ViewActions.click());
-        onView(withId(R.id.button_v)).perform(ViewActions.click());
-        onView(withId(R.id.button_b)).perform(ViewActions.click());
-        onView(withId(R.id.button_n)).perform(ViewActions.click());
-        onView(withId(R.id.button_m)).perform(ViewActions.click());
+        onView(withId(R.id.button_q)).perform(click());
+        onView(withId(R.id.button_w)).perform(click());
+        onView(withId(R.id.button_e)).perform(click());
+        onView(withId(R.id.button_r)).perform(click());
+        onView(withId(R.id.button_t)).perform(click());
+        onView(withId(R.id.button_z)).perform(click());
+        onView(withId(R.id.button_u)).perform(click());
+        onView(withId(R.id.button_i)).perform(click());
+        onView(withId(R.id.button_o)).perform(click());
+        onView(withId(R.id.button_p)).perform(click());
+        onView(withId(R.id.button_a)).perform(click());
+        onView(withId(R.id.button_s)).perform(click());
+        onView(withId(R.id.button_d)).perform(click());
+        onView(withId(R.id.button_f)).perform(click());
+        onView(withId(R.id.button_g)).perform(click());
+        onView(withId(R.id.button_h)).perform(click());
+        onView(withId(R.id.button_j)).perform(click());
+        onView(withId(R.id.button_k)).perform(click());
+        onView(withId(R.id.button_l)).perform(click());
+        onView(withId(R.id.button_y)).perform(click());
+        onView(withId(R.id.button_x)).perform(click());
+        onView(withId(R.id.button_c)).perform(click());
+        onView(withId(R.id.button_v)).perform(click());
+        onView(withId(R.id.button_b)).perform(click());
+        onView(withId(R.id.button_n)).perform(click());
+        onView(withId(R.id.button_m)).perform(click());
 
         onView(withId((R.id.word))).check(matches(not(withText(containsString("_")))));
     }
@@ -182,33 +184,68 @@ public class HangmanActivityEspressoTest {
     @Test
     public void testWinMessage()
     {
-        onView(withId(R.id.button_q)).perform(ViewActions.click());
-        onView(withId(R.id.button_w)).perform(ViewActions.click());
-        onView(withId(R.id.button_e)).perform(ViewActions.click());
-        onView(withId(R.id.button_r)).perform(ViewActions.click());
-        onView(withId(R.id.button_t)).perform(ViewActions.click());
-        onView(withId(R.id.button_z)).perform(ViewActions.click());
-        onView(withId(R.id.button_u)).perform(ViewActions.click());
-        onView(withId(R.id.button_i)).perform(ViewActions.click());
-        onView(withId(R.id.button_o)).perform(ViewActions.click());
-        onView(withId(R.id.button_p)).perform(ViewActions.click());
-        onView(withId(R.id.button_a)).perform(ViewActions.click());
-        onView(withId(R.id.button_s)).perform(ViewActions.click());
-        onView(withId(R.id.button_d)).perform(ViewActions.click());
-        onView(withId(R.id.button_f)).perform(ViewActions.click());
-        onView(withId(R.id.button_g)).perform(ViewActions.click());
-        onView(withId(R.id.button_h)).perform(ViewActions.click());
-        onView(withId(R.id.button_j)).perform(ViewActions.click());
-        onView(withId(R.id.button_k)).perform(ViewActions.click());
-        onView(withId(R.id.button_l)).perform(ViewActions.click());
-        onView(withId(R.id.button_y)).perform(ViewActions.click());
-        onView(withId(R.id.button_x)).perform(ViewActions.click());
-        onView(withId(R.id.button_c)).perform(ViewActions.click());
-        onView(withId(R.id.button_v)).perform(ViewActions.click());
-        onView(withId(R.id.button_b)).perform(ViewActions.click());
-        onView(withId(R.id.button_n)).perform(ViewActions.click());
-        onView(withId(R.id.button_m)).perform(ViewActions.click());
+        onView(withId(R.id.button_q)).perform(click());
+        onView(withId(R.id.button_w)).perform(click());
+        onView(withId(R.id.button_e)).perform(click());
+        onView(withId(R.id.button_r)).perform(click());
+        onView(withId(R.id.button_t)).perform(click());
+        onView(withId(R.id.button_z)).perform(click());
+        onView(withId(R.id.button_u)).perform(click());
+        onView(withId(R.id.button_i)).perform(click());
+        onView(withId(R.id.button_o)).perform(click());
+        onView(withId(R.id.button_p)).perform(click());
+        onView(withId(R.id.button_a)).perform(click());
+        onView(withId(R.id.button_s)).perform(click());
+        onView(withId(R.id.button_d)).perform(click());
+        onView(withId(R.id.button_f)).perform(click());
+        onView(withId(R.id.button_g)).perform(click());
+        onView(withId(R.id.button_h)).perform(click());
+        onView(withId(R.id.button_j)).perform(click());
+        onView(withId(R.id.button_k)).perform(click());
+        onView(withId(R.id.button_l)).perform(click());
+        onView(withId(R.id.button_y)).perform(click());
+        onView(withId(R.id.button_x)).perform(click());
+        onView(withId(R.id.button_c)).perform(click());
+        onView(withId(R.id.button_v)).perform(click());
+        onView(withId(R.id.button_b)).perform(click());
+        onView(withId(R.id.button_n)).perform(click());
+        onView(withId(R.id.button_m)).perform(click());
 
-        onView(withId(R.id.winAlert)).check(matches(isDisplayed()));
+        onView(withText("Play Again"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()))
+                .perform(click());
+
+        onView(withId(R.id.button_q)).perform(click());
+        onView(withId(R.id.button_w)).perform(click());
+        onView(withId(R.id.button_e)).perform(click());
+        onView(withId(R.id.button_r)).perform(click());
+        onView(withId(R.id.button_t)).perform(click());
+        onView(withId(R.id.button_z)).perform(click());
+        onView(withId(R.id.button_u)).perform(click());
+        onView(withId(R.id.button_i)).perform(click());
+        onView(withId(R.id.button_o)).perform(click());
+        onView(withId(R.id.button_p)).perform(click());
+        onView(withId(R.id.button_a)).perform(click());
+        onView(withId(R.id.button_s)).perform(click());
+        onView(withId(R.id.button_d)).perform(click());
+        onView(withId(R.id.button_f)).perform(click());
+        onView(withId(R.id.button_g)).perform(click());
+        onView(withId(R.id.button_h)).perform(click());
+        onView(withId(R.id.button_j)).perform(click());
+        onView(withId(R.id.button_k)).perform(click());
+        onView(withId(R.id.button_l)).perform(click());
+        onView(withId(R.id.button_y)).perform(click());
+        onView(withId(R.id.button_x)).perform(click());
+        onView(withId(R.id.button_c)).perform(click());
+        onView(withId(R.id.button_v)).perform(click());
+        onView(withId(R.id.button_b)).perform(click());
+        onView(withId(R.id.button_n)).perform(click());
+        onView(withId(R.id.button_m)).perform(click());
+
+        onView(withText("Exit"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()))
+                .perform(click());
     }
 }
