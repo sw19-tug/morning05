@@ -11,6 +11,9 @@ public class HangmanActivity extends AppCompatActivity {
 
 
     public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY"};
+    String word_to_guess;
+    String place_holder;
+
 
     @Override  //testIfTitleExists
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
             button_a.setEnabled(false);
+                checkInput('A');
         }
         });
 
@@ -31,6 +35,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_b.setEnabled(false);
+                checkInput('B');
             }
         });
 
@@ -39,6 +44,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_c.setEnabled(false);
+                checkInput('C');
             }
         });
 
@@ -47,6 +53,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_d.setEnabled(false);
+                checkInput('D');
             }
         });
 
@@ -55,6 +62,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_e.setEnabled(false);
+                checkInput('E');
             }
         });
 
@@ -63,6 +71,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_f.setEnabled(false);
+                checkInput('F');
             }
         });
 
@@ -71,6 +80,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_g.setEnabled(false);
+                checkInput('G');
             }
         });
 
@@ -79,6 +89,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_h.setEnabled(false);
+                checkInput('H');
             }
         });
 
@@ -87,6 +98,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_i.setEnabled(false);
+                checkInput('I');
             }
         });
 
@@ -95,6 +107,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_j.setEnabled(false);
+                checkInput('J');
             }
         });
 
@@ -103,6 +116,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_k.setEnabled(false);
+                checkInput('K');
             }
         });
 
@@ -111,6 +125,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_l.setEnabled(false);
+                checkInput('L');
             }
         });
 
@@ -119,6 +134,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_m.setEnabled(false);
+                checkInput('M');
             }
         });
 
@@ -127,6 +143,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_n.setEnabled(false);
+                checkInput('N');
             }
         });
 
@@ -135,6 +152,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_o.setEnabled(false);
+                checkInput('O');
             }
         });
 
@@ -143,6 +161,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_p.setEnabled(false);
+                checkInput('P');
             }
         });
 
@@ -151,6 +170,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_q.setEnabled(false);
+                checkInput('Q');
             }
         });
 
@@ -159,6 +179,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_r.setEnabled(false);
+                checkInput('R');
             }
         });
 
@@ -167,6 +188,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_s.setEnabled(false);
+                checkInput('S');
             }
         });
 
@@ -175,6 +197,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_t.setEnabled(false);
+                checkInput('T');
             }
         });
 
@@ -183,6 +206,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_u.setEnabled(false);
+                checkInput('U');
             }
         });
 
@@ -191,6 +215,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_v.setEnabled(false);
+                checkInput('V');
             }
         });
 
@@ -199,6 +224,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_w.setEnabled(false);
+                checkInput('W');
             }
         });
 
@@ -207,6 +233,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_x.setEnabled(false);
+                checkInput('X');
             }
         });
 
@@ -215,6 +242,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_y.setEnabled(false);
+                checkInput('Y');
             }
         });
 
@@ -223,6 +251,7 @@ public class HangmanActivity extends AppCompatActivity {
         {
             public void onClick (View v){
                 button_z.setEnabled(false);
+                checkInput('Z');
             }
         });
 
@@ -234,20 +263,20 @@ public class HangmanActivity extends AppCompatActivity {
 
     void setWordView()
     {
-        String place_holder = "";
+        place_holder = "";
 
         int random = randomWithRange(0,word_list.length);
 
         TextView word_view = findViewById(R.id.word);
 
-        String word = word_list[random];
+        word_to_guess = word_list[random];
 
-        int temp = word.length() + word.length() - 1;
+        int temp = word_to_guess.length() + word_to_guess.length() - 1;
 
 
-        for(int i = 0; i <= temp; i++)
+        for(int i = 0; i < temp; i++)
         {
-            if(i % 2 == 1)
+            if(i % 2 == 0)
                 place_holder += "_";
             else
                 place_holder += " ";
@@ -260,4 +289,23 @@ public class HangmanActivity extends AppCompatActivity {
         int range = (max - min) + 1;
         return (int)(Math.random() * range) + min;
     }
+
+    void checkInput(char c)
+    {
+        TextView word = (TextView) findViewById(R.id.word);
+        StringBuilder new_placeholder = new StringBuilder(place_holder);
+
+        for(int i = 0, j = 0; i < word_to_guess.length(); i++, j += 2)
+        {
+            if(word_to_guess.charAt(i) == c)
+            {
+                new_placeholder.setCharAt(j, c);
+            }
+        }
+        place_holder = new_placeholder.toString();
+        word.setText(place_holder);
+    }
+
+
 }
+
