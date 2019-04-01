@@ -178,4 +178,37 @@ public class HangmanActivityEspressoTest {
 
         onView(withId((R.id.word))).check(matches(not(withText(containsString("_")))));
     }
+
+    @Test
+    public void testWinMessage()
+    {
+        onView(withId(R.id.button_q)).perform(ViewActions.click());
+        onView(withId(R.id.button_w)).perform(ViewActions.click());
+        onView(withId(R.id.button_e)).perform(ViewActions.click());
+        onView(withId(R.id.button_r)).perform(ViewActions.click());
+        onView(withId(R.id.button_t)).perform(ViewActions.click());
+        onView(withId(R.id.button_z)).perform(ViewActions.click());
+        onView(withId(R.id.button_u)).perform(ViewActions.click());
+        onView(withId(R.id.button_i)).perform(ViewActions.click());
+        onView(withId(R.id.button_o)).perform(ViewActions.click());
+        onView(withId(R.id.button_p)).perform(ViewActions.click());
+        onView(withId(R.id.button_a)).perform(ViewActions.click());
+        onView(withId(R.id.button_s)).perform(ViewActions.click());
+        onView(withId(R.id.button_d)).perform(ViewActions.click());
+        onView(withId(R.id.button_f)).perform(ViewActions.click());
+        onView(withId(R.id.button_g)).perform(ViewActions.click());
+        onView(withId(R.id.button_h)).perform(ViewActions.click());
+        onView(withId(R.id.button_j)).perform(ViewActions.click());
+        onView(withId(R.id.button_k)).perform(ViewActions.click());
+        onView(withId(R.id.button_l)).perform(ViewActions.click());
+        onView(withId(R.id.button_y)).perform(ViewActions.click());
+        onView(withId(R.id.button_x)).perform(ViewActions.click());
+        onView(withId(R.id.button_c)).perform(ViewActions.click());
+        onView(withId(R.id.button_v)).perform(ViewActions.click());
+        onView(withId(R.id.button_b)).perform(ViewActions.click());
+        onView(withId(R.id.button_n)).perform(ViewActions.click());
+        onView(withId(R.id.button_m)).perform(ViewActions.click());
+
+        onView(withId(R.id.winAlert)).check(matches(isDisplayed()));
+    }
 }
