@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Launches an extra activity
-        Button touchTheBlockActivityBtn = (Button)findViewById(R.id.secondActivityBtn);
+        Button touchTheBlockActivityBtn = (Button)findViewById(R.id.moving_block);
         touchTheBlockActivityBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override

@@ -1,9 +1,16 @@
 package com.example.sw19_morning05;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+
+import java.util.Random;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -16,6 +23,40 @@ public class TTBActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(new TTBGamePanel(this));
+        setContentView(R.layout.ttb_activity);
+
+        final Button block = (Button)findViewById(R.id.moving_block);
+        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        final int w = d.getWidth();
+        final int h = d.getHeight();
+
+        block.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                //Changing block size
+                ViewGroup.LayoutParams params = block.getLayoutParams();
+                if (Math.random() >= 0.5)
+                  params.height = params.height/2;
+                else
+                  params.width = params.width/2;
+                block.setLayoutParams(params);
+
+                //Changing position
+                Random r = new Random();
+                int range_width = r.nextInt(w - 0);
+                int range_height = r.nextInt(h - 0);
+
+                //handles that the button stays completely in the screen
+                if ((w - range_width) < params.width)
+                    block.setX(w - params.width);
+                else
+                  block.setX(range_width);
+
+                if ((h - range_height) < params.height)
+                    block.setY(h - params.height);
+                else
+                    block.setY(range_height);
+            }
+        });
     }
 }
