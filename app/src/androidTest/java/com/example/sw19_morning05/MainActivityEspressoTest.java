@@ -101,5 +101,6 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_tictactoe)).perform(click());
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
     }
 }

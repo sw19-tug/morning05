@@ -223,7 +223,7 @@ public class TicTacToeInstrumentedTest {
 
 
     @Test
-    public void testBackToWelcomeScreen() {
+    public void testButtonBackToWelcomeScreen() {
         onView(withId(R.id.bt_backTicTacToe)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_backTicTacToe)).perform(click());
     }
@@ -233,6 +233,7 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_backTicTacToe)).perform(click());
         onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_tictactoe)).perform(click());
     }
 
 }

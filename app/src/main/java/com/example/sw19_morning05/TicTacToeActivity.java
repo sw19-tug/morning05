@@ -1,5 +1,6 @@
 package com.example.sw19_morning05;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -39,6 +40,13 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 board[i][j] = -1;
             }
         }
+
+        Button btnTicTacToe = (Button) findViewById(R.id.bt_backTicTacToe);
+        btnTicTacToe.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateWelcomeScreen();
+            }
+        });
 
         Button reset_button = findViewById(R.id.bt_reset);
         reset_button.setOnClickListener(this);
@@ -178,5 +186,10 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
             }
         }
 
+    }
+
+    private void navigateWelcomeScreen() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
