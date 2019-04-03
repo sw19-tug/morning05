@@ -309,6 +309,58 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_settings)).perform(click());
 
         onView(withId(R.id.set_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.set_sign)).check(matches(isDisplayed()));
+        onView(withId(R.id.set_color)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.bt_sign_X)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_sign_O)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.bt_color_01)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_02)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_03)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_04)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void testSettingsButtonBehaviourSigns(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());;
+
+        onView(withId(R.id.bt_sign_O)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_sign_X)).check(matches(not(isEnabled())));
+
+        onView(withId(R.id.bt_sign_O)).perform(click());
+
+        onView(withId(R.id.bt_sign_X)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_sign_O)).check(matches(not(isEnabled())));
+    }
+
+
+    @Test
+    public void testSettingsButtonBehaviourSigns(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());;
+
+        onView(withId(R.id.bt_color_01)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_02)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_03)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_04)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.bt_color_02)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_03)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_04)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_01)).check(matches(not(isEnabled())));
+
+        onView(withId(R.id.bt_color_03)).perform(click());
+
+        onView(withId(R.id.bt_color_02)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_01)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_04)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_03)).check(matches(not(isEnabled())));
+    }
+
+}
+
+
 }
 
