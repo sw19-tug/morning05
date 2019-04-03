@@ -1,5 +1,8 @@
 package com.example.sw19_morning05;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.Button;
@@ -37,37 +40,43 @@ public class TTBActivityEspressoTest
     }
 
     @Test
-    public void BlockHasNoText()
+    public void BlockHasNoText() throws InterruptedException
     {
-        onView(withId(R.id.moving_block)).check(matches(withText("TOUCH THE BLOCK")));
+        onView(withId(R.id.moving_block)).check(matches(withText("")));
 
         //onData(withId(R.id.moving_block)).atPosition()
         onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
 
-        ttbActivityActivityTestRule.getActivity();
+        //ttbActivityActivityTestRule.getActivity();
 
         //View button = ttbActivityActivityTestRule.findViewById(R.id.moving_block);
 
-        Button button = new TTBActivity().findViewById(R.id.moving_block);
+        Handler handler = new Handler(Looper.getMainLooper())
+        {
+            @Override
+            public void handleMessage(Message message)
+            {
+                Looper.prepareMainLooper();
+                Button button = new TTBActivity().findViewById(R.id.moving_block);
 
-        float buttonX = button.getX();
-        float buttonY = button.getY();
+                float buttonX = button.getX();
+                float buttonY = button.getY();
 
-        onView(withId(R.id.moving_block)).perform(click());
+                onView(withId(R.id.moving_block)).perform(click());
 
-        float buttonX_new = button.getX();
-        float buttonY_new = button.getY();
+                float buttonX_new = button.getX();
+                float buttonY_new = button.getY();
 
-        assertNotEquals(buttonX, buttonX_new, 0);
-        assertNotEquals(buttonY, buttonY_new, 0);
+                assertNotEquals(buttonX, buttonX_new, 0);
+                assertNotEquals(buttonY, buttonY_new, 0);
+            }
+        };
     }
 
     @Test
     public void testBackgroundButtonVisible()
     {
-
         onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
-
     }
 
     @Test
