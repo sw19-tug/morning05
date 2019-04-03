@@ -303,6 +303,12 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_settings)).perform(click());
     }
 
+    @Test
+    public void testSettingsMenuVisible(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
 
+        onView(withId(R.id.set_title)).check(matches(isDisplayed()));
+    }
 }
 
