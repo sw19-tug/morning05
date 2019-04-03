@@ -7,6 +7,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Assert;
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
+import android.widget.Button;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -271,6 +273,27 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.cb_autoplayer)).check(matches(isDisplayed()));
         onView(withId(R.id.cb_autoplayer)).perform(click());
     }
-    
 
+    @Test
+    public void testAutoplayer(){
+        onView(withId(R.id.cb_autoplayer)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+
+        int countDisabled = 0;
+        for(int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                String buttonID = "bt_field" + i + "" + j;
+                int resourceID = context.getResources().getIdentifier(
+                        buttonID, "id", context.getPackageName());
+                Button button = activityTestRule.getActivity().findViewById(resourceID);
+
+                if(!button.isEnabled())
+                {
+                    countDisabled++;
+                }
+            }
+        }
+
+        Assert.assertEquals(2, countDisabled);
+    }
 }
