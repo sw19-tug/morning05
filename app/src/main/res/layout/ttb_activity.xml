@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TTBActivity">
+
+    <Button
+        android:id="@+id/background_btn"
+        android:layout_width="411dp"
+        android:layout_height="731dp"
+        android:background="@android:color/white"
+        android:color="@android:color/white"/>
+
+    <Button
+        android:id="@+id/moving_block"
+        android:layout_width="411dp"
+        android:layout_height="350dp"
+        android:background="@android:color/black"
+        tools:layout_editor_absoluteY="190dp" />
+
+</android.support.constraint.ConstraintLayout>

@@ -11,4 +11,5 @@
     <string name="tv_player2_wins">Spieler O gewinnt!</string>
     <string name="tv_TicTacToe_draw">Unentschieden!</string>
     <string name="cbtext_autoplayer">Spiele gegen Computer</string>
+    <string name="title_activity_touch_the_block">TouchTheBlockActivity</string>
 </resources>
