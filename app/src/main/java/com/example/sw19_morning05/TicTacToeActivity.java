@@ -97,25 +97,25 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
                     if(return_value_winner == 1)
                     {
-                        text = "Player X wins!";
+                        tv_currentPlayer.setText("Player X wins!");
                         disableBoardAfterEndOfGame(board);
                         Score.incrementScore(context, 1);
+                        return;
                     }
                     else if(return_value_winner == 2)
                     {
-                        text = "Player O wins!";
+                        tv_currentPlayer.setText("Player O wins!");
                         disableBoardAfterEndOfGame(board);
                         Score.decrementScore(context, 2);
+                        return;
                     }
                     else if(return_value_winner == 0)
                     {
-                        text = "Draw!";
-                    }
-                    else
-                    {
-                        currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                        tv_currentPlayer.setText("Draw!");
+                        return;
                     }
 
+                    currentPlayer = (currentPlayer == 1) ? 2 : 1;
                     tv_currentPlayer.setText(text);
                     break;
                 }
@@ -138,8 +138,32 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                     buttons[row][col].setText("O");
                     buttons[row][col].setEnabled(false);
                     board[row][col] = currentPlayer;
+
+                    return_value_winner = calculateWinner(board);
+
+                    if(return_value_winner == 1)
+                    {
+                        tv_currentPlayer.setText("Player X wins!");
+                        disableBoardAfterEndOfGame(board);
+                        Score.incrementScore(context, 1);
+                        return;
+                    }
+                    else if(return_value_winner == 2)
+                    {
+                        tv_currentPlayer.setText("Player O wins!");
+                        disableBoardAfterEndOfGame(board);
+                        Score.decrementScore(context, 2);
+                        return;
+                    }
+                    else if(return_value_winner == 0)
+                    {
+                        tv_currentPlayer.setText("Draw!");
+                        return;
+                    }
+
                     currentPlayer = (currentPlayer == 1) ? 2 : 1;
                     tv_currentPlayer.setText("Player X turn!");
+
                     break;
                 }
             }
