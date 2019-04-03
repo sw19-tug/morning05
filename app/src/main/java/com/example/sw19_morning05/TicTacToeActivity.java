@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
+
+import java.util.Random;
 
 
 public class TicTacToeActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -15,6 +18,8 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     int board[][] = new int [3][3];
 
     int currentPlayer = 1;  // 1 = Player 1, 2 = Player 2
+
+    CheckBox cb_autoplayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,10 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     @Override
     public void onClick(View view) {
         Context context = this.getApplicationContext();
+
+        cb_autoplayer = findViewById(R.id.cb_autoplayer);
+        cb_autoplayer.setEnabled(false);
+
         int viewId = view.getId();
 
         if(R.id.bt_reset == viewId)
@@ -63,7 +72,6 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
             resetBoard();
             return;
         }
-
 
         String text;
         TextView tv_currentPlayer;
@@ -109,6 +117,29 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                     }
 
                     tv_currentPlayer.setText(text);
+                    break;
+                }
+            }
+        }
+
+        if(cb_autoplayer.isChecked())
+        {
+            Random randi = new Random();
+            int row;
+            int col;
+
+            while(true)
+            {
+                row = randi.nextInt(3);
+                col = randi.nextInt(3);
+
+                if(buttons[row][col].isEnabled())
+                {
+                    buttons[row][col].setText("O");
+                    buttons[row][col].setEnabled(false);
+                    board[row][col] = currentPlayer;
+                    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                    tv_currentPlayer.setText("Player X turn!");
                     break;
                 }
             }
@@ -190,6 +221,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
             }
         }
 
+        cb_autoplayer.setEnabled(true);
     }
 
     private void navigateWelcomeScreen() {
