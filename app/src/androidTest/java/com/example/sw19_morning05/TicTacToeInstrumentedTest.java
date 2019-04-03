@@ -221,4 +221,18 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player O wins!")));
     }
 
+
+    @Test
+    public void testBackToWelcomeScreen() {
+        onView(withId(R.id.bt_backTicTacToe)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+    }
+
+    @Test
+    public void testNavigateWelcomeScreen() {
+        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
+    }
+
 }
