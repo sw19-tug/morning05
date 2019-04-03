@@ -31,14 +31,28 @@
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="20dp"/>
 
+    <CheckBox
+        android:id="@+id/cb_autoplayer"
+        android:text="@string/cbtext_autoplayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"/>
+
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:rowCount="5">
+        android:layout_marginTop="40dp"
+        android:rowCount="3">
 
         <Button
             android:id="@+id/bt_field00"
@@ -48,7 +62,6 @@
             android:layout_column="0"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -59,7 +72,6 @@
             android:layout_column="1"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -70,7 +82,6 @@
             android:layout_column="2"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -81,7 +92,6 @@
             android:layout_column="0"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -92,7 +102,6 @@
             android:layout_column="1"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -103,7 +112,6 @@
             android:layout_column="2"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -114,7 +122,6 @@
             android:layout_column="0"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -125,7 +132,6 @@
             android:layout_column="1"
             android:text=""
             android:textSize="50dp">
-
         </Button>
 
         <Button
@@ -136,33 +142,22 @@
             android:layout_column="2"
             android:text=""
             android:textSize="50dp">
-
         </Button>
-
-        <Button
-            android:id="@+id/bt_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="1"
-            android:text="@string/bt_reset">
-
-        </Button>
-
-        <Button
-            android:id="@+id/bt_backTicTacToe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="4"
-            android:layout_column="1"
-            android:text="@string/bt_backTicTacToe">
-
-        </Button>
-
-
-
     </GridLayout>
 
-
+    <Button
+        android:id="@+id/bt_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/bt_reset">
+    </Button>
+    <Button
+        android:id="@+id/bt_backTicTacToe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/bt_backTicTacToe">
+    </Button>
 
 </LinearLayout>

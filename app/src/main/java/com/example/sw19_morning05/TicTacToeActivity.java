@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
+
+import java.util.Random;
 
 
 public class TicTacToeActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -15,6 +18,8 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     int board[][] = new int [3][3];
 
     int currentPlayer = 1;  // 1 = Player 1, 2 = Player 2
+
+    CheckBox cb_autoplayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,63 +60,117 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        Context context = this.getApplicationContext();
-        int viewId = view.getId();
+      Context context = this.getApplicationContext();
 
-        if(R.id.bt_reset == viewId)
-        {
-            resetBoard();
-            return;
-        }
+      cb_autoplayer = findViewById(R.id.cb_autoplayer);
+      cb_autoplayer.setEnabled(false);
 
+      int viewId = view.getId();
 
-        TextView tv_currentPlayer;
-        tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
+      if (R.id.bt_reset == viewId)
+      {
+          resetBoard();
+          return;
+      }
 
-        int return_value_winner;
+      TextView tv_currentPlayer;
+      tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
 
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++){
-                if(buttons[i][j].getId() == viewId){
-                    if(currentPlayer == 1) {
-                        buttons[i][j].setText("X");
-                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_turn));
-                    }
-                    else{
-                        buttons[i][j].setText("O");
-                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
-                    }
+      int return_value_winner;
 
-                    buttons[i][j].setEnabled(false);
-                    board[i][j] = currentPlayer;
-                    return_value_winner = calculateWinner(board);
+      for (int i = 0; i < 3; i++)
+      {
+          for (int j = 0; j < 3; j++)
+          {
+              if (buttons[i][j].getId() == viewId)
+              {
+                  if (currentPlayer == 1)
+                  {
+                      buttons[i][j].setText("X");
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_turn));
+                  }
+                  else
+                  {
+                      buttons[i][j].setText("O");
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
+                  }
 
-                    if(return_value_winner == 1)
-                    {
-                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_wins));
-                        disableBoardAfterEndOfGame(board);
-                        Score.incrementScore(context, 1);
-                    }
-                    else if(return_value_winner == 2)
-                    {
-                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_wins));
-                        disableBoardAfterEndOfGame(board);
-                        Score.decrementScore(context, 2);
-                    }
-                    else if(return_value_winner == 0)
-                    {
-                        tv_currentPlayer.setText(getResources().getString(R.string.tv_TicTacToe_draw));
-                    }
-                    else
-                    {
-                        currentPlayer = (currentPlayer == 1) ? 2 : 1;
-                    }
+                  buttons[i][j].setEnabled(false);
+                  board[i][j] = currentPlayer;
+                  return_value_winner = calculateWinner(board);
 
-                    break;
-                }
-            }
-        }
+                  if(return_value_winner == 1)
+                  {
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_wins));
+                      disableBoardAfterEndOfGame(board);
+                      Score.incrementScore(context, 1);
+                      return;
+                  }
+                  else if(return_value_winner == 2)
+                  {
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_wins));
+                      disableBoardAfterEndOfGame(board);
+                      Score.decrementScore(context, 2);
+                      return;
+                  }
+                  else if(return_value_winner == 0)
+                  {
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_TicTacToe_draw));
+                      return;
+                  }
 
+                  currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                  break;
+              }
+          }
+      }
+
+      if(cb_autoplayer.isChecked())
+      {
+          Random randi = new Random();
+          int row;
+          int col;
+
+          while(true)
+          {
+              row = randi.nextInt(3);
+              col = randi.nextInt(3);
+
+              if(buttons[row][col].isEnabled())
+              {
+                  buttons[row][col].setText("O");
+                  buttons[row][col].setEnabled(false);
+                  board[row][col] = currentPlayer;
+
+                  return_value_winner = calculateWinner(board);
+
+                  if(return_value_winner == 1)
+                  {
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_wins));
+                      disableBoardAfterEndOfGame(board);
+                      Score.incrementScore(context, 1);
+                      return;
+                  }
+                  else if(return_value_winner == 2)
+                  {
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_wins));
+                      disableBoardAfterEndOfGame(board);
+                      Score.decrementScore(context, 2);
+                      return;
+                  }
+                  else if(return_value_winner == 0)
+                  {
+                      tv_currentPlayer.setText(getResources().getString(R.string.tv_TicTacToe_draw));
+                      return;
+                  }
+
+                  currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                  tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
+
+                  break;
+              }
+          }
+      }
     }
 
     public void disableBoardAfterEndOfGame(int board[][])
@@ -189,6 +248,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
             }
         }
 
+        cb_autoplayer.setEnabled(true);
     }
 
     private void navigateWelcomeScreen() {

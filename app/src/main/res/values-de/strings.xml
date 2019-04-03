@@ -10,4 +10,5 @@
     <string name="tv_player1_wins">Spieler X gewinnt!</string>
     <string name="tv_player2_wins">Spieler O gewinnt!</string>
     <string name="tv_TicTacToe_draw">Unentschieden!</string>
+    <string name="cbtext_autoplayer">Spiele gegen Computer</string>
 </resources>

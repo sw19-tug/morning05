@@ -10,4 +10,5 @@
     <string name="tv_player1_wins">Player X wins!</string>
     <string name="tv_player2_wins">Player O wins!</string>
     <string name="tv_TicTacToe_draw">Draw!</string>
+    <string name="cbtext_autoplayer">Enable Autoplayer</string>
 </resources>
