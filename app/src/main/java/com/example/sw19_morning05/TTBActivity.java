@@ -2,6 +2,7 @@ package com.example.sw19_morning05;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
@@ -25,14 +26,19 @@ public class TTBActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.ttb_activity);
 
+
         final Button block = (Button)findViewById(R.id.moving_block);
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int w = d.getWidth();
         final int h = d.getHeight();
 
+        //Changing start position
+        block.setY((float)((h / 2) * Math.random()));
+
         block.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
+
                 //Changing block size
                 ViewGroup.LayoutParams params = block.getLayoutParams();
                 if (Math.random() >= 0.5)
@@ -43,8 +49,8 @@ public class TTBActivity extends Activity {
 
                 //Changing position
                 Random r = new Random();
-                int range_width = r.nextInt(w - 0);
-                int range_height = r.nextInt(h - 0);
+                int range_width = r.nextInt(w);
+                int range_height = r.nextInt(h);
 
                 //handles that the button stays completely in the screen
                 if ((w - range_width) < params.width)
@@ -56,6 +62,18 @@ public class TTBActivity extends Activity {
                     block.setY(h - params.height);
                 else
                     block.setY(range_height);
+            }
+        });
+
+
+        // returns to the start page, when the user touches the background
+        final Button background = (Button)findViewById(R.id.background_btn);
+
+        background.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
     }

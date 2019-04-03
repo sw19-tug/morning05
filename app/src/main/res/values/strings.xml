@@ -11,4 +11,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="touch_the_block_button">touch the block</string>
     <string name="google_button">google</string>
+    <string name="background_button">Button</string>
 </resources>

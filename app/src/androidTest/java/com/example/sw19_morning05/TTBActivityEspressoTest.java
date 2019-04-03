@@ -37,7 +37,7 @@ public class TTBActivityEspressoTest
     }
 
     @Test
-    public void BlockHasNewPosition()
+    public void BlockHasNoText()
     {
         onView(withId(R.id.moving_block)).check(matches(withText("TOUCH THE BLOCK")));
 

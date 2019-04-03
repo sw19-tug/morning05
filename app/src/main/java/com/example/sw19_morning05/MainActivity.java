@@ -14,8 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Launches an extra activity
-        Button touchTheBlockActivityBtn = (Button)findViewById(R.id.moving_block);
+
+        // Launches the touch the block game
+        Button touchTheBlockActivityBtn = (Button)findViewById(R.id.ttb_game);
         touchTheBlockActivityBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // opens standard browser with google
         Button googleBtn = (Button)findViewById(R.id.googleBtn);
         googleBtn.setOnClickListener(new View.OnClickListener()
         {
