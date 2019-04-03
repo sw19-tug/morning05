@@ -31,13 +31,28 @@
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="20dp"/>
 
+
+    <CheckBox
+        android:id="@+id/cb_autoplayer"
+        android:text="Enable Autoplayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"/>
+
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:rowCount="5">
 
         <Button
