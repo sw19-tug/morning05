@@ -18,6 +18,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @RunWith(AndroidJUnit4.class)
@@ -28,29 +29,24 @@ public class TTBActivityEspressoTest
             new ActivityTestRule<>(TTBActivity.class);
 
     @Test
-    public void testBlockButtonVisible()
+    public void testBlockButton()
     {
         onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void testBlockIsClickable()
-    {
         onView(withId(R.id.moving_block)).check(matches(isClickable()));
+        onView(withId(R.id.moving_block)).check(matches(withText("")));
     }
 
     @Test
-    public void BlockHasNoText() throws InterruptedException
+    public void testBackgroundButton()
     {
-        onView(withId(R.id.moving_block)).check(matches(withText("")));
+        onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
+        onView(withId(R.id.background_btn)).check(matches(isClickable()));
+        onView(withId(R.id.background_btn)).check(matches(withText("")));
+    }
 
-        //onData(withId(R.id.moving_block)).atPosition()
-        onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
-
-        //ttbActivityActivityTestRule.getActivity();
-
-        //View button = ttbActivityActivityTestRule.findViewById(R.id.moving_block);
-
+    @Test
+    public void testBlockMoves()
+    {
         Handler handler = new Handler(Looper.getMainLooper())
         {
             @Override
@@ -74,14 +70,32 @@ public class TTBActivityEspressoTest
     }
 
     @Test
-    public void testBackgroundButtonVisible()
+    public void testBlockResizes()
     {
-        onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
-    }
+        Handler handler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message message)
+            {
+                Looper.prepareMainLooper();
+                Button button = new TTBActivity().findViewById(R.id.moving_block);
 
-    @Test
-    public void testBackgroundIsClickable()
-    {
-        onView(withId(R.id.background_btn)).check(matches(isClickable()));
+                float button_height = button.getHeight();
+                float button_width = button.getWidth();
+
+                onView(withId(R.id.moving_block)).perform(click());
+
+                float button_height_new = button.getHeight();
+                float button_width_new = button.getWidth();
+
+                if (button_height == button_height_new)
+                {
+                    assertEquals(button_width, button_width_new * 2);
+                }
+                else
+                {
+                    assertEquals(button_height, button_height_new * 2);
+                }
+            }
+        };
     }
 }
