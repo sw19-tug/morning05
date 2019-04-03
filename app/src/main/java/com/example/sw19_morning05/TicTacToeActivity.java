@@ -1,5 +1,6 @@
 package com.example.sw19_morning05;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -46,6 +47,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
     @Override
     public void onClick(View view) {
+        Context context = this.getApplicationContext();
         int viewId = view.getId();
 
         if(R.id.bt_reset == viewId)
@@ -81,11 +83,13 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                     {
                         text = "Player X wins!";
                         disableBoardAfterEndOfGame(board);
+                        Score.incrementScore(context, 1);
                     }
                     else if(return_value_winner == 2)
                     {
                         text = "Player O wins!";
                         disableBoardAfterEndOfGame(board);
+                        Score.decrementScore(context, 2);
                     }
                     else if(return_value_winner == 0)
                     {

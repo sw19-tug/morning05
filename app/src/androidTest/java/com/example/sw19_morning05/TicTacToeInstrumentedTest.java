@@ -3,6 +3,8 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+
+import org.junit.Assert;
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
 import org.junit.Test;
@@ -219,6 +221,35 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_field00)).perform(click());
 
         onView(withId(R.id.tv_currentPlayer)).check(matches(withText("Player O wins!")));
+    }
+
+    @Test
+    public void testPlayer01Winner01IncrementPoints(){
+        int score = Score.getScore(context);
+        int points = 1;
+
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+
+        Assert.assertEquals((score + points), Score.getScore(context));
+    }
+
+    @Test
+    public void testPlayer02Winner01DecrementPoints(){
+        int score = Score.getScore(context);
+        int points = 2;
+
+        onView(withId(R.id.bt_field12)).perform(click());
+        onView(withId(R.id.bt_field10)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+        onView(withId(R.id.bt_field20)).perform(click());
+        onView(withId(R.id.bt_field21)).perform(click());
+        onView(withId(R.id.bt_field00)).perform(click());
+
+        Assert.assertEquals((score - points), Score.getScore(context));
     }
 
 }
