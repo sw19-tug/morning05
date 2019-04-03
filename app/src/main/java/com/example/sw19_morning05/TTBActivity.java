@@ -69,6 +69,9 @@ public class TTBActivity extends Activity {
         // returns to the start page, when the user touches the background
         final Button background = (Button)findViewById(R.id.background_btn);
 
+
+
+        
         background.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
