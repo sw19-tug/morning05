@@ -98,9 +98,8 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testNavigateTicTacToe() {
-
-        assertNull(ticTacToeActivityTestRule.getActivity().getCallingActivity());
+        onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_tictactoe)).perform(click());
-        assertNotNull(ticTacToeActivityTestRule.getActivity().getCallingActivity());
+        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
     }
 }
