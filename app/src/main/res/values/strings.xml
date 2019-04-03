@@ -3,4 +3,6 @@
     <string name="app_title">Mini Games</string>
     <string name="bt_switchLang">Switch to German</string>
     <string name="tv_score_text">Score:</string>
+    <string name="bt_reset">RESET</string>
+    <string name="bt_backTicTacToe">BACK</string>
 </resources>

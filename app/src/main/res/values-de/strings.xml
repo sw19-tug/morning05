@@ -3,4 +3,6 @@
     <string name="app_title">Spielesammlung</string>
     <string name="bt_switchLang">Wechsle zu Englisch</string>
     <string name="tv_score_text">Punkte:</string>
+    <string name="bt_reset">Neustart</string>
+    <string name="bt_backTicTacToe">Zurück</string>
 </resources>
