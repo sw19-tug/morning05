@@ -57,6 +57,27 @@ public class MainActivityEspressoTest {
         String englishTitle = title.getText().toString();
         onView(withId(R.id.bt_switchLanguage)).perform(click());
         onView(withId(R.id.tv_title)).check(matches(not(withText(englishTitle))));
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+    }
+
+    @Test
+    public void testLanguageTicTacToe(){
+        TextView button_text = ticTacToeActivityTestRule.getActivity().findViewById(R.id.bt_reset);
+        String germanTitle = button_text.getText().toString();
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.bt_reset)).check(matches(not(withText(germanTitle))));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+    }
+
+    @Test
+    public void testPlayerLanguageTicTacToe(){
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText(R.string.tv_player1_turn)));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
     }
 
     @Test
