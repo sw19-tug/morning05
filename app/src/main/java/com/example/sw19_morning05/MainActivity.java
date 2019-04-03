@@ -1,6 +1,7 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
                 switchLanguage();
             }
         });
+
+        Button btnTicTacToe = (Button) findViewById(R.id.bt_tictactoe);
+        btnTicTacToe.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateTicTacToe();
+            }
+        });
     }
 
     public void switchLanguage() {
@@ -47,5 +55,10 @@ public class MainActivity extends AppCompatActivity {
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
         MainActivity.this.recreate();
+    }
+
+    private void navigateTicTacToe() {
+        Intent intent = new Intent(this, TicTacToeActivity.class);
+        startActivity(intent);
     }
 }

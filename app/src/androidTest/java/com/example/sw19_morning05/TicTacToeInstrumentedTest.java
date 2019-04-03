@@ -252,4 +252,18 @@ public class TicTacToeInstrumentedTest {
         Assert.assertEquals((score - points), Score.getScore(context));
     }
 
+    @Test
+    public void testButtonBackToWelcomeScreen() {
+        onView(withId(R.id.bt_backTicTacToe)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+    }
+
+    @Test
+    public void testNavigateWelcomeScreen() {
+        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_tictactoe)).perform(click());
+    }
+
 }
