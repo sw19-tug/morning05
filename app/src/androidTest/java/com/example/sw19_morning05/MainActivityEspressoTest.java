@@ -21,6 +21,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -30,7 +32,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityEspressoTest {
     @Rule
-public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+
+    @Rule
+    public ActivityTestRule<TicTacToeActivity> ticTacToeActivityTestRule = new ActivityTestRule<>(TicTacToeActivity.class);
+
     @Test
     public void testGameButtonsVisible() {
         onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
@@ -88,5 +94,13 @@ public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
         activityTestRule.getActivity().finish();
         activityTestRule.getActivity().startActivity(intent);
         onView(withId(R.id.tv_score)).check(matches(not(withText(scoreText))));
+    }
+
+    @Test
+    public void testNavigateTicTacToe() {
+
+        assertNull(ticTacToeActivityTestRule.getActivity().getCallingActivity());
+        onView(withId(R.id.bt_tictactoe)).perform(click());
+        assertNotNull(ticTacToeActivityTestRule.getActivity().getCallingActivity());
     }
 }
