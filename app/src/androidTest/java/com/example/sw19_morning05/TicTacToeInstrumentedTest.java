@@ -266,4 +266,11 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_tictactoe)).perform(click());
     }
 
+    @Test
+    public void testCheckBoxClickable(){
+        onView(withId(R.id.cb_autoplayer)).check(matches(isDisplayed()));
+        onView(withId(R.id.cb_autoplayer)).perform(click());
+    }
+    
+
 }
