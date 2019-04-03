@@ -296,4 +296,13 @@ public class TicTacToeInstrumentedTest {
 
         Assert.assertEquals(2, countDisabled);
     }
+
+    @Test
+    public void testSettingButtonClickable(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+    }
+
+
 }
+
