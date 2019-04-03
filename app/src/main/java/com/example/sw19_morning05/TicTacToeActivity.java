@@ -33,7 +33,7 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
         }
 
         TextView tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
-        tv_currentPlayer.setText("Player X turn!");
+        tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
 
         //initialize board
         for(int i = 0; i < 3; i++) {
@@ -65,7 +65,6 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
         }
 
 
-        String text;
         TextView tv_currentPlayer;
         tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
 
@@ -76,11 +75,11 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 if(buttons[i][j].getId() == viewId){
                     if(currentPlayer == 1) {
                         buttons[i][j].setText("X");
-                        text = "Player O turn!";
+                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_turn));
                     }
                     else{
                         buttons[i][j].setText("O");
-                        text = "Player X turn!";
+                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
                     }
 
                     buttons[i][j].setEnabled(false);
@@ -89,26 +88,25 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
                     if(return_value_winner == 1)
                     {
-                        text = "Player X wins!";
+                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_wins));
                         disableBoardAfterEndOfGame(board);
                         Score.incrementScore(context, 1);
                     }
                     else if(return_value_winner == 2)
                     {
-                        text = "Player O wins!";
+                        tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_wins));
                         disableBoardAfterEndOfGame(board);
                         Score.decrementScore(context, 2);
                     }
                     else if(return_value_winner == 0)
                     {
-                        text = "Draw!";
+                        tv_currentPlayer.setText(getResources().getString(R.string.tv_TicTacToe_draw));
                     }
                     else
                     {
                         currentPlayer = (currentPlayer == 1) ? 2 : 1;
                     }
 
-                    tv_currentPlayer.setText(text);
                     break;
                 }
             }
@@ -176,7 +174,8 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     public void resetBoard()
     {
         TextView tv_currentPlayer = findViewById(R.id.tv_currentPlayer);
-        tv_currentPlayer.setText("Player X turn!");
+        tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
+
         currentPlayer = 1;
 
         //initialize board

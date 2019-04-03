@@ -5,4 +5,9 @@
     <string name="tv_score_text">Punkte:</string>
     <string name="bt_reset">Neustart</string>
     <string name="bt_backTicTacToe">Zurück</string>
+    <string name="tv_player1_turn">Spieler X Zug!</string>
+    <string name="tv_player2_turn">Spieler O Zug!</string>
+    <string name="tv_player1_wins">Spieler X gewinnt!</string>
+    <string name="tv_player2_wins">Spieler O gewinnt!</string>
+    <string name="tv_TicTacToe_draw">Unentschieden!</string>
 </resources>

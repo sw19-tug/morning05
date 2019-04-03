@@ -72,6 +72,15 @@ public class MainActivityEspressoTest {
     }
 
     @Test
+    public void testPlayerLanguageTicTacToe(){
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.tv_currentPlayer)).check(matches(withText(R.string.tv_player1_turn)));
+        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+    }
+
+    @Test
     public void testShowPoints() {
         onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
     }
