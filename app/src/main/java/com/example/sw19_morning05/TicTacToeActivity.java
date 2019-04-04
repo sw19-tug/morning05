@@ -27,6 +27,11 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTicTacToe();
+    }
+
+    private void initTicTacToe()
+    {
         setContentView(R.layout.activity_tictactoe);
 
         for(int i = 0; i < 3; i++) {
@@ -70,7 +75,6 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 initSettingsTicTacToe();
             }
         });
-
     }
 
     @Override
@@ -367,6 +371,16 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 bt_color_03.setBackgroundResource(R.color.ttt_b3_black_normal);
                 bt_color_04.setEnabled(false);
                 bt_color_04.setBackgroundResource(R.color.ttt_b4_black_clicked);
+            }
+        });
+
+        final Button bt_set_back = findViewById(R.id.bt_set_back);
+        bt_set_back.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                initTicTacToe();
             }
         });
     }
