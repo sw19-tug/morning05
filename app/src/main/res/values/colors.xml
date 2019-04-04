@@ -5,4 +5,12 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#ffffff</color>
     <color name="black_overlay">#66000000</color>
+    <color name="ttt_b1_black_normal">#FF000000</color>
+    <color name="ttt_b1_black_clicked">#66000000</color>
+    <color name="ttt_b2_black_normal">#ffff234b</color>
+    <color name="ttt_b2_black_clicked">#66ff234b</color>
+    <color name="ttt_b3_black_normal">#ff0000ff</color>
+    <color name="ttt_b3_black_clicked">#660000ff</color>
+    <color name="ttt_b4_black_normal">#ff00b235</color>
+    <color name="ttt_b4_black_clicked">#6600b235</color>
 </resources>

@@ -324,7 +324,7 @@ public class TicTacToeInstrumentedTest {
     @Test
     public void testSettingsButtonBehaviourSigns(){
         onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_settings)).perform(click());;
+        onView(withId(R.id.bt_settings)).perform(click());
 
         onView(withId(R.id.bt_sign_O)).check(matches(isEnabled()));
         onView(withId(R.id.bt_sign_X)).check(matches(not(isEnabled())));
@@ -337,9 +337,9 @@ public class TicTacToeInstrumentedTest {
 
 
     @Test
-    public void testSettingsButtonBehaviourSigns(){
+    public void testSettingsButtonBehaviourColors(){
         onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_settings)).perform(click());;
+        onView(withId(R.id.bt_settings)).perform(click());
 
         onView(withId(R.id.bt_color_01)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_color_02)).check(matches(isDisplayed()));
@@ -359,8 +359,16 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_color_03)).check(matches(not(isEnabled())));
     }
 
+    @Test
+    public void  testSettingsBackButton()
+    {
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+
+        onView(withId(R.id.bt_set_back)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_set_back)).perform(click());
+
+        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.tv_header)).check(matches(withText("Tic Tac Toe")));
+    }
 }
-
-
-}
-
