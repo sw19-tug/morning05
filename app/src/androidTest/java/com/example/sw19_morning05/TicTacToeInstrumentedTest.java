@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 
 import static android.app.PendingIntent.getActivity;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.matcher.ViewMatchers.hasTextColor;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
@@ -370,5 +371,18 @@ public class TicTacToeInstrumentedTest {
 
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_header)).check(matches(withText("Tic Tac Toe")));
+    }
+
+    @Test
+    public void  testSignAndColorChoice()
+    {
+        onView(withId(R.id.bt_settings)).perform(click());
+        onView(withId(R.id.bt_sign_O)).perform(click());
+        onView(withId(R.id.bt_color_02)).perform(click());
+        onView(withId(R.id.bt_set_back)).perform(click());
+
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field00)).check(matches(withText("O")));
+        onView(withId(R.id.bt_field00)).check(matches(hasTextColor(R.color.ttt_b2_red_normal)));
     }
 }

@@ -2,10 +2,8 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -318,11 +316,11 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 bt_color_01.setEnabled(false);
                 bt_color_01.setBackgroundResource(R.color.ttt_b1_black_clicked);
                 bt_color_02.setEnabled(true);
-                bt_color_02.setBackgroundResource(R.color.ttt_b2_black_normal);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_normal);
                 bt_color_03.setEnabled(true);
-                bt_color_03.setBackgroundResource(R.color.ttt_b3_black_normal);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_normal);
                 bt_color_04.setEnabled(true);
-                bt_color_04.setBackgroundResource(R.color.ttt_b4_black_normal);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_normal);
             }
         });
 
@@ -334,11 +332,11 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 bt_color_01.setEnabled(true);
                 bt_color_01.setBackgroundResource(R.color.ttt_b1_black_normal);
                 bt_color_02.setEnabled(false);
-                bt_color_02.setBackgroundResource(R.color.ttt_b2_black_clicked);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_clicked);
                 bt_color_03.setEnabled(true);
-                bt_color_03.setBackgroundResource(R.color.ttt_b3_black_normal);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_normal);
                 bt_color_04.setEnabled(true);
-                bt_color_04.setBackgroundResource(R.color.ttt_b4_black_normal);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_normal);
             }
         });
 
@@ -350,11 +348,11 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 bt_color_01.setEnabled(true);
                 bt_color_01.setBackgroundResource(R.color.ttt_b1_black_normal);
                 bt_color_02.setEnabled(true);
-                bt_color_02.setBackgroundResource(R.color.ttt_b2_black_normal);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_normal);
                 bt_color_03.setEnabled(false);
-                bt_color_03.setBackgroundResource(R.color.ttt_b3_black_clicked);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_clicked);
                 bt_color_04.setEnabled(true);
-                bt_color_04.setBackgroundResource(R.color.ttt_b4_black_normal);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_normal);
             }
         });
 
@@ -366,11 +364,11 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
                 bt_color_01.setEnabled(true);
                 bt_color_01.setBackgroundResource(R.color.ttt_b1_black_normal);
                 bt_color_02.setEnabled(true);
-                bt_color_02.setBackgroundResource(R.color.ttt_b2_black_normal);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_normal);
                 bt_color_03.setEnabled(true);
-                bt_color_03.setBackgroundResource(R.color.ttt_b3_black_normal);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_normal);
                 bt_color_04.setEnabled(false);
-                bt_color_04.setBackgroundResource(R.color.ttt_b4_black_clicked);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_clicked);
             }
         });
 
