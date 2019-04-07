@@ -12,4 +12,6 @@
     <string name="tv_TicTacToe_draw">Draw!</string>
     <string name="cbtext_autoplayer">Enable Autoplayer</string>
     <string name="title_activity_touch_the_block">TouchTheBlockActivity</string>
+    <string name="ttb_restart">Restart</string>
+    <string name="ttb_loss">Ooops!</string>
 </resources>

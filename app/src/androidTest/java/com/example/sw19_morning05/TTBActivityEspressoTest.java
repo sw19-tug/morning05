@@ -37,12 +37,20 @@ public class TTBActivityEspressoTest
     }
 
     @Test
+    public void testResetButton()
+    {
+        onView(withId(R.id.restart_btn)).check(matches(isDisplayed()));
+        onView(withId(R.id.restart_btn)).check(matches(isClickable()));
+    }
+
+    @Test
     public void testBackgroundButton()
     {
         onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
         onView(withId(R.id.background_btn)).check(matches(isClickable()));
         onView(withId(R.id.background_btn)).check(matches(withText("")));
     }
+
 
     @Test
     public void testBlockMoves()

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -28,6 +29,8 @@ public class TTBActivity extends Activity {
 
 
         final Button block = (Button)findViewById(R.id.moving_block);
+        final Button restart = (Button)findViewById(R.id.restart_btn);
+
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int w = d.getWidth();
         final int h = d.getHeight();
@@ -66,13 +69,28 @@ public class TTBActivity extends Activity {
         });
 
 
+        restart.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getApplicationContext(), TTBActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // returns to the start page, when the user touches the background
         final Button background = (Button)findViewById(R.id.background_btn);
 
         background.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                // Display a message if player has lost the game.
+                Context context = getApplicationContext();
+                String msg = "Ooops!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, msg, duration);
+                toast.show();
+
+                Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
             }
         });
