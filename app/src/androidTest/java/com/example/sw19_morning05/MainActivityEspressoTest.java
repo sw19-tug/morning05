@@ -124,4 +124,12 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_backTicTacToe)).perform(click());
     }
+
+    @Test
+    public void testNavigateHangman() {
+        onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_hangman)).perform(click());
+        onView(withId(R.id.title_ly)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_backHangman)).perform(click());
+    }
 }
