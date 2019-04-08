@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 navigateTouchTheBlock();
             }
         });
+        Button btnHangman = (Button) findViewById(R.id.bt_hangman);
+        btnHangman.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateHangman();
+            }
+        });
     }
 
     public void switchLanguage() {
@@ -64,12 +70,15 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.recreate();
     }
 
+    private void navigateHangman() {
+        Intent intent = new Intent(this, HangmanActivity.class);
+        startActivity(intent);
+    }
 
     private void navigateTicTacToe() {
         Intent intent = new Intent(this, TicTacToeActivity.class);
         startActivity(intent);
     }
-
 
     private void navigateTouchTheBlock() {
         Intent intent = new Intent(this, TTBActivity.class);
