@@ -293,7 +293,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You Won!"
+            android:text="You Won! Score +1"
             android:textAlignment="center"
             android:textSize="24sp" />
 
