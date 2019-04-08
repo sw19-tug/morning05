@@ -3,6 +3,8 @@ package com.example.sw19_morning05;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.UiThread;
+import android.support.test.annotation.UiThreadTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static android.support.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -39,13 +42,26 @@ public class TTBActivityEspressoTest
     @Test
     public void testResetButton()
     {
-        onView(withId(R.id.restart_btn)).check(matches(isDisplayed()));
-        onView(withId(R.id.restart_btn)).check(matches(isClickable()));
+        try {
+            runOnUiThread(new Runnable(){
+                @Override
+                public void run()
+                {
+                    Button btn = ttbActivityActivityTestRule.getActivity().findViewById(R.id.background_btn);
+                    btn.callOnClick();
+                }
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        onView(withId(R.id.button_reset)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_reset)).check(matches(isClickable()));
     }
 
     @Test
     public void testBackgroundButton()
     {
+
         onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
         onView(withId(R.id.background_btn)).check(matches(isClickable()));
         onView(withId(R.id.background_btn)).check(matches(withText("")));
