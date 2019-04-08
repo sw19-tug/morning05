@@ -1,6 +1,8 @@
 package com.example.sw19_morning05;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -304,9 +306,23 @@ public class HangmanActivity extends AppCompatActivity
             }
         });
 
+        final Button button_back = findViewById(R.id.bt_backHangman);
+        button_back.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                navigateWelcomeScreen();
+            }
+        });
+
         //Test WordShown
         setWordView();
 
+    }
+
+    private void navigateWelcomeScreen() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     void setWordView()
@@ -417,6 +433,8 @@ public class HangmanActivity extends AppCompatActivity
 
     private void win()
     {
+        Context context = this.getApplicationContext();
+
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
 
         findViewById(R.id.button_q).setEnabled(false);
@@ -445,5 +463,7 @@ public class HangmanActivity extends AppCompatActivity
         findViewById(R.id.button_b).setEnabled(false);
         findViewById(R.id.button_n).setEnabled(false);
         findViewById(R.id.button_m).setEnabled(false);
+
+        Score.incrementScore(context, 1);
     }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -43,9 +44,9 @@ public class TTBActivity extends Activity {
         final Button background_black = (Button)findViewById(R.id.black_background);
         final Button background_magenta = (Button)findViewById(R.id.magenta_background);
 
-        final TextView button_color = (TextView)findViewById(R.id.button_title);
-        final TextView background_color = (TextView)findViewById(R.id.background_title);
-
+        final Button block = (Button)findViewById(R.id.moving_block);
+        final Button restart = (Button)findViewById(R.id.button_reset);
+        final Button back = (Button)findViewById(R.id.btn_backTouchTheBlock);
 
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int w = d.getWidth();
@@ -227,12 +228,29 @@ public class TTBActivity extends Activity {
         });
 
 
-        // returns to the start page, when the user touches the background
-        background.setOnClickListener(new View.OnClickListener(){
+        restart.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getApplicationContext(), TTBActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        // returns to the start page, when the user touches the background
+        background.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
+                block.setVisibility(View.INVISIBLE);
+                background.setVisibility((View.INVISIBLE));
             }
         });
     }

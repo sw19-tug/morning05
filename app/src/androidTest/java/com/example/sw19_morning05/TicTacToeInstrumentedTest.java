@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 
 import static android.app.PendingIntent.getActivity;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.matcher.ViewMatchers.hasTextColor;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
@@ -295,5 +296,93 @@ public class TicTacToeInstrumentedTest {
         }
 
         Assert.assertEquals(2, countDisabled);
+    }
+
+    @Test
+    public void testSettingButtonClickable(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+    }
+
+    @Test
+    public void testSettingsMenuVisible(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+
+        onView(withId(R.id.set_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.set_sign)).check(matches(isDisplayed()));
+        onView(withId(R.id.set_color)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.bt_sign_X)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_sign_O)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.bt_color_01)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_02)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_03)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_04)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testSettingsButtonBehaviourSigns(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+
+        onView(withId(R.id.bt_sign_O)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_sign_X)).check(matches(not(isEnabled())));
+
+        onView(withId(R.id.bt_sign_O)).perform(click());
+
+        onView(withId(R.id.bt_sign_X)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_sign_O)).check(matches(not(isEnabled())));
+    }
+
+
+    @Test
+    public void testSettingsButtonBehaviourColors(){
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+
+        onView(withId(R.id.bt_color_01)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_02)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_03)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_color_04)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.bt_color_02)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_03)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_04)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_01)).check(matches(not(isEnabled())));
+
+        onView(withId(R.id.bt_color_03)).perform(click());
+
+        onView(withId(R.id.bt_color_02)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_01)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_04)).check(matches(isEnabled()));
+        onView(withId(R.id.bt_color_03)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void  testSettingsBackButton()
+    {
+        onView(withId(R.id.bt_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_settings)).perform(click());
+
+        onView(withId(R.id.bt_set_back)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_set_back)).perform(click());
+
+        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.tv_header)).check(matches(withText("Tic Tac Toe")));
+    }
+
+    @Test
+    public void  testSignAndColorChoice()
+    {
+        onView(withId(R.id.bt_settings)).perform(click());
+        onView(withId(R.id.bt_sign_O)).perform(click());
+        onView(withId(R.id.bt_color_02)).perform(click());
+        onView(withId(R.id.bt_set_back)).perform(click());
+
+        onView(withId(R.id.bt_field00)).perform(click());
+        onView(withId(R.id.bt_field00)).check(matches(withText("O")));
+        onView(withId(R.id.bt_field00)).check(matches(hasTextColor(R.color.ttt_b2_red_normal)));
     }
 }

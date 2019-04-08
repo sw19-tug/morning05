@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -14,16 +15,34 @@ import java.util.Random;
 
 public class TicTacToeActivity extends AppCompatActivity  implements View.OnClickListener {
 
-    Button buttons[][] = new Button[3][3];
-    int board[][] = new int [3][3];
+    private Button buttons[][] = new Button[3][3];
+    private int board[][] = new int [3][3];
 
-    int currentPlayer = 1;  // 1 = Player 1, 2 = Player 2
 
-    CheckBox cb_autoplayer;
+    private int color[] = {
+      R.color.ttt_b1_black_normal,
+      R.color.ttt_b2_red_normal,
+      R.color.ttt_b3_blue_normal,
+      R.color.ttt_b4_green_normal
+    };
+
+    private int sign_color = R.color.ttt_b1_black_normal;
+    private int sign_color_opp = R.color.ttt_b1_black_normal;
+    private String sign = "X";
+    private String sign_opp = "O";
+
+    private int currentPlayer = 1;  // 1 = Player 1, 2 = Player 2
+
+    private CheckBox cb_autoplayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTicTacToe();
+    }
+
+    private void initTicTacToe()
+    {
         setContentView(R.layout.activity_tictactoe);
 
         for(int i = 0; i < 3; i++) {
@@ -56,6 +75,17 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
         Button reset_button = findViewById(R.id.bt_reset);
         reset_button.setOnClickListener(this);
+
+        ImageButton button_settings = findViewById(R.id.bt_settings);
+
+        button_settings.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                initSettingsTicTacToe();
+            }
+        });
     }
 
     @Override
@@ -86,12 +116,14 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
               {
                   if (currentPlayer == 1)
                   {
-                      buttons[i][j].setText("X");
+                      buttons[i][j].setText(sign);
+                      buttons[i][j].setTextColor(getResources().getColor(sign_color));
                       tv_currentPlayer.setText(getResources().getString(R.string.tv_player2_turn));
                   }
                   else
                   {
-                      buttons[i][j].setText("O");
+                      buttons[i][j].setText(sign_opp);
+                      buttons[i][j].setTextColor(getResources().getColor(sign_color_opp));
                       tv_currentPlayer.setText(getResources().getString(R.string.tv_player1_turn));
                   }
 
@@ -138,7 +170,8 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
 
               if(buttons[row][col].isEnabled())
               {
-                  buttons[row][col].setText("O");
+                  buttons[row][col].setText(sign_opp);
+                  buttons[row][col].setTextColor(getResources().getColor(sign_color_opp));
                   buttons[row][col].setEnabled(false);
                   board[row][col] = currentPlayer;
 
@@ -254,5 +287,168 @@ public class TicTacToeActivity extends AppCompatActivity  implements View.OnClic
     private void navigateWelcomeScreen() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void initSettingsTicTacToe()
+    {
+        setContentView(R.layout.settings_tictactoe);
+
+        final Button bt_sign_X = findViewById(R.id.bt_sign_X);
+        final Button bt_sign_O = findViewById(R.id.bt_sign_O);
+
+        final Button bt_color_01 = findViewById(R.id.bt_color_01);
+        final Button bt_color_02 = findViewById(R.id.bt_color_02);
+        final Button bt_color_03 = findViewById(R.id.bt_color_03);
+        final Button bt_color_04 = findViewById(R.id.bt_color_04);
+
+
+        switch (sign_color) {
+            case R.color.ttt_b1_black_normal:
+                bt_color_01.setEnabled(false);
+                bt_color_01.setBackgroundResource(R.color.ttt_b1_black_clicked);
+                break;
+            case R.color.ttt_b2_red_normal:
+                bt_color_02.setEnabled(false);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_clicked);
+                break;
+            case R.color.ttt_b3_blue_normal:
+                bt_color_03.setEnabled(false);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_clicked);
+                break;
+            case R.color.ttt_b4_green_normal:
+                bt_color_04.setEnabled(false);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_clicked);
+                break;
+        }
+        if(sign.equals("X"))
+            bt_sign_X.setEnabled(false);
+        else
+            bt_sign_O.setEnabled(false);
+
+
+
+        bt_sign_X.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bt_sign_X.setEnabled(false);
+                bt_sign_O.setEnabled(true);
+                sign = "X";
+                sign_opp = "0";
+            }
+        });
+
+        bt_sign_O.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bt_sign_X.setEnabled(true);
+                bt_sign_O.setEnabled(false);
+                sign = "O";
+                sign_opp = "X";
+            }
+        });
+
+
+
+        bt_color_01.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bt_color_01.setEnabled(false);
+                bt_color_01.setBackgroundResource(R.color.ttt_b1_black_clicked);
+                bt_color_02.setEnabled(true);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_normal);
+                bt_color_03.setEnabled(true);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_normal);
+                bt_color_04.setEnabled(true);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_normal);
+
+                sign_color = color[0];
+                pickOppColor();
+            }
+        });
+
+        bt_color_02.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bt_color_01.setEnabled(true);
+                bt_color_01.setBackgroundResource(R.color.ttt_b1_black_normal);
+                bt_color_02.setEnabled(false);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_clicked);
+                bt_color_03.setEnabled(true);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_normal);
+                bt_color_04.setEnabled(true);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_normal);
+
+                sign_color = color[1];
+                pickOppColor();
+            }
+        });
+
+        bt_color_03.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bt_color_01.setEnabled(true);
+                bt_color_01.setBackgroundResource(R.color.ttt_b1_black_normal);
+                bt_color_02.setEnabled(true);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_normal);
+                bt_color_03.setEnabled(false);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_clicked);
+                bt_color_04.setEnabled(true);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_normal);
+
+                sign_color = color[2];
+                pickOppColor();
+            }
+        });
+
+        bt_color_04.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                bt_color_01.setEnabled(true);
+                bt_color_01.setBackgroundResource(R.color.ttt_b1_black_normal);
+                bt_color_02.setEnabled(true);
+                bt_color_02.setBackgroundResource(R.color.ttt_b2_red_normal);
+                bt_color_03.setEnabled(true);
+                bt_color_03.setBackgroundResource(R.color.ttt_b3_blue_normal);
+                bt_color_04.setEnabled(false);
+                bt_color_04.setBackgroundResource(R.color.ttt_b4_green_clicked);
+
+                sign_color = color[3];
+                pickOppColor();
+            }
+        });
+
+        final Button bt_set_back = findViewById(R.id.bt_set_back);
+        bt_set_back.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                initTicTacToe();
+            }
+        });
+    }
+
+    private void pickOppColor()
+    {
+        int ci;
+        do {
+            Random randi = new Random();
+            ci = randi.nextInt(4);
+        }
+        while (color[ci] == sign_color);
+
+        sign_color_opp = color[ci];
     }
 }

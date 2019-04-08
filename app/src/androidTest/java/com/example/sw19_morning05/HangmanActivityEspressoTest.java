@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +13,6 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.RootMatchers.isDialog;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -302,5 +302,20 @@ public class HangmanActivityEspressoTest
 
         onView(withId(R.id.button_exit)).check(matches(isDisplayed()));
         onView(withId(R.id.button_exit)).perform(click());
+    }
+
+
+    @Test
+    public void testIncrementPointsOnWin(){
+        int score = Score.getScore(context);
+        int points = 1;
+
+        for (int i = 0; i < 26; i++) {
+            String id = "button_" + alphabet[i];
+            int resourceID = context.getResources().getIdentifier( id, "id", context.getPackageName());
+            onView(withId(resourceID)).perform(click());
+        }
+
+        Assert.assertEquals((score + points), Score.getScore(context));
     }
 }
