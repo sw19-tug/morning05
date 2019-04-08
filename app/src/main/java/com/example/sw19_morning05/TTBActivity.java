@@ -30,6 +30,7 @@ public class TTBActivity extends Activity {
 
         final Button block = (Button)findViewById(R.id.moving_block);
         final Button restart = (Button)findViewById(R.id.button_reset);
+        final Button back = (Button)findViewById(R.id.btn_backTouchTheBlock);
 
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int w = d.getWidth();
@@ -77,6 +78,14 @@ public class TTBActivity extends Activity {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // returns to the start page, when the user touches the background
         final Button background = (Button)findViewById(R.id.background_btn);
 
@@ -85,8 +94,7 @@ public class TTBActivity extends Activity {
             {
                 findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
                 block.setVisibility(View.INVISIBLE);
-
-
+                background.setVisibility((View.INVISIBLE));
             }
         });
     }
