@@ -5,4 +5,12 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#ffffff</color>
     <color name="black_overlay">#66000000</color>
+    <color name="block_green">#FF00FF00</color>
+    <color name="block_blue">#FF00FFFF</color>
+    <color name="block_red">#FFFF000F</color>
+    <color name="block_magenta">#FFFF00FF</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_grey">#FF888888</color>
+    <color name="background_black">#FF000000</color>
+    <color name="background_magenta">#FFFF00FF</color>
 </resources>
