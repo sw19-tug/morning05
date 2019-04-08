@@ -1,6 +1,7 @@
 package com.example.sw19_morning05;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -304,9 +305,23 @@ public class HangmanActivity extends AppCompatActivity
             }
         });
 
+        final Button button_back = findViewById(R.id.bt_backHangman);
+        button_back.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                navigateWelcomeScreen();
+            }
+        });
+
         //Test WordShown
         setWordView();
 
+    }
+
+    private void navigateWelcomeScreen() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     void setWordView()

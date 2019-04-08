@@ -5,6 +5,7 @@
     <string name="tv_score_text">Score:</string>
     <string name="bt_reset">RESET</string>
     <string name="bt_backTicTacToe">BACK</string>
+    <string name="bt_backHangman">BACK</string>
     <string name="tv_player1_turn">Player X turn!</string>
     <string name="tv_player2_turn">Player O turn!</string>
     <string name="tv_player1_wins">Player X wins!</string>
