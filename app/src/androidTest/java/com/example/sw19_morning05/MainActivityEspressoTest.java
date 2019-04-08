@@ -124,4 +124,11 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_backTicTacToe)).perform(click());
     }
+    @Test
+    public void testNavigateTouchTheBlock() {
+        onView(withId(R.id.bt_touchtheblock)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_touchtheblock)).perform(click());
+        onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
+        onView(withId(R.id.background_btn)).perform(click());
+    }
 }

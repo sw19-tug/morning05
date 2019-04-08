@@ -46,12 +46,18 @@
                     android:text="YOU LOSE!"
                     android:textAlignment="center"
                     android:textSize="24sp" />
-
                 <Button
                     android:id="@+id/button_reset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Play Again"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/btn_backTouchTheBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bt_backTouchTheBlock"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textSize="18sp" />
 

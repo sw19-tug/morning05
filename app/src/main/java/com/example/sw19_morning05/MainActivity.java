@@ -37,13 +37,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnTouchTheBlock = (Button) findViewById(R.id.bt_touchtheblock);
+        Button btnTouchTheBlock= (Button) findViewById(R.id.bt_touchtheblock);
         btnTouchTheBlock.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateTouchTheBlock();
             }
         });
-
     }
 
     public void switchLanguage() {
@@ -65,14 +64,15 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.recreate();
     }
 
+
     private void navigateTicTacToe() {
         Intent intent = new Intent(this, TicTacToeActivity.class);
         startActivity(intent);
     }
 
+
     private void navigateTouchTheBlock() {
         Intent intent = new Intent(this, TTBActivity.class);
         startActivity(intent);
     }
-
 }
