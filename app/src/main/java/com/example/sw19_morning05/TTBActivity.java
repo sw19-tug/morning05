@@ -29,7 +29,7 @@ public class TTBActivity extends Activity {
 
 
         final Button block = (Button)findViewById(R.id.moving_block);
-        final Button restart = (Button)findViewById(R.id.restart_btn);
+        final Button restart = (Button)findViewById(R.id.button_reset);
 
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int w = d.getWidth();
@@ -83,15 +83,10 @@ public class TTBActivity extends Activity {
         background.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
-                // Display a message if player has lost the game.
-                Context context = getApplicationContext();
-                String msg = "Ooops!";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, msg, duration);
-                toast.show();
+                findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
+                block.setVisibility(View.INVISIBLE);
 
-                Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);
+
             }
         });
     }
