@@ -131,6 +131,7 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.bt_touchtheblock)).perform(click());
         onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
         onView(withId(R.id.background_btn)).perform(click());
+    }
 
     @Test
     public void testNavigateHangman() {
