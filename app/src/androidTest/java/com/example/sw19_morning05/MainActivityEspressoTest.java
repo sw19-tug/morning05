@@ -81,6 +81,15 @@ public class MainActivityEspressoTest {
     }
 
     @Test
+    public void testLanguageHangman(){
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.bt_hangman)).perform(click());
+        onView(withId(R.id.button_reset)).check(matches(withText("Nocheinmal Spielen?")));
+        onView(withId(R.id.bt_backHangman)).perform(click());
+        onView(withId(R.id.bt_switchLanguage)).perform(click());
+    }
+
+    @Test
     public void testShowPoints() {
         onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
     }
