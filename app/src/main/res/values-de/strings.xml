@@ -16,4 +16,7 @@
     <string name="title_activity_touch_the_block">TouchTheBlockActivity</string>
     <string name="ttb_restart">Neustart</string>
     <string name="ttb_loss">Ooops!</string>
+    <string name="bt_playAgainHangman">Nocheinmal Spielen?</string>
+    <string name="bt_exitHangman">Zurück zum Menü</string>
+    <string name="tv_winMessageHangman">Gewonnen! Punkte +1</string>
 </resources>
