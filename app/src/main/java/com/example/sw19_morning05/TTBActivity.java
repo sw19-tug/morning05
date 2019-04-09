@@ -44,7 +44,9 @@ public class TTBActivity extends Activity {
         final Button background_black = (Button)findViewById(R.id.black_background);
         final Button background_magenta = (Button)findViewById(R.id.magenta_background);
 
-        final Button block = (Button)findViewById(R.id.moving_block);
+        final TextView button_color = (TextView)findViewById(R.id.button_title);
+        final TextView background_color = (TextView)findViewById(R.id.background_title);
+
         final Button restart = (Button)findViewById(R.id.button_reset);
         final Button back = (Button)findViewById(R.id.btn_backTouchTheBlock);
 
