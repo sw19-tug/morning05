@@ -15,7 +15,9 @@ public class HangmanActivity extends AppCompatActivity
 {
 
 
-    public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY", "JAEGERMEISTER"};
+    public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY",
+            "JAEGERMEISTER", "HAVANNA", "BELVEDERE", "ABSOLUT", "GREY GOOSE", "WILLIAMS", "SCHNAPS",
+            "ABSINTH"};
     String word_to_guess;
     String place_holder;
 

@@ -293,7 +293,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You Won! Score +1"
+            android:text="@string/tv_winMessageHangman"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -301,7 +301,7 @@
             android:id="@+id/button_reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play Again"
+            android:text="@string/bt_playAgainHangman"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="18sp" />
 
@@ -309,14 +309,14 @@
             android:id="@+id/button_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exit" />
+            android:text="@string/bt_exitHangman" />
 
 
     </LinearLayout>
 
     <Button
         android:id="@+id/bt_backHangman"
-        android:layout_width="61dp"
+        android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
