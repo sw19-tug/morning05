@@ -19,4 +19,5 @@
     <string name="bt_playAgainHangman">Nocheinmal Spielen?</string>
     <string name="bt_exitHangman">Zurück zum Menü</string>
     <string name="tv_winMessageHangman">Gewonnen! Punkte +1</string>
+    <string name="str_hint">Hinweis</string>
 </resources>

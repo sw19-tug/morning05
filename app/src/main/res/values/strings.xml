@@ -19,4 +19,5 @@
     <string name="bt_playAgainHangman">Play Again?</string>
     <string name="bt_exitHangman">Back to Menu</string>
     <string name="tv_winMessageHangman">You won! Score +1</string>
+    <string name="str_hint">Hint</string>
 </resources>
