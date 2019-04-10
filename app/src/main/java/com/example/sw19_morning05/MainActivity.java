@@ -18,32 +18,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tv_score = (TextView) findViewById((R.id.tv_score));
+        TextView textv_score = (TextView) findViewById((R.id.tv_score));
         Context context = this.getApplicationContext();
-        tv_score.setText(getResources().getString(R.string.str_textv_score)+ " " + Score.getScore(context));
+        textv_score.setText(getResources().getString(R.string.str_textv_score)+ " " + Score.getScore(context));
 
-        Button btnClickEvent = (Button) findViewById(R.id.bt_switchLanguage);
-        btnClickEvent.setOnClickListener(new View.OnClickListener() {
+        Button btn_switch_lang = (Button) findViewById(R.id.btn_switch_lang);
+        btn_switch_lang.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 switchLanguage();
             }
         });
 
-        Button btnTicTacToe = (Button) findViewById(R.id.bt_tictactoe);
-        btnTicTacToe.setOnClickListener(new View.OnClickListener() {
+        Button btn_start_ttt = (Button) findViewById(R.id.btn_ttt);
+        btn_start_ttt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateTicTacToe();
             }
         });
 
-        Button btnTouchTheBlock= (Button) findViewById(R.id.bt_touchtheblock);
-        btnTouchTheBlock.setOnClickListener(new View.OnClickListener() {
+        Button btn_start_ttb= (Button) findViewById(R.id.btn_ttb);
+        btn_start_ttb.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateTouchTheBlock();
             }
         });
-        Button btnHangman = (Button) findViewById(R.id.bt_hangman);
-        btnHangman.setOnClickListener(new View.OnClickListener() {
+
+        Button btn_start_hm = (Button) findViewById(R.id.btn_hm);
+        btn_start_hm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateHangman();
             }

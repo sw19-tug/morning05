@@ -265,8 +265,8 @@ public class TicTacToeInstrumentedTest {
     public void testNavigateWelcomeScreen() {
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_ttt)).perform(click());
-        onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.btn_ttt)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_ttt)).perform(click());
     }
 
     @Test

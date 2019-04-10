@@ -31,7 +31,7 @@ public class TTBActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.ttb_activity);
+        setContentView(R.layout.activity_ttb);
 
         final Button block = (Button)findViewById(R.id.moving_block);
         final Button background = (Button)findViewById(R.id.background_btn);

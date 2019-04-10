@@ -37,9 +37,9 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testGameButtonsVisible() {
-        onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_touchtheblock)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_ttt)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_hm)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_ttb)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -53,38 +53,38 @@ public class MainActivityEspressoTest {
     public void testTranslationButton() {
         TextView title = activityTestRule.getActivity().findViewById(R.id.tv_title);
         String englishTitle = title.getText().toString();
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
         onView(withId(R.id.tv_title)).check(matches(not(withText(englishTitle))));
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
     }
 
     @Test
     public void testLanguageTicTacToe(){
         TextView button_text = ticTacToeActivityTestRule.getActivity().findViewById(R.id.btn_reset_ttt);
         String germanTitle = button_text.getText().toString();
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
-        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
+        onView(withId(R.id.btn_ttt)).perform(click());
         onView(withId(R.id.btn_reset_ttt)).check(matches(not(withText(germanTitle))));
         onView(withId(R.id.btn_back_ttt)).perform(click());
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
     }
 
     @Test
     public void testPlayerLanguageTicTacToe(){
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
-        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
+        onView(withId(R.id.btn_ttt)).perform(click());
         onView(withId(R.id.textv_current_player)).check(matches(withText(R.string.str_textv_player1_turn)));
         onView(withId(R.id.btn_back_ttt)).perform(click());
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
     }
 
     @Test
     public void testLanguageHangman(){
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
-        onView(withId(R.id.bt_hangman)).perform(click());
-        onView(withId(R.id.button_reset)).check(matches(withText("Nocheinmal Spielen?")));
+        onView(withId(R.id.btn_switch_lang)).perform(click());
+        onView(withId(R.id.btn_hm)).perform(click());
+        onView(withId(R.id.btn_reset)).check(matches(withText("Neustart")));
         onView(withId(R.id.btn_back_hm)).perform(click());
-        onView(withId(R.id.bt_switchLanguage)).perform(click());
+        onView(withId(R.id.btn_switch_lang)).perform(click());
     }
 
     @Test
@@ -126,24 +126,24 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testNavigateTicTacToe() {
-        onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_tictactoe)).perform(click());
+        onView(withId(R.id.btn_ttt)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_ttt)).perform(click());
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_ttt)).perform(click());
     }
     
     @Test
     public void testNavigateTouchTheBlock() {
-        onView(withId(R.id.bt_touchtheblock)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_touchtheblock)).perform(click());
+        onView(withId(R.id.btn_ttb)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_ttb)).perform(click());
         onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
         onView(withId(R.id.background_btn)).perform(click());
     }
 
     @Test
     public void testNavigateHangman() {
-        onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_hangman)).perform(click());
+        onView(withId(R.id.btn_hm)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_hm)).perform(click());
         onView(withId(R.id.title_ly)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_hm)).perform(click());
     }
