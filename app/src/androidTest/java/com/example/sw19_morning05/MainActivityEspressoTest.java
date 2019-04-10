@@ -83,7 +83,7 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.bt_switchLanguage)).perform(click());
         onView(withId(R.id.bt_hangman)).perform(click());
         onView(withId(R.id.button_reset)).check(matches(withText("Nocheinmal Spielen?")));
-        onView(withId(R.id.bt_backHangman)).perform(click());
+        onView(withId(R.id.btn_back_hm)).perform(click());
         onView(withId(R.id.bt_switchLanguage)).perform(click());
     }
 
@@ -145,6 +145,6 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_hangman)).perform(click());
         onView(withId(R.id.title_ly)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_backHangman)).perform(click());
+        onView(withId(R.id.btn_back_hm)).perform(click());
     }
 }
