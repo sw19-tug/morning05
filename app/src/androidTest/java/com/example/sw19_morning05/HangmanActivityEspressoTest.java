@@ -318,4 +318,17 @@ public class HangmanActivityEspressoTest
 
         Assert.assertEquals((score + points), Score.getScore(context));
     }
+
+    @Test
+    public void testDecrementPoints(){ // 8 wrong guesses
+        int score = Score.getScore(context);
+
+        for (int i = 0; i < 8; i++) {
+            String id = "button_" + alphabet[i];
+            int resourceID = context.getResources().getIdentifier( id, "id", context.getPackageName());
+            onView(withId(resourceID)).perform(click());
+        }
+
+        Assert.assertEquals((score - 2), Score.getScore(context));
+    }
 }
