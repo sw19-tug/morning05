@@ -17,8 +17,15 @@
     <string name="str_textv_pick_color">Wähle deine Farbe:</string>
     <string name="str_textv_pick_sign">Pick your Sign:</string>
 
-    <string name="str_title_ttb">TouchTheBlockActivity</string>
-    <string name="str_loss">Ooops!</string>
+    <string name="str_title_ttb">Touch The Block</string>
+    <string name="str_play_ttb">Spielen</string>
+    <string name="str_loss_ttb">Ooops!</string>
+    <string name="str_lose_ttb">du hast verloren!</string>
+    <string name="str_play_again_ttb">Nocheinmal Spielen?</string>
+    <string name="str_btn_color_ttb">Knopf Farbe</string>
+    <string name="str_screen_color_ttb">Hintergrund Farbe</string>
+
+
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>

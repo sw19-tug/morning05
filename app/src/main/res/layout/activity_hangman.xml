@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/title_ly"
+        android:id="@+id/ly_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -287,10 +287,10 @@
         app:layout_constraintBottom_toTopOf="@+id/word_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_ly">
+        app:layout_constraintTop_toBottomOf="@+id/ly_title">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textv_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_textv_win_hm"
@@ -298,7 +298,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btn_reset"
+            android:id="@+id/btn_reset_hm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_reset"
@@ -322,7 +322,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/str_back"
-        app:layout_constraintEnd_toStartOf="@+id/title_ly"
+        app:layout_constraintEnd_toStartOf="@+id/ly_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

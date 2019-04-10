@@ -8,7 +8,7 @@
     tools:context=".TTBActivity">
 
         <Button
-            android:id="@+id/background_btn"
+            android:id="@+id/btn_background"
             android:layout_width="411dp"
             android:layout_height="731dp"
             android:background="@android:color/white"
@@ -36,24 +36,24 @@
             app:layout_constraintBottom_toTopOf="@+id/word_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_ly">
+            app:layout_constraintTop_toBottomOf="@+id/ly_title">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textv_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="YOU LOSE!"
+                    android:text="@string/str_lose_ttb"
                     android:textAlignment="center"
                     android:textSize="24sp" />
                 <Button
-                    android:id="@+id/button_reset"
+                    android:id="@+id/btn_reset_ttb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Play Again"
+                    android:text="@string/str_play_again_ttb"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textSize="18sp" />
                 <Button
-                    android:id="@+id/btn_backTouchTheBlock"
+                    android:id="@+id/btn_back_ttb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/str_back"

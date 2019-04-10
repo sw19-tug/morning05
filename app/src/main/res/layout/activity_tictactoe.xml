@@ -8,7 +8,7 @@
     tools:context=".TicTacToeActivity">
 
     <TextView
-        android:id="@+id/tv_header"
+        android:id="@+id/textv_header"
         android:text="@string/str_title_ttt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

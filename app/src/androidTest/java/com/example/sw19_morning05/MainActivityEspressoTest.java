@@ -18,22 +18,15 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
+
 @RunWith(AndroidJUnit4.class)
 public class MainActivityEspressoTest {
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> main_activity_test_rule = new ActivityTestRule<>(MainActivity.class);
 
     @Rule
-    public ActivityTestRule<TicTacToeActivity> ticTacToeActivityTestRule = new ActivityTestRule<>(TicTacToeActivity.class);
+    public ActivityTestRule<TicTacToeActivity> ttt_activity_test_rule = new ActivityTestRule<>(TicTacToeActivity.class);
 
     @Test
     public void testGameButtonsVisible() {
@@ -44,27 +37,26 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testTitleText() {
-        onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
-        onView(withId(R.id.tv_title)).check(matches(withText(R.string.str_app_title)));
-
+        onView(withId(R.id.textv_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_title)).check(matches(withText(R.string.str_app_title)));
     }
 
     @Test
     public void testTranslationButton() {
-        TextView title = activityTestRule.getActivity().findViewById(R.id.tv_title);
-        String englishTitle = title.getText().toString();
+        TextView title = main_activity_test_rule.getActivity().findViewById(R.id.textv_title);
+        String english_title = title.getText().toString();
         onView(withId(R.id.btn_switch_lang)).perform(click());
-        onView(withId(R.id.tv_title)).check(matches(not(withText(englishTitle))));
+        onView(withId(R.id.textv_title)).check(matches(not(withText(english_title))));
         onView(withId(R.id.btn_switch_lang)).perform(click());
     }
 
     @Test
     public void testLanguageTicTacToe(){
-        TextView button_text = ticTacToeActivityTestRule.getActivity().findViewById(R.id.btn_reset_ttt);
-        String germanTitle = button_text.getText().toString();
+        TextView button_text = ttt_activity_test_rule.getActivity().findViewById(R.id.btn_reset_ttt);
+        String german_title = button_text.getText().toString();
         onView(withId(R.id.btn_switch_lang)).perform(click());
         onView(withId(R.id.btn_ttt)).perform(click());
-        onView(withId(R.id.btn_reset_ttt)).check(matches(not(withText(germanTitle))));
+        onView(withId(R.id.btn_reset_ttt)).check(matches(not(withText(german_title))));
         onView(withId(R.id.btn_back_ttt)).perform(click());
         onView(withId(R.id.btn_switch_lang)).perform(click());
     }
@@ -73,7 +65,7 @@ public class MainActivityEspressoTest {
     public void testPlayerLanguageTicTacToe(){
         onView(withId(R.id.btn_switch_lang)).perform(click());
         onView(withId(R.id.btn_ttt)).perform(click());
-        onView(withId(R.id.textv_current_player)).check(matches(withText(R.string.str_textv_player1_turn)));
+        onView(withId(R.id.textv_current_player)).check(matches(withText("Spieler X Zug!")));
         onView(withId(R.id.btn_back_ttt)).perform(click());
         onView(withId(R.id.btn_switch_lang)).perform(click());
     }
@@ -82,19 +74,19 @@ public class MainActivityEspressoTest {
     public void testLanguageHangman(){
         onView(withId(R.id.btn_switch_lang)).perform(click());
         onView(withId(R.id.btn_hm)).perform(click());
-        onView(withId(R.id.btn_reset)).check(matches(withText("Neustart")));
+        onView(withId(R.id.btn_reset_hm)).check(matches(withText("NEUSTART")));
         onView(withId(R.id.btn_back_hm)).perform(click());
         onView(withId(R.id.btn_switch_lang)).perform(click());
     }
 
     @Test
     public void testShowPoints() {
-        onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_score)).check(matches(isDisplayed()));
     }
 
     @Test
     public void testIncrementScore() {
-        Context context = activityTestRule.getActivity().getApplicationContext();
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
         int points = 1;
         int score = Score.getScore(context);
         Score.incrementScore(context, points);
@@ -103,7 +95,7 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testDecrementScore() {
-        Context context = activityTestRule.getActivity().getApplicationContext();
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
         int points = 1;
         int score = Score.getScore(context);
         Score.decrementScore(context, points);
@@ -112,23 +104,23 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testShowCorrectPointsAfterChange() {
-        Context context = activityTestRule.getActivity().getApplicationContext();
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
         int points = 3;
 
-        TextView score = activityTestRule.getActivity().findViewById(R.id.tv_score);
-        String scoreText = score.getText().toString();
+        TextView score = main_activity_test_rule.getActivity().findViewById(R.id.textv_score);
+        String score_text = score.getText().toString();
         Score.incrementScore(context, points);
-        Intent intent = activityTestRule.getActivity().getIntent();
-        activityTestRule.getActivity().finish();
-        activityTestRule.getActivity().startActivity(intent);
-        onView(withId(R.id.tv_score)).check(matches(not(withText(scoreText))));
+        Intent intent = main_activity_test_rule.getActivity().getIntent();
+        main_activity_test_rule.getActivity().finish();
+        main_activity_test_rule.getActivity().startActivity(intent);
+        onView(withId(R.id.textv_score)).check(matches(not(withText(score_text))));
     }
 
     @Test
     public void testNavigateTicTacToe() {
         onView(withId(R.id.btn_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_ttt)).perform(click());
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_ttt)).perform(click());
     }
     
@@ -136,7 +128,7 @@ public class MainActivityEspressoTest {
     public void testNavigateTouchTheBlock() {
         onView(withId(R.id.btn_ttb)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_ttb)).perform(click());
-        onView(withId(R.id.textView2)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_2)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_main)).perform(click());
     }
 
@@ -144,7 +136,7 @@ public class MainActivityEspressoTest {
     public void testNavigateHangman() {
         onView(withId(R.id.btn_hm)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_hm)).perform(click());
-        onView(withId(R.id.title_ly)).check(matches(isDisplayed()));
+        onView(withId(R.id.ly_title)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_hm)).perform(click());
     }
 }

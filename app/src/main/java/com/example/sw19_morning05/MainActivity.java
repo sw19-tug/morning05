@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textv_score = (TextView) findViewById((R.id.tv_score));
+        TextView textv_score = (TextView) findViewById((R.id.textv_score));
         Context context = this.getApplicationContext();
-        textv_score.setText(getResources().getString(R.string.str_textv_score)+ " " + Score.getScore(context));
+        textv_score.setText(getResources().getString(R.string.str_textv_score) + " " + Score.getScore(context));
 
         Button btn_switch_lang = (Button) findViewById(R.id.btn_switch_lang);
         btn_switch_lang.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_start_ttb= (Button) findViewById(R.id.btn_ttb);
+        Button btn_start_ttb = (Button) findViewById(R.id.btn_ttb);
         btn_start_ttb.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateTouchTheBlock();

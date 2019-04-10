@@ -231,7 +231,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_reset = findViewById(R.id.btn_reset);
+        final Button btn_reset = findViewById(R.id.btn_reset_hm);
         btn_reset.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 HangmanActivity.this.reset();
@@ -272,8 +272,8 @@ public class HangmanActivity extends AppCompatActivity {
         int temp = word_to_guess.length() + word_to_guess.length() - 1;
 
 
-        for (int i = 0; i < temp; i++) {
-            if (i % 2 == 0) {
+        for (int count = 0; count < temp; count++) {
+            if (count % 2 == 0) {
                 word_place_holder += "_";
             } else {
                 word_place_holder += " ";

@@ -6,13 +6,13 @@ import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Assert;
 import org.junit.Rule;
+
 import android.support.test.rule.ActivityTestRule;
 import android.widget.Button;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.app.PendingIntent.getActivity;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.hasTextColor;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -24,30 +24,27 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static org.hamcrest.Matchers.not;
 
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
 public class TicTacToeInstrumentedTest {
-    final Context context = InstrumentationRegistry.getTargetContext();
+    private final Context context = InstrumentationRegistry.getTargetContext();
     @Rule
-    public ActivityTestRule<TicTacToeActivity> activityTestRule = new ActivityTestRule<>(TicTacToeActivity.class);
+    public ActivityTestRule<TicTacToeActivity> activity_test_rule = new ActivityTestRule<>(TicTacToeActivity.class);
 
     @Test
     public void testTextViewsVisible() {
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
-        onView(withId(R.id.tv_header)).check(matches(withText("Tic Tac Toe")));
+        onView(withId(R.id.textv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_header)).check(matches(withText("Tic Tac Toe")));
         onView(withId(R.id.textv_current_player)).check(matches(isDisplayed()));
     }
+
     @Test
-    public void testFieldbuttonClickable(){
+    public void testFieldbuttonClickable() {
         onView(withId(R.id.bt_field00)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_field00)).perform(click());
     }
+
     @Test
-    public void testResetbutton(){
+    public void testResetbutton() {
         onView(withId(R.id.bt_field00)).perform(click());
         onView(withId(R.id.bt_field01)).perform(click());
         onView(withId(R.id.bt_field02)).perform(click());
@@ -61,80 +58,78 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.btn_reset_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_reset_ttt)).perform(click());
         onView(withId(R.id.textv_current_player)).check(matches(withText("Player X turn!")));
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                onView(withId(resourceID)).check(matches(isEnabled()));
-                onView(withId(resourceID)).check(matches(withText("")));
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                onView(withId(resource_id)).check(matches(isEnabled()));
+                onView(withId(resource_id)).check(matches(withText("")));
             }
         }
     }
+
     @Test
-    public void testNoTextInFields(){
-       onView(withId(R.id.bt_field00)).check(matches(withText("")));
+    public void testNoTextInFields() {
+        onView(withId(R.id.bt_field00)).check(matches(withText("")));
     }
 
     @Test
-    public void testBoardOnStart(){
-        for(int i = 0; i < 3; i++)
-            for(int j = 0; j < 3; j++){
+    public void testBoardOnStart() {
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
 
-               String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
 
-                onView(withId(resourceID)).check(matches(withText("")));
+                onView(withId(resource_id)).check(matches(withText("")));
             }
+        }
     }
 
     @Test
-    public void staticTestIfRightSignIsPlacedOnClick(){
+    public void staticTestIfRightSignIsPlacedOnClick() {
         int counter = 0;
-        for(int i = 1; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                onView(withId(resourceID)).perform(click());
-                if ((counter % 2) == 0) { //player 1
-                    onView(withId(resourceID)).check(matches(withText("X")));
-                } else { //player 2
-                    onView(withId(resourceID)).check(matches(withText("O")));
+        for (int col = 1; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                onView(withId(resource_id)).perform(click());
+                if ((counter % 2) == 0) {
+                    onView(withId(resource_id)).check(matches(withText("X")));
+                } else {
+                    onView(withId(resource_id)).check(matches(withText("O")));
                 }
                 counter = counter + 1;
 
-                if(counter == 6)
-                {
+                if (counter == 6) {
                     break;
                 }
-
-
             }
         }
     }
 
 
     @Test
-    public void testIfTextViewCorrect(){
+    public void testIfTextViewCorrect() {
         int counter = 0;
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                onView(withId(resourceID)).perform(click());
-                if ((counter % 2) == 0) { //player 1
+        onView(withId(R.id.textv_header)).check(matches(isDisplayed()));
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                onView(withId(resource_id)).perform(click());
+                if ((counter % 2) == 0) {
                     onView(withId(R.id.textv_current_player)).check(matches(withText("Player O turn!")));
-                } else { //player 2
+                } else {
                     onView(withId(R.id.textv_current_player)).check(matches(withText("Player X turn!")));
                 }
                 counter = counter + 1;
 
-                if(counter == 4)
-                {
+                if (counter == 4) {
                     break;
                 }
             }
@@ -142,28 +137,28 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testIfButtonsAreDisabledAfterClicked(){
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                onView(withId(resourceID)).perform(click());
+    public void testIfButtonsAreDisabledAfterClicked() {
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                onView(withId(resource_id)).perform(click());
             }
         }
 
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                onView(withId(resourceID)).check(matches(not(isEnabled())));
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                onView(withId(resource_id)).check(matches(not(isEnabled())));
             }
         }
     }
 
     @Test
-    public void testNoWinnerYet(){
+    public void testNoWinnerYet() {
         onView(withId(R.id.bt_field00)).perform(click());
         onView(withId(R.id.bt_field11)).perform(click());
 
@@ -171,7 +166,7 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testDraw(){
+    public void testDraw() {
         onView(withId(R.id.bt_field00)).perform(click());
         onView(withId(R.id.bt_field01)).perform(click());
         onView(withId(R.id.bt_field02)).perform(click());
@@ -186,7 +181,7 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testPlayer01Winner01(){
+    public void testPlayer01Winner01() {
         onView(withId(R.id.bt_field00)).perform(click());
         onView(withId(R.id.bt_field10)).perform(click());
         onView(withId(R.id.bt_field01)).perform(click());
@@ -197,25 +192,25 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testButtonsDisabledAfterWin(){
+    public void testButtonsDisabledAfterWin() {
         onView(withId(R.id.bt_field00)).perform(click());
         onView(withId(R.id.bt_field10)).perform(click());
         onView(withId(R.id.bt_field01)).perform(click());
         onView(withId(R.id.bt_field11)).perform(click());
         onView(withId(R.id.bt_field02)).perform(click());
 
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                onView(withId(resourceID)).check(matches(not(isEnabled())));
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                onView(withId(resource_id)).check(matches(not(isEnabled())));
             }
         }
     }
 
     @Test
-    public void testPlayer02Winner01(){
+    public void testPlayer02Winner01() {
         onView(withId(R.id.bt_field12)).perform(click());
         onView(withId(R.id.bt_field10)).perform(click());
         onView(withId(R.id.bt_field11)).perform(click());
@@ -227,7 +222,7 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testPlayer01Winner01IncrementPoints(){
+    public void testPlayer01Winner01IncrementPoints() {
         int score = Score.getScore(context);
         int points = 1;
 
@@ -241,7 +236,7 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testPlayer02Winner01DecrementPoints(){
+    public void testPlayer02Winner01DecrementPoints() {
         int score = Score.getScore(context);
         int points = 2;
 
@@ -263,49 +258,47 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testNavigateWelcomeScreen() {
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_ttt)).perform(click());
         onView(withId(R.id.btn_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_ttt)).perform(click());
     }
 
     @Test
-    public void testCheckBoxClickable(){
+    public void testCheckBoxClickable() {
         onView(withId(R.id.cbox_autoplayer_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
     }
 
     @Test
-    public void testAutoplayer(){
+    public void testAutoplayer() {
         onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
         onView(withId(R.id.bt_field11)).perform(click());
 
-        int countDisabled = 0;
-        for(int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                String buttonID = "bt_field" + i + "" + j;
-                int resourceID = context.getResources().getIdentifier(
-                        buttonID, "id", context.getPackageName());
-                Button button = activityTestRule.getActivity().findViewById(resourceID);
+        int count_disabled = 0;
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String button_id = "bt_field" + col + "" + row;
+                int resource_id = context.getResources().getIdentifier(
+                        button_id, "id", context.getPackageName());
+                Button button = activity_test_rule.getActivity().findViewById(resource_id);
 
-                if(!button.isEnabled())
-                {
-                    countDisabled++;
+                if (!button.isEnabled()) {
+                    count_disabled++;
                 }
             }
         }
-
-        Assert.assertEquals(2, countDisabled);
+        Assert.assertEquals(2, count_disabled);
     }
 
     @Test
-    public void testSettingButtonClickable(){
+    public void testSettingButtonClickable() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_ttt)).perform(click());
     }
 
     @Test
-    public void testSettingsMenuVisible(){
+    public void testSettingsMenuVisible() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_ttt)).perform(click());
 
@@ -323,7 +316,7 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void testSettingsButtonBehaviourSigns(){
+    public void testSettingsButtonBehaviourSigns() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_ttt)).perform(click());
 
@@ -338,7 +331,7 @@ public class TicTacToeInstrumentedTest {
 
 
     @Test
-    public void testSettingsButtonBehaviourColors(){
+    public void testSettingsButtonBehaviourColors() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_ttt)).perform(click());
 
@@ -361,21 +354,19 @@ public class TicTacToeInstrumentedTest {
     }
 
     @Test
-    public void  testSettingsBackButton()
-    {
+    public void testSettingsBackButton() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_ttt)).perform(click());
 
         onView(withId(R.id.btn_settings_back_ttt)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_back_ttt)).perform(click());
 
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
-        onView(withId(R.id.tv_header)).check(matches(withText("Tic Tac Toe")));
+        onView(withId(R.id.textv_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_header)).check(matches(withText("Tic Tac Toe")));
     }
 
     @Test
-    public void  testSignAndColorChoice()
-    {
+    public void testSignAndColorChoice() {
         onView(withId(R.id.btn_settings_ttt)).perform(click());
         onView(withId(R.id.btn_sign_o_ttt)).perform(click());
         onView(withId(R.id.btn_color_02_ttt)).perform(click());

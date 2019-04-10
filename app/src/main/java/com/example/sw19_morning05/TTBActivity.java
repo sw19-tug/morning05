@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.Random;
 
@@ -19,10 +18,6 @@ import java.util.Random;
  * status bar and navigation/system bar) with user interaction.
  */
 public class TTBActivity extends Activity {
-
-    boolean button_ready = false;
-    boolean background_ready = false;
-    int temp_color;
 
     int block_color = 0;
     int background_color = 0;
@@ -38,9 +33,9 @@ public class TTBActivity extends Activity {
     private void initTTB() {
         setContentView(R.layout.activity_ttb);
 
-        Button btn_play = (Button)findViewById(R.id.btn_play);
-        Button btn_settings = (Button)findViewById(R.id.btn_settings_ttb);
-        Button btn_backToWelcomeScreen = (Button)findViewById(R.id.btn_back_main);
+        Button btn_play = (Button) findViewById(R.id.btn_play);
+        Button btn_settings = (Button) findViewById(R.id.btn_settings_ttb);
+        Button btn_backToWelcomeScreen = (Button) findViewById(R.id.btn_back_main);
 
         btn_play.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -48,13 +43,11 @@ public class TTBActivity extends Activity {
             }
         });
 
-
         btn_settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 settingsTTB();
             }
         });
-
 
         btn_backToWelcomeScreen.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,81 +60,74 @@ public class TTBActivity extends Activity {
     private void playTTB() {
         setContentView(R.layout.play_ttb);
 
-        final Button block = (Button)findViewById(R.id.moving_block);
-        final Button background = (Button)findViewById(R.id.background_btn);
+        final Button btn_block = (Button) findViewById(R.id.moving_block);
+        final Button btn_background = (Button) findViewById(R.id.btn_background);
 
-        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        final int w = d.getWidth();
-        final int h = d.getHeight();
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        final int get_width = display.getWidth();
+        final int get_height = display.getHeight();
         //Changing start position
-        block.setY((float)((h / 2) * Math.random()));
+        btn_block.setY((float) ((get_height / 2) * Math.random()));
 
-        block.setEnabled(false);
-        block.setVisibility(View.INVISIBLE);
-        background.setEnabled(false);
+        btn_block.setEnabled(false);
+        btn_block.setVisibility(View.INVISIBLE);
+        btn_background.setEnabled(false);
 
-        block.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_block.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-                //Changing block size
-                ViewGroup.LayoutParams params = block.getLayoutParams();
+                ViewGroup.LayoutParams params = btn_block.getLayoutParams();
                 if (Math.random() >= 0.5)
-                    params.height = params.height/2;
+                    params.height = params.height / 2;
                 else
-                    params.width = params.width/2;
-                block.setLayoutParams(params);
+                    params.width = params.width / 2;
+                btn_block.setLayoutParams(params);
 
-                //Changing position
-                Random r = new Random();
-                int range_width = r.nextInt(w);
-                int range_height = r.nextInt(h);
+                Random randi = new Random();
+                int range_width = randi.nextInt(get_width);
+                int range_height = randi.nextInt(get_height);
 
-                //handles that the button stays completely in the screen
-                if ((w - range_width) < params.width)
-                    block.setX(w - params.width);
+                if ((get_width - range_width) < params.width)
+                    btn_block.setX(get_width - params.width);
                 else
-                    block.setX(range_width);
+                    btn_block.setX(range_width);
 
-                if ((h - range_height) < params.height)
-                    block.setY(h - params.height);
+                if ((get_height - range_height) < params.height)
+                    btn_block.setY(get_height - params.height);
                 else
-                    block.setY(range_height);
+                    btn_block.setY(range_height);
             }
         });
 
         if (background_color != 0) {
-            background.setBackgroundColor(background_color);
+            btn_background.setBackgroundColor(background_color);
         }
 
         if (block_color != 0) {
-            block.setBackgroundColor(block_color);
+            btn_block.setBackgroundColor(block_color);
         }
 
-        block.setEnabled(true);
-        block.setVisibility(View.VISIBLE);
-        background.setEnabled(true);
+        btn_block.setEnabled(true);
+        btn_block.setVisibility(View.VISIBLE);
+        btn_background.setEnabled(true);
 
-        background.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                clickedBackground(block, background);
+        btn_background.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                clickedBackground(btn_block, btn_background);
             }
         });
 
-        final Button restart = findViewById(R.id.button_reset);
-        final Button back = findViewById(R.id.btn_backTouchTheBlock);
+        final Button btn_restart = findViewById(R.id.btn_reset_ttb);
+        final Button btn_back = findViewById(R.id.btn_back_ttb);
 
-        restart.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-               playTTB();
+        btn_restart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                playTTB();
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 initTTB();
             }
         });
@@ -150,110 +136,98 @@ public class TTBActivity extends Activity {
     private void settingsTTB() {
         setContentView(R.layout.settings_ttb);
 
-        final Button block_green = findViewById(R.id.green_button);
-        final Button block_blue = findViewById(R.id.blue_button);
-        final Button block_red = findViewById(R.id.red_button);
-        final Button block_magenta = findViewById(R.id.magenta_button);
-        final Button background_white = findViewById(R.id.white_background);
-        final Button background_grey = findViewById(R.id.grey_background);
-        final Button background_black = findViewById(R.id.black_background);
-        final Button background_magenta = findViewById(R.id.magenta_background);
+        final Button btn_block_green = findViewById(R.id.btn_green);
+        final Button btn_block_blue = findViewById(R.id.btn_blue);
+        final Button btn_block_red = findViewById(R.id.btn_red);
+        final Button btn_block_magenta = findViewById(R.id.btn_magenta);
+        final Button btn_background_white = findViewById(R.id.btn_white_background);
+        final Button btn_background_grey = findViewById(R.id.btn_grey_background);
+        final Button btn_background_black = findViewById(R.id.btn_black_background);
+        final Button btn_background_magenta = findViewById(R.id.btn_magenta_background);
 
-        final Button back = findViewById(R.id.btn_settings_ttb_back);
-        final Button ok = findViewById(R.id.btn_settings_ttb_ok);
+        final Button btn_back = findViewById(R.id.btn_settings_back_ttb);
+        final Button btn_ok = findViewById(R.id.btn_settings_ok_ttb);
 
-        back.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 block_color = 0;
                 background_color = 0;
                 initTTB();
             }
         });
 
-        ok.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 initTTB();
             }
         });
 
-        block_green.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_block_green.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 block_color = getResources().getColor(R.color.colorGreen);
-                disableButtons(block_green, block_blue, block_red, block_magenta);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
             }
         });
 
 
-        block_blue.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_block_blue.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 block_color = getResources().getColor(R.color.colorBlue);
-                disableButtons(block_green, block_blue, block_red, block_magenta);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
             }
         });
 
 
-        block_red.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_block_red.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 block_color = getResources().getColor(R.color.colorRed);
-                disableButtons(block_green, block_blue, block_red, block_magenta);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
             }
         });
 
 
-        block_magenta.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                if (background_color == getResources().getColor(R.color.colorMagenta))
-                {
-                    block_magenta.setError("");
+        btn_block_magenta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (background_color == getResources().getColor(R.color.colorMagenta)) {
+                    btn_block_magenta.setError("");
                     return;
                 }
 
                 block_color = getResources().getColor(R.color.colorMagenta);
-                disableButtons(block_green, block_blue, block_red, block_magenta);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
             }
         });
 
-        background_black.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_background_black.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 background_color = getResources().getColor(R.color.colorBlack);
-                disableButtons(background_black, background_grey, background_white, background_magenta);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
             }
         });
 
-        background_grey.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_background_grey.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 background_color = getResources().getColor(R.color.colorGrey);
-                disableButtons(background_black, background_grey, background_white, background_magenta);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
             }
         });
 
-        background_white.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_background_white.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 background_color = getResources().getColor(R.color.colorWhite);
-                disableButtons(background_black, background_grey, background_white, background_magenta);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
             }
         });
 
-        background_magenta.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                if (block_color == getResources().getColor(R.color.colorMagenta))
-                {
-                    background_magenta.setError("");
+        btn_background_magenta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (block_color == getResources().getColor(R.color.colorMagenta)) {
+                    btn_background_magenta.setError("");
                     return;
                 }
 
                 background_color = getResources().getColor(R.color.colorMagenta);
-                disableButtons(background_black, background_grey, background_white, background_magenta);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
             }
         });
     }
@@ -264,16 +238,15 @@ public class TTBActivity extends Activity {
         background.setVisibility((View.INVISIBLE));
     }
 
-    private void disableButtons(Button button1, Button button2, Button button3,
-                                Button button4)
-    {
-        button1.setEnabled(false);
-        button1.setVisibility(View.INVISIBLE);
-        button2.setEnabled(false);
-        button2.setVisibility(View.INVISIBLE);
-        button3.setEnabled(false);
-        button3.setVisibility(View.INVISIBLE);
-        button4.setEnabled(false);
-        button4.setVisibility(View.INVISIBLE);
+    private void disableButtons(Button button_1, Button button_2, Button button_3,
+                                Button button_4) {
+        button_1.setEnabled(false);
+        button_1.setVisibility(View.INVISIBLE);
+        button_2.setEnabled(false);
+        button_2.setVisibility(View.INVISIBLE);
+        button_3.setEnabled(false);
+        button_3.setVisibility(View.INVISIBLE);
+        button_4.setEnabled(false);
+        button_4.setVisibility(View.INVISIBLE);
     }
 }
