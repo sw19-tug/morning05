@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.TextView;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -317,5 +318,18 @@ public class HangmanActivityEspressoTest
         }
 
         Assert.assertEquals((score + points), Score.getScore(context));
+    }
+
+    @Test
+    public void getHint(){
+        int score = Score.getScore(context);
+
+        TextView title = activityTestRule.getActivity().findViewById(R.id.word);
+        String actual_word = title.getText().toString();
+        onView(withId(R.id.btn_hint_hm)).perform(click());
+        TextView new_title = activityTestRule.getActivity().findViewById(R.id.word);
+        String new_word = new_title.getText().toString();
+        Assert.assertNotEquals(actual_word, new_word);
+        Assert.assertEquals((score - 3), Score.getScore(context));
     }
 }
