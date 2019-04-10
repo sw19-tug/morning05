@@ -17,7 +17,7 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_title"
+            android:text="@string/str_app_title"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
             android:background="@color/colorAccent"
-            android:text="@string/bt_switchLang"
+            android:text="@string/str_switch_lang"
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />

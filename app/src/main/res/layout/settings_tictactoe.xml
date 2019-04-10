@@ -22,7 +22,7 @@
             android:id="@+id/set_title"
             android:layout_width="395dp"
             android:layout_height="40dp"
-            android:text="Settings"
+            android:text="@string/str_settings"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="30sp"
@@ -48,17 +48,17 @@
         app:layout_constraintTop_toBottomOf="@+id/set_title_ly">
 
         <Button
-            android:id="@+id/bt_set_back"
+            android:id="@+id/btn_settings_back_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BACK" />
+            android:text="@string/str_back" />
 
         <TextView
             android:id="@+id/set_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Pick your Sign:"
+            android:text="@string/str_textv_pick_sign"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
@@ -69,7 +69,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/bt_sign_X"
+                android:id="@+id/btn_sign_x_ttt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -79,7 +79,7 @@
                 android:textSize="24sp" />
 
             <Button
-                android:id="@+id/bt_sign_O"
+                android:id="@+id/btn_sign_o_ttt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Pick your Color:"
+            android:text="@string/str_textv_pick_color"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
@@ -109,7 +109,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/bt_color_01"
+                android:id="@+id/btn_color_01_ttt"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -118,7 +118,7 @@
                 android:background="#ff000000" />
 
             <Button
-                android:id="@+id/bt_color_02"
+                android:id="@+id/btn_color_02_ttt"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -127,7 +127,7 @@
                 android:background="#ffff234b" />
 
             <Button
-                android:id="@+id/bt_color_03"
+                android:id="@+id/btn_color_03_ttt"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -136,7 +136,7 @@
                 android:background="#ff0000ff" />
 
             <Button
-                android:id="@+id/bt_color_04"
+                android:id="@+id/btn_color_04_ttt"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

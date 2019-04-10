@@ -1,339 +1,271 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class HangmanActivity extends AppCompatActivity
-{
+public class HangmanActivity extends AppCompatActivity {
 
 
     public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY",
             "JAEGERMEISTER", "HAVANNA", "BELVEDERE", "ABSOLUT", "GREY GOOSE", "WILLIAMS", "SCHNAPS",
             "ABSINTH"};
+
     String word_to_guess;
-    String place_holder;
+    String word_place_holder;
 
-
-    @Override  //testIfTitleExists
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
-        //Test testButtonPressedGoesDisabled
-        final Button button_a = findViewById(R.id.button_a);
-        button_a.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_a.setEnabled(false);
+        final Button btn_a = findViewById(R.id.btn_a);
+        btn_a.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_a.setEnabled(false);
                 checkInput('A');
             }
         });
 
-        final Button button_b = findViewById(R.id.button_b);
-        button_b.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_b.setEnabled(false);
+        final Button btn_b = findViewById(R.id.btn_b);
+        btn_b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_b.setEnabled(false);
                 checkInput('B');
             }
         });
 
-        final Button button_c = findViewById(R.id.button_c);
-        button_c.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_c.setEnabled(false);
+        final Button btn_c = findViewById(R.id.btn_c);
+        btn_c.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_c.setEnabled(false);
                 checkInput('C');
             }
         });
 
-        final Button button_d = findViewById(R.id.button_d);
-        button_d.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_d.setEnabled(false);
+        final Button btn_d = findViewById(R.id.btn_d);
+        btn_d.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_d.setEnabled(false);
                 checkInput('D');
             }
         });
 
-        final Button button_e = findViewById(R.id.button_e);
-        button_e.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_e.setEnabled(false);
+        final Button btn_e = findViewById(R.id.btn_e);
+        btn_e.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_e.setEnabled(false);
                 checkInput('E');
             }
         });
 
-        final Button button_f = findViewById(R.id.button_f);
-        button_f.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_f.setEnabled(false);
+        final Button btn_f = findViewById(R.id.btn_f);
+        btn_f.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_f.setEnabled(false);
                 checkInput('F');
             }
         });
 
-        final Button button_g = findViewById(R.id.button_g);
-        button_g.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_g.setEnabled(false);
+        final Button btn_g = findViewById(R.id.btn_g);
+        btn_g.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_g.setEnabled(false);
                 checkInput('G');
             }
         });
 
-        final Button button_h = findViewById(R.id.button_h);
-        button_h.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_h.setEnabled(false);
+        final Button btn_h = findViewById(R.id.btn_h);
+        btn_h.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_h.setEnabled(false);
                 checkInput('H');
             }
         });
 
-        final Button button_i = findViewById(R.id.button_i);
-        button_i.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_i.setEnabled(false);
+        final Button btn_i = findViewById(R.id.btn_i);
+        btn_i.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_i.setEnabled(false);
                 checkInput('I');
             }
         });
 
-        final Button button_j = findViewById(R.id.button_j);
-        button_j.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_j.setEnabled(false);
+        final Button btn_j = findViewById(R.id.btn_j);
+        btn_j.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_j.setEnabled(false);
                 checkInput('J');
             }
         });
 
-        final Button button_k = findViewById(R.id.button_k);
-        button_k.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_k.setEnabled(false);
+        final Button btn_k = findViewById(R.id.btn_k);
+        btn_k.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_k.setEnabled(false);
                 checkInput('K');
             }
         });
 
-        final Button button_l = findViewById(R.id.button_l);
-        button_l.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_l.setEnabled(false);
+        final Button btn_l = findViewById(R.id.btn_l);
+        btn_l.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_l.setEnabled(false);
                 checkInput('L');
             }
         });
 
-        final Button button_m = findViewById(R.id.button_m);
-        button_m.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_m.setEnabled(false);
+        final Button btn_m = findViewById(R.id.btn_m);
+        btn_m.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_m.setEnabled(false);
                 checkInput('M');
             }
         });
 
-        final Button button_n = findViewById(R.id.button_n);
-        button_n.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_n.setEnabled(false);
+        final Button btn_n = findViewById(R.id.btn_n);
+        btn_n.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_n.setEnabled(false);
                 checkInput('N');
             }
         });
 
-        final Button button_o = findViewById(R.id.button_o);
-        button_o.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_o.setEnabled(false);
+        final Button btn_o = findViewById(R.id.btn_o);
+        btn_o.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_o.setEnabled(false);
                 checkInput('O');
             }
         });
 
-        final Button button_p = findViewById(R.id.button_p);
-        button_p.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_p.setEnabled(false);
+        final Button btn_p = findViewById(R.id.btn_p);
+        btn_p.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_p.setEnabled(false);
                 checkInput('P');
             }
         });
 
-        final Button button_q = findViewById(R.id.button_q);
-        button_q.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_q.setEnabled(false);
+        final Button btn_q = findViewById(R.id.btn_q);
+        btn_q.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_q.setEnabled(false);
                 checkInput('Q');
             }
         });
 
-        final Button button_r = findViewById(R.id.button_r);
-        button_r.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_r.setEnabled(false);
+        final Button btn_r = findViewById(R.id.btn_r);
+        btn_r.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_r.setEnabled(false);
                 checkInput('R');
             }
         });
 
-        final Button button_s = findViewById(R.id.button_s);
-        button_s.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_s.setEnabled(false);
+        final Button btn_s = findViewById(R.id.btn_s);
+        btn_s.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_s.setEnabled(false);
                 checkInput('S');
             }
         });
 
-        final Button button_t = findViewById(R.id.button_t);
-        button_t.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_t.setEnabled(false);
+        final Button btn_t = findViewById(R.id.btn_t);
+        btn_t.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_t.setEnabled(false);
                 checkInput('T');
             }
         });
 
-        final Button button_u = findViewById(R.id.button_u);
-        button_u.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_u.setEnabled(false);
+        final Button btn_u = findViewById(R.id.btn_u);
+        btn_u.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_u.setEnabled(false);
                 checkInput('U');
             }
         });
 
-        final Button button_v = findViewById(R.id.button_v);
-        button_v.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_v.setEnabled(false);
+        final Button btn_v = findViewById(R.id.btn_v);
+        btn_v.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_v.setEnabled(false);
                 checkInput('V');
             }
         });
 
-        final Button button_w = findViewById(R.id.button_w);
-        button_w.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_w.setEnabled(false);
+        final Button btn_w = findViewById(R.id.btn_w);
+        btn_w.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_w.setEnabled(false);
                 checkInput('W');
             }
         });
 
-        final Button button_x = findViewById(R.id.button_x);
-        button_x.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_x.setEnabled(false);
+        final Button btn_x = findViewById(R.id.btn_x);
+        btn_x.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_x.setEnabled(false);
                 checkInput('X');
             }
         });
 
-        final Button button_y = findViewById(R.id.button_y);
-        button_y.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_y.setEnabled(false);
+        final Button btn_y = findViewById(R.id.btn_y);
+        btn_y.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_y.setEnabled(false);
                 checkInput('Y');
             }
         });
 
-        final Button button_z = findViewById(R.id.button_z);
-        button_z.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                button_z.setEnabled(false);
+        final Button btn_z = findViewById(R.id.btn_z);
+        btn_z.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                btn_z.setEnabled(false);
                 checkInput('Z');
             }
         });
 
-        final Button button_reset = findViewById(R.id.button_reset);
-        button_reset.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-
+        final Button btn_reset = findViewById(R.id.btn_reset);
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 HangmanActivity.this.reset();
             }
         });
 
-        final Button button_exit = findViewById(R.id.button_exit);
-        button_exit.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
+        final Button btn_exit = findViewById(R.id.btn_exit);
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 HangmanActivity.this.finish();
             }
         });
 
-        final Button button_back = findViewById(R.id.bt_backHangman);
-        button_back.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                navigateWelcomeScreen();
+        final Button btn_back = findViewById(R.id.btn_back_hm);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateToWelcomeScreen();
             }
         });
 
-        //Test WordShown
         setWordView();
-
     }
 
-    private void navigateWelcomeScreen() {
+    private void navigateToWelcomeScreen() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    void setWordView()
-    {
-        place_holder = "";
+    void setWordView() {
+        word_place_holder = "";
 
         int random = randomWithRange(word_list.length);
 
-        TextView word_view = findViewById(R.id.word);
+        TextView textv_word_view = findViewById(R.id.textv_word_to_guess);
 
         word_to_guess = word_list[random];
 
@@ -342,129 +274,99 @@ public class HangmanActivity extends AppCompatActivity
 
         for (int i = 0; i < temp; i++) {
             if (i % 2 == 0) {
-                place_holder += "_";
-            }
-            else {
-                place_holder += " ";
+                word_place_holder += "_";
+            } else {
+                word_place_holder += " ";
             }
         }
-        word_view.setText(place_holder);
+        textv_word_view.setText(word_place_holder);
     }
 
-    int randomWithRange(int max)
-    {
+    int randomWithRange(int max) {
         return (int) (Math.random() * max);
     }
 
-    void checkInput(char c)
-    {
-        TextView word = findViewById(R.id.word);
-        StringBuilder new_placeholder = new StringBuilder(place_holder);
+    void checkInput(char c) {
+        TextView textv_word_view = findViewById(R.id.textv_word_to_guess);
+        StringBuilder new_placeholder = new StringBuilder(word_place_holder);
 
-        for (int i = 0, j = 0; i < word_to_guess.length(); i++, j += 2) {
-            if (word_to_guess.charAt(i) == c) {
-                new_placeholder.setCharAt(j, c);
+        for (int pos_w = 0, pos_ph = 0; pos_w < word_to_guess.length(); pos_w++, pos_ph += 2) {
+            if (word_to_guess.charAt(pos_w) == c) {
+                new_placeholder.setCharAt(pos_ph, c);
             }
         }
-        place_holder = new_placeholder.toString();
-        word.setText(place_holder);
+        word_place_holder = new_placeholder.toString();
+        textv_word_view.setText(word_place_holder);
 
-        if (!place_holder.contains("_")) {
-
+        if (!word_place_holder.contains("_")) {
             win();
-
-      /*
-      AlertDialog.Builder winAlert = new AlertDialog.Builder(this);
-      winAlert.setTitle("YAY");
-      winAlert.setMessage("You win!\n\nThe answer was:\n\n" + word_to_guess);
-      winAlert.setPositiveButton("Play Again",
-        new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface dialog, int id)
-          {
-            HangmanActivity.this.reset();
-          }
-        });
-
-      winAlert.setNegativeButton("Exit",
-        new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface dialog, int id)
-          {
-            HangmanActivity.this.finish();
-          }
-        });
-
-      winAlert.show();*/
         }
     }
 
-    private void reset()
-    {
+    private void reset() {
         findViewById(R.id.win_ly).setVisibility(View.INVISIBLE);
 
-        findViewById(R.id.button_q).setEnabled(true);
-        findViewById(R.id.button_w).setEnabled(true);
-        findViewById(R.id.button_e).setEnabled(true);
-        findViewById(R.id.button_r).setEnabled(true);
-        findViewById(R.id.button_t).setEnabled(true);
-        findViewById(R.id.button_z).setEnabled(true);
-        findViewById(R.id.button_u).setEnabled(true);
-        findViewById(R.id.button_i).setEnabled(true);
-        findViewById(R.id.button_o).setEnabled(true);
-        findViewById(R.id.button_p).setEnabled(true);
-        findViewById(R.id.button_a).setEnabled(true);
-        findViewById(R.id.button_s).setEnabled(true);
-        findViewById(R.id.button_d).setEnabled(true);
-        findViewById(R.id.button_f).setEnabled(true);
-        findViewById(R.id.button_g).setEnabled(true);
-        findViewById(R.id.button_h).setEnabled(true);
-        findViewById(R.id.button_j).setEnabled(true);
-        findViewById(R.id.button_k).setEnabled(true);
-        findViewById(R.id.button_l).setEnabled(true);
-        findViewById(R.id.button_y).setEnabled(true);
-        findViewById(R.id.button_x).setEnabled(true);
-        findViewById(R.id.button_c).setEnabled(true);
-        findViewById(R.id.button_v).setEnabled(true);
-        findViewById(R.id.button_b).setEnabled(true);
-        findViewById(R.id.button_n).setEnabled(true);
-        findViewById(R.id.button_m).setEnabled(true);
+        findViewById(R.id.btn_q).setEnabled(true);
+        findViewById(R.id.btn_w).setEnabled(true);
+        findViewById(R.id.btn_e).setEnabled(true);
+        findViewById(R.id.btn_r).setEnabled(true);
+        findViewById(R.id.btn_t).setEnabled(true);
+        findViewById(R.id.btn_z).setEnabled(true);
+        findViewById(R.id.btn_u).setEnabled(true);
+        findViewById(R.id.btn_i).setEnabled(true);
+        findViewById(R.id.btn_o).setEnabled(true);
+        findViewById(R.id.btn_p).setEnabled(true);
+        findViewById(R.id.btn_a).setEnabled(true);
+        findViewById(R.id.btn_s).setEnabled(true);
+        findViewById(R.id.btn_d).setEnabled(true);
+        findViewById(R.id.btn_f).setEnabled(true);
+        findViewById(R.id.btn_g).setEnabled(true);
+        findViewById(R.id.btn_h).setEnabled(true);
+        findViewById(R.id.btn_j).setEnabled(true);
+        findViewById(R.id.btn_k).setEnabled(true);
+        findViewById(R.id.btn_l).setEnabled(true);
+        findViewById(R.id.btn_y).setEnabled(true);
+        findViewById(R.id.btn_x).setEnabled(true);
+        findViewById(R.id.btn_c).setEnabled(true);
+        findViewById(R.id.btn_v).setEnabled(true);
+        findViewById(R.id.btn_b).setEnabled(true);
+        findViewById(R.id.btn_n).setEnabled(true);
+        findViewById(R.id.btn_m).setEnabled(true);
 
         setWordView();
     }
 
-    private void win()
-    {
+    private void win() {
         Context context = this.getApplicationContext();
 
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
 
-        findViewById(R.id.button_q).setEnabled(false);
-        findViewById(R.id.button_w).setEnabled(false);
-        findViewById(R.id.button_e).setEnabled(false);
-        findViewById(R.id.button_r).setEnabled(false);
-        findViewById(R.id.button_t).setEnabled(false);
-        findViewById(R.id.button_z).setEnabled(false);
-        findViewById(R.id.button_u).setEnabled(false);
-        findViewById(R.id.button_i).setEnabled(false);
-        findViewById(R.id.button_o).setEnabled(false);
-        findViewById(R.id.button_p).setEnabled(false);
-        findViewById(R.id.button_a).setEnabled(false);
-        findViewById(R.id.button_s).setEnabled(false);
-        findViewById(R.id.button_d).setEnabled(false);
-        findViewById(R.id.button_f).setEnabled(false);
-        findViewById(R.id.button_g).setEnabled(false);
-        findViewById(R.id.button_h).setEnabled(false);
-        findViewById(R.id.button_j).setEnabled(false);
-        findViewById(R.id.button_k).setEnabled(false);
-        findViewById(R.id.button_l).setEnabled(false);
-        findViewById(R.id.button_y).setEnabled(false);
-        findViewById(R.id.button_x).setEnabled(false);
-        findViewById(R.id.button_c).setEnabled(false);
-        findViewById(R.id.button_v).setEnabled(false);
-        findViewById(R.id.button_b).setEnabled(false);
-        findViewById(R.id.button_n).setEnabled(false);
-        findViewById(R.id.button_m).setEnabled(false);
+        findViewById(R.id.btn_q).setEnabled(false);
+        findViewById(R.id.btn_w).setEnabled(false);
+        findViewById(R.id.btn_e).setEnabled(false);
+        findViewById(R.id.btn_r).setEnabled(false);
+        findViewById(R.id.btn_t).setEnabled(false);
+        findViewById(R.id.btn_z).setEnabled(false);
+        findViewById(R.id.btn_u).setEnabled(false);
+        findViewById(R.id.btn_i).setEnabled(false);
+        findViewById(R.id.btn_o).setEnabled(false);
+        findViewById(R.id.btn_p).setEnabled(false);
+        findViewById(R.id.btn_a).setEnabled(false);
+        findViewById(R.id.btn_s).setEnabled(false);
+        findViewById(R.id.btn_d).setEnabled(false);
+        findViewById(R.id.btn_f).setEnabled(false);
+        findViewById(R.id.btn_g).setEnabled(false);
+        findViewById(R.id.btn_h).setEnabled(false);
+        findViewById(R.id.btn_j).setEnabled(false);
+        findViewById(R.id.btn_k).setEnabled(false);
+        findViewById(R.id.btn_l).setEnabled(false);
+        findViewById(R.id.btn_y).setEnabled(false);
+        findViewById(R.id.btn_x).setEnabled(false);
+        findViewById(R.id.btn_c).setEnabled(false);
+        findViewById(R.id.btn_v).setEnabled(false);
+        findViewById(R.id.btn_b).setEnabled(false);
+        findViewById(R.id.btn_n).setEnabled(false);
+        findViewById(R.id.btn_m).setEnabled(false);
 
         Score.incrementScore(context, 1);
     }

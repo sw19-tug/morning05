@@ -3,7 +3,6 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tv_score = (TextView) findViewById((R.id.tv_score));
         Context context = this.getApplicationContext();
-        tv_score.setText(getResources().getString(R.string.tv_score_text)+ " " + Score.getScore(context));
+        tv_score.setText(getResources().getString(R.string.str_textv_score)+ " " + Score.getScore(context));
 
         Button btnClickEvent = (Button) findViewById(R.id.bt_switchLanguage);
         btnClickEvent.setOnClickListener(new View.OnClickListener() {

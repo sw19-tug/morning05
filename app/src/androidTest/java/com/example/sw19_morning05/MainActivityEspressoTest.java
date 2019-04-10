@@ -2,8 +2,6 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.TextView;
@@ -47,7 +45,7 @@ public class MainActivityEspressoTest {
     @Test
     public void testTitleText() {
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
-        onView(withId(R.id.tv_title)).check(matches(withText(R.string.app_title)));
+        onView(withId(R.id.tv_title)).check(matches(withText(R.string.str_app_title)));
 
     }
 
@@ -62,12 +60,12 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testLanguageTicTacToe(){
-        TextView button_text = ticTacToeActivityTestRule.getActivity().findViewById(R.id.bt_reset);
+        TextView button_text = ticTacToeActivityTestRule.getActivity().findViewById(R.id.btn_reset_ttt);
         String germanTitle = button_text.getText().toString();
         onView(withId(R.id.bt_switchLanguage)).perform(click());
         onView(withId(R.id.bt_tictactoe)).perform(click());
-        onView(withId(R.id.bt_reset)).check(matches(not(withText(germanTitle))));
-        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.btn_reset_ttt)).check(matches(not(withText(germanTitle))));
+        onView(withId(R.id.btn_back_ttt)).perform(click());
         onView(withId(R.id.bt_switchLanguage)).perform(click());
     }
 
@@ -75,8 +73,8 @@ public class MainActivityEspressoTest {
     public void testPlayerLanguageTicTacToe(){
         onView(withId(R.id.bt_switchLanguage)).perform(click());
         onView(withId(R.id.bt_tictactoe)).perform(click());
-        onView(withId(R.id.tv_currentPlayer)).check(matches(withText(R.string.tv_player1_turn)));
-        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.textv_current_player)).check(matches(withText(R.string.str_textv_player1_turn)));
+        onView(withId(R.id.btn_back_ttt)).perform(click());
         onView(withId(R.id.bt_switchLanguage)).perform(click());
     }
 
@@ -131,7 +129,7 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.bt_tictactoe)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_tictactoe)).perform(click());
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()));
-        onView(withId(R.id.bt_backTicTacToe)).perform(click());
+        onView(withId(R.id.btn_back_ttt)).perform(click());
     }
     
     @Test
