@@ -214,7 +214,7 @@ public class TTBActivity extends Activity {
                     return;
                 }
 
-                block_color = getResources().getColor(R.color.colorRed);
+                block_color = getResources().getColor(R.color.colorMagenta);
                 disableButtons(block_green, block_blue, block_red, block_magenta);
             }
         });
@@ -222,7 +222,7 @@ public class TTBActivity extends Activity {
         background_black.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
-                background_color = getResources().getColor(R.color.colorRed);
+                background_color = getResources().getColor(R.color.colorBlack);
                 disableButtons(background_black, background_grey, background_white, background_magenta);
             }
         });
