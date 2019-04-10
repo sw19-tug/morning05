@@ -3,8 +3,8 @@
     <string name="str_app_title">Spielesammlung</string>
     <string name="str_switch_lang">Wechsle zu Englisch</string>
     <string name="str_textv_score">Punkte:</string>
-    <string name="str_reset">Neustart</string>
-    <string name="str_back">Zurück</string>
+    <string name="str_reset">NEUSTART</string>
+    <string name="str_back">ZURÜCK</string>
     <string name="str_settings">Einstellungen</string>
 
     <string name="str_title_ttt">Tic Tac Toe</string>

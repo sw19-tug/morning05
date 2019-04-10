@@ -3,8 +3,8 @@
     <string name="str_app_title">Mini Games</string>
     <string name="str_switch_lang">Switch to German</string>
     <string name="str_textv_score">Score:</string>
-    <string name="str_reset">Reset</string>
-    <string name="str_back">Back</string>
+    <string name="str_reset">RESET</string>
+    <string name="str_back">BACK</string>
     <string name="str_settings">Settings</string>
 
     <string name="str_title_ttt">Tic Tac Toe</string>
