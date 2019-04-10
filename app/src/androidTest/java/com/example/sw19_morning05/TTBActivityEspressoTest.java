@@ -64,6 +64,28 @@ public class TTBActivityEspressoTest {
     }
 
     @Test
+    public void testPlayAgainButton() {
+        onView(withId(R.id.btn_play)).perform(click());
+
+        onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
+        onView(withId(R.id.moving_block)).check(matches(isClickable()));
+        onView(withId(R.id.moving_block)).check(matches(withText("")));
+
+        clickBackground();
+
+        onView(withId(R.id.button_reset)).perform(click());
+        onView(withId(R.id.btn_play)).perform(click());
+
+        onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
+        onView(withId(R.id.moving_block)).check(matches(isClickable()));
+        onView(withId(R.id.moving_block)).check(matches(withText("")));
+
+        clickBackground();
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
+    }
+
+
+    @Test
     public void testResetButton() {
         onView(withId(R.id.btn_play)).perform(click());
 
