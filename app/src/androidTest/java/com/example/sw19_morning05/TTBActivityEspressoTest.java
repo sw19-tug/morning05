@@ -74,7 +74,6 @@ public class TTBActivityEspressoTest {
         clickBackground();
 
         onView(withId(R.id.button_reset)).perform(click());
-        onView(withId(R.id.btn_play)).perform(click());
 
         onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
         onView(withId(R.id.moving_block)).check(matches(isClickable()));

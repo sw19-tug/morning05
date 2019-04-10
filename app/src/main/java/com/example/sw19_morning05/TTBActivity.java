@@ -135,8 +135,7 @@ public class TTBActivity extends Activity {
         restart.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
-                Intent intent = new Intent(getApplicationContext(), TTBActivity.class);
-                startActivity(intent);
+               playTTB();
             }
         });
 
