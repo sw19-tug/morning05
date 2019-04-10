@@ -29,8 +29,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @RunWith(AndroidJUnit4.class)
-public class TTBActivityEspressoTest
-{
+public class TTBActivityEspressoTest {
     final Context context = InstrumentationRegistry.getTargetContext();
 
     @Rule
@@ -38,24 +37,25 @@ public class TTBActivityEspressoTest
             new ActivityTestRule<>(TTBActivity.class);
 
     @Test
-    public void testBlockButton()
-    {
-        onView(withId(R.id.magenta_background)).perform(click());
-        onView(withId(R.id.red_button)).perform(click());
+    public void testBlockButton() {
+        onView(withId(R.id.btn_play)).perform(click());
 
         onView(withId(R.id.moving_block)).check(matches(isDisplayed()));
         onView(withId(R.id.moving_block)).check(matches(isClickable()));
         onView(withId(R.id.moving_block)).check(matches(withText("")));
+
+        onView(withId(R.id.background_btn)).perform(click());
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
     }
 
     @Test
-    public void testResetButton()
-    {
+    public void testResetButton() {
+        onView(withId(R.id.btn_play)).perform(click());
+
         try {
-            runOnUiThread(new Runnable(){
+            runOnUiThread(new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     Button btn = ttbActivityActivityTestRule.getActivity().findViewById(R.id.background_btn);
                     btn.callOnClick();
                 }
@@ -65,26 +65,31 @@ public class TTBActivityEspressoTest
         }
         onView(withId(R.id.button_reset)).check(matches(isDisplayed()));
         onView(withId(R.id.button_reset)).check(matches(isClickable()));
+
+        onView(withId(R.id.background_btn)).perform(click());
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
     }
 
     @Test
-    public void testBackgroundButton()
-    {
+    public void testBackgroundButton() {
+        onView(withId(R.id.btn_play)).perform(click());
 
         onView(withId(R.id.background_btn)).check(matches(isDisplayed()));
         onView(withId(R.id.background_btn)).check(matches(isClickable()));
         onView(withId(R.id.background_btn)).check(matches(withText("")));
+
+        onView(withId(R.id.background_btn)).perform(click());
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
     }
 
 
     @Test
-    public void testBlockMoves()
-    {
-        Handler handler = new Handler(Looper.getMainLooper())
-        {
+    public void testBlockMoves() {
+        onView(withId(R.id.btn_play)).perform(click());
+
+        Handler handler = new Handler(Looper.getMainLooper()) {
             @Override
-            public void handleMessage(Message message)
-            {
+            public void handleMessage(Message message) {
                 Looper.prepareMainLooper();
                 Button button = new TTBActivity().findViewById(R.id.moving_block);
 
@@ -100,11 +105,14 @@ public class TTBActivityEspressoTest
                 assertNotEquals(buttonY, buttonY_new, 0);
             }
         };
+
+        onView(withId(R.id.background_btn)).perform(click());
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
     }
 
     @Test
-    public void testBlockResizes()
-    {
+    public void testBlockResizes() {
+        onView(withId(R.id.btn_play)).perform(click());
 
         onView(withId(R.id.magenta_background)).perform(click());
         onView(withId(R.id.red_button)).perform(click());
@@ -121,30 +129,35 @@ public class TTBActivityEspressoTest
 
         if (button_height == button_height_new) {
             assertEquals(button_width, button_width_new * 2 + 1, 0f);
-        }
-        else {
+        } else {
             assertEquals(button_height, button_height_new * 2 + 1, 0f);
         }
+
+        onView(withId(R.id.background_btn)).perform(click());
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
     }
 
     @Test
-    public void testColorsDisplayed()
-    {
+    public void testColorsDisplayed() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
         onView(withId(R.id.green_button)).check(matches(isDisplayed()));
         onView(withId(R.id.blue_button)).check(matches(isDisplayed()));
         onView(withId(R.id.red_button)).check(matches(isDisplayed()));
         onView(withId(R.id.magenta_button)).check(matches(isDisplayed()));
 
-
         onView(withId(R.id.black_background)).check(matches(isDisplayed()));
         onView(withId(R.id.grey_background)).check(matches(isDisplayed()));
         onView(withId(R.id.white_background)).check(matches(isDisplayed()));
         onView(withId(R.id.magenta_background)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.btn_settings_ttb_back)).perform(click());
     }
 
     @Test
-    public void testColorsClickable()
-    {
+    public void testColorsClickable() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
         onView(withId(R.id.green_button)).check(matches(isClickable()));
         onView(withId(R.id.blue_button)).check(matches(isClickable()));
         onView(withId(R.id.red_button)).check(matches(isClickable()));
@@ -154,11 +167,14 @@ public class TTBActivityEspressoTest
         onView(withId(R.id.grey_background)).check(matches(isClickable()));
         onView(withId(R.id.white_background)).check(matches(isClickable()));
         onView(withId(R.id.magenta_background)).check(matches(isClickable()));
+
+        onView(withId(R.id.btn_settings_ttb_back)).perform(click());
     }
 
     @Test
-    public void testColorTexts()
-    {
+    public void testColorTexts() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
         onView(withId(R.id.green_button)).check(matches(withText("green")));
         onView(withId(R.id.blue_button)).check(matches(withText("blue")));
         onView(withId(R.id.red_button)).check(matches(withText("red")));
@@ -168,11 +184,14 @@ public class TTBActivityEspressoTest
         onView(withId(R.id.grey_background)).check(matches(withText("grey")));
         onView(withId(R.id.white_background)).check(matches(withText("white")));
         onView(withId(R.id.magenta_background)).check(matches(withText("magenta")));
+
+        onView(withId(R.id.btn_settings_ttb_back)).perform(click());
     }
 
     @Test
-    public void testBlockColorDisabledAndVisibility()
-    {
+    public void testBlockColorDisabledAndVisibility() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
         int correct_counter = 0;
 
         onView(withId(R.id.green_button)).perform(click());
@@ -199,12 +218,15 @@ public class TTBActivityEspressoTest
         if (magenta.getVisibility() == View.INVISIBLE)
             correct_counter++;
 
+        onView(withId(R.id.btn_settings_ttb_back)).perform(click());
         assertEquals(8, correct_counter);
+
     }
 
     @Test
-    public void testBackgroundColorDisabledAndVisibility()
-    {
+    public void testBackgroundColorDisabledAndVisibility() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
         int correct_counter = 0;
 
         onView(withId(R.id.magenta_background)).perform(click());
@@ -231,14 +253,19 @@ public class TTBActivityEspressoTest
         if (magenta.getVisibility() == View.INVISIBLE)
             correct_counter++;
 
+        onView(withId(R.id.btn_settings_ttb_back)).perform(click());
         assertEquals(8, correct_counter);
     }
 
     @Test
-    public void testColoredBlocks()
-    {
+    public void testColoredBlocks() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
         onView(withId(R.id.magenta_background)).perform(click());
         onView(withId(R.id.red_button)).perform(click());
+
+        onView(withId(R.id.btn_settings_ttb_ok)).perform(click());
+        onView(withId(R.id.btn_play)).perform(click());
 
         Button block = ttbActivityActivityTestRule.getActivity().findViewById(R.id.moving_block);
         ColorDrawable color_b = (ColorDrawable) block.getBackground();
@@ -248,9 +275,21 @@ public class TTBActivityEspressoTest
         int color_bColor = color_b.getColor();
         int color_bgColor = color_bg.getColor();
 
+        onView(withId(R.id.btn_backTouchTheBlock)).perform(click());
+
         assertEquals(0xFFFF000F, color_bColor);
         assertEquals(0xFFFF00FF, color_bgColor);
     }
 
+    @Test
+    public void testSettingsBackButton() {
+        onView(withId(R.id.btn_settings_ttt)).perform(click());
+
+        onView(withId(R.id.magenta_background)).perform(click());
+        onView(withId(R.id.red_button)).perform(click());
+
+        onView(withId(R.id.btn_settings_ttb_back)).perform(click());
+        onView(withId(R.id.btn_play)).check(matches(isDisplayed()));
+    }
 
 }
