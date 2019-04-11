@@ -1,0 +1,32 @@
+<resources>
+    <string name="str_app_name">SW19-morning05</string>
+    <string name="str_app_title">Spielesammlung</string>
+    <string name="str_switch_lang">Wechsle zu Englisch</string>
+    <string name="str_textv_score">Punkte:</string>
+    <string name="str_reset">NEUSTART</string>
+    <string name="str_back">ZURÜCK</string>
+    <string name="str_settings">Einstellungen</string>
+
+    <string name="str_title_ttt">Tic Tac Toe</string>
+    <string name="str_textv_player1_turn">Spieler X Zug!</string>
+    <string name="str_textv_player2_turn">Spieler O Zug!</string>
+    <string name="str_textv_player1_wins">Spieler X gewinnt!</string>
+    <string name="str_textv_player2_wins">Spieler O gewinnt!</string>
+    <string name="str_textv_draw">Unentschieden!</string>
+    <string name="str_cbox_text_autoplayer">Spiele gegen Computer</string>
+    <string name="str_textv_pick_color">Wähle deine Farbe:</string>
+    <string name="str_textv_pick_sign">Pick your Sign:</string>
+
+    <string name="str_title_ttb">Touch The Block</string>
+    <string name="str_play_ttb">Spielen</string>
+    <string name="str_loss_ttb">Ooops!</string>
+    <string name="str_lose_ttb">du hast verloren!</string>
+    <string name="str_play_again_ttb">Nocheinmal Spielen?</string>
+    <string name="str_btn_color_ttb">Knopf Farbe</string>
+    <string name="str_screen_color_ttb">Hintergrund Farbe</string>
+
+
+
+    <string name="str_title_hm">Hangman</string>
+    <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>
+</resources>

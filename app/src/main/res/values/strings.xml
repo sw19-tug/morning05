@@ -1,0 +1,30 @@
+<resources>
+    <string name="str_app_name">SW19-morning05</string>
+    <string name="str_app_title">Mini Games</string>
+    <string name="str_switch_lang">Switch to German</string>
+    <string name="str_textv_score">Score:</string>
+    <string name="str_reset">RESET</string>
+    <string name="str_back">BACK</string>
+    <string name="str_settings">SETTINGS</string>
+
+    <string name="str_title_ttt">Tic Tac Toe</string>
+    <string name="str_textv_player1_turn">Player X turn!</string>
+    <string name="str_textv_player2_turn">Player O turn!</string>
+    <string name="str_textv_player1_wins">Player X wins!</string>
+    <string name="str_textv_player2_wins">Player O wins!</string>
+    <string name="str_textv_draw">Draw!</string>
+    <string name="str_cbox_text_autoplayer">Enable Autoplayer</string>
+    <string name="str_textv_pick_color">Pick your Color:</string>
+    <string name="str_textv_pick_sign">Pick your Sign:</string>
+
+    <string name="str_title_ttb">Touch The Block</string>
+    <string name="str_play_ttb">PLAY</string>
+    <string name="str_loss_ttb">Ooops!</string>
+    <string name="str_lose_ttb">You lose!</string>
+    <string name="str_play_again_ttb">Play Again?</string>
+    <string name="str_btn_color_ttb">Button Color</string>
+    <string name="str_screen_color_ttb">Screen Color</string>
+
+    <string name="str_title_hm">Hangman</string>
+    <string name="str_textv_win_hm">You won! Score +1</string>
+</resources>
