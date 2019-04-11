@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
-import android.widget.TextView;
 
 import java.util.Random;
 
@@ -21,264 +19,234 @@ import java.util.Random;
  */
 public class TTBActivity extends Activity {
 
-    boolean button_ready = false;
-    boolean background_ready = false;
-    boolean button_is_magenta = false;
-    int temp_color;
+    int block_color = 0;
+    int background_color = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.ttb_activity);
+        initTTB();
+    }
 
-        final Button block = (Button)findViewById(R.id.moving_block);
-        final Button background = (Button)findViewById(R.id.background_btn);
-        final Button block_green = (Button)findViewById(R.id.green_button);
-        final Button block_blue = (Button)findViewById(R.id.blue_button);
-        final Button block_red = (Button)findViewById(R.id.red_button);
-        final Button block_magenta = (Button)findViewById(R.id.magenta_button);
-        final Button background_white = (Button)findViewById(R.id.white_background);
-        final Button background_grey = (Button)findViewById(R.id.grey_background);
-        final Button background_black = (Button)findViewById(R.id.black_background);
-        final Button background_magenta = (Button)findViewById(R.id.magenta_background);
+    private void initTTB() {
+        setContentView(R.layout.activity_ttb);
 
-        final TextView button_color = (TextView)findViewById(R.id.button_title);
-        final TextView background_color = (TextView)findViewById(R.id.background_title);
+        Button btn_play = (Button) findViewById(R.id.btn_play);
+        Button btn_settings = (Button) findViewById(R.id.btn_settings_ttb);
+        Button btn_backToWelcomeScreen = (Button) findViewById(R.id.btn_back_main);
 
-        final Button restart = (Button)findViewById(R.id.button_reset);
-        final Button back = (Button)findViewById(R.id.btn_backTouchTheBlock);
-
-        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        final int w = d.getWidth();
-        final int h = d.getHeight();
-        //Changing start position
-        block.setY((float)((h / 2) * Math.random()));
-
-        block.setEnabled(false);
-        block.setVisibility(View.INVISIBLE);
-        background.setEnabled(false);
-
-
-        //------------------------------------------------------------------------------------------
-        block_green.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                block.setBackgroundColor(0xFF00FF00);
-                disableButtons(block_green, block_blue, block_red, block_magenta, button_color);
-                button_ready = true;
-                if (background_ready)
-                {
-                    startGame(block, background);
-                }
+        btn_play.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                playTTB();
             }
         });
 
-
-        //------------------------------------------------------------------------------------------
-        block_blue.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                block.setBackgroundColor(0xFF00FFFF);
-                disableButtons(block_green, block_blue, block_red, block_magenta, button_color);
-                button_ready = true;
-                if (background_ready)
-                {
-                    startGame(block, background);
-                }
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                settingsTTB();
             }
         });
 
-
-        //------------------------------------------------------------------------------------------
-        block_red.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                block.setBackgroundColor(0xFFFF000F);
-                disableButtons(block_green, block_blue, block_red, block_magenta, button_color);
-                button_ready = true;
-                if (background_ready)
-                {
-                    startGame(block, background);
-                }
-            }
-        });
-
-
-        //------------------------------------------------------------------------------------------
-        block_magenta.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                if (temp_color == 0xFFFF00FF)
-                {
-                    block_magenta.setError("");
-                    return;
-                }
-                block.setBackgroundColor(0xFFFF00FF);
-                disableButtons(block_green, block_blue, block_red, block_magenta, button_color);
-                button_ready = true;
-                button_is_magenta = true;
-                if (background_ready)
-                {
-                    startGame(block, background);
-                }
-            }
-        });
-
-
-
-        //------------------------------------------------------------------------------------------
-        //------------------------------------------------------------------------------------------
-        background_black.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                temp_color = 0xFF000000;
-                disableButtons(background_black, background_grey, background_white,
-                        background_magenta, background_color);
-                background_ready = true;
-                if (button_ready)
-                {
-                    startGame(block, background);
-                }
-            }
-        });
-
-
-        //------------------------------------------------------------------------------------------
-        background_grey.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                temp_color = 0xFF888888;
-                disableButtons(background_black, background_grey, background_white,
-                        background_magenta, background_color);
-                background_ready = true;
-                if (button_ready)
-                {
-                    startGame(block, background);
-                }
-            }
-        });
-
-
-        //------------------------------------------------------------------------------------------
-        background_white.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                temp_color = 0xFFFFFF;
-                disableButtons(background_black, background_grey, background_white,
-                        background_magenta, background_color);
-                background_ready = true;
-                if (button_ready)
-                {
-                    startGame(block, background);
-                }
-            }
-        });
-
-
-        //------------------------------------------------------------------------------------------
-        background_magenta.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                if (button_is_magenta)
-                {
-                    background_magenta.setError("");
-                    return;
-                }
-                temp_color = 0xFFFF00FF;
-                disableButtons(background_black, background_grey, background_white,
-                        background_magenta, background_color);
-                background_ready = true;
-                if (button_ready)
-                {
-                    startGame(block, background);
-                }
-            }
-        });
-
-
-        //------------------------------------------------------------------------------------------
-        block.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-
-                //Changing block size
-                ViewGroup.LayoutParams params = block.getLayoutParams();
-                if (Math.random() >= 0.5)
-                  params.height = params.height/2;
-                else
-                  params.width = params.width/2;
-                block.setLayoutParams(params);
-
-                //Changing position
-                Random r = new Random();
-                int range_width = r.nextInt(w);
-                int range_height = r.nextInt(h);
-
-                //handles that the button stays completely in the screen
-                if ((w - range_width) < params.width)
-                    block.setX(w - params.width);
-                else
-                  block.setX(range_width);
-
-                if ((h - range_height) < params.height)
-                    block.setY(h - params.height);
-                else
-                    block.setY(range_height);
-            }
-        });
-
-
-        restart.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(getApplicationContext(), TTBActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        back.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn_backToWelcomeScreen.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
+    }
 
-        // returns to the start page, when the user touches the background
-        background.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
-                block.setVisibility(View.INVISIBLE);
-                background.setVisibility((View.INVISIBLE));
+    private void playTTB() {
+        setContentView(R.layout.play_ttb);
+
+        final Button btn_block = (Button) findViewById(R.id.moving_block);
+        final Button btn_background = (Button) findViewById(R.id.btn_background);
+
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        final int get_width = display.getWidth();
+        final int get_height = display.getHeight();
+        //Changing start position
+        btn_block.setY((float) ((get_height / 2) * Math.random()));
+
+        btn_block.setEnabled(false);
+        btn_block.setVisibility(View.INVISIBLE);
+        btn_background.setEnabled(false);
+
+        btn_block.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                ViewGroup.LayoutParams params = btn_block.getLayoutParams();
+                if (Math.random() >= 0.5)
+                    params.height = params.height / 2;
+                else
+                    params.width = params.width / 2;
+                btn_block.setLayoutParams(params);
+
+                Random randi = new Random();
+                int range_width = randi.nextInt(get_width);
+                int range_height = randi.nextInt(get_height);
+
+                if ((get_width - range_width) < params.width)
+                    btn_block.setX(get_width - params.width);
+                else
+                    btn_block.setX(range_width);
+
+                if ((get_height - range_height) < params.height)
+                    btn_block.setY(get_height - params.height);
+                else
+                    btn_block.setY(range_height);
+            }
+        });
+
+        if (background_color != 0) {
+            btn_background.setBackgroundColor(background_color);
+        }
+
+        if (block_color != 0) {
+            btn_block.setBackgroundColor(block_color);
+        }
+
+        btn_block.setEnabled(true);
+        btn_block.setVisibility(View.VISIBLE);
+        btn_background.setEnabled(true);
+
+        btn_background.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                clickedBackground(btn_block, btn_background);
+            }
+        });
+
+        final Button btn_restart = findViewById(R.id.btn_reset_ttb);
+        final Button btn_back = findViewById(R.id.btn_back_ttb);
+
+        btn_restart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                playTTB();
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                initTTB();
             }
         });
     }
 
+    private void settingsTTB() {
+        setContentView(R.layout.settings_ttb);
 
-    private void startGame(Button block, Button background)
-    {
-        background.setBackgroundColor(temp_color);
-        block.setEnabled(true);
-        block.setVisibility(View.VISIBLE);
-        background.setEnabled(true);
+        final Button btn_block_green = findViewById(R.id.btn_green);
+        final Button btn_block_blue = findViewById(R.id.btn_blue);
+        final Button btn_block_red = findViewById(R.id.btn_red);
+        final Button btn_block_magenta = findViewById(R.id.btn_magenta);
+        final Button btn_background_white = findViewById(R.id.btn_white_background);
+        final Button btn_background_grey = findViewById(R.id.btn_grey_background);
+        final Button btn_background_black = findViewById(R.id.btn_black_background);
+        final Button btn_background_magenta = findViewById(R.id.btn_magenta_background);
+
+        final Button btn_back = findViewById(R.id.btn_settings_back_ttb);
+        final Button btn_ok = findViewById(R.id.btn_settings_ok_ttb);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                block_color = 0;
+                background_color = 0;
+                initTTB();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                initTTB();
+            }
+        });
+
+        btn_block_green.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                block_color = getResources().getColor(R.color.colorGreen);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
+            }
+        });
+
+
+        btn_block_blue.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                block_color = getResources().getColor(R.color.colorBlue);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
+            }
+        });
+
+
+        btn_block_red.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                block_color = getResources().getColor(R.color.colorRed);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
+            }
+        });
+
+
+        btn_block_magenta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (background_color == getResources().getColor(R.color.colorMagenta)) {
+                    btn_block_magenta.setError("");
+                    return;
+                }
+
+                block_color = getResources().getColor(R.color.colorMagenta);
+                disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
+            }
+        });
+
+        btn_background_black.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                background_color = getResources().getColor(R.color.colorBlack);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
+            }
+        });
+
+        btn_background_grey.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                background_color = getResources().getColor(R.color.colorGrey);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
+            }
+        });
+
+        btn_background_white.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                background_color = getResources().getColor(R.color.colorWhite);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
+            }
+        });
+
+        btn_background_magenta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (block_color == getResources().getColor(R.color.colorMagenta)) {
+                    btn_background_magenta.setError("");
+                    return;
+                }
+
+                background_color = getResources().getColor(R.color.colorMagenta);
+                disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
+            }
+        });
     }
 
-    private void disableButtons(Button button1, Button button2, Button button3,
-                                Button button4, TextView title)
-    {
-        button1.setEnabled(false);
-        button1.setVisibility(View.INVISIBLE);
-        button2.setEnabled(false);
-        button2.setVisibility(View.INVISIBLE);
-        button3.setEnabled(false);
-        button3.setVisibility(View.INVISIBLE);
-        button4.setEnabled(false);
-        button4.setVisibility(View.INVISIBLE);
-        title.setVisibility(View.INVISIBLE);
+    public void clickedBackground(Button block, Button background) {
+        findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
+        block.setVisibility(View.INVISIBLE);
+        background.setVisibility((View.INVISIBLE));
     }
 
-
+    private void disableButtons(Button button_1, Button button_2, Button button_3,
+                                Button button_4) {
+        button_1.setEnabled(false);
+        button_1.setVisibility(View.INVISIBLE);
+        button_2.setEnabled(false);
+        button_2.setVisibility(View.INVISIBLE);
+        button_3.setEnabled(false);
+        button_3.setVisibility(View.INVISIBLE);
+        button_4.setEnabled(false);
+        button_4.setVisibility(View.INVISIBLE);
+    }
 }

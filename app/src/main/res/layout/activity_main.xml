@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -14,10 +13,10 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/textv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_title"
+            android:text="@string/str_app_title"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
@@ -25,44 +24,44 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/bt_tictactoe"
+            android:id="@+id/btn_ttt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:text="TicTacToe"
+            android:text="@string/str_title_ttt"
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
         <Button
-            android:id="@+id/bt_hangman"
+            android:id="@+id/btn_hm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:text="Hangman"
+            android:text="@string/str_title_hm"
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="15dp"
             tools:layout_editor_absoluteY="72dp" />
 
         <Button
-            android:id="@+id/bt_touchtheblock"
+            android:id="@+id/btn_ttb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:text="TouchTheBlock"
+            android:text="@string/str_title_ttb"
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
         <TextView
             android:textColor="@color/colorPrimary"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
-            android:id="@+id/tv_score"
+            android:id="@+id/textv_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -77,12 +76,12 @@
         android:visibility="visible">
 
         <Button
-            android:id="@+id/bt_switchLanguage"
+            android:id="@+id/btn_switch_lang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
             android:background="@color/colorAccent"
-            android:text="@string/bt_switchLang"
+            android:text="@string/str_switch_lang"
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
