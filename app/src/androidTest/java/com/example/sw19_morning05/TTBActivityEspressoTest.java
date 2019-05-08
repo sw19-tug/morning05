@@ -81,7 +81,6 @@ public class TTBActivityEspressoTest {
         onView(withId(R.id.btn_back_ttb)).perform(click());
     }
 
-
     @Test
     public void testResetButton() {
         onView(withId(R.id.btn_play)).perform(click());
@@ -106,7 +105,6 @@ public class TTBActivityEspressoTest {
         clickBackground();
         onView(withId(R.id.btn_back_ttb)).perform(click());
     }
-
 
     @Test
     public void testBlockMoves() {
@@ -314,5 +312,9 @@ public class TTBActivityEspressoTest {
         onView(withId(R.id.btn_settings_back_ttb)).perform(click());
         onView(withId(R.id.btn_play)).check(matches(isDisplayed()));
     }
-
+/*
+    @Test
+    public void testTimerTextView(){
+        onView(withId(R.id.timer)).check(matches(isDisplayed()));
+    }*/
 }

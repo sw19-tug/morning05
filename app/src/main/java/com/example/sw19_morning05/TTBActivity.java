@@ -3,13 +3,16 @@ package com.example.sw19_morning05;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -21,6 +24,7 @@ public class TTBActivity extends Activity {
 
     int block_color = 0;
     int background_color = 0;
+    CountDownTimer cdt_play_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class TTBActivity extends Activity {
 
     private void initTTB() {
         setContentView(R.layout.activity_ttb);
+        final MediaPlayer alarm = MediaPlayer.create(getApplicationContext(), R.raw.alarm);
 
         Button btn_play = (Button) findViewById(R.id.btn_play);
         Button btn_settings = (Button) findViewById(R.id.btn_settings_ttb);
@@ -39,6 +44,7 @@ public class TTBActivity extends Activity {
 
         btn_play.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                alarm.start();
                 playTTB();
             }
         });
@@ -62,12 +68,20 @@ public class TTBActivity extends Activity {
 
         final Button btn_block = (Button) findViewById(R.id.moving_block);
         final Button btn_background = (Button) findViewById(R.id.btn_background);
+        final TextView tv_timer = (TextView) findViewById(R.id.timer);
+        final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
+        startCountDown(tv_timer, mp_alarm, btn_block, btn_background);
 
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int get_width = display.getWidth();
         final int get_height = display.getHeight();
         //Changing start position
-        btn_block.setY((float) ((get_height / 2) * Math.random()));
+        double start_height = get_height / 2 * Math.random();
+        if (start_height < tv_timer.getHeight()) {
+            start_height += tv_timer.getHeight();
+        }
+
+        btn_block.setY((float) (start_height));
 
         btn_block.setEnabled(false);
         btn_block.setVisibility(View.INVISIBLE);
@@ -86,6 +100,10 @@ public class TTBActivity extends Activity {
                 Random randi = new Random();
                 int range_width = randi.nextInt(get_width);
                 int range_height = randi.nextInt(get_height);
+
+                if (range_height < tv_timer.getHeight()){
+                    range_height += tv_timer.getHeight();
+                }
 
                 if ((get_width - range_width) < params.width)
                     btn_block.setX(get_width - params.width);
@@ -113,7 +131,7 @@ public class TTBActivity extends Activity {
 
         btn_background.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                clickedBackground(btn_block, btn_background);
+                clickedBackground(btn_block, btn_background, tv_timer);
             }
         });
 
@@ -232,10 +250,11 @@ public class TTBActivity extends Activity {
         });
     }
 
-    public void clickedBackground(Button block, Button background) {
+    public void clickedBackground(Button block, Button background, TextView timer) {
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
         block.setVisibility(View.INVISIBLE);
         background.setVisibility((View.INVISIBLE));
+        cdt_play_time.cancel();
     }
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,
@@ -248,5 +267,24 @@ public class TTBActivity extends Activity {
         button_3.setVisibility(View.INVISIBLE);
         button_4.setEnabled(false);
         button_4.setVisibility(View.INVISIBLE);
+    }
+
+    public void startCountDown(final TextView timer, final MediaPlayer alarm, final Button block,
+                               final Button background) {
+
+        cdt_play_time = new CountDownTimer(6000, 1){
+            public void onTick(long millisUntilFinished){
+
+                timer.setText("TIME: " + millisUntilFinished / 1000 + ":" + millisUntilFinished % 1000);
+
+                if (millisUntilFinished == 1000){
+                    alarm.start();
+                }
+            }
+            public void onFinish(){
+                alarm.stop();
+                clickedBackground(block, background, timer);
+            }
+        }.start();
     }
 }
