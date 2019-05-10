@@ -168,4 +168,46 @@ public class MainActivityEspressoTest {
 
         onView(withId(R.id.textv_game_counter_ttb)).check(matches((withText(game_counter_after_text))));
     }
+
+    @Test
+    public void testIncrementStatisicsTTT() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_after = Statistics.getGameCounterTTT(context);
+        Statistics.incrementGameCounterTTT(context);
+        Assert.assertEquals((game_counter_after + 1), Statistics.getGameCounterTTT(context));
+    }
+
+    @Test
+    public void testShowCorrectStatisticsTTT() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+
+        TextView game_counter_after = main_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttt);
+        String game_counter_after_text = game_counter_after.getText().toString();
+        Statistics.incrementGameCounterTTT(context);
+
+        onView(withId(R.id.textv_game_counter_ttT)).check(matches((withText(game_counter_after_text))));
+    }
+
+    @Test
+    public void testIncrementStatisicsHM() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_after = Statistics.getGameCounterHM(context);
+        Statistics.incrementGameCounterHM(context);
+        Assert.assertEquals((game_counter_after + 1), Statistics.getGameCounterHM(context));
+    }
+
+    @Test
+    public void testShowCorrectStatisticsHM() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+
+        TextView game_counter_after = main_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_hm);
+        String game_counter_after_text = game_counter_after.getText().toString();
+        Statistics.incrementGameCounterHM(context);
+
+        onView(withId(R.id.textv_game_counter_hm)).check(matches((withText(game_counter_after_text))));
+    }
 }
