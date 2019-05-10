@@ -147,4 +147,28 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.textv_gamestatistic)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_gamestatistic)).perform(click());
     }
-}
+
+    @Test
+    public void testIncrementStatisicsTTB() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_before = 1;
+        int game_counter_after = Statistics.getGameCounterTTB(context);
+        Statistics.incrementScore(context, game_counter_before);
+        Assert.assertEquals((game_counter_after + game_counter_before), Statistics.getGameCounterTTB(context));
+    }
+
+    @Test
+    public void testShowCorrectStatisticsTTB() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_before = 3;
+
+        TextView game_counter_after = main_activity_test_rule.getActivity().findViewById(R.id.textv_gamestatistic_ttb);
+        String game_counter_after_text = Statistics.getText().toString();
+        Statistics.incrementScore(context, game_counter_before);
+
+        Intent intent = main_activity_test_rule.getActivity().getIntent();
+        main_activity_test_rule.getActivity().finish();
+        main_activity_test_rule.getActivity().startActivity(intent);
+
+        onView(withId(R.id.textv_gamestatistic_ttb)).check(matches(not(withText(score_text))));
+    }
