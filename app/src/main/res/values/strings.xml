@@ -27,4 +27,6 @@
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>
+
+    <string name="textv_gamestatistic">Game Statistics</string>
 </resources>

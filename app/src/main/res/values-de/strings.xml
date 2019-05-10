@@ -25,8 +25,8 @@
     <string name="str_btn_color_ttb">Knopf Farbe</string>
     <string name="str_screen_color_ttb">Hintergrund Farbe</string>
 
-
-
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>
+
+    <string name="textv_gamestatistic">Spiel Statistik</string>
 </resources>

@@ -139,4 +139,12 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.ly_title)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_hm)).perform(click());
     }
+
+    @Test
+    public void testNavigateGameStatisics() {
+        onView(withId(R.id.btn_gamestatistic)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+        onView(withId(R.id.textv_gamestatistic)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+    }
 }
