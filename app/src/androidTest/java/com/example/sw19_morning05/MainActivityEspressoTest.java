@@ -167,6 +167,8 @@ public class MainActivityEspressoTest {
         Statistics.incrementGameCounterTTB(context);
 
         onView(withId(R.id.textv_game_counter_ttb)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+
     }
 
     @Test
@@ -187,7 +189,8 @@ public class MainActivityEspressoTest {
         String game_counter_after_text = game_counter_after.getText().toString();
         Statistics.incrementGameCounterTTT(context);
 
-        onView(withId(R.id.textv_game_counter_ttT)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.textv_game_counter_ttt)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
     }
 
     @Test
@@ -209,5 +212,7 @@ public class MainActivityEspressoTest {
         Statistics.incrementGameCounterHM(context);
 
         onView(withId(R.id.textv_game_counter_hm)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+
     }
 }
