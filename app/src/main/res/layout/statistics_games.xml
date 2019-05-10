@@ -42,6 +42,33 @@
         android:padding="10dp"
         android:visibility="visible">
 
+        <TextView
+            android:id="@+id/textv_game_counter_ttb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textv_game_counter_ttt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textv_game_counter_hm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
         <Button
             android:id="@+id/btn_back_gamestatistic"
             android:layout_width="match_parent"
@@ -52,6 +79,7 @@
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
+
     </LinearLayout>
 
 

@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void navigateHangman() {
         Intent intent = new Intent(this, HangmanActivity.class);
         startActivity(intent);
+
     }
 
     private void navigateTicTacToe() {
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateTouchTheBlock() {
         Intent intent = new Intent(this, TTBActivity.class);
+        Statistics.incrementGameCounterTTB(this.getApplicationContext());
         startActivity(intent);
     }
 
@@ -99,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateStatistics() {
         setContentView(R.layout.statistics_games);
+
+        TextView textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttb));
+        Context context = this.getApplicationContext();
+        textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttb) + " " + Statistics.getGameCounterTTB(context));
+
         Button btn_back_gamestatistic = (Button) findViewById(R.id.btn_back_gamestatistic);
         btn_back_gamestatistic.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
