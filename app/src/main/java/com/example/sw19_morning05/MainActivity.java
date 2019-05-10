@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 navigateHangman();
             }
         });
+
+        Button btn_gamestatistic = (Button) findViewById(R.id.btn_gamestatistic);
+        btn_gamestatistic.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateStatistics();
+            }
+        });
     }
 
     public void switchLanguage() {
@@ -83,5 +90,20 @@ public class MainActivity extends AppCompatActivity {
     private void navigateTouchTheBlock() {
         Intent intent = new Intent(this, TTBActivity.class);
         startActivity(intent);
+    }
+
+    private void navigateWelcomeScreen() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateStatistics() {
+        setContentView(R.layout.statistics_games);
+        Button btn_back_gamestatistic = (Button) findViewById(R.id.btn_back_gamestatistic);
+        btn_back_gamestatistic.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateWelcomeScreen();
+            }
+        });
     }
 }
