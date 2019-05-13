@@ -218,7 +218,7 @@ public class MainActivityEspressoTest {
     public void testNavigateSettings() {
         onView(withId(R.id.btn_settings)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings)).perform(click());
-        onView(withId(R.id.ly_settings_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_settings_title)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_back)).perform(click());
     }
 }

@@ -56,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 navigateStatistics();
             }
         });
+
+        Button btn_settings = (Button) findViewById(R.id.btn_settings);
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateSettings();
+            }
+        });
     }
 
     public void switchLanguage() {
@@ -97,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateWelcomeScreen() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
