@@ -83,7 +83,7 @@ public class SettingsActivityEspressoTest {
         boolean is_music = Settings.getBackgroundMusic(context);
         boolean is_physical = Settings.getPhysicalFeedback(context);
 
-        //onView(withId(R.id.switch_nightmode)).perform(click());
+        onView(withId(R.id.switch_nightmode)).perform(click());
         onView(withId(R.id.switch_music)).perform(click());
         onView(withId(R.id.switch_physical)).perform(click());
 
