@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 navigateHangman();
             }
         });
+
+        Button btn_gamestatistic = (Button) findViewById(R.id.btn_gamestatistic);
+        btn_gamestatistic.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateStatistics();
+            }
+        });
     }
 
     public void switchLanguage() {
@@ -72,16 +79,48 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateHangman() {
         Intent intent = new Intent(this, HangmanActivity.class);
+        Statistics.incrementGameCounterHM(this.getApplicationContext());
         startActivity(intent);
     }
 
     private void navigateTicTacToe() {
         Intent intent = new Intent(this, TicTacToeActivity.class);
+        Statistics.incrementGameCounterTTT(this.getApplicationContext());
         startActivity(intent);
     }
 
     private void navigateTouchTheBlock() {
         Intent intent = new Intent(this, TTBActivity.class);
+        Statistics.incrementGameCounterTTB(this.getApplicationContext());
         startActivity(intent);
+    }
+
+    private void navigateWelcomeScreen() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateStatistics() {
+        setContentView(R.layout.statistics_games);
+
+        TextView textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttb));
+        Context context = this.getApplicationContext();
+        textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttb) + " " + Statistics.getGameCounterTTB(context));
+
+        textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_hm));
+        context = this.getApplicationContext();
+        textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_hm) + " " + Statistics.getGameCounterHM(context));
+
+        textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttt));
+        context = this.getApplicationContext();
+        textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttt) + " " + Statistics.getGameCounterTTT(context));
+
+        Button btn_back_gamestatistic = (Button) findViewById(R.id.btn_back_gamestatistic);
+
+        btn_back_gamestatistic.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateWelcomeScreen();
+            }
+        });
     }
 }

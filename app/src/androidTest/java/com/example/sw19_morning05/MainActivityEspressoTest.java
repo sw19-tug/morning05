@@ -51,7 +51,7 @@ public class MainActivityEspressoTest {
     }
 
     @Test
-    public void testLanguageTicTacToe(){
+    public void testLanguageTicTacToe() {
         TextView button_text = ttt_activity_test_rule.getActivity().findViewById(R.id.btn_reset_ttt);
         String german_title = button_text.getText().toString();
         onView(withId(R.id.btn_switch_lang)).perform(click());
@@ -62,7 +62,7 @@ public class MainActivityEspressoTest {
     }
 
     @Test
-    public void testPlayerLanguageTicTacToe(){
+    public void testPlayerLanguageTicTacToe() {
         onView(withId(R.id.btn_switch_lang)).perform(click());
         onView(withId(R.id.btn_ttt)).perform(click());
         onView(withId(R.id.textv_current_player)).check(matches(withText("Spieler X Zug!")));
@@ -71,7 +71,7 @@ public class MainActivityEspressoTest {
     }
 
     @Test
-    public void testLanguageHangman(){
+    public void testLanguageHangman() {
         onView(withId(R.id.btn_switch_lang)).perform(click());
         onView(withId(R.id.btn_hm)).perform(click());
         onView(withId(R.id.btn_reset_hm)).check(matches(withText("NEUSTART")));
@@ -123,7 +123,7 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.textv_header)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_ttt)).perform(click());
     }
-    
+
     @Test
     public void testNavigateTouchTheBlock() {
         onView(withId(R.id.btn_ttb)).check(matches(isDisplayed()));
@@ -138,5 +138,79 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.btn_hm)).perform(click());
         onView(withId(R.id.ly_title)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_back_hm)).perform(click());
+    }
+
+    @Test
+    public void testNavigateGameStatisics() {
+        onView(withId(R.id.btn_gamestatistic)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+        onView(withId(R.id.textv_gamestatistic)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+    }
+
+    @Test
+    public void testIncrementStatisicsTTB() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_after = Statistics.getGameCounterTTB(context);
+        Statistics.incrementGameCounterTTB(context);
+        Assert.assertEquals((game_counter_after + 1), Statistics.getGameCounterTTB(context));
+    }
+
+    @Test
+    public void testShowCorrectStatisticsTTB() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+
+        TextView game_counter_after = main_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttb);
+        String game_counter_after_text = game_counter_after.getText().toString();
+        Statistics.incrementGameCounterTTB(context);
+
+        onView(withId(R.id.textv_game_counter_ttb)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+    }
+
+    @Test
+    public void testIncrementStatisicsTTT() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_after = Statistics.getGameCounterTTT(context);
+        Statistics.incrementGameCounterTTT(context);
+        Assert.assertEquals((game_counter_after + 1), Statistics.getGameCounterTTT(context));
+    }
+
+    @Test
+    public void testShowCorrectStatisticsTTT() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+
+        TextView game_counter_after = main_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttt);
+        String game_counter_after_text = game_counter_after.getText().toString();
+        Statistics.incrementGameCounterTTT(context);
+
+        onView(withId(R.id.textv_game_counter_ttt)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+    }
+
+    @Test
+    public void testIncrementStatisicsHM() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_after = Statistics.getGameCounterHM(context);
+        Statistics.incrementGameCounterHM(context);
+        Assert.assertEquals((game_counter_after + 1), Statistics.getGameCounterHM(context));
+    }
+
+    @Test
+    public void testShowCorrectStatisticsHM() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+
+        TextView game_counter_after = main_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_hm);
+        String game_counter_after_text = game_counter_after.getText().toString();
+        Statistics.incrementGameCounterHM(context);
+
+        onView(withId(R.id.textv_game_counter_hm)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
     }
 }

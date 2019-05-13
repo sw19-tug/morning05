@@ -2,7 +2,12 @@
     <string name="str_app_name">SW19-morning05</string>
     <string name="str_app_title">Mini Games</string>
     <string name="str_switch_lang">Switch to German</string>
+
     <string name="str_textv_score">Score:</string>
+    <string name="str_textv_statistic_ttb">TTB:</string>
+    <string name="str_textv_statistic_ttt">TTT:</string>
+    <string name="str_textv_statistic_hm">HM:</string>
+
     <string name="str_reset">RESET</string>
     <string name="str_back">BACK</string>
     <string name="str_settings">SETTINGS</string>
@@ -27,4 +32,6 @@
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>
+
+    <string name="textv_gamestatistic">Game Statistics</string>
 </resources>
