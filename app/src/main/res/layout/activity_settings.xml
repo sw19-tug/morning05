@@ -26,6 +26,71 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_settings_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/switch_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="0dp"
+            android:text="@string/str_sett_backg_music"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/switch_nightmode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="0dp"
+            android:text="@string/str_sett_nightmode"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/switch_physical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="0dp"
+            android:text="@string/str_sett_physical_feedb"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/str_sett_username" />
+
+            <Button
+                android:id="@+id/btn_username_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/str_sett_username_save"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="bottom"
@@ -43,6 +108,7 @@
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
+
     </LinearLayout>
 
 </LinearLayout>
