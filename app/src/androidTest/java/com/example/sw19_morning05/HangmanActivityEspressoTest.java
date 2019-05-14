@@ -261,14 +261,14 @@ public class HangmanActivityEspressoTest
     @Test
     public void testCheckIfNoUnderlinesAnymore()
     {
-        //onView(withId(R.id.button_q)).perform(click());
-        //....
 
-        for (int i = 0; i < 26; i++) {
-            // String resourceID = "button_" + alphabet[i];
-            String buttonID = "button_" + alphabet[i];
+        String right_word = activityTestRule.getActivity().word_to_guess;
+
+        for (int i = 0; i < right_word.length(); i++) {
+            String id = "button_" + right_word.charAt(i);
+            id = id.toLowerCase();
             int resourceID = context.getResources().getIdentifier(
-                    buttonID, "id", context.getPackageName());
+                    id, "id", context.getPackageName());
 
             onView(withId(resourceID)).perform(click());
         }
@@ -279,11 +279,13 @@ public class HangmanActivityEspressoTest
     @Test
     public void testWinMessage()
     {
-        for (int i = 0; i < 26; i++) {
-            // String resourceID = "button_" + alphabet[i];
-            String buttonID = "button_" + alphabet[i];
+        String right_word = activityTestRule.getActivity().word_to_guess;
+
+        for (int i = 0; i < right_word.length(); i++) {
+            String id = "button_" + right_word.charAt(i);
+            id = id.toLowerCase();
             int resourceID = context.getResources().getIdentifier(
-                    buttonID, "id", context.getPackageName());
+                    id, "id", context.getPackageName());
 
             onView(withId(resourceID)).perform(click());
         }
@@ -291,12 +293,12 @@ public class HangmanActivityEspressoTest
         onView(withId(R.id.button_reset)).check(matches(isDisplayed()));
         onView(withId(R.id.button_reset)).perform(click());
 
-        for (int i = 0; i < 26; i++) {
-            // String resourceID = "button_" + alphabet[i];
-            String buttonID = "button_" + alphabet[i];
+        String right_word2 = activityTestRule.getActivity().word_to_guess;
+        for (int i = 0; i < right_word2.length(); i++) {
+            String id = "button_" + right_word2.charAt(i);
+            id = id.toLowerCase();
             int resourceID = context.getResources().getIdentifier(
-                    buttonID, "id", context.getPackageName());
-
+                    id, "id", context.getPackageName());
             onView(withId(resourceID)).perform(click());
         }
 
@@ -310,8 +312,11 @@ public class HangmanActivityEspressoTest
         int score = Score.getScore(context);
         int points = 1;
 
-        for (int i = 0; i < 26; i++) {
-            String id = "button_" + alphabet[i];
+        String right_word = activityTestRule.getActivity().word_to_guess;
+
+        for (int i = 0; i < right_word.length(); i++) {
+            String id = "button_" + right_word.charAt(i);
+            id = id.toLowerCase();
             int resourceID = context.getResources().getIdentifier( id, "id", context.getPackageName());
             onView(withId(resourceID)).perform(click());
         }
@@ -321,14 +326,22 @@ public class HangmanActivityEspressoTest
 
     @Test
     public void testDecrementPoints(){ // 8 wrong guesses
-        int score = Score.getScore(context);
+        int want = Score.getScore(context) - 2;
 
-        for (int i = 0; i < 8; i++) {
-            String id = "button_" + alphabet[i];
+        String right_word = activityTestRule.getActivity().word_to_guess;
+
+
+        for (int i = 0, j=0; i < 8; i++, j++) {
+            if (right_word.contains(alphabet[j].toUpperCase())){
+                i--;
+                continue;
+            }
+            String id = "button_" + alphabet[j];
             int resourceID = context.getResources().getIdentifier( id, "id", context.getPackageName());
             onView(withId(resourceID)).perform(click());
         }
 
-        Assert.assertEquals((score - 2), Score.getScore(context));
+        int have = Score.getScore(context);
+        Assert.assertEquals(want, have);
     }
 }

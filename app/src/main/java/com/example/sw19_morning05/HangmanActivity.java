@@ -17,6 +17,7 @@ public class HangmanActivity extends AppCompatActivity {
       "HAVANNA", "BELVEDERE", "ABSOLUT", "GREY GOOSE", "WILLIAMS", "SCHNAPS", "ABSINTH" };
   String word_to_guess;
   String place_holder;
+  int wrong_guesses = 0;
 
   @Override // testIfTitleExists
   protected void onCreate(Bundle savedInstanceState) {
@@ -293,80 +294,35 @@ public class HangmanActivity extends AppCompatActivity {
     TextView word = findViewById(R.id.word);
     StringBuilder new_placeholder = new StringBuilder(place_holder);
 
-    int wrong_guesses = 0;
-
+    boolean notFound = true;
     for (int i = 0, j = 0; i < word_to_guess.length(); i++, j += 2) {
       if (word_to_guess.charAt(i) == c) {
         new_placeholder.setCharAt(j, c);
-      } else {
-        wrong_guesses++;
+        notFound = false;
       }
     }
     place_holder = new_placeholder.toString();
     word.setText(place_holder);
 
+    if (notFound) {
+      wrong_guesses++;
+    }
+
     if (wrong_guesses == 8) {
       Context context = this.getApplicationContext();
       int points = 2;
-      int score = Score.getScore(context);
       Score.decrementScore(context, points);
-      // Reset activity.
-      Intent intent = new Intent(this, HangmanActivity.class);
-      startActivity(intent);
+      this.recreate();
     }
 
     if (!place_holder.contains("_")) {
 
       win();
-
-      /*
-       * AlertDialog.Builder winAlert = new AlertDialog.Builder(this);
-       * winAlert.setTitle("YAY");
-       * winAlert.setMessage("You win!\n\nThe answer was:\n\n" + word_to_guess);
-       * winAlert.setPositiveButton("Play Again", new
-       * DialogInterface.OnClickListener() { public void onClick(DialogInterface
-       * dialog, int id) { HangmanActivity.this.reset(); } });
-       * 
-       * winAlert.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-       * public void onClick(DialogInterface dialog, int id) {
-       * HangmanActivity.this.finish(); } });
-       * 
-       * winAlert.show();
-       */
     }
   }
 
   private void reset() {
-    findViewById(R.id.win_ly).setVisibility(View.INVISIBLE);
-
-    findViewById(R.id.button_q).setEnabled(true);
-    findViewById(R.id.button_w).setEnabled(true);
-    findViewById(R.id.button_e).setEnabled(true);
-    findViewById(R.id.button_r).setEnabled(true);
-    findViewById(R.id.button_t).setEnabled(true);
-    findViewById(R.id.button_z).setEnabled(true);
-    findViewById(R.id.button_u).setEnabled(true);
-    findViewById(R.id.button_i).setEnabled(true);
-    findViewById(R.id.button_o).setEnabled(true);
-    findViewById(R.id.button_p).setEnabled(true);
-    findViewById(R.id.button_a).setEnabled(true);
-    findViewById(R.id.button_s).setEnabled(true);
-    findViewById(R.id.button_d).setEnabled(true);
-    findViewById(R.id.button_f).setEnabled(true);
-    findViewById(R.id.button_g).setEnabled(true);
-    findViewById(R.id.button_h).setEnabled(true);
-    findViewById(R.id.button_j).setEnabled(true);
-    findViewById(R.id.button_k).setEnabled(true);
-    findViewById(R.id.button_l).setEnabled(true);
-    findViewById(R.id.button_y).setEnabled(true);
-    findViewById(R.id.button_x).setEnabled(true);
-    findViewById(R.id.button_c).setEnabled(true);
-    findViewById(R.id.button_v).setEnabled(true);
-    findViewById(R.id.button_b).setEnabled(true);
-    findViewById(R.id.button_n).setEnabled(true);
-    findViewById(R.id.button_m).setEnabled(true);
-
-    setWordView();
+    this.recreate();
   }
 
   private void win() {
