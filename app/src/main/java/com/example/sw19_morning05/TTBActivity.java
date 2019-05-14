@@ -36,7 +36,6 @@ public class TTBActivity extends Activity {
 
     private void initTTB() {
         setContentView(R.layout.activity_ttb);
-        final MediaPlayer alarm = MediaPlayer.create(getApplicationContext(), R.raw.alarm);
 
         Button btn_play = (Button) findViewById(R.id.btn_play);
         Button btn_settings = (Button) findViewById(R.id.btn_settings_ttb);
@@ -44,7 +43,6 @@ public class TTBActivity extends Activity {
 
         btn_play.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                alarm.start();
                 playTTB();
             }
         });
@@ -69,8 +67,23 @@ public class TTBActivity extends Activity {
         final Button btn_block = (Button) findViewById(R.id.moving_block);
         final Button btn_background = (Button) findViewById(R.id.btn_background);
         final TextView tv_timer = (TextView) findViewById(R.id.timer);
+
         final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
-        startCountDown(tv_timer, mp_alarm, btn_block, btn_background);
+        cdt_play_time = new CountDownTimer(3000, 1){
+            public void onTick(long millisUntilFinished){
+
+                mp_alarm.stop();
+                tv_timer.setText("TIME: " + millisUntilFinished / 1000 + ":" + millisUntilFinished % 1000);
+
+                if (millisUntilFinished == 1000){
+                    mp_alarm.start();
+                }
+            }
+            public void onFinish(){
+                mp_alarm.stop();
+                clickedBackground(btn_block, btn_background, tv_timer);
+            }
+        }.start();
 
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int get_width = display.getWidth();
@@ -89,6 +102,9 @@ public class TTBActivity extends Activity {
 
         btn_block.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                cdt_play_time.cancel();
+                cdt_play_time.start();
 
                 ViewGroup.LayoutParams params = btn_block.getLayoutParams();
                 if (Math.random() >= 0.5)
@@ -267,24 +283,5 @@ public class TTBActivity extends Activity {
         button_3.setVisibility(View.INVISIBLE);
         button_4.setEnabled(false);
         button_4.setVisibility(View.INVISIBLE);
-    }
-
-    public void startCountDown(final TextView timer, final MediaPlayer alarm, final Button block,
-                               final Button background) {
-
-        cdt_play_time = new CountDownTimer(6000, 1){
-            public void onTick(long millisUntilFinished){
-
-                timer.setText("TIME: " + millisUntilFinished / 1000 + ":" + millisUntilFinished % 1000);
-
-                if (millisUntilFinished == 1000){
-                    alarm.start();
-                }
-            }
-            public void onFinish(){
-                alarm.stop();
-                clickedBackground(block, background, timer);
-            }
-        }.start();
     }
 }
