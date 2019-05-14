@@ -314,26 +314,14 @@ public class HangmanActivity extends AppCompatActivity {
     TextView word = findViewById(R.id.word);
     StringBuilder new_placeholder = new StringBuilder(place_holder);
 
-    int wrong_guesses = 0;
-
     for (int i = 0, j = 0; i < word_to_guess.length(); i++, j += 2) {
       if (word_to_guess.charAt(i) == c) {
         new_placeholder.setCharAt(j, c);
-      } else {
-        wrong_guesses++;
       }
     }
     place_holder = new_placeholder.toString();
     word.setText(place_holder);
 
-    if (wrong_guesses == 8) {
-      Context context = this.getApplicationContext();
-      int points = 2;
-      Score.decrementScore(context, points);
-      // Reset activity.
-      Intent intent = new Intent(this, HangmanActivity.class);
-      startActivity(intent);
-    }
 
     if (!place_holder.contains("_")) {
 
