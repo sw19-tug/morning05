@@ -34,4 +34,10 @@
     <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>
 
     <string name="textv_gamestatistic">Spiel Statistik</string>
+
+    <string name="str_sett_nightmode">Nachtmodus</string>
+    <string name="str_sett_backg_music">Hintergrundmusik</string>
+    <string name="str_sett_physical_feedb">Vibrationsrückmeldung</string>
+    <string name="str_sett_username">Benutzername</string>
+    <string name="str_sett_username_save">speichern</string>
 </resources>

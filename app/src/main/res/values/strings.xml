@@ -34,4 +34,10 @@
     <string name="str_textv_win_hm">You won! Score +1</string>
 
     <string name="textv_gamestatistic">Game Statistics</string>
+
+    <string name="str_sett_nightmode">Night Mode</string>
+    <string name="str_sett_backg_music">Background Music</string>
+    <string name="str_sett_physical_feedb">Physical Feedback</string>
+    <string name="str_sett_username">Username</string>
+    <string name="str_sett_username_save">save</string>
 </resources>
