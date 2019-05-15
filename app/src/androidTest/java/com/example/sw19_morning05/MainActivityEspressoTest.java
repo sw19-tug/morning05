@@ -42,6 +42,18 @@ public class MainActivityEspressoTest {
     }
 
     @Test
+    public void testHelpButtonShouldShowGameDescription() {
+        onView(withId(R.id.btn_help)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_help)).check(matches(withText(R.string.str_btn_help)));
+
+        onView(withId(R.id.btn_help)).perform(click());
+
+        onView(withId(R.id.dialog_help_title)).check(isDisplayed());
+        
+        onView(withId(R.id.btn_help_ok)).perform(click());
+    }
+
+    @Test
     public void testTranslationButton() {
         TextView title = main_activity_test_rule.getActivity().findViewById(R.id.textv_title);
         String english_title = title.getText().toString();
