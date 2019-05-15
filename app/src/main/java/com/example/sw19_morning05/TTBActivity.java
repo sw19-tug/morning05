@@ -3,13 +3,18 @@ package com.example.sw19_morning05;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -21,6 +26,7 @@ public class TTBActivity extends Activity {
 
     int block_color = 0;
     int background_color = 0;
+    CountDownTimer cdt_play_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +68,44 @@ public class TTBActivity extends Activity {
 
         final Button btn_block = (Button) findViewById(R.id.moving_block);
         final Button btn_background = (Button) findViewById(R.id.btn_background);
+        final TextView tv_timer = (TextView) findViewById(R.id.timer);
+
+        final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
+
+        tv_timer.setText("TIME: " + 3 + ":" + 000);
+        cdt_play_time = new CountDownTimer(3000, 1){
+            public void onTick(long millisUntilFinished){
+                tv_timer.setText("TIME: " + millisUntilFinished / 1000 + ":" + millisUntilFinished % 1000);
+
+                if (millisUntilFinished < 1000){
+                    mp_alarm.start();
+                }
+            }
+            public void onFinish(){
+                if(mp_alarm.isPlaying()) {
+                    mp_alarm.stop();
+                }
+
+                clickedBackground(btn_block, btn_background, tv_timer);
+            }
+        };
 
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int get_width = display.getWidth();
         final int get_height = display.getHeight();
-        //Changing start position
-        btn_block.setY((float) ((get_height / 2) * Math.random()));
+        double start_height = get_height / 2 * Math.random();
+        final Rect boundaries = new Rect();
+        Paint textPaint = tv_timer.getPaint();
+        String text = "Time: ";
+        textPaint.getTextBounds(text, 0, text.length(), boundaries);
+
+        final int textview_height = boundaries.height() * 2;
+
+        if (start_height < textview_height) {
+            start_height += textview_height;
+        }
+
+        btn_block.setY((float) (start_height));
 
         btn_block.setEnabled(false);
         btn_block.setVisibility(View.INVISIBLE);
@@ -76,9 +114,18 @@ public class TTBActivity extends Activity {
         btn_block.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                cdt_play_time.cancel();
+                if(mp_alarm.isPlaying()) {
+                    mp_alarm.pause();
+                    mp_alarm.seekTo(0);
+                }
+
+                cdt_play_time.start();
+
                 ViewGroup.LayoutParams params = btn_block.getLayoutParams();
-                if (Math.random() >= 0.5)
+                if (Math.random() >= 0.5) {
                     params.height = params.height / 2;
+                }
                 else
                     params.width = params.width / 2;
                 btn_block.setLayoutParams(params);
@@ -92,8 +139,12 @@ public class TTBActivity extends Activity {
                 else
                     btn_block.setX(range_width);
 
-                if ((get_height - range_height) < params.height)
+                if (range_height < textview_height)
+                    range_height += textview_height;
+
+                if ((get_height - range_height) < params.height){
                     btn_block.setY(get_height - params.height);
+                }
                 else
                     btn_block.setY(range_height);
             }
@@ -113,7 +164,8 @@ public class TTBActivity extends Activity {
 
         btn_background.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                clickedBackground(btn_block, btn_background);
+                mp_alarm.stop();
+                clickedBackground(btn_block, btn_background, tv_timer);
             }
         });
 
@@ -232,10 +284,11 @@ public class TTBActivity extends Activity {
         });
     }
 
-    public void clickedBackground(Button block, Button background) {
+    public void clickedBackground(Button block, Button background, TextView timer) {
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
         block.setVisibility(View.INVISIBLE);
         background.setVisibility((View.INVISIBLE));
+        cdt_play_time.cancel();
     }
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,
