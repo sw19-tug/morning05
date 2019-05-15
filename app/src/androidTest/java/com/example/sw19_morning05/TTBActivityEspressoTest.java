@@ -2,6 +2,7 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -138,17 +139,19 @@ public class TTBActivityEspressoTest {
         onView(withId(R.id.btn_play)).perform(click());
 
         Button button = activity_test_rule.getActivity().findViewById(R.id.moving_block);
+        CountDownTimer countDownTimer = this.activity_test_rule.getActivity().cdt_play_time;
 
         float button_height = button.getHeight();
         float button_width = button.getWidth();
 
         onView(withId(R.id.moving_block)).perform(click());
+        countDownTimer.cancel();
 
         float button_height_new = button.getHeight();
         float button_width_new = button.getWidth();
 
         if (button_height == button_height_new) {
-            assertEquals(button_width, button_width_new * 2 + 1, 0f);
+            assertEquals(button_width, button_width_new * 2, 0f);
         } else {
             assertEquals(button_height, button_height_new * 2 + 1, 0f);
         }
@@ -312,9 +315,14 @@ public class TTBActivityEspressoTest {
         onView(withId(R.id.btn_settings_back_ttb)).perform(click());
         onView(withId(R.id.btn_play)).check(matches(isDisplayed()));
     }
-/*
+
     @Test
-    public void testTimerTextView(){
+    public void testTimerTextView() {
+        onView(withId(R.id.btn_play)).perform(click());
+
+        CountDownTimer cdt = this.activity_test_rule.getActivity().cdt_play_time;
+        cdt.cancel();
+
         onView(withId(R.id.timer)).check(matches(isDisplayed()));
-    }*/
+    }
 }

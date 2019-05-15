@@ -3,6 +3,8 @@ package com.example.sw19_morning05;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -69,6 +71,8 @@ public class TTBActivity extends Activity {
         final TextView tv_timer = (TextView) findViewById(R.id.timer);
 
         final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
+
+        tv_timer.setText("TIME: " + 3 + ":" + 000);
         cdt_play_time = new CountDownTimer(3000, 1){
             public void onTick(long millisUntilFinished){
 
@@ -82,15 +86,22 @@ public class TTBActivity extends Activity {
                 mp_alarm.stop();
                 clickedBackground(btn_block, btn_background, tv_timer);
             }
-        }.start();
+        };
 
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int get_width = display.getWidth();
         final int get_height = display.getHeight();
         //Changing start position
         double start_height = get_height / 2 * Math.random();
-        if (start_height < (tv_timer.getY() + (2 *tv_timer.getHeight()))) {
-            start_height += tv_timer.getHeight();
+        final Rect boundaries = new Rect();
+        Paint textPaint = tv_timer.getPaint();
+        String text = "Time: ";
+        textPaint.getTextBounds(text, 0, text.length(), boundaries);
+        int height = boundaries.height();
+        height *= 2;
+
+        if (start_height < height) {
+            start_height += height;
         }
 
         btn_block.setY((float) (start_height));
@@ -108,8 +119,9 @@ public class TTBActivity extends Activity {
                 cdt_play_time.start();
 
                 ViewGroup.LayoutParams params = btn_block.getLayoutParams();
-                if (Math.random() >= 0.5)
+                if (Math.random() >= 0.5) {
                     params.height = params.height / 2;
+                }
                 else
                     params.width = params.width / 2;
                 btn_block.setLayoutParams(params);
@@ -118,17 +130,14 @@ public class TTBActivity extends Activity {
                 int range_width = randi.nextInt(get_width);
                 int range_height = randi.nextInt(get_height);
 
-                if (range_height < tv_timer.getHeight()){
-                    range_height += tv_timer.getHeight();
-                }
-
                 if ((get_width - range_width) < params.width)
                     btn_block.setX(get_width - params.width);
                 else
                     btn_block.setX(range_width);
 
-                if ((get_height - range_height) < params.height)
+                if ((get_height - range_height) < params.height){
                     btn_block.setY(get_height - params.height);
+                }
                 else
                     btn_block.setY(range_height);
             }
