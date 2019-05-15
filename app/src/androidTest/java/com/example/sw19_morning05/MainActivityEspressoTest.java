@@ -221,4 +221,12 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.textv_settings_title)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_settings_back)).perform(click());
     }
+
+    @Test
+    public void testcheckUserGreetingDisplayed() {
+        Context context = main_activity_test_rule.getActivity().getApplicationContext();
+        onView(withId(R.id.textv_greeting_user)).check(matches(isDisplayed()));
+        String username = Settings.getUsername(context);
+        onView(withId(R.id.textv_greeting_user)).check(not(matches(withText(R.string.str_user_greeting + " " + username))));
+    }
 }
