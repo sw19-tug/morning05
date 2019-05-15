@@ -10,13 +10,12 @@ import android.widget.TextView;
 
 public class HangmanActivity extends AppCompatActivity {
 
-
-    public static String word_list[] = {"GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY",
-            "JAEGERMEISTER", "HAVANNA", "BELVEDERE", "ABSOLUT", "GREYGOOSE", "WILLIAMS", "SCHNAPS",
-            "ABSINTH"};
+    public static String word_list[] = { "GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY",
+            "JAEGERMEISTER", "HAVANNA", "BELVEDERE", "ABSOLUT", "GREYGOOSE", "WILLIAMS", "SCHNAPS", "ABSINTH" };
 
     String word_to_guess;
     String word_place_holder;
+    int wrong_guesses = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -271,7 +270,6 @@ public class HangmanActivity extends AppCompatActivity {
 
         int temp = word_to_guess.length() + word_to_guess.length() - 1;
 
-
         for (int count = 0; count < temp; count++) {
             if (count % 2 == 0) {
                 word_place_holder += "_";
@@ -289,14 +287,27 @@ public class HangmanActivity extends AppCompatActivity {
     void checkInput(char c) {
         TextView textv_word_view = findViewById(R.id.textv_word_to_guess);
         StringBuilder new_placeholder = new StringBuilder(word_place_holder);
+        boolean notFound = true;
 
         for (int pos_w = 0, pos_ph = 0; pos_w < word_to_guess.length(); pos_w++, pos_ph += 2) {
             if (word_to_guess.charAt(pos_w) == c) {
                 new_placeholder.setCharAt(pos_ph, c);
+                notFound = false;
             }
         }
         word_place_holder = new_placeholder.toString();
         textv_word_view.setText(word_place_holder);
+
+        if (notFound) {
+            wrong_guesses++;
+        }
+
+        if (wrong_guesses == 8) {
+            Context context = this.getApplicationContext();
+            int points = 2;
+            Score.decrementScore(context, points);
+            this.recreate();
+        }
 
         if (!word_place_holder.contains("_")) {
             win();
@@ -304,36 +315,7 @@ public class HangmanActivity extends AppCompatActivity {
     }
 
     private void reset() {
-        findViewById(R.id.win_ly).setVisibility(View.INVISIBLE);
-
-        findViewById(R.id.btn_q).setEnabled(true);
-        findViewById(R.id.btn_w).setEnabled(true);
-        findViewById(R.id.btn_e).setEnabled(true);
-        findViewById(R.id.btn_r).setEnabled(true);
-        findViewById(R.id.btn_t).setEnabled(true);
-        findViewById(R.id.btn_z).setEnabled(true);
-        findViewById(R.id.btn_u).setEnabled(true);
-        findViewById(R.id.btn_i).setEnabled(true);
-        findViewById(R.id.btn_o).setEnabled(true);
-        findViewById(R.id.btn_p).setEnabled(true);
-        findViewById(R.id.btn_a).setEnabled(true);
-        findViewById(R.id.btn_s).setEnabled(true);
-        findViewById(R.id.btn_d).setEnabled(true);
-        findViewById(R.id.btn_f).setEnabled(true);
-        findViewById(R.id.btn_g).setEnabled(true);
-        findViewById(R.id.btn_h).setEnabled(true);
-        findViewById(R.id.btn_j).setEnabled(true);
-        findViewById(R.id.btn_k).setEnabled(true);
-        findViewById(R.id.btn_l).setEnabled(true);
-        findViewById(R.id.btn_y).setEnabled(true);
-        findViewById(R.id.btn_x).setEnabled(true);
-        findViewById(R.id.btn_c).setEnabled(true);
-        findViewById(R.id.btn_v).setEnabled(true);
-        findViewById(R.id.btn_b).setEnabled(true);
-        findViewById(R.id.btn_n).setEnabled(true);
-        findViewById(R.id.btn_m).setEnabled(true);
-
-        setWordView();
+        this.recreate();
     }
 
     private void win() {
