@@ -97,11 +97,11 @@ public class TTBActivity extends Activity {
         Paint textPaint = tv_timer.getPaint();
         String text = "Time: ";
         textPaint.getTextBounds(text, 0, text.length(), boundaries);
-        int height = boundaries.height();
-        height *= 2;
 
-        if (start_height < height) {
-            start_height += height;
+        final int textview_height = boundaries.height() * 2;
+
+        if (start_height < textview_height) {
+            start_height += textview_height;
         }
 
         btn_block.setY((float) (start_height));
@@ -134,6 +134,9 @@ public class TTBActivity extends Activity {
                     btn_block.setX(get_width - params.width);
                 else
                     btn_block.setX(range_width);
+
+                if (range_height < textview_height)
+                    range_height += textview_height;
 
                 if ((get_height - range_height) < params.height){
                     btn_block.setY(get_height - params.height);
