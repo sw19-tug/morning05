@@ -14,7 +14,9 @@ import org.junit.Rule;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.pressBack;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -40,6 +42,18 @@ public class MainActivityEspressoTest {
     public void testTitleText() {
         onView(withId(R.id.textv_title)).check(matches(isDisplayed()));
         onView(withId(R.id.textv_title)).check(matches(withText(R.string.str_app_title)));
+    }
+
+    @Test
+    public void testHelpButtonShouldShowGameDescription() {
+        onView(withId(R.id.btn_help)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_help)).check(matches(withText(R.string.str_help)));
+
+        onView(withId(R.id.btn_help)).perform(click());
+
+        onView(withId(R.id.textv_help_hm)).check(matches(isDisplayed()));
+
+        onView(withText(R.string.str_help)).perform(pressBack());
     }
 
     @Test

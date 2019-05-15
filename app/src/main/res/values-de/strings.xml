@@ -3,6 +3,17 @@
     <string name="str_app_title">Spielesammlung</string>
     <string name="str_user_greeting">Willkommen zurück</string>
     <string name="str_switch_lang">Wechsle zu Englisch</string>
+    <string name="str_help">Hilfe</string>
+    <string name="str_ok">Ok</string>
+
+    <string name="str_description_hm">Ziel des Spieles ist es, den gesuchten Begriff zu erraten, wobei die gegebene Tastatur zu benutzen ist. Nach 8 falsch geratenen Buchstaben hat der Spieler verloren.
+        Es gibt auch die Möglichkeit sich einen Hinweis anzeigen zu lassen. Pro richtig geratenen Wort bekommt der Spieler einen Punkt.</string>
+    <string name="str_description_ttt">Es wird abwechselnd ein X oder O in eines der freien Felder gesetzt. Der Spieler kann entscheiden, ob er gegen einen anderen Spieler spielt oder gegen den Autoplayer.
+        Der Spieler, der als Erster drei Zeichen in eine Zeile, Spalte oder Diagonale setzen kann, gewinnt. Der Spieler kann in den Einstelungen die Farben der X und O ändern. Pro gewonnenem Spiel bekommt
+        der Spieler einen Punkt und ansonsten verliert er 2 Punkte.</string>
+    <string name="str_description_ttb">Man hat 3 Sekunden Zeit um den Block zu berühren. Nach 1 Sekund ertönt ein Ton um den Spieler zu signalisieren, dass die Zeit fast vorbei ist.
+        Der Block verkleinert sich pro Berührung und das Spiel endet sobald der Block nicht mehr getroffen wird oder die Zeit verstrichen ist. Der Spieler kann in den Einstellungen die Farben des
+        Blockes und des Hintergrundes ändern. Pro Berührung des Blockes erhält der Spieler einen Punkt.</string>
 
     <string name="str_textv_score">Punkte:</string>
     <string name="str_textv_statistic_ttb">TTB:</string>

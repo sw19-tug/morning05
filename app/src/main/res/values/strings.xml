@@ -3,6 +3,18 @@
     <string name="str_app_title">Mini Games</string>
     <string name="str_user_greeting">Welcome back</string>
     <string name="str_switch_lang">Switch to German</string>
+    <string name="str_help">Help</string>
+    <string name="str_ok">Ok</string>
+
+    <string name="str_description_hm">The aim of the game is to guess the wanted term while using the given keyboard. The game is over after 8 wrong guesses.
+        There is the possibility to get a hint. For every correct guessed word the user gets a point.</string>
+    <string name="str_description_ttt">The players are taking terms at placing the X and O in the free fields. The player can decide if he wants to play against
+        another player or against the autoplayer. The player who has first placed 3 signs in a row or colum or diagonal wins the game. The player has the choice
+        to change the colour of the X and O in the settings. For every game that he has won, the user gets a point. Otherwise he loses 2.</string>
+    <string name="str_description_ttb">The player has to touch the block in 3 seconds. After one second a warning rings out so that the player knows that the time
+        is nearly over. The block is shrinking after every touch and the game ends if the player cannot touch the block or the time is over. In the settings the
+        player can choose between various colors for the block and background.
+        For every touch the gamer gains a point.</string>
 
     <string name="str_textv_score">Score:</string>
     <string name="str_textv_statistic_ttb">TTB:</string>
