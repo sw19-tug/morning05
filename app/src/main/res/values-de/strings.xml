@@ -1,6 +1,7 @@
 <resources>
     <string name="str_app_name">SW19-morning05</string>
     <string name="str_app_title">Spielesammlung</string>
+    <string name="str_user_greeting">Willkommen zurück</string>
     <string name="str_switch_lang">Wechsle zu Englisch</string>
 
     <string name="str_textv_score">Punkte:</string>

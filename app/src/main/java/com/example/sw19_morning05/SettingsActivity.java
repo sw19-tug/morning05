@@ -25,6 +25,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        EditText input_username = (EditText) findViewById((R.id.input_username));
+        input_username.setText(Settings.getUsername(context));
 
         Button btnTicTacToe = (Button) findViewById(R.id.btn_settings_back);
         btnTicTacToe.setOnClickListener(new View.OnClickListener() {
