@@ -17,9 +17,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Context context = this.getApplicationContext();
+
+        TextView textv_greeting_user = (TextView) findViewById((R.id.textv_greeting_user));
+        textv_greeting_user.setText(getResources().getString(R.string.str_user_greeting) + " " +
+                Settings.getUsername(context));
 
         TextView textv_score = (TextView) findViewById((R.id.textv_score));
-        Context context = this.getApplicationContext();
         textv_score.setText(getResources().getString(R.string.str_textv_score) + " " + Score.getScore(context));
 
         Button btn_switch_lang = (Button) findViewById(R.id.btn_switch_lang);

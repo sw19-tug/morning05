@@ -227,6 +227,6 @@ public class MainActivityEspressoTest {
         Context context = main_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.textv_greeting_user)).check(matches(isDisplayed()));
         String username = Settings.getUsername(context);
-        onView(withId(R.id.textv_greeting_user)).check(not(matches(withText(R.string.str_user_greeting + " " + username))));
+        onView(withId(R.id.textv_greeting_user)).check(matches(not(withText(R.string.str_user_greeting + " " + username))));
     }
 }
