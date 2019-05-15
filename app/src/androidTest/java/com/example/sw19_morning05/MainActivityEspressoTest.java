@@ -44,7 +44,7 @@ public class MainActivityEspressoTest {
     @Test
     public void testHelpButtonShouldShowGameDescription() {
         onView(withId(R.id.btn_help)).check(matches(isDisplayed()));
-        onView(withId(R.id.btn_help)).check(matches(withText(R.string.str_btn_help)));
+        onView(withId(R.id.btn_help)).check(matches(withText(R.string.str_help)));
 
         onView(withId(R.id.btn_help)).perform(click());
 

@@ -2,6 +2,8 @@
     <string name="str_app_name">SW19-morning05</string>
     <string name="str_app_title">Mini Games</string>
     <string name="str_switch_lang">Switch to German</string>
+    <string name="str_help">Help</string>
+    <string name="str_ok">Ok</string>
 
     <string name="str_textv_score">Score:</string>
     <string name="str_textv_statistic_ttb">TTB:</string>

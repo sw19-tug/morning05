@@ -1,13 +1,21 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -63,6 +71,34 @@ public class MainActivity extends AppCompatActivity {
                 navigateSettings();
             }
         });
+
+        Button btn_help = (Button) findViewById(R.id.btn_help);
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showHelp();
+            }
+        });
+    }
+
+    private void showHelp() {
+        LayoutInflater inflater = getLayoutInflater();
+        View alertLayout = inflater.inflate(R.layout.dialog_help, null);
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(R.string.str_help);
+
+        alert.setView(alertLayout);
+
+        alert.setCancelable(false);
+
+        alert.setPositiveButton(R.string.str_ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog dialog = alert.create();
+        dialog.show();
     }
 
     public void switchLanguage() {
