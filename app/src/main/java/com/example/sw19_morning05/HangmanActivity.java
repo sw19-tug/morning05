@@ -251,6 +251,12 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
+        final Button btn_hint_hm = findViewById(R.id.btn_hint_hm);
+        btn_hint_hm.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                giveHint();
+            }
+        });
         setWordView();
     }
 
@@ -316,6 +322,20 @@ public class HangmanActivity extends AppCompatActivity {
 
     private void reset() {
         this.recreate();
+    }
+
+    private void giveHint() {
+        for (int i = 0; i < word_to_guess.length(); i++) {
+            String current_char = "" + word_to_guess.charAt(i);
+
+            if (!word_place_holder.contains(current_char)) {
+                Context context = this.getApplicationContext();
+                int points = 3;
+                Score.decrementScore(context, points);
+                checkInput(current_char.charAt(0));
+                break;
+            }
+        }
     }
 
     private void win() {

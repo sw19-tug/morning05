@@ -33,6 +33,7 @@
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>
+    <string name="str_hint">Hinweis</string>
 
     <string name="textv_gamestatistic">Spiel Statistik</string>
 
