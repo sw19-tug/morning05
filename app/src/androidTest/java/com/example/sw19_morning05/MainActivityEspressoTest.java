@@ -228,21 +228,22 @@ public class MainActivityEspressoTest {
         Context context = main_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.textv_greeting_user)).check(matches(isDisplayed()));
         String username = Settings.getUsername(context);
-        onView(withId(R.id.textv_greeting_user)).check(matches(not(withText(R.string.str_user_greeting + " " + username))));
+        onView(withId(R.id.textv_greeting_user)).check(matches(not(withText(R.string.str_user_greeting
+                + " " + username))));
     }
 
     @Test
     public void testUpdateSettingsUsernameInputfield() {
         Context context = main_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.btn_settings)).perform(click());
-        String new_username = "jon_snow_69";
+        String new_username = "homer_simpson";
         onView(withId(R.id.input_username)).perform(replaceText(new_username));
         onView(withId(R.id.btn_username_save)).perform(click());
         onView(withId(R.id.btn_settings_back)).perform(click());
 
         String username = Settings.getUsername(context);
         onView(withId(R.id.btn_settings)).perform(click());
-        onView(withId(R.id.input_username)).check(matches(not(withText(username))));
+        onView(withId(R.id.input_username)).check(matches(withText(username)));
         onView(withId(R.id.btn_settings_back)).perform(click());
     }
 }
