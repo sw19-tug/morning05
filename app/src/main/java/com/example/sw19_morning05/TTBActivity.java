@@ -75,7 +75,6 @@ public class TTBActivity extends Activity {
         tv_timer.setText("TIME: " + 3 + ":" + 000);
         cdt_play_time = new CountDownTimer(3000, 1){
             public void onTick(long millisUntilFinished){
-
                 tv_timer.setText("TIME: " + millisUntilFinished / 1000 + ":" + millisUntilFinished % 1000);
 
                 if (millisUntilFinished < 1000){
@@ -83,7 +82,10 @@ public class TTBActivity extends Activity {
                 }
             }
             public void onFinish(){
-                mp_alarm.stop();
+                if(mp_alarm.isPlaying()) {
+                    mp_alarm.stop();
+                }
+
                 clickedBackground(btn_block, btn_background, tv_timer);
             }
         };
@@ -91,7 +93,6 @@ public class TTBActivity extends Activity {
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         final int get_width = display.getWidth();
         final int get_height = display.getHeight();
-        //Changing start position
         double start_height = get_height / 2 * Math.random();
         final Rect boundaries = new Rect();
         Paint textPaint = tv_timer.getPaint();
@@ -114,8 +115,11 @@ public class TTBActivity extends Activity {
             public void onClick(View v) {
 
                 cdt_play_time.cancel();
-                mp_alarm.pause();
-                mp_alarm.seekTo(0);
+                if(mp_alarm.isPlaying()) {
+                    mp_alarm.pause();
+                    mp_alarm.seekTo(0);
+                }
+
                 cdt_play_time.start();
 
                 ViewGroup.LayoutParams params = btn_block.getLayoutParams();
