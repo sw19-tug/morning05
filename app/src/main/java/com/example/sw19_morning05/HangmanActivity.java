@@ -312,7 +312,7 @@ public class HangmanActivity extends AppCompatActivity {
             Context context = this.getApplicationContext();
             int points = 2;
             Score.decrementScore(context, points);
-            this.recreate();
+            this.reset();
         }
 
         if (!word_place_holder.contains("_")) {
