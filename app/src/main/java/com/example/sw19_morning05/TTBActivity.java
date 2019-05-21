@@ -285,9 +285,12 @@ public class TTBActivity extends Activity {
     }
 
     public void clickedBackground(Button block, Button background, TextView timer) {
+        Context context = this.getApplicationContext();
+
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
         block.setVisibility(View.INVISIBLE);
         background.setVisibility((View.INVISIBLE));
+        Vibration.vibrate(context, 1000);
         cdt_play_time.cancel();
     }
 

@@ -312,7 +312,7 @@ public class HangmanActivity extends AppCompatActivity {
             Context context = this.getApplicationContext();
             int points = 2;
             Score.decrementScore(context, points);
-            this.recreate();
+            this.reset();
         }
 
         if (!word_place_holder.contains("_")) {
@@ -321,6 +321,8 @@ public class HangmanActivity extends AppCompatActivity {
     }
 
     private void reset() {
+        Context context = this.getApplicationContext();
+        Vibration.vibrate(context, 1000);
         this.recreate();
     }
 
@@ -371,5 +373,6 @@ public class HangmanActivity extends AppCompatActivity {
         findViewById(R.id.btn_m).setEnabled(false);
 
         Score.incrementScore(context, 1);
+        Vibration.vibrate(context, 1000);
     }
 }

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".TTBActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -49,5 +50,5 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>

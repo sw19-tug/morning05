@@ -292,10 +292,10 @@ public class HangmanActivityEspressoTest {
     @Test
     public void getHint() {
         int score = Score.getScore(context);
-        TextView title = activityTestRule.getActivity().findViewById(R.id.word);
+        TextView title = activityTestRule.getActivity().findViewById(R.id.textv_word_to_guess);
         String actual_word = title.getText().toString();
         onView(withId(R.id.btn_hint_hm)).perform(click());
-        TextView new_title = activityTestRule.getActivity().findViewById(R.id.word);
+        TextView new_title = activityTestRule.getActivity().findViewById(R.id.textv_word_to_guess);
         String new_word = new_title.getText().toString();
         Assert.assertNotEquals(actual_word, new_word);
         Assert.assertEquals((score - 3), Score.getScore(context));
