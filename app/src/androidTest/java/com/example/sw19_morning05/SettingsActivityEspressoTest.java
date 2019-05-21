@@ -95,4 +95,15 @@ public class SettingsActivityEspressoTest {
         onView(withId(R.id.switch_music)).perform(click());
         onView(withId(R.id.switch_physical)).perform(click());
     }
+
+    @Test
+    public void testPhysicalFeedback()
+    {
+        Context context = settings_activity_test_rule.getActivity().getApplicationContext();
+        onView(withId(R.id.switch_physical)).perform(click());
+
+        int duration_sec = 5;
+        Vibrator.vibrate(context, duration_sec);
+        Assert.assertEquals(Vibrator.checkVibrateActive(context), true);
+    }
 }
