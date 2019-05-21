@@ -48,157 +48,78 @@ public class HangmanActivityEspressoTest {
     }
 
     @Test
-    public void testButtonPressedGoesDisabledQ() {
+    public void testIfStartImageIsDisplay() {
+        onView(withId(R.id.image_hm_0)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testButtonPressedGoesDisabledQWERTZ() {
         onView(withId(R.id.btn_q)).perform(click());
         onView(withId(R.id.btn_q)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledW() {
         onView(withId(R.id.btn_w)).perform(click());
         onView(withId(R.id.btn_w)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledE() {
         onView(withId(R.id.btn_e)).perform(click());
         onView(withId(R.id.btn_e)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledR() {
         onView(withId(R.id.btn_r)).perform(click());
         onView(withId(R.id.btn_r)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledT() {
         onView(withId(R.id.btn_t)).perform(click());
         onView(withId(R.id.btn_t)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledZ() {
         onView(withId(R.id.btn_z)).perform(click());
         onView(withId(R.id.btn_z)).check(matches(not(isEnabled())));
     }
 
     @Test
-    public void testButtonPressedGoesDisabledU() {
+    public void testButtonPressedGoesDisabledUIOPASD() {
         onView(withId(R.id.btn_u)).perform(click());
         onView(withId(R.id.btn_u)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledI() {
         onView(withId(R.id.btn_i)).perform(click());
         onView(withId(R.id.btn_i)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledO() {
         onView(withId(R.id.btn_o)).perform(click());
         onView(withId(R.id.btn_o)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledP() {
         onView(withId(R.id.btn_p)).perform(click());
         onView(withId(R.id.btn_p)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledA() {
         onView(withId(R.id.btn_a)).perform(click());
         onView(withId(R.id.btn_a)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledS() {
         onView(withId(R.id.btn_s)).perform(click());
         onView(withId(R.id.btn_s)).check(matches(not(isEnabled())));
     }
 
     @Test
-    public void testButtonPressedGoesDisabledD() {
+    public void testButtonPressedGoesDisabledDFGHJK() {
         onView(withId(R.id.btn_d)).perform(click());
         onView(withId(R.id.btn_d)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledF() {
         onView(withId(R.id.btn_f)).perform(click());
         onView(withId(R.id.btn_f)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledG() {
         onView(withId(R.id.btn_g)).perform(click());
         onView(withId(R.id.btn_g)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledH() {
         onView(withId(R.id.btn_h)).perform(click());
         onView(withId(R.id.btn_h)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledJ() {
         onView(withId(R.id.btn_j)).perform(click());
         onView(withId(R.id.btn_j)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledK() {
         onView(withId(R.id.btn_k)).perform(click());
         onView(withId(R.id.btn_k)).check(matches(not(isEnabled())));
     }
 
     @Test
-    public void testButtonPressedGoesDisabledL() {
+    public void testButtonPressedGoesDisabledLYXCVB() {
         onView(withId(R.id.btn_l)).perform(click());
         onView(withId(R.id.btn_l)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledY() {
         onView(withId(R.id.btn_y)).perform(click());
         onView(withId(R.id.btn_y)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledX() {
         onView(withId(R.id.btn_x)).perform(click());
         onView(withId(R.id.btn_x)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledC() {
         onView(withId(R.id.btn_c)).perform(click());
         onView(withId(R.id.btn_c)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledV() {
         onView(withId(R.id.btn_v)).perform(click());
         onView(withId(R.id.btn_v)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledB() {
         onView(withId(R.id.btn_b)).perform(click());
         onView(withId(R.id.btn_b)).check(matches(not(isEnabled())));
     }
 
     @Test
-    public void testButtonPressedGoesDisabledN() {
+    public void testButtonPressedGoesDisabledNM() {
         onView(withId(R.id.btn_n)).perform(click());
         onView(withId(R.id.btn_n)).check(matches(not(isEnabled())));
-    }
-
-    @Test
-    public void testButtonPressedGoesDisabledM() {
         onView(withId(R.id.btn_m)).perform(click());
         onView(withId(R.id.btn_m)).check(matches(not(isEnabled())));
     }
@@ -267,6 +188,24 @@ public class HangmanActivityEspressoTest {
             onView(withId(resourceID)).perform(click());
         }
         Assert.assertEquals((score + points), Score.getScore(context));
+    }
+
+    @Test
+    public void testShouldShowNextImageAfterWrongGuess() {
+        String right_word = activityTestRule.getActivity().word_to_guess;
+
+        for (int i = 0, j = 0; i < 8; i++, j++) {
+            if (right_word.contains(alphabet[j].toUpperCase())) {
+                i--;
+                continue;
+            }
+            String id = "btn_" + alphabet[j];
+            int resourceID = context.getResources().getIdentifier(id, "id", context.getPackageName());
+            onView(withId(resourceID)).perform(click());
+            break;
+        }
+
+        onView(withId(R.id.image_hm_1)).check(matches(isDisplayed()));
     }
 
     @Test
