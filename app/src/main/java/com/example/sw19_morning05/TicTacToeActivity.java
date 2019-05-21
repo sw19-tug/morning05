@@ -124,14 +124,17 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                         tv_current_player.setText(getResources().getString(R.string.str_textv_player1_wins));
                         disableBoardAfterEndOfGame(board);
                         Score.incrementScore(context, 1);
+                        Vibration.vibrate(context, 1000);
                         return;
                     } else if (return_value_winner == 2) {
                         tv_current_player.setText(getResources().getString(R.string.str_textv_player2_wins));
                         disableBoardAfterEndOfGame(board);
                         Score.decrementScore(context, 2);
+                        Vibration.vibrate(context, 1000);
                         return;
                     } else if (return_value_winner == 0) {
                         tv_current_player.setText(getResources().getString(R.string.str_textv_draw));
+                        Vibration.vibrate(context, 1000);
                         return;
                     }
 

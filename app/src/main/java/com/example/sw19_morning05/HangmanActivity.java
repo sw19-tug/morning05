@@ -321,6 +321,8 @@ public class HangmanActivity extends AppCompatActivity {
     }
 
     private void reset() {
+        Context context = this.getApplicationContext();
+        Vibration.vibrate(context, 1000);
         this.recreate();
     }
 
@@ -371,5 +373,6 @@ public class HangmanActivity extends AppCompatActivity {
         findViewById(R.id.btn_m).setEnabled(false);
 
         Score.incrementScore(context, 1);
+        Vibration.vibrate(context, 1000);
     }
 }

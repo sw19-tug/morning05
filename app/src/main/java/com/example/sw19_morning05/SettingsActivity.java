@@ -56,6 +56,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Settings.setPhysicalFeedback(context, isChecked);
+                Vibration.vibrate(context, 1000);
             }
         });
 
