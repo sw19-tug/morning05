@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.junit.Assert;
@@ -49,7 +50,9 @@ public class HangmanActivityEspressoTest {
 
     @Test
     public void testIfStartImageIsDisplay() {
-        onView(withId(R.id.image_hm_0)).check(matches(isDisplayed()));
+        onView(withId(R.id.image_hm)).check(matches(isDisplayed()));
+        ImageView image = activityTestRule.getActivity().findViewById(R.id.image_hm);
+        Assert.assertNotNull(image.getDrawable());
     }
 
     @Test
@@ -192,6 +195,8 @@ public class HangmanActivityEspressoTest {
 
     @Test
     public void testShouldShowNextImageAfterWrongGuess() {
+        ImageView image = activityTestRule.getActivity().findViewById(R.id.image_hm);
+        CharSequence contentPrevious = image.getContentDescription();
         String right_word = activityTestRule.getActivity().word_to_guess;
 
         for (int i = 0, j = 0; i < 8; i++, j++) {
@@ -205,7 +210,9 @@ public class HangmanActivityEspressoTest {
             break;
         }
 
-        onView(withId(R.id.image_hm_1)).check(matches(isDisplayed()));
+        onView(withId(R.id.image_hm)).check(matches(isDisplayed()));
+        ImageView imageNext = activityTestRule.getActivity().findViewById(R.id.image_hm);
+        Assert.assertNotEquals(contentPrevious, imageNext.getContentDescription());
     }
 
     @Test
