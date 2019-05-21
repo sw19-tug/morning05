@@ -102,8 +102,8 @@ public class SettingsActivityEspressoTest {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.switch_physical)).perform(click());
 
-        int duration_sec = 5;
-        Vibrator.vibrate(context, duration_sec);
-        Assert.assertEquals(Vibrator.checkVibrateActive(context), true);
+        long duration_ms = 1000;
+        Vibration.vibrate(context, duration_ms);
+        Assert.assertEquals(Vibration.checkVibrateActive(), true);
     }
 }
