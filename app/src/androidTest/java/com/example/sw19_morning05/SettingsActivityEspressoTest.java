@@ -105,5 +105,7 @@ public class SettingsActivityEspressoTest {
         long duration_ms = 1000;
         Vibration.vibrate(context, duration_ms);
         Assert.assertEquals(Vibration.checkVibrateActive(), true);
+
+        onView(withId(R.id.switch_physical)).perform(click());
     }
 }
