@@ -87,6 +87,16 @@
         android:visibility="visible"
         android:id="@+id/statistics_highscore_ly">
 
+        <TextView
+            android:id="@+id/textv_statistics_highscore_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_statistics_highscore_header"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

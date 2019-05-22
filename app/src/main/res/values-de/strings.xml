@@ -56,5 +56,6 @@
 
     <string name="str_statistics_number_header">Anzahl gespielter Spiele</string>
     <string name="str_user_hs">von</string>
+    <string name="str_statistics_highscore_header">Touch the Block - Rangliste</string>
 
 </resources>

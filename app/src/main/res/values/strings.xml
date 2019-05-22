@@ -57,5 +57,6 @@
 
     <string name="str_statistics_number_header">Number of Games Played</string>
     <string name="str_user_hs">of</string>
+    <string name="str_statistics_highscore_header">Touch the Block - Highscore</string>
 
 </resources>
