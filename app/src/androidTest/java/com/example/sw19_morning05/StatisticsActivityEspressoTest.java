@@ -50,6 +50,12 @@ public class StatisticsActivityEspressoTest {
     }
 
     @Test
+    public void testHeaderHighScoreDisplayed() {
+        onView(withId(R.id.textv_statistics_highscore_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_statistics_highscore_header)).check(matches(withText(R.string.str_statistics_highscore_header)));
+    }
+
+    @Test
     public void testNewHighscoreDisplayed() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
         String username = Settings.getUsername(context);

@@ -74,6 +74,11 @@ public final class Statistics {
                 return o1.getHighScore() > o2.getHighScore() ? -1 : 1;
             }
         });
+
+        if(list.size() > 5) {
+            list.subList(5, list.size()).clear();
+        }
+
         return list;
     }
 
