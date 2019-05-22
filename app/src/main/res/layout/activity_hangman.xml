@@ -274,6 +274,29 @@
             android:textSize="30sp" />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/image_hm_ly"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/word_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ly_title">
+
+        <ImageView
+            android:id="@+id/image_hm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_hm_0"/>
+    </LinearLayout>
+
+
     <LinearLayout
         android:id="@+id/win_ly"
         android:layout_width="0dp"
