@@ -6,9 +6,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HangmanActivity extends AppCompatActivity {
+
+    int[] images = {
+            R.drawable.image_hm_1,
+            R.drawable.image_hm_2,
+            R.drawable.image_hm_3,
+            R.drawable.image_hm_4,
+            R.drawable.image_hm_5,
+            R.drawable.image_hm_6,
+            R.drawable.image_hm_7,
+            R.drawable.image_hm_8,
+    };
 
     public static String word_list[] = { "GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY",
             "JAEGERMEISTER", "HAVANNA", "BELVEDERE", "ABSOLUT", "GREYGOOSE", "WILLIAMS", "SCHNAPS", "ABSINTH" };
@@ -21,6 +33,9 @@ public class HangmanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
+
+        ImageView image = findViewById(R.id.image_hm);
+        image.setContentDescription("wrongGuess" + wrong_guesses);
 
         final Button btn_a = findViewById(R.id.btn_a);
         btn_a.setOnClickListener(new View.OnClickListener() {
@@ -305,7 +320,10 @@ public class HangmanActivity extends AppCompatActivity {
         textv_word_view.setText(word_place_holder);
 
         if (notFound) {
+            ImageView image = findViewById(R.id.image_hm);
+            image.setImageResource(images[wrong_guesses]);
             wrong_guesses++;
+            image.setContentDescription("wrongGuess" + wrong_guesses);
         }
 
         if (wrong_guesses == 8) {
