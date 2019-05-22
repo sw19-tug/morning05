@@ -376,4 +376,28 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_field00)).check(matches(withText("O")));
         onView(withId(R.id.bt_field00)).check(matches(hasTextColor(R.color.colorRed)));
     }
+
+    @Test
+    public void testIntelligentAPMiddle() {
+        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+
+        onView(withId(R.id.bt_field00)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void testIntelligentAPCorner() {
+        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.bt_field00)).perform(click());
+
+        onView(withId(R.id.bt_field22)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void testIntelligentAPBorder() {
+        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+
+        onView(withId(R.id.bt_field11)).check(matches(not(isEnabled())));
+    }
 }
