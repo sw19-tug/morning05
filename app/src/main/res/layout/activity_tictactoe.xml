@@ -29,17 +29,28 @@
         android:layout_marginTop="20dp"/>
 
     <CheckBox
-        android:id="@+id/cbox_autoplayer_ttt"
-        android:text="@string/str_cbox_text_autoplayer"
+        android:id="@+id/cbox_autoplayer_easy_ttt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/str_cbox_text_autoplayer_easy"
         android:textAlignment="center"
-        android:textSize="18sp"
         android:textColor="@color/colorPrimary"
-        android:layout_marginTop="20dp"/>
+        android:textSize="18sp" />
 
+    <CheckBox
+        android:id="@+id/cbox_autoplayer_hard_ttt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:text="@string/str_cbox_text_autoplayer_hard"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 
     <GridLayout
         android:layout_width="wrap_content"

@@ -30,7 +30,8 @@
     <string name="str_textv_player1_wins">Spieler X gewinnt!</string>
     <string name="str_textv_player2_wins">Spieler O gewinnt!</string>
     <string name="str_textv_draw">Unentschieden!</string>
-    <string name="str_cbox_text_autoplayer">Spiele gegen Computer</string>
+    <string name="str_cbox_text_autoplayer_easy">Spiele gegen Computer - einfach</string>
+    <string name="str_cbox_text_autoplayer_hard">Spiele gegen Computer - schwer</string>
     <string name="str_textv_pick_color">Wähle deine Farbe:</string>
     <string name="str_textv_pick_sign">Pick your Sign:</string>
 

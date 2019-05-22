@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
 
     private int current_player = 1;
 
-    private CheckBox cbox_autoplayer;
+    private CheckBox cbox_autoplayer_easy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +83,40 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                 initSettingsTicTacToe();
             }
         });
+
+        final CheckBox cbox_auto_play_easy = findViewById(R.id.cbox_autoplayer_easy_ttt);
+        cbox_auto_play_easy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                CheckBox cbox_auto_play_hard = findViewById(R.id.cbox_autoplayer_hard_ttt);
+
+                if(cbox_auto_play_hard.isChecked() && cbox_auto_play_easy.isChecked())
+                {
+                    cbox_auto_play_hard.setChecked(false);
+                    cbox_auto_play_easy.setChecked(true);
+                }
+            }
+        });
+
+        final CheckBox cbox_auto_play_hard = findViewById(R.id.cbox_autoplayer_hard_ttt);
+        cbox_auto_play_hard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                CheckBox cbox_auto_play_easy = findViewById(R.id.cbox_autoplayer_easy_ttt);
+
+                if(cbox_auto_play_easy.isChecked() && cbox_auto_play_hard.isChecked())
+                {
+                    cbox_auto_play_easy.setChecked(false);
+                    cbox_auto_play_hard.setChecked(true);
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         Context context = this.getApplicationContext();
 
-        cbox_autoplayer = findViewById(R.id.cbox_autoplayer_ttt);
-        cbox_autoplayer.setEnabled(false);
+        cbox_autoplayer_easy = findViewById(R.id.cbox_autoplayer_easy_ttt);
+        cbox_autoplayer_easy.setEnabled(false);
 
         int view_id = view.getId();
 
@@ -144,7 +171,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
             }
         }
 
-        if (cbox_autoplayer.isChecked()) {
+        if (cbox_autoplayer_easy.isChecked()) {
             Random randi = new Random();
             int row;
             int col;
@@ -181,6 +208,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                 }
             }
         }
+
     }
 
     public void disableBoardAfterEndOfGame(int board[][]) {
@@ -246,7 +274,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                 buttons[col][row].setEnabled(true);
             }
         }
-        cbox_autoplayer.setEnabled(true);
+        cbox_autoplayer_easy.setEnabled(true);
     }
 
     private void navigateWelcomeScreen() {
