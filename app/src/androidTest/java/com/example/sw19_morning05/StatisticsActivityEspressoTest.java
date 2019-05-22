@@ -42,6 +42,28 @@ public class StatisticsActivityEspressoTest {
     }
 
     @Test
+    public void testHeaderNumberOfGamesDisplayed() {
+        Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
+        onView(withId(R.id.textv_statistics_number_header)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_statistics_number_header)).check(matches(not(withText(R.string.str_statistics_number_header))));
+    }
+
+    @Test
+    public void testNewHighscoreDisplayed() {
+        Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
+        int game_counter_after = Statistics.getGameCounterTTB(context);
+        String username = Settings.getUsername(context);
+        List<HighScore>current_highscore_list = Statstics.getHighScoreList(context);
+        int new_highscore = current_highscore_list.get(0) + 1;
+        Statistics.addHighScore(context, username, new_highscore);
+
+        TextView highscore_view = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_highscore_0);
+        int highscore = Integer.parseInt(highscore_view.getText().toString());
+
+        Assert.assertEquals(new_highscore, highscore);
+    }
+
+    @Test
     public void testIncrementStatisicsTTB() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
         int game_counter_after = Statistics.getGameCounterTTB(context);
