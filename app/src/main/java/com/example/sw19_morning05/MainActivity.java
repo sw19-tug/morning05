@@ -3,6 +3,7 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Context context = this.getApplicationContext();
+        SharedPreferences preferences = context.getSharedPreferences("sett_file", MODE_PRIVATE);
+        boolean nightmode = Settings.getNightmode(context);
+
+        if (nightmode) {
+            setTheme(R.style.DarkTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
 
         TextView textv_greeting_user = (TextView) findViewById((R.id.textv_greeting_user));
         textv_greeting_user.setText(getResources().getString(R.string.str_user_greeting) + " " +

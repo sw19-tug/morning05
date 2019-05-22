@@ -20,4 +20,10 @@
     <color name="colorGreenSoft">#6600FF00</color>
 
     <color name="colorMagenta">#FFFF00FF</color>
+
+
+    <color name="colorDPrimary">#03695F</color>
+    <color name="colordPrimaryDark">#00443B</color>
+    <color name="colorDAccent">#8F0638</color>
+
 </resources>

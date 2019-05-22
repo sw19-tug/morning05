@@ -14,8 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
-        android:textSize="50sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textSize="50sp"/>
 
     <TextView
         android:id="@+id/textv_current_player"
@@ -25,7 +24,6 @@
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:textColor="@color/colorPrimary"
         android:layout_marginTop="20dp"/>
 
     <CheckBox
@@ -37,7 +35,6 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/colorPrimary"
         android:layout_marginTop="20dp"/>
 
 
@@ -48,9 +45,11 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
+
         android:rowCount="3">
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,6 +60,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,6 +71,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,6 +82,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,6 +93,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,6 +104,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,6 +115,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,6 +126,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,6 +137,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

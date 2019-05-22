@@ -47,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <TextView
@@ -56,7 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <TextView
@@ -65,7 +63,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <Button
@@ -73,9 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_back"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
     </LinearLayout>

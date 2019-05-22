@@ -80,12 +80,12 @@ public class SettingsActivityEspressoTest {
     public void testNightMode() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
         Resources.Theme theme = context.getTheme();
-
         onView(withId(R.id.switch_nightmode)).perform(click());
-
         Resources.Theme theme_new = context.getTheme();
 
+        Assert.assertNotEquals(theme, theme_new);
         //Assert.assertEquals("Color does not match", RED_COLOR, defaultColor);
+        onView(withId(R.id.switch_nightmode)).perform(click());
     }
 
     @Test
