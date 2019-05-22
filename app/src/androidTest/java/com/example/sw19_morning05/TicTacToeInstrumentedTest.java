@@ -379,7 +379,7 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testIntelligentAPMiddle() {
-        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.cbox_autoplayer_inteli_ttt)).perform(click());
         onView(withId(R.id.bt_field11)).perform(click());
 
         onView(withId(R.id.bt_field00)).check(matches(not(isEnabled())));
@@ -387,7 +387,7 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testIntelligentAPCorner() {
-        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.cbox_autoplayer_inteli_ttt)).perform(click());
         onView(withId(R.id.bt_field00)).perform(click());
 
         onView(withId(R.id.bt_field22)).check(matches(not(isEnabled())));
@@ -395,7 +395,7 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testIntelligentAPBorder() {
-        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.cbox_autoplayer_inteli_ttt)).perform(click());
         onView(withId(R.id.bt_field01)).perform(click());
 
         onView(withId(R.id.bt_field11)).check(matches(not(isEnabled())));
