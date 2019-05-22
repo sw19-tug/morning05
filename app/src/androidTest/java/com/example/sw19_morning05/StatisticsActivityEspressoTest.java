@@ -57,6 +57,9 @@ public class StatisticsActivityEspressoTest {
         int new_highscore = current_highscore_list.get(0).getHighScore() + 1;
         Statistics.addHighScore(context, username, new_highscore);
 
+        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
+        onView(withId(R.id.btn_gamestatistic)).perform(click());
+
         TextView highscore_view = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_highscore_value);
         int highscore = Integer.parseInt(highscore_view.getText().toString());
 
