@@ -35,6 +35,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
     private int current_player = 1;
 
     private CheckBox cbox_autoplayer_easy;
+    private CheckBox cbox_autoplayer_hard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +87,11 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
 
         final CheckBox cbox_auto_play_easy = findViewById(R.id.cbox_autoplayer_easy_ttt);
         cbox_auto_play_easy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 CheckBox cbox_auto_play_hard = findViewById(R.id.cbox_autoplayer_hard_ttt);
 
-                if(cbox_auto_play_hard.isChecked() && cbox_auto_play_easy.isChecked())
-                {
+                if (cbox_auto_play_hard.isChecked() && cbox_auto_play_easy.isChecked()) {
                     cbox_auto_play_hard.setChecked(false);
                     cbox_auto_play_easy.setChecked(true);
                 }
@@ -99,11 +100,11 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
 
         final CheckBox cbox_auto_play_hard = findViewById(R.id.cbox_autoplayer_hard_ttt);
         cbox_auto_play_hard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 CheckBox cbox_auto_play_easy = findViewById(R.id.cbox_autoplayer_easy_ttt);
 
-                if(cbox_auto_play_easy.isChecked() && cbox_auto_play_hard.isChecked())
-                {
+                if (cbox_auto_play_easy.isChecked() && cbox_auto_play_hard.isChecked()) {
                     cbox_auto_play_easy.setChecked(false);
                     cbox_auto_play_hard.setChecked(true);
                 }
@@ -116,7 +117,9 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
         Context context = this.getApplicationContext();
 
         cbox_autoplayer_easy = findViewById(R.id.cbox_autoplayer_easy_ttt);
+        cbox_autoplayer_hard = findViewById(R.id.cbox_autoplayer_hard_ttt);
         cbox_autoplayer_easy.setEnabled(false);
+        cbox_autoplayer_hard.setEnabled(false);
 
         int view_id = view.getId();
 
@@ -181,6 +184,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                 col = randi.nextInt(3);
 
                 if (buttons[row][col].isEnabled()) {
+
                     buttons[row][col].setText(sign_opp);
                     buttons[row][col].setTextColor(getResources().getColor(sign_color_opp));
                     buttons[row][col].setEnabled(false);
@@ -207,8 +211,74 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                     break;
                 }
             }
-        }
+        } else if (cbox_autoplayer_hard.isChecked()) {
+            int row = 0;
+            int col = 0;
 
+            for (int i = 0; i <= 2; i++) {
+                for (int j = 0; j <= 2; j++){
+                    if (!buttons[i][j].isEnabled())
+                    {
+                        row = i;
+                        col = j;
+                    }
+                }
+            }
+            if (row == 1 && col == 1)
+            {
+                buttons[0][0].setText(sign_opp);
+                buttons[0][0].setTextColor(getResources().getColor(sign_color_opp));
+                buttons[0][0].setEnabled(false);
+                board[0][0] = current_player;
+            }
+            else if ((row == 0 && col == 0) || (row == 2 && col == 0) ||
+                    (row == 0 && col == 2) || (row == 2 && col == 2))
+            {
+                int temp_row = 0;
+                int temp_col = 0;
+
+                if (row == 0)
+                    temp_row = 2;
+                if (col == 0)
+                    temp_col = 2;
+                if (row == 2)
+                    temp_row = 0;
+                if (col == 2)
+                    temp_col = 0;
+
+                buttons[temp_row][temp_col].setText(sign_opp);
+                buttons[temp_row][temp_col].setTextColor(getResources().getColor(sign_color_opp));
+                buttons[temp_row][temp_col].setEnabled(false);
+                board[temp_row][temp_col] = current_player;
+            }
+            else if ((row == 0 && col == 1) || (row == 1 && col == 0) ||
+                    (row == 1 && col == 2) || (row == 2 && col == 1))
+            {
+                buttons[1][1].setText(sign_opp);
+                buttons[1][1].setTextColor(getResources().getColor(sign_color_opp));
+                buttons[1][1].setEnabled(false);
+                board[1][1] = current_player;
+            }
+
+            return_value_winner = calculateWinner(board);
+
+            if (return_value_winner == 1) {
+                tv_current_player.setText(getResources().getString(R.string.str_textv_player1_wins));
+                disableBoardAfterEndOfGame(board);
+                Score.incrementScore(context, 1);
+                return;
+            } else if (return_value_winner == 2) {
+                tv_current_player.setText(getResources().getString(R.string.str_textv_player2_wins));
+                disableBoardAfterEndOfGame(board);
+                Score.decrementScore(context, 2);
+                return;
+            } else if (return_value_winner == 0) {
+                tv_current_player.setText(getResources().getString(R.string.str_textv_draw));
+                return;
+            }
+            current_player = (current_player == 1) ? 2 : 1;
+            tv_current_player.setText(getResources().getString(R.string.str_textv_player1_turn));
+        }
     }
 
     public void disableBoardAfterEndOfGame(int board[][]) {
@@ -275,6 +345,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
             }
         }
         cbox_autoplayer_easy.setEnabled(true);
+        cbox_autoplayer_hard.setEnabled(true);
     }
 
     private void navigateWelcomeScreen() {
