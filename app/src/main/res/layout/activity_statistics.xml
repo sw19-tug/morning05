@@ -58,7 +58,7 @@
             android:layout_marginTop="8dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textv_game_counter_ttt"
@@ -67,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textv_game_counter_hm"
@@ -76,7 +76,7 @@
             android:layout_marginTop="8dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -91,7 +91,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listview_statistics_hs">
-
         </ListView>
 
     </LinearLayout>

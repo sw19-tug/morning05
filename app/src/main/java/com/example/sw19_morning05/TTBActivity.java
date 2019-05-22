@@ -27,6 +27,7 @@ public class TTBActivity extends Activity {
     int block_color = 0;
     int background_color = 0;
     CountDownTimer cdt_play_time;
+    int ttb_block_counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +114,7 @@ public class TTBActivity extends Activity {
 
         btn_block.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                ttb_block_counter++;
                 cdt_play_time.cancel();
                 if(mp_alarm.isPlaying()) {
                     mp_alarm.pause();
@@ -292,6 +293,9 @@ public class TTBActivity extends Activity {
         background.setVisibility((View.INVISIBLE));
         Vibration.vibrate(context, 1000);
         cdt_play_time.cancel();
+
+        Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
+        ttb_block_counter = 0;
     }
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,
