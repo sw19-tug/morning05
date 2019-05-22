@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StatisticsActivity extends AppCompatActivity {
 
+    private static HighScoreAdapter highScoreAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +24,16 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
-        TextView textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttb));
+        TextView textv_game_counter = findViewById((R.id.textv_game_counter_ttb));
         textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttb) + " " + Statistics.getGameCounterTTB(context));
 
-        textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_hm));
+        textv_game_counter = findViewById((R.id.textv_game_counter_hm));
         textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_hm) + " " + Statistics.getGameCounterHM(context));
 
-        textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttt));
+        textv_game_counter = findViewById((R.id.textv_game_counter_ttt));
         textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttt) + " " + Statistics.getGameCounterTTT(context));
 
-        TextView textv_greeting_user = (TextView) findViewById((R.id.textv_user_hs));
+        TextView textv_greeting_user = findViewById((R.id.textv_user_hs));
         textv_greeting_user.setText(getResources().getString(R.string.str_user_hs) + " " +
                 Settings.getUsername(context));
 
@@ -38,6 +44,13 @@ public class StatisticsActivity extends AppCompatActivity {
                 navigateWelcomeScreen();
             }
         });
+
+        ListView lv = findViewById(R.id.listview_statistics_hs);
+        ArrayList<HighScore> highscore_list = (ArrayList<HighScore>) Statistics.getHighScoreList(context);
+
+        highScoreAdapter = new HighScoreAdapter(highscore_list, getApplicationContext());
+
+        lv.setAdapter(highScoreAdapter);
     }
 
     private void navigateWelcomeScreen() {

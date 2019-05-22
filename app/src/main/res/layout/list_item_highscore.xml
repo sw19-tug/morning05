@@ -8,24 +8,24 @@
     >
 
     <TextView
-        android:id="@+id/textview_highscore_date"
+        android:id="@+id/textv_highscore_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DATE"
-        android:textSize="24sp" />
+        android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/textview_highscore_user"
+        android:id="@+id/textv_highscore_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="USERNAME"
-        android:textSize="24sp" />
+        android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/textview_highscore_value"
+        android:id="@+id/textv_highscore_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HIGH"
-        android:textSize="24sp" />
+        android:textSize="12dp" />
 
 </LinearLayout>

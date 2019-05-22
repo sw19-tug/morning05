@@ -3,6 +3,10 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public final class Statistics {
     public static final String statistic_ttb_key = "statistic_ttb_key";
     public static final String statistic_hm_key = "statistic_hm_key";
@@ -39,5 +43,19 @@ public final class Statistics {
         SharedPreferences preferences = context.getSharedPreferences("morning05.statistic", context.MODE_PRIVATE);
         int current_game_counter = preferences.getInt(statistic_ttt_key, 0);
         preferences.edit().putInt(statistic_ttt_key, current_game_counter + 1).commit();
+    }
+
+    public static List<HighScore> getHighScoreList(Context context) {
+
+        List<HighScore> list = new ArrayList<>();
+
+        HighScore hs = new HighScore(new Date(), Settings.getUsername(context), 0);
+        list.add(hs);
+
+        return list;
+
+    }
+
+    public static void addHighScore(Context context, String username, int highscore) {
     }
 }
