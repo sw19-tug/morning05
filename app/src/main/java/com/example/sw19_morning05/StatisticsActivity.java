@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 
 public class StatisticsActivity extends AppCompatActivity {
@@ -19,7 +16,7 @@ public class StatisticsActivity extends AppCompatActivity {
         final Context context = getApplicationContext();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.statistics_games);
+        setContentView(R.layout.activity_statistics);
 
         TextView textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttb));
         textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttb) + " " + Statistics.getGameCounterTTB(context));
@@ -29,6 +26,10 @@ public class StatisticsActivity extends AppCompatActivity {
 
         textv_game_counter = (TextView) findViewById((R.id.textv_game_counter_ttt));
         textv_game_counter.setText(getResources().getString(R.string.str_textv_statistic_ttt) + " " + Statistics.getGameCounterTTT(context));
+
+        TextView textv_greeting_user = (TextView) findViewById((R.id.textv_user_hs));
+        textv_greeting_user.setText(getResources().getString(R.string.str_user_hs) + " " +
+                Settings.getUsername(context));
 
         Button btn_back_gamestatistic = (Button) findViewById(R.id.btn_back_gamestatistic);
 

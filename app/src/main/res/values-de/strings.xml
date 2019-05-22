@@ -16,9 +16,9 @@
         Blockes und des Hintergrundes ändern. Pro Berührung des Blockes erhält der Spieler einen Punkt.</string>
 
     <string name="str_textv_score">Punkte:</string>
-    <string name="str_textv_statistic_ttb">TTB:</string>
-    <string name="str_textv_statistic_ttt">TTT:</string>
-    <string name="str_textv_statistic_hm">HM:</string>
+    <string name="str_textv_statistic_ttb">Touch the Block:</string>
+    <string name="str_textv_statistic_ttt">Tic Tac Toe:</string>
+    <string name="str_textv_statistic_hm">Hangman:</string>
 
     <string name="str_reset">NEUSTART</string>
     <string name="str_back">ZURÜCK</string>
@@ -53,4 +53,7 @@
     <string name="str_sett_physical_feedb">Vibrationsrückmeldung</string>
     <string name="str_sett_username">Benutzername</string>
     <string name="str_sett_username_save">speichern</string>
+
+    <string name="str_user_hs">von</string>
+
 </resources>
