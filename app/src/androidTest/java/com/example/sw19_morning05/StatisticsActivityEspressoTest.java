@@ -11,6 +11,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.List;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressBack;
@@ -53,8 +55,8 @@ public class StatisticsActivityEspressoTest {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
         int game_counter_after = Statistics.getGameCounterTTB(context);
         String username = Settings.getUsername(context);
-        List<HighScore>current_highscore_list = Statstics.getHighScoreList(context);
-        int new_highscore = current_highscore_list.get(0) + 1;
+        List<HighScore> current_highscore_list = Statistics.getHighScoreList(context);
+        int new_highscore = current_highscore_list.get(0).getHighScore() + 1;
         Statistics.addHighScore(context, username, new_highscore);
 
         TextView highscore_view = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_highscore_0);
