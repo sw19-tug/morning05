@@ -246,4 +246,12 @@ public class HangmanActivityEspressoTest {
         Assert.assertNotEquals(actual_word, new_word);
         Assert.assertEquals((score - 3), Score.getScore(context));
     }
+
+    @Test
+    public void testNavigateExtendWords() {
+        onView(withId(R.id.btn_hm_extend_words)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_hm_extend_words)).perform(click());
+        onView(withId(R.id.textv_hm_title_extend_words)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_hm_back_extend_words)).perform(click());
+    }
 }
