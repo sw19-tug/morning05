@@ -17,9 +17,9 @@
         For every touch the gamer gains a point.</string>
 
     <string name="str_textv_score">Score:</string>
-    <string name="str_textv_statistic_ttb">TTB:</string>
-    <string name="str_textv_statistic_ttt">TTT:</string>
-    <string name="str_textv_statistic_hm">HM:</string>
+    <string name="str_textv_statistic_ttb">Touch the Block:</string>
+    <string name="str_textv_statistic_ttt">Tic Tac Toe:</string>
+    <string name="str_textv_statistic_hm">Hangman:</string>
 
     <string name="str_reset">RESET</string>
     <string name="str_back">BACK</string>
@@ -46,11 +46,17 @@
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>
     <string name="str_hint">Hint</string>
-    <string name="textv_gamestatistic">Game Statistics</string>
+    <string name="str_textv_gamestatistic">Game Statistics</string>
 
     <string name="str_sett_nightmode">Night Mode</string>
     <string name="str_sett_backg_music">Background Music</string>
     <string name="str_sett_physical_feedb">Physical Feedback</string>
     <string name="str_sett_username">Username</string>
     <string name="str_sett_username_save">save</string>
+
+
+    <string name="str_statistics_number_header">Number of Games Played</string>
+    <string name="str_user_hs">of</string>
+    <string name="str_statistics_highscore_header">Touch the Block - Highscore</string>
+
 </resources>
