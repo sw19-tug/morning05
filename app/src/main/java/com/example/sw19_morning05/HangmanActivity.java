@@ -266,6 +266,14 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
+
+        final Button btn_hm_extend_words = findViewById(R.id.btn_hm_extend_words);
+        btn_hm_extend_words.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateToExtendWordsScreen();
+            }
+        });
+
         final Button btn_hint_hm = findViewById(R.id.btn_hint_hm);
         btn_hint_hm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -277,6 +285,11 @@ public class HangmanActivity extends AppCompatActivity {
 
     private void navigateToWelcomeScreen() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToExtendWordsScreen() {
+        Intent intent = new Intent(this, ExtendWordsActivity.class);
         startActivity(intent);
     }
 
