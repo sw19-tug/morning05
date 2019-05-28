@@ -214,6 +214,7 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
         } else if (cbox_autoplayer_hard.isChecked()) {
             int row = 0;
             int col = 0;
+            int round_counter = 0;
 
             for (int i = 0; i <= 2; i++) {
                 for (int j = 0; j <= 2; j++){
@@ -221,43 +222,17 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
                     {
                         row = i;
                         col = j;
+                        round_counter++;
                     }
                 }
             }
-            if (row == 1 && col == 1)
+            if (round_counter == 1)
             {
-                buttons[0][0].setText(sign_opp);
-                buttons[0][0].setTextColor(getResources().getColor(sign_color_opp));
-                buttons[0][0].setEnabled(false);
-                board[0][0] = current_player;
+                APFirstRound(row, col);
             }
-            else if ((row == 0 && col == 0) || (row == 2 && col == 0) ||
-                    (row == 0 && col == 2) || (row == 2 && col == 2))
+            else if (round_counter == 3)
             {
-                int temp_row = 0;
-                int temp_col = 0;
-
-                if (row == 0)
-                    temp_row = 2;
-                if (col == 0)
-                    temp_col = 2;
-                if (row == 2)
-                    temp_row = 0;
-                if (col == 2)
-                    temp_col = 0;
-
-                buttons[temp_row][temp_col].setText(sign_opp);
-                buttons[temp_row][temp_col].setTextColor(getResources().getColor(sign_color_opp));
-                buttons[temp_row][temp_col].setEnabled(false);
-                board[temp_row][temp_col] = current_player;
-            }
-            else if ((row == 0 && col == 1) || (row == 1 && col == 0) ||
-                    (row == 1 && col == 2) || (row == 2 && col == 1))
-            {
-                buttons[1][1].setText(sign_opp);
-                buttons[1][1].setTextColor(getResources().getColor(sign_color_opp));
-                buttons[1][1].setEnabled(false);
-                board[1][1] = current_player;
+                APSecondRound();
             }
 
             return_value_winner = calculateWinner(board);
@@ -495,5 +470,128 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
         while (color[c_id] == sign_color);
 
         sign_color_opp = color[c_id];
+    }
+
+    private void APFirstRound(int row, int col)
+    {
+        if (row == 1 && col == 1) {
+            buttons[0][0].setText(sign_opp);
+            buttons[0][0].setTextColor(getResources().getColor(sign_color_opp));
+            buttons[0][0].setEnabled(false);
+            board[0][0] = current_player;
+        }
+        else if ((row == 0 && col == 0) || (row == 2 && col == 0) ||
+                (row == 0 && col == 2) || (row == 2 && col == 2)) {
+            int temp_row = 0;
+            int temp_col = 0;
+
+            if (row == 0)
+                temp_row = 2;
+            if (col == 0)
+                temp_col = 2;
+            if (row == 2)
+                temp_row = 0;
+            if (col == 2)
+                temp_col = 0;
+
+            buttons[temp_row][temp_col].setText(sign_opp);
+            buttons[temp_row][temp_col].setTextColor(getResources().getColor(sign_color_opp));
+            buttons[temp_row][temp_col].setEnabled(false);
+            board[temp_row][temp_col] = current_player;
+        } else if ((row == 0 && col == 1) || (row == 1 && col == 0) ||
+                (row == 1 && col == 2) || (row == 2 && col == 1)) {
+            buttons[1][1].setText(sign_opp);
+            buttons[1][1].setTextColor(getResources().getColor(sign_color_opp));
+            buttons[1][1].setEnabled(false);
+            board[1][1] = current_player;
+        }
+    }
+
+    private void APSecondRound()
+    {
+        int row1 = 0;
+        int row2 = 0;
+        int col1 = 0;
+        int col2 = 0;
+        int turn_counter = 1;
+        int AProw = 123;
+        int APcol = 123;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (!buttons[i][j].isEnabled() && turn_counter == 1 && board[i][j] != current_player)
+                {
+                    row1 = i;
+                    col1 = j;
+                    turn_counter++;
+                }
+                else if (!buttons[i][j].isEnabled() && turn_counter == 2 && board[i][j] != current_player)
+                {
+                    row2 = i;
+                    col2 = j;
+                }
+            }
+        }
+
+        if (row1 == row2)
+        {
+            AProw = row1;
+            if ((col1 == 0 && col2 == 1) || (col1 == 1 && col2 == 0))
+            {
+                APcol = 2;
+            }
+            else if ((col1 == 0 && col2 == 2) || (col1 == 2 && col2 == 0))
+            {
+                APcol = 1;
+            }
+            else
+            {
+                APcol = 0;
+            }
+        }
+        else if (col1 == col2)
+        {
+            APcol = col1;
+            if ((row1 == 0 && row2 == 1) || (row1 == 1 && row2 == 0))
+            {
+                AProw = 2;
+            }
+            else if ((row1 == 0 && row2 == 2) || (row1 == 2 && row2 == 0))
+            {
+                AProw = 1;
+            }
+            else
+            {
+                AProw = 0;
+            }
+        }
+        else
+        {
+            if (col1 == 0 && col2 == 1 || (col1 == 1 && col2 == 0))
+            {
+                APcol = 2;
+                AProw = 0;
+                if (board[AProw][APcol] == current_player)
+                {
+                    APcol = 1;
+                }
+            }
+            else if ((col1 == 1 && col2 == 2) || (col1 == 2 && col2 == 1))
+            {
+                APcol = 0;
+                AProw = 2;
+                if (board[AProw][APcol] == current_player)
+                {
+                    APcol = 1;
+                }
+            }
+        }
+
+        buttons[AProw][APcol].setText(sign_opp);
+        buttons[AProw][APcol].setTextColor(getResources().getColor(sign_color_opp));
+        buttons[AProw][APcol].setEnabled(false);
+        board[AProw][APcol] = current_player;
     }
 }

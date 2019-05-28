@@ -327,7 +327,6 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.btn_sign_o_ttt)).check(matches(not(isEnabled())));
     }
 
-
     @Test
     public void testSettingsButtonBehaviourColors() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
@@ -397,5 +396,15 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_field01)).perform(click());
 
         onView(withId(R.id.bt_field11)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void testIntelligentAPSecondTurn()
+    {
+        onView(withId(R.id.cbox_autoplayer_hard_ttt)).perform(click());
+        onView(withId(R.id.bt_field22)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+
+        onView(withId(R.id.bt_field12)).check(matches(not(isEnabled())));
     }
 }
