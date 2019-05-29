@@ -19,11 +19,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class ExtendWordsActivity extends AppCompatActivity {
 
     private static HangmanWordAdapter hangman_word_adapter;
     private String new_word;
+    private ArrayList<Pair<String, Boolean>> word_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class ExtendWordsActivity extends AppCompatActivity {
         });
 
         ListView lv = findViewById(R.id.listview_hm_words);
-        ArrayList<Pair<String, Boolean>> word_list = Settings.getHangmanWordList(context);
+        word_list = Settings.getHangmanWordList(context);
 
         hangman_word_adapter = new HangmanWordAdapter(word_list, getApplicationContext());
 
@@ -60,6 +62,8 @@ public class ExtendWordsActivity extends AppCompatActivity {
     }
 
     private void addWordDialog() {
+        final Context context = getApplicationContext();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.str_hm_dialog_title);
 
@@ -71,6 +75,7 @@ public class ExtendWordsActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 new_word = input.getText().toString();
+                Settings.addNewHangmanWord(context, new_word);
             }
         });
         builder.setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
