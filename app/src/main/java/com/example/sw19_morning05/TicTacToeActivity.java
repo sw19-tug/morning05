@@ -483,91 +483,66 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
     }
 
     void APITurn() {
-        int row;
-        int col;
+        int row = -1;
+        int col = -1;
 
         if (buttons[0][0].isEnabled() &&
-                ((!buttons[1][0].isEnabled() && board[1][0] != current_player &&
-                !buttons[2][0].isEnabled() && board[2][0] != current_player) ||
-                (!buttons[0][1].isEnabled() && board[0][1] != current_player &&
-                        !buttons[0][2].isEnabled() && board[0][2] != current_player) ||
-                (!buttons[1][1].isEnabled() && board[1][1] != current_player &&
-                        !buttons[2][2].isEnabled() && board[2][2] != current_player))) {
+                (checkOppositeFields(1, 0,2, 0) ||
+                checkOppositeFields(0, 1, 0, 2) ||
+                checkOppositeFields(1,1,2,2))) {
             row = 0;
             col = 0;
         } else if (buttons[0][1].isEnabled() &&
-                ((!buttons[0][0].isEnabled() && board[0][0] != current_player &&
-                !buttons[0][2].isEnabled() && board[0][2] != current_player) ||
-                (!buttons[1][1].isEnabled() && board[1][1] != current_player &&
-                        !buttons[2][1].isEnabled() && board[2][1] != current_player))) {
+                (checkOppositeFields(0,0,0,2) ||
+                checkOppositeFields(1,1,2,1))) {
             row = 0;
             col = 1;
         } else if (buttons[0][2].isEnabled() &&
-                ((!buttons[0][0].isEnabled() && board[0][0] != current_player &&
-                !buttons[0][1].isEnabled() && board[0][1] != current_player) ||
-                (!buttons[1][2].isEnabled() && board[1][2] != current_player &&
-                        !buttons[2][2].isEnabled() && board[2][2] != current_player) ||
-                (!buttons[1][1].isEnabled() && board[1][1] != current_player &&
-                        !buttons[2][0].isEnabled() && board[2][0] != current_player))) {
+                (checkOppositeFields(0, 0,0,1) ||
+                checkOppositeFields(1,2,2,2) ||
+                checkOppositeFields(1,1,2,0))) {
             row = 0;
             col = 2;
         } else if (buttons[1][0].isEnabled() &&
-                ((!buttons[0][0].isEnabled() && board[0][0] != current_player &&
-                !buttons[2][0].isEnabled() && board[2][0] != current_player) ||
-                (!buttons[1][1].isEnabled() && board[1][1] != current_player &&
-                        !buttons[1][2].isEnabled() && board[1][2] != current_player))) {
+                (checkOppositeFields(0,0,2,0) ||
+                checkOppositeFields(1,1,1,2))) {
             row = 1;
             col = 0;
         } else if (buttons[1][1].isEnabled() &&
-                ((!buttons[0][0].isEnabled() && board[0][0] != current_player &&
-                !buttons[2][2].isEnabled() && board[2][2] != current_player) ||
-                (!buttons[0][2].isEnabled() && board[0][2] != current_player &&
-                        !buttons[2][0].isEnabled() && board[2][0] != current_player) ||
-                (!buttons[1][0].isEnabled() && board[1][0] != current_player &&
-                        !buttons[1][2].isEnabled() && board[1][2] != current_player) ||
-                (!buttons[0][1].isEnabled() && board[0][1] != current_player &&
-                        !buttons[2][1].isEnabled() && board[2][1] != current_player))) {
+                (checkOppositeFields(0, 0, 2, 2) ||
+                checkOppositeFields(0, 2, 2, 0) ||
+                checkOppositeFields(1, 0, 1, 2) ||
+                checkOppositeFields(0, 1, 2, 1))) {
             row = 1;
             col = 1;
         } else if (buttons[1][2].isEnabled() &&
-                ((!buttons[0][2].isEnabled() && board[0][2] != current_player &&
-                !buttons[2][2].isEnabled() && board[2][2] != current_player) ||
-                (!buttons[1][0].isEnabled() && board[1][0] != current_player &&
-                        !buttons[1][1].isEnabled() && board[1][1] != current_player))) {
+                (checkOppositeFields(0, 2, 2, 2) ||
+                checkOppositeFields(1, 0, 1, 1))) {
             row = 1;
             col = 2;
         } else if (buttons[2][0].isEnabled() &&
-                ((!buttons[0][0].isEnabled() && board[0][0] != current_player &&
-                !buttons[1][0].isEnabled() && board[1][0] != current_player) ||
-                (!buttons[2][1].isEnabled() && board[2][1] != current_player &&
-                        !buttons[2][2].isEnabled() && board[2][2] != current_player) ||
-                (!buttons[1][1].isEnabled() && board[1][1] != current_player &&
-                        !buttons[0][2].isEnabled() && board[0][2] != current_player))) {
+                (checkOppositeFields(0, 0, 1, 0) ||
+                checkOppositeFields(2, 1, 2, 2) ||
+                checkOppositeFields(1, 1, 0, 2))) {
             row = 2;
             col = 0;
         } else if (buttons[2][1].isEnabled() &&
-                ((!buttons[2][0].isEnabled() && board[2][0] != current_player &&
-                !buttons[2][2].isEnabled() && board[2][2] != current_player) ||
-                (!buttons[0][1].isEnabled() && board[0][1] != current_player &&
-                        !buttons[1][1].isEnabled() && board[1][1] != current_player))) {
+                (checkOppositeFields(2, 0, 2, 2) ||
+                checkOppositeFields(0,1, 1, 1))) {
             row = 2;
             col = 1;
         } else if (buttons[2][2].isEnabled() &&
-                ((!buttons[0][0].isEnabled() && board[0][0] != current_player &&
-                !buttons[1][1].isEnabled() && board[1][1] != current_player) ||
-                (!buttons[2][1].isEnabled() && board[2][1] != current_player &&
-                        !buttons[2][0].isEnabled() && board[2][0] != current_player) ||
-                (!buttons[1][2].isEnabled() && board[1][2] != current_player &&
-                        !buttons[0][2].isEnabled() && board[0][2] != current_player))) {
+                (checkOppositeFields(0, 0, 1, 1) ||
+                checkOppositeFields(2, 0, 2, 1) ||
+                checkOppositeFields(0, 2, 1, 2))) {
             row = 2;
             col = 2;
-        }else
-        {
+        } else {
             Random randi = new Random();
             do {
                 row = randi.nextInt(3);
                 col = randi.nextInt(3);
-            }while (!buttons[row][col].isEnabled());
+            } while (!buttons[row][col].isEnabled());
         }
 
         buttons[row][col].setText(sign_opp);
@@ -576,69 +551,9 @@ public class TicTacToeActivity extends AppCompatActivity implements View.OnClick
         board[row][col] = current_player;
     }
 
-
+    boolean checkOppositeFields(int row1, int col1, int row2, int col2) {
+        return (!buttons[row1][col1].isEnabled() && board[row1][col1] != current_player &&
+                !buttons[row2][col2].isEnabled() && board[row2][col2] != current_player);
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
