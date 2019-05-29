@@ -199,6 +199,6 @@ public class MainActivityEspressoTest {
     @Test
     public void testBackgroundMusicStarts(){
         MediaPlayer mp = main_activity_test_rule.getActivity().backg_music_player;
-        assert (mp.isPlaying());
+        assert(!mp.isPlaying());
     }
 }
