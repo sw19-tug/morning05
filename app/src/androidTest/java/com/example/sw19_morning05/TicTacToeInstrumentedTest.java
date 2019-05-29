@@ -387,7 +387,7 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.cbox_autoplayer_hard_ttt)).perform(click());
         onView(withId(R.id.bt_field00)).perform(click());
 
-        onView(withId(R.id.bt_field22)).check(matches(not(isEnabled())));
+        onView(withId(R.id.bt_field11)).check(matches(not(isEnabled())));
     }
 
     @Test
