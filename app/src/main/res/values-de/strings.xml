@@ -4,7 +4,8 @@
     <string name="str_user_greeting">Willkommen zurück</string>
     <string name="str_switch_lang">Wechsle zu Englisch</string>
     <string name="str_help">Hilfe</string>
-    <string name="str_ok">Ok</string>
+    <string name="str_ok">OK</string>
+    <string name="str_cancel">ABBRECHEN</string>
 
     <string name="str_description_hm">Ziel des Spieles ist es, den gesuchten Begriff zu erraten, wobei die gegebene Tastatur zu benutzen ist. Nach 8 falsch geratenen Buchstaben hat der Spieler verloren.
         Es gibt auch die Möglichkeit sich einen Hinweis anzeigen zu lassen. Pro richtig geratenen Wort bekommt der Spieler einen Punkt.</string>
@@ -59,5 +60,7 @@
     <string name="str_statistics_number_header">Anzahl gespielter Spiele</string>
     <string name="str_user_hs">von</string>
     <string name="str_statistics_highscore_header">Touch the Block - Rangliste</string>
+
+    <string name="str_hm_dialog_title">Neues Wort hinzufügen</string>
 
 </resources>
