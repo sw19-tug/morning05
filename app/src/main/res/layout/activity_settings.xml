@@ -88,6 +88,10 @@
                 android:text="@string/str_sett_username_save"
                 android:textAlignment="center" />
         </LinearLayout>
+        <Spinner
+            android:id="@+id/spinn_backg_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout

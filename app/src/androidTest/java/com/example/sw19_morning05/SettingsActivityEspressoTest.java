@@ -111,6 +111,6 @@ public class SettingsActivityEspressoTest {
 
     @Test
     public void testMusicSpinnerExists() {
-        onView(withId(R.id.spinn_backg_music)).check(isDisplayed());
+        onView(withId(R.id.spinn_backg_music)).check(matches(isDisplayed()));
     }
 }

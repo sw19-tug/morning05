@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,9 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AudioManager mAudioManager;
+    public MediaPlayer backg_music_player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
                 showHelp();
             }
         });
+
+        mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+
+        backg_music_player = MediaPlayer.create(this, R.raw.cantina);
+        backg_music_player.start();
+        backg_music_player.setLooping(true);
     }
 
     private void showHelp() {
