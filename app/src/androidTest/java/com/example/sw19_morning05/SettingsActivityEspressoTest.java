@@ -6,6 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewAssertion;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.junit.Assert;
@@ -97,8 +98,7 @@ public class SettingsActivityEspressoTest {
     }
 
     @Test
-    public void testPhysicalFeedback()
-    {
+    public void testPhysicalFeedback() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.switch_physical)).perform(click());
 
@@ -107,5 +107,10 @@ public class SettingsActivityEspressoTest {
         Assert.assertEquals(Vibration.checkVibrateActive(), true);
 
         onView(withId(R.id.switch_physical)).perform(click());
+    }
+
+    @Test
+    public void testMusicSpinnerExists() {
+        onView(withId(R.id.spinn_backg_music)).check(isDisplayed());
     }
 }

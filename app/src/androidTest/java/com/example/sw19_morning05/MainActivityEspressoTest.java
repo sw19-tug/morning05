@@ -2,6 +2,7 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.TextView;
@@ -193,5 +194,11 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.btn_settings)).perform(click());
         onView(withId(R.id.input_username)).check(matches(withText(username)));
         onView(withId(R.id.btn_settings_back)).perform(click());
+    }
+
+    @Test
+    public void testBackgroundMusicStarts(){
+        MediaPlayer mp = main_activity_test_rule.getActivity().backg_music_player;
+        assert (mp.isPlaying());
     }
 }
