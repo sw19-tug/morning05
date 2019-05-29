@@ -23,6 +23,13 @@
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
             android:textStyle="bold" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listview_hm_words">
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
