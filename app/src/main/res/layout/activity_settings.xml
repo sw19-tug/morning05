@@ -44,6 +44,13 @@
             android:text="@string/str_sett_backg_music"
             android:textSize="18sp" />
 
+        <Spinner
+            android:id="@+id/spinn_backg_music"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:spinnerMode="dialog" />
+
         <Switch
             android:id="@+id/switch_nightmode"
             android:layout_width="match_parent"
@@ -88,10 +95,6 @@
                 android:text="@string/str_sett_username_save"
                 android:textAlignment="center" />
         </LinearLayout>
-        <Spinner
-            android:id="@+id/spinn_backg_music"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout

@@ -88,11 +88,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-
-        backg_music_player = MediaPlayer.create(this, R.raw.cantina);
-        backg_music_player.start();
-        backg_music_player.setLooping(true);
+        if(Settings.getBackgroundMusic(context) && !BackgroundMusicPlayer.isplayingAudio)
+        {
+            BackgroundMusicPlayer.playAudio(context);
+        }
     }
 
     private void showHelp() {

@@ -59,4 +59,15 @@
     <string name="str_user_hs">von</string>
     <string name="str_statistics_highscore_header">Touch the Block - Rangliste</string>
 
+    <string name="str_cantina_music">Cantina</string>
+    <string name="str_elevator_music">Fahrstuhl</string>
+    <string name="str_gummibear_music">Gummibär</string>
+    <string name="str_mario_music">Mario</string>
+
+    <string-array name="music_list">
+        <item>Cantina</item>
+        <item>Gummibär</item>
+        <item>Fahrstuhl</item>
+        <item>Mario</item>
+    </string-array>
 </resources>

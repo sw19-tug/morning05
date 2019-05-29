@@ -60,4 +60,15 @@
     <string name="str_user_hs">of</string>
     <string name="str_statistics_highscore_header">Touch the Block - Highscore</string>
 
+    <string name="str_cantina_music">Cantina</string>
+    <string name="str_elevator_music">Elevator</string>
+    <string name="str_gummibear_music">Gummibear</string>
+    <string name="str_mario_music">Mario</string>
+
+    <string-array name="music_list">
+        <item>Cantina</item>
+        <item>Gummibear</item>
+        <item>Elevator</item>
+        <item>Mario</item>
+    </string-array>
 </resources>
