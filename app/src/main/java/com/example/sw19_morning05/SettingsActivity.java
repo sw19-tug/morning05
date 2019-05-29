@@ -2,18 +2,13 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Switch;
-import android.widget.TextView;
-
-import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -21,8 +16,8 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final Context context = getApplicationContext();
-
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_settings);
 
         EditText input_username = (EditText) findViewById((R.id.input_username));
@@ -42,6 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Settings.setNightmode(context, isChecked);
             }
         });
+        switch_nightmode.setChecked(Settings.getNightmode(context));
 
         final Switch switch_music = findViewById(R.id.switch_music);
         switch_music.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -50,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Settings.setBackgroundMusic(context, isChecked);
             }
         });
+        switch_music.setChecked((Settings.getBackgroundMusic(context)));
 
         final Switch switch_physical = findViewById(R.id.switch_physical);
         switch_physical.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -59,6 +56,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Vibration.vibrate(context, 1000);
             }
         });
+        switch_physical.setChecked((Settings.getPhysicalFeedback(context)));
 
         final Button btn_username_save = findViewById(R.id.btn_username_save);
         btn_username_save.setOnClickListener(new View.OnClickListener() {

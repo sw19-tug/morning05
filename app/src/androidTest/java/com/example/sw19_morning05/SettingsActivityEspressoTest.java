@@ -2,6 +2,7 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewAssertion;
@@ -79,12 +80,15 @@ public class SettingsActivityEspressoTest {
     @Test
     public void testNightMode() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
-        Resources.Theme theme = context.getTheme();
         onView(withId(R.id.switch_nightmode)).perform(click());
-        Resources.Theme theme_new = context.getTheme();
-
-        Assert.assertNotEquals(theme, theme_new);
-        //Assert.assertEquals("Color does not match", RED_COLOR, defaultColor);
+        Configuration conf = context.getResources().getConfiguration();
+        if (Settings.getNightmode(context)) {
+            int currentNightMode = conf.uiMode & Configuration.UI_MODE_NIGHT_MASK;
+            Assert.assertEquals(currentNightMode, Configuration.UI_MODE_NIGHT_YES);
+        } else {
+            int currentNightMode = conf.uiMode & Configuration.UI_MODE_NIGHT_MASK;
+            Assert.assertEquals(currentNightMode, Configuration.UI_MODE_NIGHT_NO);
+        }
         onView(withId(R.id.switch_nightmode)).perform(click());
     }
 

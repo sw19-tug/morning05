@@ -1,12 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="buttonStyle">@style/DarkFullscreenButton</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
@@ -23,36 +22,5 @@
     <style name="FullscreenButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@color/colorAccent</item>
     </style>
-
-
-
-
-
-    <style name="DarkTheme" parent="android:Theme">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorRed</item>
-        <item name="colorPrimaryDark">@color/colorBlue</item>
-        <item name="colorAccent">@color/colorGreen</item>
-        <item name="buttonStyle">@style/DarkFullscreenButton</item>
-    </style>
-
-    <style name="DarkFullscreenTheme" parent="DarkTheme">
-        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-        <item name="android:background">@color/colorBlack</item>
-    </style>
-
-    <style name="DarkFullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/colorBlack</item>
-    </style>
-
-    <style name="DarkFullscreenButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@color/colorGrey</item>
-        <item name="android:textColor">@color/colorBlueLight</item>
-    </style>
-
 
 </resources>
