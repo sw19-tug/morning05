@@ -50,8 +50,30 @@ public class ExtendWordsActivityEspressoTest {
         onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
         onView(withText(R.string.str_ok)).perform(pressBack());
         ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
+        int count = listview_hm_words.getAdapter().getCount();
+        Assert.assertTrue(count > 0);
+    }
+
+    @Test
+    public void testIfListviewOfWordsisUpdatedAfterAdding() {
+        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
+        onView(withText(R.string.str_ok)).perform(pressBack());
+        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
         int old_count = listview_hm_words.getAdapter().getCount();
+        Settings.addNewHangmanWord(context, "BEER");
         int new_count = listview_hm_words.getAdapter().getCount();
-        Assert.assertEquals(old_count, new_count - 1);
+        Assert.assertNotEquals(old_count, new_count);
+    }
+
+    @Test
+    public void testIfListviewOfWordsisUpdatedAfterDeleting() {
+        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
+        onView(withText(R.string.str_ok)).perform(pressBack());
+        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
+        Settings.addNewHangmanWord(context, "BEER");
+        int old_count = listview_hm_words.getAdapter().getCount();
+        Settings.removeHangmanWord(context, 15);
+        int new_count = listview_hm_words.getAdapter().getCount();
+        Assert.assertNotEquals(old_count, new_count);
     }
 }
