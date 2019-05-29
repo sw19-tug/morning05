@@ -9,12 +9,14 @@
 
     <TextView
         android:id="@+id/textv_header"
+        android:textColor="@color/colorAccent"
         android:text="@string/str_title_ttt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textv_current_player"
@@ -176,6 +178,7 @@
 
             <Button
                 android:id="@+id/btn_reset_ttt"
+                android:background="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -184,6 +187,7 @@
 
             <Button
                 android:id="@+id/btn_back_ttt"
+                android:background="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -14,6 +14,7 @@
 
         <TextView
             android:id="@+id/textv_settings_title"
+            android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_settings"
@@ -81,6 +82,7 @@
 
             <Button
                 android:id="@+id/btn_username_save"
+                android:background="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -99,10 +101,11 @@
 
         <Button
             android:id="@+id/btn_settings_back"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
-            android:text="@string/str_back"
+            android:text="@string/str_confirm"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 

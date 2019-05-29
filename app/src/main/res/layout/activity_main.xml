@@ -14,6 +14,7 @@
 
         <TextView
             android:id="@+id/textv_title"
+            android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_app_title"
@@ -33,6 +34,7 @@
 
         <Button
             android:id="@+id/btn_ttt"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -42,6 +44,7 @@
 
         <Button
             android:id="@+id/btn_hm"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -51,6 +54,7 @@
 
         <Button
             android:id="@+id/btn_ttb"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -68,6 +72,7 @@
 
         <Button
             android:id="@+id/btn_gamestatistic"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -87,6 +92,7 @@
 
         <Button
             android:id="@+id/btn_settings"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
@@ -97,6 +103,7 @@
 
         <Button
             android:id="@+id/btn_help"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
@@ -107,6 +114,7 @@
 
         <Button
             android:id="@+id/btn_switch_lang"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"

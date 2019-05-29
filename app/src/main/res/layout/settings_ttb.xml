@@ -18,7 +18,7 @@
             android:layout_marginBottom="8dp"
             android:textAlignment="center"
             android:text="@string/str_btn_color_ttb"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
             android:textSize="30dp" />
 
         <LinearLayout
@@ -106,7 +106,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/str_screen_color_ttb"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
             android:textSize="30dp" />
 
     <LinearLayout

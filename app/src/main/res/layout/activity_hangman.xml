@@ -19,11 +19,13 @@
 
         <TextView
             android:id="@+id/title"
+            android:textColor="@color/colorAccent"
             android:layout_width="226dp"
             android:layout_height="40dp"
             android:text="@string/str_title_hm"
             android:textAlignment="center"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -339,6 +341,7 @@
 
     <Button
         android:id="@+id/btn_back_hm"
+        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginStart="92dp"
@@ -348,12 +351,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021"
-         />
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <Button
         android:id="@+id/btn_hint_hm"
+        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginTop="48dp"
@@ -363,7 +366,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>
