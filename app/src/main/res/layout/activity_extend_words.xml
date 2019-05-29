@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -31,17 +32,28 @@
         android:gravity="bottom"
         android:padding="10dp">
 
-        <Button
-            android:id="@+id/btn_hm_back_extend_words"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="90dp"
-            android:background="@color/colorAccent"
-            android:text="@string/str_back"
-            android:textColor="@color/colorWhite"
-            tools:layout_editor_absoluteX="14dp"
-            tools:layout_editor_absoluteY="135dp" />
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/btn_hm_back_extend_words"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="90dp"
+                android:background="@color/colorAccent"
+                android:text="@string/str_back"
+                android:textColor="@color/colorWhite"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_hm_extend_words_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:background="@color/colorPrimary"
+                android:tint="@color/colorWhite"
+                android:src="@android:drawable/ic_input_add"></android.support.design.widget.FloatingActionButton>
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>
 
