@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 
 public class ExtendWordsActivity extends AppCompatActivity {
 
+    private static HangmanWordAdapter hangman_word_adapter;
     private String new_word;
 
     @Override
@@ -43,6 +45,13 @@ public class ExtendWordsActivity extends AppCompatActivity {
                 addWordDialog();
             }
         });
+
+        ListView lv = findViewById(R.id.listview_hm_words);
+        ArrayList<Pair<String, Boolean>> word_list = Settings.getHangmanWordList(context);
+
+        hangman_word_adapter = new HangmanWordAdapter(word_list, getApplicationContext());
+
+        lv.setAdapter(hangman_word_adapter);
     }
 
     private void navigateToWelcomeScreen() {

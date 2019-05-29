@@ -47,11 +47,9 @@ public class ExtendWordsActivityEspressoTest {
 
     @Test
     public void testIfListviewOfWordsisDisplayed() {
-        TextView highscore_view = extend_words_activity_test_rule.getActivity().findViewById(R.id.text_tv_hm_word);
-
         onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
         onView(withText(R.string.str_ok)).perform(pressBack());
-        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words)
+        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
         int old_count = listview_hm_words.getAdapter().getCount();
         int new_count = listview_hm_words.getAdapter().getCount();
         Assert.assertEquals(old_count, new_count - 1);
