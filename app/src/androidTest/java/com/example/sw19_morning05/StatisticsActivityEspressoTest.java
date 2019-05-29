@@ -111,7 +111,7 @@ public class StatisticsActivityEspressoTest {
     }
 
     @Test
-    public void testIncrementStatisicsHM() {
+    public void testIncrementStatisticsHM() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
         int game_counter_after = Statistics.getGameCounterHM(context);
         Statistics.incrementGameCounterHM(context);

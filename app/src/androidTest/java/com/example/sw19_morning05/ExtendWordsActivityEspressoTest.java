@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.junit.Assert;
@@ -14,6 +15,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.pressBack;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
@@ -28,7 +30,7 @@ public class ExtendWordsActivityEspressoTest {
     private final Context context = InstrumentationRegistry.getTargetContext();
 
     @Rule
-    public ActivityTestRule<ExtendWordsActivity> activityTestRule = new ActivityTestRule<>(ExtendWordsActivity.class);
+    public ActivityTestRule<ExtendWordsActivity> extend_words_activity_test_rule = new ActivityTestRule<>(ExtendWordsActivity.class);
 
     @Test
     public void testIfTitleExists() {
@@ -39,11 +41,19 @@ public class ExtendWordsActivityEspressoTest {
     public void testIfAddButtonShowsDialog() {
         onView(withId(R.id.btn_hm_extend_words_add)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
-        onView(withId(R.id.dialog_extend_words)).check(matches(isDisplayed()));
+        onView(withText(R.string.str_hm_dialog_title)).check(matches(isDisplayed()));
+        onView(withText(R.string.str_cancel)).perform(pressBack());
     }
 
     @Test
     public void testIfListviewOfWordsisDisplayed() {
-        onView(withId(R.id.listview_hm_words)).check(matches(isDisplayed()));
+        TextView highscore_view = extend_words_activity_test_rule.getActivity().findViewById(R.id.text_tv_hm_word);
+
+        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
+        onView(withText(R.string.str_ok)).perform(pressBack());
+        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words)
+        int old_count = listview_hm_words.getAdapter().getCount();
+        int new_count = listview_hm_words.getAdapter().getCount();
+        Assert.assertEquals(old_count, new_count - 1);
     }
 }
