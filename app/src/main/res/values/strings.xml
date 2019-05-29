@@ -31,7 +31,8 @@
     <string name="str_textv_player1_wins">Player X wins!</string>
     <string name="str_textv_player2_wins">Player O wins!</string>
     <string name="str_textv_draw">Draw!</string>
-    <string name="str_cbox_text_autoplayer">Enable Autoplayer</string>
+    <string name="str_cbox_text_autoplayer_easy">Enable Easy Autoplayer</string>
+    <string name="str_cbox_text_autoplayer_hard">Enable Hard Autoplayer</string>
     <string name="str_textv_pick_color">Pick your Color:</string>
     <string name="str_textv_pick_sign">Pick your Sign:</string>
 

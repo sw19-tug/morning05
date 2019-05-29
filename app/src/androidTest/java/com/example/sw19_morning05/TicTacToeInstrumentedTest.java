@@ -2,25 +2,23 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.Button;
 
 import org.junit.Assert;
 import org.junit.Rule;
-
-import android.support.test.rule.ActivityTestRule;
-import android.widget.Button;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasTextColor;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static android.support.test.espresso.action.ViewActions.click;
 import static org.hamcrest.Matchers.not;
 
 
@@ -266,13 +264,13 @@ public class TicTacToeInstrumentedTest {
 
     @Test
     public void testCheckBoxClickable() {
-        onView(withId(R.id.cbox_autoplayer_ttt)).check(matches(isDisplayed()));
-        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.cbox_autoplayer_easy_ttt)).check(matches(isDisplayed()));
+        onView(withId(R.id.cbox_autoplayer_easy_ttt)).perform(click());
     }
 
     @Test
     public void testAutoplayer() {
-        onView(withId(R.id.cbox_autoplayer_ttt)).perform(click());
+        onView(withId(R.id.cbox_autoplayer_easy_ttt)).perform(click());
         onView(withId(R.id.bt_field11)).perform(click());
 
         int count_disabled = 0;
@@ -329,7 +327,6 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.btn_sign_o_ttt)).check(matches(not(isEnabled())));
     }
 
-
     @Test
     public void testSettingsButtonBehaviourColors() {
         onView(withId(R.id.btn_settings_ttt)).check(matches(isDisplayed()));
@@ -375,5 +372,39 @@ public class TicTacToeInstrumentedTest {
         onView(withId(R.id.bt_field00)).perform(click());
         onView(withId(R.id.bt_field00)).check(matches(withText("O")));
         onView(withId(R.id.bt_field00)).check(matches(hasTextColor(R.color.colorRed)));
+    }
+
+    @Test
+    public void testIntelligentAPMiddle() {
+        onView(withId(R.id.cbox_autoplayer_hard_ttt)).perform(click());
+        onView(withId(R.id.bt_field11)).perform(click());
+
+        onView(withId(R.id.bt_field00)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void testIntelligentAPCorner() {
+        onView(withId(R.id.cbox_autoplayer_hard_ttt)).perform(click());
+        onView(withId(R.id.bt_field00)).perform(click());
+
+        onView(withId(R.id.bt_field11)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void testIntelligentAPBorder() {
+        onView(withId(R.id.cbox_autoplayer_hard_ttt)).perform(click());
+        onView(withId(R.id.bt_field01)).perform(click());
+
+        onView(withId(R.id.bt_field11)).check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void testIntelligentAPSecondTurn()
+    {
+        onView(withId(R.id.cbox_autoplayer_hard_ttt)).perform(click());
+        onView(withId(R.id.bt_field22)).perform(click());
+        onView(withId(R.id.bt_field02)).perform(click());
+
+        onView(withId(R.id.bt_field12)).check(matches(not(isEnabled())));
     }
 }
