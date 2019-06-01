@@ -4,10 +4,14 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,13 +20,18 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressBack;
+import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.StringEndsWith.endsWith;
 
 @RunWith(AndroidJUnit4.class)
 public class ExtendWordsActivityEspressoTest {
@@ -56,24 +65,44 @@ public class ExtendWordsActivityEspressoTest {
 
     @Test
     public void testIfListviewOfWordsisUpdatedAfterAdding() {
-        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
-        onView(withText(R.string.str_ok)).perform(pressBack());
         ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
         int old_count = listview_hm_words.getAdapter().getCount();
-        Settings.addNewHangmanWord(context, "BEER");
+
+        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
+        onView(allOf(withClassName(endsWith("EditText")))).perform(replaceText("SOMETESTY"));
+        onView(withId(android.R.id.button1)).perform(click());
+
         int new_count = listview_hm_words.getAdapter().getCount();
         Assert.assertNotEquals(old_count, new_count);
     }
 
     @Test
     public void testIfListviewOfWordsisUpdatedAfterDeleting() {
-        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
-        onView(withText(R.string.str_ok)).perform(pressBack());
         ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
-        Settings.addNewHangmanWord(context, "BEER");
         int old_count = listview_hm_words.getAdapter().getCount();
-        Settings.removeHangmanWord(context, 15);
+
+        Matcher<View> secondIconMatcher = allOf(withId(R.id.imagev_hm_word));
+        onView(withIndex(secondIconMatcher , 1)).perform(click());
+
         int new_count = listview_hm_words.getAdapter().getCount();
         Assert.assertNotEquals(old_count, new_count);
+    }
+
+    public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
+        return new TypeSafeMatcher<View>() {
+            int currentIndex = 0;
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with index: ");
+                description.appendValue(index);
+                matcher.describeTo(description);
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                return matcher.matches(view) && currentIndex++ == index;
+            }
+        };
     }
 }

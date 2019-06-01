@@ -29,7 +29,7 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
     }
 
     @Override
-    public View getView(int position, View listViewItem, ViewGroup parent) {
+    public View getView(final int position, View listViewItem, ViewGroup parent) {
         Pair<String, Boolean> pair = getItem(position);
         ViewHolder viewHolder;
 
@@ -40,7 +40,7 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
             listViewItem = inflater.inflate(R.layout.list_item_hm_word, parent, false);
 
             viewHolder.textv_hm_word = listViewItem.findViewById(R.id.textv_hm_word);
-            viewHolder.btn_delete = (ImageView) listViewItem.findViewById(R.id.imagev_hm_word);
+            viewHolder.btn_delete = listViewItem.findViewById(R.id.imagev_hm_word);
 
             listViewItem.setTag(viewHolder);
 
@@ -49,17 +49,14 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
         }
 
         viewHolder.textv_hm_word.setText(pair.first);
+
         viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position=(Integer) v.getTag();
-                Object object= getItem(position);
-                Pair<String, Boolean> dataModel = (Pair<String, Boolean>) object;
-
                 switch (v.getId())
                 {
                     case R.id.imagev_hm_word:
-                        Snackbar.make(v, "Hello world!", Snackbar.LENGTH_LONG)
-                                .setAction("No action", null).show();
+                        Settings.removeHangmanWord(context, position);
+                        remove(word_list.get(position));
                         break;
                 }
             }

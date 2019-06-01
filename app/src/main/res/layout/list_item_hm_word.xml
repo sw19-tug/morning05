@@ -12,14 +12,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DEFAULTWORD"
-        android:layout_marginRight="7dp"
-        android:textSize="12dp" />
+        android:layout_marginTop="6dp"
+        android:textSize="16dp" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
     <ImageView
         android:id="@+id/imagev_hm_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        android:src="@android:drawable/ic_menu_delete" />
 
 </LinearLayout>

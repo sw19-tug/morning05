@@ -74,15 +74,9 @@ public class ExtendWordsActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.str_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                new_word = input.getText().toString();
-                Settings.addNewHangmanWord(context, new_word);
-
-                ListView lv_new = findViewById(R.id.listview_hm_words);
-                hangman_word_adapter = new HangmanWordAdapter(word_list, getApplicationContext());
-                hangman_word_adapter.notifyDataSetChanged();
+                Settings.addNewHangmanWord(context, input.getText().toString());
                 word_list = Settings.getHangmanWordList(context);
                 hangman_word_adapter.add(word_list.get(word_list.size()-1));
-                lv_new.setAdapter(hangman_word_adapter);
             }
         });
         builder.setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
