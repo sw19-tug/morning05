@@ -76,6 +76,13 @@ public class ExtendWordsActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 new_word = input.getText().toString();
                 Settings.addNewHangmanWord(context, new_word);
+
+                ListView lv_new = findViewById(R.id.listview_hm_words);
+                hangman_word_adapter = new HangmanWordAdapter(word_list, getApplicationContext());
+                hangman_word_adapter.notifyDataSetChanged();
+                word_list = Settings.getHangmanWordList(context);
+                hangman_word_adapter.add(word_list.get(word_list.size()-1));
+                lv_new.setAdapter(hangman_word_adapter);
             }
         });
         builder.setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
