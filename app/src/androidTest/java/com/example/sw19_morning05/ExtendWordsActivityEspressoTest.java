@@ -77,6 +77,27 @@ public class ExtendWordsActivityEspressoTest {
     }
 
     @Test
+    public void testShouldNotAddEmptyWord() {
+        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
+        int old_count = listview_hm_words.getAdapter().getCount();
+        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click());
+        int new_count = listview_hm_words.getAdapter().getCount();
+        Assert.assertEquals(old_count, new_count);
+    }
+
+    @Test
+    public void testShouldNotAddInvalidCharacters() {
+        ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
+        int old_count = listview_hm_words.getAdapter().getCount();
+        onView(withId(R.id.btn_hm_extend_words_add)).perform(click());
+        onView(allOf(withClassName(endsWith("EditText")))).perform(replaceText("Should fail!"));
+        onView(withId(android.R.id.button1)).perform(click());
+        int new_count = listview_hm_words.getAdapter().getCount();
+        Assert.assertEquals(old_count, new_count);
+    }
+
+    @Test
     public void testIfListviewOfWordsisUpdatedAfterDeleting() {
         ListView listview_hm_words = extend_words_activity_test_rule.getActivity().findViewById(R.id.listview_hm_words);
         int old_count = listview_hm_words.getAdapter().getCount();
