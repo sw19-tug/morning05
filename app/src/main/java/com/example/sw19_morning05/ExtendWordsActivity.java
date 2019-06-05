@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -61,10 +62,15 @@ public class ExtendWordsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private boolean isWordValid(String word){
+        return ((word != null) && (word.length() > 2) && word.matches("^[a-zA-Z]*$"));
+    }
+
     private void addWordDialog() {
         final Context context = getApplicationContext();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog builderd = builder.create();
         builder.setTitle(R.string.str_hm_dialog_title);
 
         final EditText input = new EditText(this);
@@ -74,9 +80,7 @@ public class ExtendWordsActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.str_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Settings.addNewHangmanWord(context, input.getText().toString());
-                word_list = Settings.getHangmanWordList(context);
-                hangman_word_adapter.add(word_list.get(word_list.size()-1));
+
             }
         });
         builder.setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
@@ -85,7 +89,24 @@ public class ExtendWordsActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        Button theButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        theButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String new_word = input.getText().toString().toUpperCase();
+                if (!isWordValid(new_word)) {
+                    Toast.makeText(ExtendWordsActivity.this, "Invalid word", Toast.LENGTH_SHORT).show();
+                } else {
+                    Settings.addNewHangmanWord(context, new_word);
+                    word_list = Settings.getHangmanWordList(context);
+                    hangman_word_adapter.add(word_list.get(word_list.size()-1));
+                    alertDialog.dismiss();
+                }
 
-        builder.show();
+            }
+        });
+
     }
 }
