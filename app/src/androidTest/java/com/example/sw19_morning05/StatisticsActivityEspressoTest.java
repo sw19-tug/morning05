@@ -113,9 +113,9 @@ public class StatisticsActivityEspressoTest {
     @Test
     public void testIncrementStatisticsHM() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
-        int game_counter_after = Statistics.getGameCounterHM(context);
+        int game_counter = Statistics.getGameCounterHM(context);
         Statistics.incrementGameCounterHM(context);
-        Assert.assertEquals((game_counter_after + 1), Statistics.getGameCounterHM(context));
+        Assert.assertNotEquals(game_counter, Statistics.getGameCounterHM(context));
     }
 
     @Test
