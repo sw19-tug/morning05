@@ -11,9 +11,10 @@
     <string name="str_description_ttt">Es wird abwechselnd ein X oder O in eines der freien Felder gesetzt. Der Spieler kann entscheiden, ob er gegen einen anderen Spieler spielt oder gegen den Autoplayer.
         Der Spieler, der als Erster drei Zeichen in eine Zeile, Spalte oder Diagonale setzen kann, gewinnt. Der Spieler kann in den Einstelungen die Farben der X und O ändern. Pro gewonnenem Spiel bekommt
         der Spieler einen Punkt und ansonsten verliert er 2 Punkte.</string>
-    <string name="str_description_ttb">Man hat 3 Sekunden Zeit um den Block zu berühren. Nach 1 Sekund ertönt ein Ton um den Spieler zu signalisieren, dass die Zeit fast vorbei ist.
+    <string name="str_description_ttb">Man hat 3 Sekunden Zeit um den Block zu berühren. Nach 2 Sekunden ertönt ein Alarm um den Spieler zu signalisieren, dass die Zeit fast vorbei ist.
         Der Block verkleinert sich pro Berührung und das Spiel endet sobald der Block nicht mehr getroffen wird oder die Zeit verstrichen ist. Der Spieler kann in den Einstellungen die Farben des
-        Blockes und des Hintergrundes ändern. Pro Berührung des Blockes erhält der Spieler einen Punkt.</string>
+        Blockes und des Hintergrundes ändern. Pro Berührung des Blockes erhält der Spieler einen Punkt. Schafft der Spieler es nicht, den Block zu berühren,
+        kann er 10 seiner Score-Punkte ausgeben, um an dem Punkt weiterzumachen, an dem er gescheitert ist.</string>
 
     <string name="str_textv_score">Punkte:</string>
     <string name="str_textv_statistic_ttb">Touch the Block:</string>
