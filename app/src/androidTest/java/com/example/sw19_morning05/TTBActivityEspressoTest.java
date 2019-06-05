@@ -21,9 +21,11 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -324,5 +326,17 @@ public class TTBActivityEspressoTest {
         cdt.cancel();
 
         onView(withId(R.id.timer)).check(matches(isDisplayed()));
+    }
+    @Test
+    public void testContinueButton() {
+        onView(withId(R.id.btn_play)).perform(click());
+        clickBackground();
+
+        int score = Score.getScore(context);
+        if (score >= 10) {
+            onView(withId(R.id.btn_continue.ttb)).check(matches((isEnabled())));
+        } else {
+            onView(withId(R.id.btn_continue.ttb)).check(matches(not(isEnabled())));
+        }
     }
 }
