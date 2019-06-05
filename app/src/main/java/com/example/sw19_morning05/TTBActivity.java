@@ -29,6 +29,10 @@ public class TTBActivity extends Activity {
     CountDownTimer cdt_play_time;
     int ttb_block_counter = 0;
 
+    ViewGroup.LayoutParams last_block_size;
+    float last_block_x_position;
+    float last_block_y_position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,13 @@ public class TTBActivity extends Activity {
         final Button btn_background = (Button) findViewById(R.id.btn_background);
         final TextView tv_timer = (TextView) findViewById(R.id.timer);
 
+        if (ttb_block_counter > 0)
+        {
+            btn_block.setLayoutParams(last_block_size);
+            btn_block.setY(last_block_y_position);
+            btn_block.setX(last_block_x_position);
+        }
+
         final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
 
         tv_timer.setText("TIME: " + 3 + ":" + 000);
@@ -106,11 +117,25 @@ public class TTBActivity extends Activity {
             start_height += textview_height;
         }
 
-        btn_block.setY((float) (start_height));
+        if (ttb_block_counter == 0) {
+            btn_block.setY((float) (start_height));
+        }
 
         btn_block.setEnabled(false);
         btn_block.setVisibility(View.INVISIBLE);
         btn_background.setEnabled(false);
+
+        if (background_color != 0) {
+            btn_background.setBackgroundColor(background_color);
+        }
+
+        if (block_color != 0) {
+            btn_block.setBackgroundColor(block_color);
+        }
+
+        btn_block.setEnabled(true);
+        btn_block.setVisibility(View.VISIBLE);
+        btn_background.setEnabled(true);
 
         btn_block.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -129,7 +154,9 @@ public class TTBActivity extends Activity {
                 }
                 else
                     params.width = params.width / 2;
+                last_block_size = params;
                 btn_block.setLayoutParams(params);
+
 
                 Random randi = new Random();
                 int range_width = randi.nextInt(get_width);
@@ -148,20 +175,11 @@ public class TTBActivity extends Activity {
                 }
                 else
                     btn_block.setY(range_height);
+
+                last_block_x_position = btn_block.getX();
+                last_block_y_position = btn_block.getY();
             }
         });
-
-        if (background_color != 0) {
-            btn_background.setBackgroundColor(background_color);
-        }
-
-        if (block_color != 0) {
-            btn_block.setBackgroundColor(block_color);
-        }
-
-        btn_block.setEnabled(true);
-        btn_block.setVisibility(View.VISIBLE);
-        btn_background.setEnabled(true);
 
         btn_background.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -172,16 +190,27 @@ public class TTBActivity extends Activity {
 
         final Button btn_restart = findViewById(R.id.btn_reset_ttb);
         final Button btn_back = findViewById(R.id.btn_back_ttb);
+        final Button btn_continue = (Button) findViewById(R.id.btn_continue_ttb);
 
         btn_restart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                ttb_block_counter = 0;
                 playTTB();
             }
         });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                ttb_block_counter = 0;
                 initTTB();
+            }
+        });
+
+        btn_continue.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                playTTB();
             }
         });
     }
@@ -294,8 +323,7 @@ public class TTBActivity extends Activity {
         Vibration.vibrate(context, 1000);
         cdt_play_time.cancel();
 
-        Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
-        ttb_block_counter = 0;
+        //Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
     }
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,

@@ -334,9 +334,9 @@ public class TTBActivityEspressoTest {
 
         int score = Score.getScore(context);
         if (score >= 10) {
-            onView(withId(R.id.btn_continue.ttb)).check(matches((isEnabled())));
+            onView(withId(R.id.btn_continue_ttb)).check(matches((isEnabled())));
         } else {
-            onView(withId(R.id.btn_continue.ttb)).check(matches(not(isEnabled())));
+            onView(withId(R.id.btn_continue_ttb)).check(matches(not(isEnabled())));
         }
     }
 }

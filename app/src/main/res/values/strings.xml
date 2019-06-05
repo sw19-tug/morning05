@@ -43,6 +43,7 @@
     <string name="str_play_again_ttb">Play Again?</string>
     <string name="str_btn_color_ttb">Button Color</string>
     <string name="str_screen_color_ttb">Screen Color</string>
+    <string name="str_continue_ttb">Continue (-10 p.)</string>
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>

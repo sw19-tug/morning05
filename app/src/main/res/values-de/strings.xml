@@ -42,6 +42,7 @@
     <string name="str_play_again_ttb">Nocheinmal Spielen?</string>
     <string name="str_btn_color_ttb">Knopf Farbe</string>
     <string name="str_screen_color_ttb">Hintergrund Farbe</string>
+    <string name="str_continue_ttb">Weiter spielen (-10 P.)</string>
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>
