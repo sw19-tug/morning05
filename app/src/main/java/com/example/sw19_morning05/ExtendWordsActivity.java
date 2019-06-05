@@ -97,7 +97,9 @@ public class ExtendWordsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String new_word = input.getText().toString().toUpperCase();
                 if (!isWordValid(new_word)) {
-                    Toast.makeText(ExtendWordsActivity.this, "Invalid word", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ExtendWordsActivity.this,
+                            getResources().getString(R.string.str_hm_dialog_warning),
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Settings.addNewHangmanWord(context, new_word);
                     word_list = Settings.getHangmanWordList(context);

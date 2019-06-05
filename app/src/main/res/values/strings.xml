@@ -63,5 +63,8 @@
     <string name="str_statistics_highscore_header">Touch the Block - Highscore</string>
 
     <string name="str_hm_dialog_title">Add new word</string>
+    <string name="str_hm_dialog_warning">Invalid word</string>
+
+
 
 </resources>

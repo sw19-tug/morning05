@@ -62,5 +62,7 @@
     <string name="str_statistics_highscore_header">Touch the Block - Rangliste</string>
 
     <string name="str_hm_dialog_title">Neues Wort hinzufügen</string>
+    <string name="str_hm_dialog_warning">Ungültiges Wort</string>
+
 
 </resources>
