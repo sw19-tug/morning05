@@ -36,12 +36,12 @@ public class TTBActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         initTTB();
     }
 
     private void initTTB() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ttb);
 
         Button btn_play = (Button) findViewById(R.id.btn_play);
@@ -97,7 +97,6 @@ public class TTBActivity extends Activity {
                 if(mp_alarm.isPlaying()) {
                     mp_alarm.stop();
                 }
-
                 clickedBackground(btn_block, btn_background, tv_timer);
             }
         };
@@ -139,45 +138,7 @@ public class TTBActivity extends Activity {
 
         btn_block.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ttb_block_counter++;
-                cdt_play_time.cancel();
-                if(mp_alarm.isPlaying()) {
-                    mp_alarm.pause();
-                    mp_alarm.seekTo(0);
-                }
-
-                cdt_play_time.start();
-
-                ViewGroup.LayoutParams params = btn_block.getLayoutParams();
-                if (Math.random() >= 0.5) {
-                    params.height = params.height / 2;
-                }
-                else
-                    params.width = params.width / 2;
-                last_block_size = params;
-                btn_block.setLayoutParams(params);
-
-
-                Random randi = new Random();
-                int range_width = randi.nextInt(get_width);
-                int range_height = randi.nextInt(get_height);
-
-                if ((get_width - range_width) < params.width)
-                    btn_block.setX(get_width - params.width);
-                else
-                    btn_block.setX(range_width);
-
-                if (range_height < textview_height)
-                    range_height += textview_height;
-
-                if ((get_height - range_height) < params.height){
-                    btn_block.setY(get_height - params.height);
-                }
-                else
-                    btn_block.setY(range_height);
-
-                last_block_x_position = btn_block.getX();
-                last_block_y_position = btn_block.getY();
+                clickedBlock(mp_alarm, btn_block, get_width, get_height, textview_height);
             }
         });
 
@@ -319,7 +280,6 @@ public class TTBActivity extends Activity {
             }
         });
     }
-
     public void clickedBackground(Button block, Button background, TextView timer) {
         Context context = this.getApplicationContext();
         if (Score.getScore(context) < 10) {
@@ -334,6 +294,50 @@ public class TTBActivity extends Activity {
         Vibration.vibrate(context, 1000);
         cdt_play_time.cancel();
     }
+
+    public void clickedBlock(MediaPlayer alarm, Button block, int width, int height, int textview_height) {
+        ttb_block_counter++;
+        cdt_play_time.cancel();
+        if(alarm.isPlaying()) {
+            alarm.pause();
+            alarm.seekTo(0);
+        }
+
+        cdt_play_time.start();
+
+        ViewGroup.LayoutParams params = block.getLayoutParams();
+        if (Math.random() >= 0.5) {
+            params.height = params.height / 2;
+        }
+        else
+            params.width = params.width / 2;
+        last_block_size = params;
+        block.setLayoutParams(params);
+
+
+        Random randi = new Random();
+        int range_width = randi.nextInt(width);
+        int range_height = randi.nextInt(height);
+
+        if ((width - range_width) < params.width)
+            block.setX(width - params.width);
+        else
+            block.setX(range_width);
+
+        if (range_height < textview_height)
+            range_height += textview_height;
+
+        if ((height - range_height) < params.height){
+            block.setY(height - params.height);
+        }
+        else
+            block.setY(range_height);
+
+        last_block_x_position = block.getX();
+        last_block_y_position = block.getY();
+
+    }
+
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,
                                 Button button_4) {
