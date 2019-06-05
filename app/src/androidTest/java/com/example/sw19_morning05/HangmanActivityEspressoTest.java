@@ -178,6 +178,26 @@ public class HangmanActivityEspressoTest {
     }
 
     @Test
+    public void testLoseMessage() {
+        String right_word = activityTestRule.getActivity().word_to_guess;
+
+        for (int i = 0, j = 0; i < 8; i++, j++) {
+            if (right_word.contains(alphabet[j].toUpperCase())) {
+                i--;
+                continue;
+            }
+            String id = "btn_" + alphabet[j];
+            int resourceID = context.getResources().getIdentifier(id, "id", context.getPackageName());
+            onView(withId(resourceID)).perform(click());
+        }
+
+        onView(withId(R.id.btn_reset_hm)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_exit)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_exit)).perform(click());
+    }
+
+
+    @Test
     public void testIncrementPointsOnWin() {
         int score = Score.getScore(context);
         int points = 1;
