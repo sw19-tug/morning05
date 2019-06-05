@@ -67,6 +67,7 @@
     <string name="str_hm_dialog_title">Neues Wort hinzufügen</string>
     <string name="str_hm_dialog_warning">Ungültiges Wort</string>
     <string name="str_hm_delete_warning">Standard Wort nicht löschbar</string>
-    <string name="str_score_message">Meine Punkte bei morning05 - Spielesammlung ist </string>
+    <string name="str_score_message">Meine Punkteanzahl bei morning05 - Spielesammlung ist </string>
+    <string name="str_whatsapp_not_installed">WhatsApp ist nicht installiert</string>
 
 </resources>

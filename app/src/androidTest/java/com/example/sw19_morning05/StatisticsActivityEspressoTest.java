@@ -140,7 +140,7 @@ public class StatisticsActivityEspressoTest {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
         String message = Score.getScoreMessage(context);
         Assert.assertEquals(message, context.getResources().getString(R.string.str_score_message)
-                + Score.getScore(context));
+                + " " + Score.getScore(context));
 
     }
 }

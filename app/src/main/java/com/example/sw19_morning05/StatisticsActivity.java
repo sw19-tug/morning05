@@ -44,13 +44,13 @@ public class StatisticsActivity extends AppCompatActivity {
                 Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
                 whatsappIntent.setType("text/plain");
                 whatsappIntent.setPackage("com.whatsapp");
-                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "HIGHSCORE");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, Score.getScoreMessage(context));
                 try {
                     startActivity(whatsappIntent);
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(
                             context,
-                            "WhatsApp is not Installed",
+                            getResources().getString(R.string.str_whatsapp_not_installed),
                             Toast.LENGTH_LONG
                     ).show();
                 }

@@ -24,7 +24,7 @@ public final class Score {
     }
 
     public static String getScoreMessage(Context context) {
-        String message = context.getResources().getString(R.string.str_score_message) + getScore(context);
+        String message = context.getResources().getString(R.string.str_score_message) + " " + getScore(context);
         return message;
     }
 }
