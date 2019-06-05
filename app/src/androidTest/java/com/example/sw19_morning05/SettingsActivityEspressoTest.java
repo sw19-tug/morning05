@@ -44,25 +44,28 @@ public class SettingsActivityEspressoTest {
 
     @Test
     public void testSettingsSwitchesSwitchable() {
-        onView(withId(R.id.switch_nightmode)).check(matches(isDisplayed()));
-        onView(withId(R.id.switch_music)).check(matches(isDisplayed()));
-        onView(withId(R.id.switch_physical)).check(matches(isDisplayed()));
+        Context context = settings_activity_test_rule.getActivity().getApplicationContext();
 
-        onView(withId(R.id.switch_nightmode)).check(matches(not(isChecked())));
-        onView(withId(R.id.switch_nightmode)).check(matches(not(isChecked())));
-        onView(withId(R.id.switch_nightmode)).check(matches(not(isChecked())));
+        boolean is_music = Settings.getNightmode(context);
+        boolean is_nightmode = Settings.getBackgroundMusic(context);
+        boolean is_physical = Settings.getPhysicalFeedback(context);
 
-        onView(withId(R.id.switch_nightmode)).perform(click());
         onView(withId(R.id.switch_music)).perform(click());
+        onView(withId(R.id.switch_nightmode)).perform(click());
         onView(withId(R.id.switch_physical)).perform(click());
 
-        onView(withId(R.id.switch_nightmode)).check(matches(isChecked()));
-        onView(withId(R.id.switch_nightmode)).check(matches(isChecked()));
-        onView(withId(R.id.switch_nightmode)).check(matches(isChecked()));
+        Assert.assertNotEquals(is_music, Settings.getNightmode(context));
+        Assert.assertNotEquals(is_nightmode, Settings.getBackgroundMusic(context));
+        Assert.assertNotEquals(is_physical, Settings.getPhysicalFeedback(context));
 
-        onView(withId(R.id.switch_nightmode)).perform(click());
         onView(withId(R.id.switch_music)).perform(click());
+        onView(withId(R.id.switch_nightmode)).perform(click());
         onView(withId(R.id.switch_physical)).perform(click());
+
+        Assert.assertEquals(is_music, Settings.getNightmode(context));
+        Assert.assertEquals(is_nightmode, Settings.getBackgroundMusic(context));
+        Assert.assertEquals(is_physical, Settings.getPhysicalFeedback(context));
+
     }
 
     @Test
@@ -81,6 +84,10 @@ public class SettingsActivityEspressoTest {
     public void testNightMode() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.switch_nightmode)).perform(click());
+
+        onView(withId(R.id.btn_settings_back)).perform(click());
+        onView(withId(R.id.btn_settings)).perform(click());
+
         Configuration conf = context.getResources().getConfiguration();
         if (Settings.getNightmode(context)) {
             int currentNightMode = conf.uiMode & Configuration.UI_MODE_NIGHT_MASK;
