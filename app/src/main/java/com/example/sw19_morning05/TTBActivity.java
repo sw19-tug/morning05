@@ -194,7 +194,9 @@ public class TTBActivity extends Activity {
 
         btn_restart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Context context = getApplicationContext();
+                Score.incrementScore(context , ttb_block_counter);
+                Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
                 ttb_block_counter = 0;
                 playTTB();
             }
@@ -202,7 +204,9 @@ public class TTBActivity extends Activity {
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Context context = getApplicationContext();
+                Score.incrementScore(context , ttb_block_counter);
+                Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
                 ttb_block_counter = 0;
                 initTTB();
             }
@@ -210,6 +214,8 @@ public class TTBActivity extends Activity {
 
         btn_continue.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                getApplicationContext();
+                Score.decrementScore(getApplicationContext(), 10);
                 playTTB();
             }
         });
@@ -316,14 +322,17 @@ public class TTBActivity extends Activity {
 
     public void clickedBackground(Button block, Button background, TextView timer) {
         Context context = this.getApplicationContext();
+        if (Score.getScore(context) < 10) {
+            findViewById(R.id.btn_continue_ttb).setEnabled(false);
+        } else {
+            findViewById(R.id.btn_continue_ttb).setEnabled(true);
+        }
 
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
         block.setVisibility(View.INVISIBLE);
         background.setVisibility((View.INVISIBLE));
         Vibration.vibrate(context, 1000);
         cdt_play_time.cancel();
-
-        //Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
     }
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,
