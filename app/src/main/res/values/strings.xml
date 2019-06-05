@@ -4,7 +4,8 @@
     <string name="str_user_greeting">Welcome back</string>
     <string name="str_switch_lang">Switch to German</string>
     <string name="str_help">Help</string>
-    <string name="str_ok">Ok</string>
+    <string name="str_ok">OK</string>
+    <string name="str_cancel">CANCEL</string>
 
     <string name="str_description_hm">The aim of the game is to guess the wanted term while using the given keyboard. The game is over after 8 wrong guesses.
         There is the possibility to get a hint. For every correct guessed word the user gets a point.</string>
@@ -47,7 +48,9 @@
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>
     <string name="str_hint">Hint</string>
+    <string name="str_hm_extend_words">Extend words</string>
     <string name="str_textv_gamestatistic">Game Statistics</string>
+    <string name="str_hm_title_extend_words">Manage words</string>
 
     <string name="str_sett_nightmode">Night Mode</string>
     <string name="str_sett_backg_music">Background Music</string>
@@ -59,5 +62,9 @@
     <string name="str_statistics_number_header">Number of Games Played</string>
     <string name="str_user_hs">of</string>
     <string name="str_statistics_highscore_header">Touch the Block - Highscore</string>
+
+    <string name="str_hm_dialog_title">Add new word</string>
+    <string name="str_hm_dialog_warning">Invalid word</string>
+    <string name="str_hm_delete_warning">Cannot delete default word</string>
 
 </resources>

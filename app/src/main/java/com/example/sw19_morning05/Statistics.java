@@ -37,7 +37,7 @@ public final class Statistics {
 
     public static void incrementGameCounterHM(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("morning05.statistic", context.MODE_PRIVATE);
-        int current_game_counter = preferences.getInt(statistic_ttb_key, 0);
+        int current_game_counter = preferences.getInt(statistic_hm_key, 0);
         preferences.edit().putInt(statistic_hm_key, current_game_counter + 1).commit();
     }
 

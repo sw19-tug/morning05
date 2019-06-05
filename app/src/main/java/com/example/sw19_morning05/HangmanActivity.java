@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class HangmanActivity extends AppCompatActivity {
 
@@ -22,8 +25,7 @@ public class HangmanActivity extends AppCompatActivity {
             R.drawable.image_hm_8,
     };
 
-    public static String word_list[] = { "GIN", "VODKA", "RUM", "BRANDY", "BACARDI", "COGNAC", "WHISKY",
-            "JAEGERMEISTER", "HAVANNA", "BELVEDERE", "ABSOLUT", "GREYGOOSE", "WILLIAMS", "SCHNAPS", "ABSINTH" };
+    public static ArrayList<Pair<String, Boolean>>  word_list;
 
     String word_to_guess;
     String word_place_holder;
@@ -31,11 +33,15 @@ public class HangmanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Context context = getApplicationContext();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
         ImageView image = findViewById(R.id.image_hm);
         image.setContentDescription("wrongGuess" + wrong_guesses);
+
+        word_list = Settings.getHangmanWordList(context);
 
         final Button btn_a = findViewById(R.id.btn_a);
         btn_a.setOnClickListener(new View.OnClickListener() {
@@ -266,6 +272,14 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
+
+        final Button btn_hm_extend_words = findViewById(R.id.btn_hm_extend_words);
+        btn_hm_extend_words.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                navigateToExtendWordsScreen();
+            }
+        });
+
         final Button btn_hint_hm = findViewById(R.id.btn_hint_hm);
         btn_hint_hm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -280,14 +294,19 @@ public class HangmanActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void navigateToExtendWordsScreen() {
+        Intent intent = new Intent(this, ExtendWordsActivity.class);
+        startActivity(intent);
+    }
+
     void setWordView() {
         word_place_holder = "";
 
-        int random = randomWithRange(word_list.length);
+        int random = randomWithRange(word_list.size());
 
         TextView textv_word_view = findViewById(R.id.textv_word_to_guess);
 
-        word_to_guess = word_list[random];
+        word_to_guess = word_list.get(random).first;
 
         int temp = word_to_guess.length() + word_to_guess.length() - 1;
 
