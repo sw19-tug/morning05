@@ -128,4 +128,9 @@ public class StatisticsActivityEspressoTest {
 
         onView(withId(R.id.textv_game_counter_hm)).check(matches((withText(game_counter_after_text))));
     }
+
+    @Test
+    public void testGameButtonsVisible() {
+        onView(withId(R.id.btn_share_score)).check(matches(isDisplayed()));
+    }
 }
