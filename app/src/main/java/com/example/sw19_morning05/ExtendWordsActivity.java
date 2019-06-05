@@ -3,9 +3,6 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -16,11 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class ExtendWordsActivity extends AppCompatActivity {
 
@@ -62,7 +57,7 @@ public class ExtendWordsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private boolean isWordValid(String word){
+    private boolean isWordValid(String word) {
         return ((word != null) && (word.length() > 2) && word.matches("^[a-zA-Z]*$"));
     }
 
@@ -103,12 +98,10 @@ public class ExtendWordsActivity extends AppCompatActivity {
                 } else {
                     Settings.addNewHangmanWord(context, new_word);
                     word_list = Settings.getHangmanWordList(context);
-                    hangman_word_adapter.add(word_list.get(word_list.size()-1));
+                    hangman_word_adapter.add(word_list.get(word_list.size() - 1));
                     alertDialog.dismiss();
                 }
-
             }
         });
-
     }
 }

@@ -1,7 +1,6 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -52,11 +52,19 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
 
         viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                switch (v.getId())
-                {
+                switch (v.getId()) {
                     case R.id.imagev_hm_word:
-                        Settings.removeHangmanWord(context, position);
-                        remove(word_list.get(position));
+                        Pair<String, Boolean> word = word_list.get(position);
+                        if (word.second == true) {
+                            Settings.removeHangmanWord(context, position);
+                            remove(word_list.get(position));
+                        } else {
+                            Toast.makeText(
+                                    context,
+                                    context.getResources().getString(R.string.str_hm_delete_warning),
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
                         break;
                 }
             }

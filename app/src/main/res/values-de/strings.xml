@@ -63,6 +63,6 @@
 
     <string name="str_hm_dialog_title">Neues Wort hinzufügen</string>
     <string name="str_hm_dialog_warning">Ungültiges Wort</string>
-
+    <string name="str_hm_delete_warning">Standard Wort nicht löschbar</string>
 
 </resources>

@@ -64,7 +64,6 @@
 
     <string name="str_hm_dialog_title">Add new word</string>
     <string name="str_hm_dialog_warning">Invalid word</string>
-
-
+    <string name="str_hm_delete_warning">Cannot delete default word</string>
 
 </resources>
