@@ -3,10 +3,12 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +21,24 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_NO;
+import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Context context = this.getApplicationContext();
+
+        SharedPreferences preferences = context.getSharedPreferences("sett_file", MODE_PRIVATE);
+        boolean nightmode = Settings.getNightmode(context);
+        if (nightmode) {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO);
+        }
+        setContentView(R.layout.activity_main);
 
         TextView textv_greeting_user = (TextView) findViewById((R.id.textv_greeting_user));
         textv_greeting_user.setText(getResources().getString(R.string.str_user_greeting) + " " +

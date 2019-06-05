@@ -14,6 +14,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import android.content.res.Resources;
 
 public final class Settings {
     public static final String sett_key_nightmode = "key_nightmode";
@@ -40,8 +41,18 @@ public final class Settings {
         return preferences.getString(sett_key_username, "User1");
     }
 
-    public static void setNightmode(Context context, boolean state) {
-        setBooleanPreference(context, sett_key_nightmode, state);
+    public static void setNightmode(Context context, boolean isChecked) {
+        setBooleanPreference(context, sett_key_nightmode, isChecked);
+        SharedPreferences preferences = context.getSharedPreferences(sett_file, Context.MODE_PRIVATE);
+        if (isChecked) {
+            //context.setTheme(R.style.DarkTheme);
+            setBooleanPreference(context, sett_key_nightmode, isChecked);
+            //preferences.edit().putString(sett_key_nightmode, "Dark").commit();
+        } else {
+            //context.setTheme(R.style.AppTheme);
+            setBooleanPreference(context, sett_key_nightmode, isChecked);
+            //preferences.edit().putString(sett_key_nightmode, "Light").commit();
+        }
     }
 
     public static void setBackgroundMusic(Context context, boolean state) {

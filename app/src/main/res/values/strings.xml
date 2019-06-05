@@ -24,6 +24,8 @@
 
     <string name="str_reset">RESET</string>
     <string name="str_back">BACK</string>
+    <string name="str_confirm">Confirm</string>
+
     <string name="str_settings">SETTINGS</string>
 
     <string name="str_title_ttt">Tic Tac Toe</string>

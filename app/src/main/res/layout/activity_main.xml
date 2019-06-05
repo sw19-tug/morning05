@@ -14,12 +14,12 @@
 
         <TextView
             android:id="@+id/textv_title"
+            android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_app_title"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
             android:textSize="36sp"
             android:textStyle="bold" />
 
@@ -29,45 +29,40 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ttt"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_title_ttt"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
         <Button
             android:id="@+id/btn_hm"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_title_hm"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="15dp"
             tools:layout_editor_absoluteY="72dp" />
 
         <Button
             android:id="@+id/btn_ttb"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_title_ttb"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
         <TextView
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
@@ -77,12 +72,11 @@
 
         <Button
             android:id="@+id/btn_gamestatistic"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_textv_gamestatistic"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
@@ -98,36 +92,33 @@
 
         <Button
             android:id="@+id/btn_settings"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_settings"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
         <Button
             android:id="@+id/btn_help"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_help"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
         <Button
             android:id="@+id/btn_switch_lang"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
-            android:background="@color/colorAccent"
             android:text="@string/str_switch_lang"
-            android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 

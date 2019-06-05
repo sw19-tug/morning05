@@ -23,6 +23,7 @@
 
     <string name="str_reset">NEUSTART</string>
     <string name="str_back">ZURÜCK</string>
+    <string name="str_confirm">Bestätigen</string>
     <string name="str_settings">Einstellungen</string>
 
     <string name="str_title_ttt">Tic Tac Toe</string>

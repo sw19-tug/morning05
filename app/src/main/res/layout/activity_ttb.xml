@@ -11,38 +11,39 @@
 
         <TextView
             android:id="@+id/textv_2"
+            android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
             android:text="@string/str_title_ttb"
-            android:textColor="@color/colorPrimary"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textSize="30sp"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_play"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_play_ttb"
-            android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="18sp"
             android:layout_marginHorizontal="80dp"
             android:layout_marginVertical="8dp"/>
         <Button
             android:id="@+id/btn_settings_ttb"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_settings"
-            android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="18sp"
             android:layout_marginHorizontal="80dp"
             android:layout_marginVertical="8dp" />
         <Button
             android:id="@+id/btn_back_main"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_back"
-            android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="18sp"
             android:layout_marginHorizontal="80dp"
             android:layout_marginVertical="8dp" />

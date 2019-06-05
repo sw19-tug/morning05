@@ -9,13 +9,14 @@
 
     <TextView
         android:id="@+id/textv_header"
+        android:textColor="@color/colorAccent"
         android:text="@string/str_title_ttt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textv_current_player"
@@ -25,20 +26,19 @@
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="15dp"/>
 
     <CheckBox
         android:id="@+id/cbox_autoplayer_easy_ttt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/str_cbox_text_autoplayer_easy"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginTop="15dp" />
 
     <CheckBox
         android:id="@+id/cbox_autoplayer_hard_ttt"
@@ -58,10 +58,12 @@
         android:columnCount="3"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
+
         android:rowCount="3">
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,6 +74,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,6 +85,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,6 +96,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,6 +107,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,6 +118,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,6 +129,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,6 +140,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,6 +151,7 @@
         </Button>
 
         <Button
+            android:layout_margin="5dp"
             android:id="@+id/bt_field22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -180,6 +190,7 @@
 
             <Button
                 android:id="@+id/btn_reset_ttt"
+                android:background="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -188,6 +199,7 @@
 
             <Button
                 android:id="@+id/btn_back_ttt"
+                android:background="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
