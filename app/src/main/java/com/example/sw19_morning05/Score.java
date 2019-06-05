@@ -22,4 +22,9 @@ public final class Score {
         int current_score = preferences.getInt(highscore_key, 0);
         preferences.edit().putInt(highscore_key, current_score - points).commit();
     }
+
+    public static String getScoreMessage(Context context) {
+        String message = context.getResources().getString(R.string.str_score_message) + getScore(context);
+        return message;
+    }
 }
