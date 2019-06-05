@@ -18,6 +18,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressBack;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -132,5 +133,14 @@ public class StatisticsActivityEspressoTest {
     @Test
     public void testGameButtonsVisible() {
         onView(withId(R.id.btn_share_score)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testShowHighscoreMessage() {
+        Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
+        String message = Score.getScoreMessage(context);
+        Assert.assertEquals(message, context.getResources().getString(R.string.str_score_message)
+                + Score.getScore(context));
+
     }
 }
