@@ -24,12 +24,12 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/textv_user_hs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_user_hs"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />

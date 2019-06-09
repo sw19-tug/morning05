@@ -141,6 +141,5 @@ public class StatisticsActivityEspressoTest {
         String message = Score.getScoreMessage(context);
         Assert.assertEquals(message, context.getResources().getString(R.string.str_score_message)
                 + " " + Score.getScore(context));
-
     }
 }
