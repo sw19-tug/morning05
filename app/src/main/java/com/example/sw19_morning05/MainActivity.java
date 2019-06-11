@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +27,9 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AudioManager mAudioManager;
+    public MediaPlayer backg_music_player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
                 showHelp();
             }
         });
+
+        if(Settings.getBackgroundMusic(context) && !BackgroundMusicPlayer.isplayingAudio)
+        {
+            BackgroundMusicPlayer.playAudio(context);
+        }
     }
 
     private void showHelp() {

@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewAssertion;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.junit.Assert;
@@ -32,6 +34,9 @@ public class SettingsActivityEspressoTest {
 
     @Rule
     public ActivityTestRule<SettingsActivity> settings_activity_test_rule = new ActivityTestRule<>(SettingsActivity.class);
+
+    @Rule
+    public ActivityTestRule<MainActivity> main_activity_test_rule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void testSettingsVisible() {
@@ -121,8 +126,7 @@ public class SettingsActivityEspressoTest {
     }
 
     @Test
-    public void testPhysicalFeedback()
-    {
+    public void testPhysicalFeedback() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
         onView(withId(R.id.switch_physical)).perform(click());
 
@@ -131,5 +135,19 @@ public class SettingsActivityEspressoTest {
         Assert.assertEquals(Vibration.checkVibrateActive(), true);
 
         onView(withId(R.id.switch_physical)).perform(click());
+    }
+
+    @Test
+    public void testMusicSpinnerExists() {
+        onView(withId(R.id.spinn_backg_music)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testEnableBackgroundMusic() {
+        MediaPlayer mp = main_activity_test_rule.getActivity().backg_music_player;
+        assert(!mp.isPlaying());
+        onView(withId(R.id.switch_music)).check(matches(not(isChecked())));
+        onView(withId(R.id.switch_music)).perform(click());
+        assert(mp.isPlaying());
     }
 }

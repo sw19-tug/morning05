@@ -23,6 +23,7 @@ public final class Settings {
     public static final String sett_key_username = "key_username";
     public static final String settings_hangman_words = "key_hangman_words";
     public static final String sett_file = "morning05.settings";
+    public static final String sett_backg_music_file = "key_backg_music_file";
 
     public static boolean getNightmode(Context context) {
         return getBooleanPreference(context, sett_key_nightmode);
@@ -121,5 +122,15 @@ public final class Settings {
     private static void setBooleanPreference(Context context, String key, boolean state) {
         SharedPreferences preferences = context.getSharedPreferences(sett_file, Context.MODE_PRIVATE);
         preferences.edit().putBoolean(key, state).commit();
+    }
+
+    public static void setBackgMusicFile(Context context, int file) {
+        SharedPreferences preferences = context.getSharedPreferences(sett_backg_music_file, Context.MODE_PRIVATE);
+        preferences.edit().putInt(sett_backg_music_file, file).commit();
+    }
+
+    public static int getBackgMusicFile(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(sett_backg_music_file, Context.MODE_PRIVATE);
+        return preferences.getInt(sett_backg_music_file, R.raw.cantina);
     }
 }
