@@ -24,12 +24,12 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/textv_user_hs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_user_hs"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
@@ -112,6 +112,16 @@
         android:orientation="vertical"
         android:gravity="bottom"
         android:padding="10dp">
+
+        <Button
+            android:id="@+id/btn_share_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="90dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/str_share"
+            tools:layout_editor_absoluteX="14dp"
+            tools:layout_editor_absoluteY="135dp" />
 
         <Button
             android:id="@+id/btn_back_gamestatistic"

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +38,26 @@ public class StatisticsActivity extends AppCompatActivity {
         textv_greeting_user.setText(getResources().getString(R.string.str_user_hs) + " " +
                 Settings.getUsername(context));
 
-        Button btn_back_gamestatistic = (Button) findViewById(R.id.btn_back_gamestatistic);
+        Button btn_share_score = findViewById(R.id.btn_share_score);
+        btn_share_score.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                whatsappIntent.setType("text/plain");
+                whatsappIntent.setPackage("com.whatsapp");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, Score.getScoreMessage(context));
+                try {
+                    startActivity(whatsappIntent);
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(
+                            context,
+                            getResources().getString(R.string.str_whatsapp_not_installed),
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+            }
+        });
 
+        Button btn_back_gamestatistic = (Button) findViewById(R.id.btn_back_gamestatistic);
         btn_back_gamestatistic.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateWelcomeScreen();

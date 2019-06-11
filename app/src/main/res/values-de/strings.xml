@@ -60,11 +60,14 @@
     <string name="str_sett_username_save">speichern</string>
 
     <string name="str_statistics_number_header">Anzahl gespielter Spiele</string>
+    <string name="str_share">TEILE</string>
     <string name="str_user_hs">von</string>
     <string name="str_statistics_highscore_header">Touch the Block - Rangliste</string>
 
     <string name="str_hm_dialog_title">Neues Wort hinzufügen</string>
     <string name="str_hm_dialog_warning">Ungültiges Wort</string>
     <string name="str_hm_delete_warning">Standard Wort nicht löschbar</string>
+    <string name="str_score_message">Meine Punkteanzahl bei morning05 - Spielesammlung ist </string>
+    <string name="str_whatsapp_not_installed">WhatsApp ist nicht installiert</string>
 
 </resources>
