@@ -346,10 +346,7 @@ public class HangmanActivity extends AppCompatActivity {
         }
 
         if (wrong_guesses == 8) {
-            Context context = this.getApplicationContext();
-            int points = 2;
-            Score.decrementScore(context, points);
-            this.reset();
+            lost();
         }
 
         if (!word_place_holder.contains("_")) {
@@ -380,6 +377,24 @@ public class HangmanActivity extends AppCompatActivity {
     private void win() {
         Context context = this.getApplicationContext();
 
+        disabledButtons();
+
+        Score.incrementScore(context, 1);
+        Vibration.vibrate(context, 1000);
+    }
+
+    private void lost() {
+        Context context = this.getApplicationContext();
+
+        final TextView textv_2 = findViewById(R.id.textv_2);
+        textv_2.setText(getResources().getString(R.string.str_textv_lose_hm));
+        disabledButtons();
+
+        Score.decrementScore(context, 2);
+        Vibration.vibrate(context, 1000);
+    }
+
+    private void disabledButtons (){
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
 
         findViewById(R.id.btn_q).setEnabled(false);
@@ -408,8 +423,5 @@ public class HangmanActivity extends AppCompatActivity {
         findViewById(R.id.btn_b).setEnabled(false);
         findViewById(R.id.btn_n).setEnabled(false);
         findViewById(R.id.btn_m).setEnabled(false);
-
-        Score.incrementScore(context, 1);
-        Vibration.vibrate(context, 1000);
     }
 }

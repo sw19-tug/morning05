@@ -49,6 +49,7 @@
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>
+    <string name="str_textv_lose_hm">You lose!</string>
     <string name="str_hint">Hint</string>
     <string name="str_hm_extend_words">Extend words</string>
     <string name="str_textv_gamestatistic">Game Statistics</string>
