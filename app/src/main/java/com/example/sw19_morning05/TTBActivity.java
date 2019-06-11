@@ -29,6 +29,10 @@ public class TTBActivity extends Activity {
     CountDownTimer cdt_play_time;
     int ttb_block_counter = 0;
 
+    ViewGroup.LayoutParams last_block_size;
+    float last_block_x_position;
+    float last_block_y_position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,13 @@ public class TTBActivity extends Activity {
         final Button btn_background = (Button) findViewById(R.id.btn_background);
         final TextView tv_timer = (TextView) findViewById(R.id.timer);
 
+        if (ttb_block_counter > 0)
+        {
+            btn_block.setLayoutParams(last_block_size);
+            btn_block.setY(last_block_y_position);
+            btn_block.setX(last_block_x_position);
+        }
+
         final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
 
         tv_timer.setText("TIME: " + 3 + ":" + 000);
@@ -86,7 +97,6 @@ public class TTBActivity extends Activity {
                 if(mp_alarm.isPlaying()) {
                     mp_alarm.stop();
                 }
-
                 clickedBackground(btn_block, btn_background, tv_timer);
             }
         };
@@ -106,50 +116,13 @@ public class TTBActivity extends Activity {
             start_height += textview_height;
         }
 
-        btn_block.setY((float) (start_height));
+        if (ttb_block_counter == 0) {
+            btn_block.setY((float) (start_height));
+        }
 
         btn_block.setEnabled(false);
         btn_block.setVisibility(View.INVISIBLE);
         btn_background.setEnabled(false);
-
-        btn_block.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                ttb_block_counter++;
-                cdt_play_time.cancel();
-                if(mp_alarm.isPlaying()) {
-                    mp_alarm.pause();
-                    mp_alarm.seekTo(0);
-                }
-
-                cdt_play_time.start();
-
-                ViewGroup.LayoutParams params = btn_block.getLayoutParams();
-                if (Math.random() >= 0.5) {
-                    params.height = params.height / 2;
-                }
-                else
-                    params.width = params.width / 2;
-                btn_block.setLayoutParams(params);
-
-                Random randi = new Random();
-                int range_width = randi.nextInt(get_width);
-                int range_height = randi.nextInt(get_height);
-
-                if ((get_width - range_width) < params.width)
-                    btn_block.setX(get_width - params.width);
-                else
-                    btn_block.setX(range_width);
-
-                if (range_height < textview_height)
-                    range_height += textview_height;
-
-                if ((get_height - range_height) < params.height){
-                    btn_block.setY(get_height - params.height);
-                }
-                else
-                    btn_block.setY(range_height);
-            }
-        });
 
         if (background_color != 0) {
             btn_background.setBackgroundColor(background_color);
@@ -163,6 +136,12 @@ public class TTBActivity extends Activity {
         btn_block.setVisibility(View.VISIBLE);
         btn_background.setEnabled(true);
 
+        btn_block.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                clickedBlock(mp_alarm, btn_block, get_width, get_height, textview_height);
+            }
+        });
+
         btn_background.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mp_alarm.stop();
@@ -172,16 +151,33 @@ public class TTBActivity extends Activity {
 
         final Button btn_restart = findViewById(R.id.btn_reset_ttb);
         final Button btn_back = findViewById(R.id.btn_back_ttb);
+        final Button btn_continue = (Button) findViewById(R.id.btn_continue_ttb);
 
         btn_restart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Context context = getApplicationContext();
+                Score.incrementScore(context , ttb_block_counter);
+                Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
+                ttb_block_counter = 0;
                 playTTB();
             }
         });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Context context = getApplicationContext();
+                Score.incrementScore(context , ttb_block_counter);
+                Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
+                ttb_block_counter = 0;
                 initTTB();
+            }
+        });
+
+        btn_continue.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                getApplicationContext();
+                Score.decrementScore(getApplicationContext(), 10);
+                playTTB();
             }
         });
     }
@@ -284,19 +280,64 @@ public class TTBActivity extends Activity {
             }
         });
     }
-
     public void clickedBackground(Button block, Button background, TextView timer) {
         Context context = this.getApplicationContext();
+        if (Score.getScore(context) < 10) {
+            findViewById(R.id.btn_continue_ttb).setEnabled(false);
+        } else {
+            findViewById(R.id.btn_continue_ttb).setEnabled(true);
+        }
 
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
         block.setVisibility(View.INVISIBLE);
         background.setVisibility((View.INVISIBLE));
         Vibration.vibrate(context, 1000);
         cdt_play_time.cancel();
-
-        Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
-        ttb_block_counter = 0;
     }
+
+    public void clickedBlock(MediaPlayer alarm, Button block, int width, int height, int textview_height) {
+        ttb_block_counter++;
+        cdt_play_time.cancel();
+        if(alarm.isPlaying()) {
+            alarm.pause();
+            alarm.seekTo(0);
+        }
+
+        cdt_play_time.start();
+
+        ViewGroup.LayoutParams params = block.getLayoutParams();
+        if (Math.random() >= 0.5) {
+            params.height = params.height / 2;
+        }
+        else
+            params.width = params.width / 2;
+        last_block_size = params;
+        block.setLayoutParams(params);
+
+
+        Random randi = new Random();
+        int range_width = randi.nextInt(width);
+        int range_height = randi.nextInt(height);
+
+        if ((width - range_width) < params.width)
+            block.setX(width - params.width);
+        else
+            block.setX(range_width);
+
+        if (range_height < textview_height)
+            range_height += textview_height;
+
+        if ((height - range_height) < params.height){
+            block.setY(height - params.height);
+        }
+        else
+            block.setY(range_height);
+
+        last_block_x_position = block.getX();
+        last_block_y_position = block.getY();
+
+    }
+
 
     private void disableButtons(Button button_1, Button button_2, Button button_3,
                                 Button button_4) {
