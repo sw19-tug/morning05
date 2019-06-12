@@ -9,57 +9,43 @@
         android:id="@+id/set_title_ly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button_ly"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button_ly">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/set_title"
-            android:layout_width="395dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/str_settings"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="108dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/button_ly"
-        android:layout_width="395dp"
-        android:layout_height="667dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/set_title_ly">
-
-        <Button
-            android:id="@+id/btn_settings_back_ttt"
-            android:background="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_back" />
 
         <TextView
             android:id="@+id/set_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="3dp"
             android:text="@string/str_textv_pick_sign"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
@@ -96,6 +82,7 @@
             android:id="@+id/set_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
             android:layout_marginTop="16dp"
             android:text="@string/str_textv_pick_color"
             android:textColor="@color/colorPrimary"
@@ -104,10 +91,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="160dp"
+            android:layout_marginLeft="34dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="34dp"
-            android:layout_marginLeft="34dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <Button
@@ -145,6 +132,14 @@
                 android:layout_marginBottom="8dp"
                 android:layout_weight="1"
                 android:background="#ff00b235" />
+
+            <Button
+                android:id="@+id/btn_settings_back_ttt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/colorPrimary"
+                android:text="@string/str_back" />
         </LinearLayout>
 
     </LinearLayout>
