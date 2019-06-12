@@ -396,34 +396,33 @@ public class HangmanActivity extends AppCompatActivity {
 
     private void disabledButtons (){
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
-        findViewById(R.id.image_hm).setVisibility(View.INVISIBLE);
-        findViewById(R.id.textv_word_to_guess).setVisibility(View.INVISIBLE);
+        findViewById(R.id.win_ly).bringToFront();
 
-        findViewById(R.id.btn_q).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_w).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_e).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_r).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_t).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_z).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_u).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_i).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_o).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_p).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_a).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_s).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_d).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_f).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_g).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_h).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_j).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_k).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_l).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_y).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_x).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_c).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_v).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_b).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_n).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_m).setVisibility(View.INVISIBLE);
+        findViewById(R.id.btn_q).setEnabled(false);
+        findViewById(R.id.btn_w).setEnabled(false);
+        findViewById(R.id.btn_e).setEnabled(false);
+        findViewById(R.id.btn_r).setEnabled(false);
+        findViewById(R.id.btn_t).setEnabled(false);
+        findViewById(R.id.btn_z).setEnabled(false);
+        findViewById(R.id.btn_u).setEnabled(false);
+        findViewById(R.id.btn_i).setEnabled(false);
+        findViewById(R.id.btn_o).setEnabled(false);
+        findViewById(R.id.btn_p).setEnabled(false);
+        findViewById(R.id.btn_a).setEnabled(false);
+        findViewById(R.id.btn_s).setEnabled(false);
+        findViewById(R.id.btn_d).setEnabled(false);
+        findViewById(R.id.btn_f).setEnabled(false);
+        findViewById(R.id.btn_g).setEnabled(false);
+        findViewById(R.id.btn_h).setEnabled(false);
+        findViewById(R.id.btn_j).setEnabled(false);
+        findViewById(R.id.btn_k).setEnabled(false);
+        findViewById(R.id.btn_l).setEnabled(false);
+        findViewById(R.id.btn_y).setEnabled(false);
+        findViewById(R.id.btn_x).setEnabled(false);
+        findViewById(R.id.btn_c).setEnabled(false);
+        findViewById(R.id.btn_v).setEnabled(false);
+        findViewById(R.id.btn_b).setEnabled(false);
+        findViewById(R.id.btn_n).setEnabled(false);
+        findViewById(R.id.btn_m).setEnabled(false);
     }
 }
