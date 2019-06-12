@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/textv_help_hm"
-        android:textColor="@color/colorDPrimary"
+        android:textColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/str_title_hm"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/textv_help_ttt"
-        android:textColor="@color/colorDPrimary"
+        android:textColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/str_title_ttt"
@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/textv_help_ttb"
-        android:textColor="@color/colorDPrimary"
+        android:textColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/str_title_ttb"
