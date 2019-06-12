@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_marginTop="15dp"/>
+        android:textSize="25sp"
+        android:layout_marginTop="6dp"/>
 
     <CheckBox
         android:id="@+id/cbox_autoplayer_easy_ttt"
@@ -37,20 +37,20 @@
         android:text="@string/str_cbox_text_autoplayer_easy"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:layout_marginTop="15dp" />
+        android:textSize="15sp"
+        android:layout_marginTop="0dp" />
 
     <CheckBox
         android:id="@+id/cbox_autoplayer_hard_ttt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-5dp"
         android:gravity="center"
         android:text="@string/str_cbox_text_autoplayer_hard"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         android:columnCount="3"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="7dp"
 
         android:rowCount="3">
 
@@ -169,10 +169,10 @@
 
         <ImageButton
             android:id="@+id/btn_settings_ttt"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="85dp"
-            android:layout_marginTop="17dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:hapticFeedbackEnabled="false"
@@ -182,30 +182,27 @@
             android:focusable="true"
             android:contentDescription="@string/str_settings" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_reset_ttt"
+            android:background="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:orientation="vertical">
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="center"
+            android:text="@string/str_reset">
+        </Button>
 
-            <Button
-                android:id="@+id/btn_reset_ttt"
-                android:background="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/str_reset">
-            </Button>
-
-            <Button
-                android:id="@+id/btn_back_ttt"
-                android:background="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/str_back">
-            </Button>
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_back_ttt"
+            android:background="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="center"
+            android:text="@string/str_back">
+        </Button>
 
     </LinearLayout>
 
