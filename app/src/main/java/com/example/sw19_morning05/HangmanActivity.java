@@ -396,6 +396,7 @@ public class HangmanActivity extends AppCompatActivity {
 
     private void disabledButtons (){
         findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
+        findViewById(R.id.win_ly).bringToFront();
 
         findViewById(R.id.btn_q).setEnabled(false);
         findViewById(R.id.btn_w).setEnabled(false);
