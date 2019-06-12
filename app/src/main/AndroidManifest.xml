@@ -11,10 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".TTBActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/str_title_ttb"
-            android:theme="@style/FullscreenTheme">
+            android:name=".TTBActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

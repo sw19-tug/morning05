@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ttb_set"
     android:orientation="vertical"
     android:gravity="top"
     tools:context=".TTBActivity" >
@@ -123,6 +124,7 @@
             android:background="@color/colorWhite"
             android:padding="30dp"
             android:text="white"
+            android:textColor="@color/colorBlack"
             android:gravity="center"
             android:layout_gravity="fill_horizontal"
             android:orientation="horizontal"
@@ -212,12 +214,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@color/colorPrimary"
                 android:layout_gravity="fill_horizontal"
                 android:orientation="horizontal" />
 
             <Button
                 android:text="OK"
                 android:id="@+id/btn_settings_ok_ttb"
+                android:background="@color/colorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

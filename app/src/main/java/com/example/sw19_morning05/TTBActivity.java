@@ -8,12 +8,14 @@ import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Layout;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -36,8 +38,6 @@ public class TTBActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         initTTB();
     }
 
@@ -64,11 +64,15 @@ public class TTBActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+
+
+
             }
         });
     }
 
     private void playTTB() {
+
         setContentView(R.layout.play_ttb);
 
         final Button btn_block = (Button) findViewById(R.id.moving_block);
@@ -183,6 +187,7 @@ public class TTBActivity extends Activity {
     }
 
     private void settingsTTB() {
+
         setContentView(R.layout.settings_ttb);
 
         final Button btn_block_green = findViewById(R.id.btn_green);
