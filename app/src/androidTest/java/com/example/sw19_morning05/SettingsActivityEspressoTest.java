@@ -143,12 +143,9 @@ public class SettingsActivityEspressoTest {
     @Test
     public void testEnableBackgroundMusic() {
 
-        ActivityTestRule<MainActivity> main_activity_test_rule = new ActivityTestRule<>(MainActivity.class);
-
-        MediaPlayer mp = main_activity_test_rule.getActivity().backg_music_player;
-        assert(!mp.isPlaying());
-        onView(withId(R.id.switch_music)).check(matches(not(isChecked())));
+        assert(!BackgroundMusicPlayer.isplayingAudio);
         onView(withId(R.id.switch_music)).perform(click());
-        assert(mp.isPlaying());
+        assert(BackgroundMusicPlayer.isplayingAudio);
+        onView(withId(R.id.switch_music)).perform(click());
     }
 }

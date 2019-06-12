@@ -28,9 +28,6 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AudioManager mAudioManager;
-    public MediaPlayer backg_music_player;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
