@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class ExtendWordsActivity extends AppCompatActivity {
 
     private static HangmanWordAdapter hangman_word_adapter;
-    private String new_word;
     private ArrayList<Pair<String, Boolean>> word_list;
 
     @Override

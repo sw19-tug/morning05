@@ -3,19 +3,17 @@ package com.example.sw19_morning05;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Layout;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -26,6 +24,7 @@ import java.util.Random;
  */
 public class TTBActivity extends Activity {
 
+    Context context;
     int block_color = 0;
     int background_color = 0;
     CountDownTimer cdt_play_time;
@@ -37,6 +36,7 @@ public class TTBActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = this.getApplicationContext();
         super.onCreate(savedInstanceState);
         initTTB();
     }
@@ -66,7 +66,6 @@ public class TTBActivity extends Activity {
                 startActivity(intent);
 
 
-
             }
         });
     }
@@ -78,34 +77,41 @@ public class TTBActivity extends Activity {
         final Button btn_block = (Button) findViewById(R.id.moving_block);
         final Button btn_background = (Button) findViewById(R.id.btn_background);
         final TextView tv_timer = (TextView) findViewById(R.id.timer);
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 
-        if (ttb_block_counter > 0)
-        {
+        if (ttb_block_counter > 0) {
             btn_block.setLayoutParams(last_block_size);
             btn_block.setY(last_block_y_position);
             btn_block.setX(last_block_x_position);
+        }
+        else
+        {
+            ViewGroup.LayoutParams new_params = btn_block.getLayoutParams();
+            new_params.width = display.getWidth();
+            btn_block.setLayoutParams(new_params);
         }
 
         final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
 
         tv_timer.setText("TIME: " + 3 + ":" + 000);
-        cdt_play_time = new CountDownTimer(3000, 1){
-            public void onTick(long millisUntilFinished){
+        cdt_play_time = new CountDownTimer(3000, 1) {
+            public void onTick(long millisUntilFinished) {
                 tv_timer.setText("TIME: " + millisUntilFinished / 1000 + ":" + millisUntilFinished % 1000);
 
-                if (millisUntilFinished < 1000){
+                if (millisUntilFinished < 1000) {
                     mp_alarm.start();
                 }
             }
-            public void onFinish(){
-                if(mp_alarm.isPlaying()) {
+
+            public void onFinish() {
+                if (mp_alarm.isPlaying()) {
                     mp_alarm.stop();
                 }
                 clickedBackground(btn_block, btn_background, tv_timer);
             }
         };
 
-        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+
         final int get_width = display.getWidth();
         final int get_height = display.getHeight();
         double start_height = get_height / 2 * Math.random();
@@ -121,12 +127,14 @@ public class TTBActivity extends Activity {
         }
 
         if (ttb_block_counter == 0) {
-            btn_block.setY((float) (start_height));
+            btn_block.setY((float) (textview_height));
         }
 
         btn_block.setEnabled(false);
         btn_block.setVisibility(View.INVISIBLE);
         btn_background.setEnabled(false);
+
+
 
         if (background_color != 0) {
             btn_background.setBackgroundColor(background_color);
@@ -139,6 +147,14 @@ public class TTBActivity extends Activity {
         btn_block.setEnabled(true);
         btn_block.setVisibility(View.VISIBLE);
         btn_background.setEnabled(true);
+
+        if (btn_block.getWidth() > get_width) {
+            btn_block.setWidth(get_width);
+        }
+        if (btn_block.getHeight() > get_height) {
+            btn_block.setHeight(get_height);
+        }
+        btn_block.setWidth(get_width);
 
         btn_block.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -160,7 +176,7 @@ public class TTBActivity extends Activity {
         btn_restart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                Score.incrementScore(context , ttb_block_counter);
+                Score.incrementScore(context, ttb_block_counter);
                 Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
                 ttb_block_counter = 0;
                 playTTB();
@@ -170,15 +186,15 @@ public class TTBActivity extends Activity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                Score.incrementScore(context , ttb_block_counter);
+                Score.incrementScore(context, ttb_block_counter);
                 Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
                 ttb_block_counter = 0;
                 initTTB();
             }
         });
 
-        btn_continue.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        btn_continue.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 getApplicationContext();
                 Score.decrementScore(getApplicationContext(), 10);
                 playTTB();
@@ -285,6 +301,7 @@ public class TTBActivity extends Activity {
             }
         });
     }
+
     public void clickedBackground(Button block, Button background, TextView timer) {
         Context context = this.getApplicationContext();
         if (Score.getScore(context) < 10) {
@@ -303,26 +320,35 @@ public class TTBActivity extends Activity {
     public void clickedBlock(MediaPlayer alarm, Button block, int width, int height, int textview_height) {
         ttb_block_counter++;
         cdt_play_time.cancel();
-        if(alarm.isPlaying()) {
+        if (alarm.isPlaying()) {
             alarm.pause();
             alarm.seekTo(0);
         }
 
         cdt_play_time.start();
 
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         ViewGroup.LayoutParams params = block.getLayoutParams();
+        if (params.height > display.getHeight()) {
+            params.height = display.getHeight();
+        }
+        if (params.width > display.getWidth()) {
+            params.width = display.getWidth();
+        }
         if (Math.random() >= 0.5) {
             params.height = params.height / 2;
-        }
-        else
+        } else
             params.width = params.width / 2;
         last_block_size = params;
         block.setLayoutParams(params);
 
+        Resources resources = context.getResources();
+        int resource_id = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        int nav_bar_height = resources.getDimensionPixelSize(resource_id);
 
         Random randi = new Random();
         int range_width = randi.nextInt(width);
-        int range_height = randi.nextInt(height);
+        int range_height = randi.nextInt(height - nav_bar_height);
 
         if ((width - range_width) < params.width)
             block.setX(width - params.width);
@@ -332,11 +358,15 @@ public class TTBActivity extends Activity {
         if (range_height < textview_height)
             range_height += textview_height;
 
-        if ((height - range_height) < params.height){
+        if ((height - range_height) < params.height) {
+            block.setY(height - params.height);
+        } else
+            block.setY(range_height);
+
+        if((range_height + params.height) > (height - nav_bar_height))
+        {
             block.setY(height - params.height);
         }
-        else
-            block.setY(range_height);
 
         last_block_x_position = block.getX();
         last_block_y_position = block.getY();

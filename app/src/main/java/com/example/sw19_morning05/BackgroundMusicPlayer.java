@@ -1,14 +1,10 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 
 public class BackgroundMusicPlayer {
     public static MediaPlayer mediaPlayer;
-
-    private static SoundPool soundPool;
 
     public static boolean isplayingAudio = false;
 
@@ -16,7 +12,6 @@ public class BackgroundMusicPlayer {
 
     public static void playAudio(Context c) {
         mediaPlayer = MediaPlayer.create(c, Settings.getBackgMusicFile(c));
-        soundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
         if (!mediaPlayer.isPlaying()) {
             isplayingAudio = true;
             mediaPlayer.start();

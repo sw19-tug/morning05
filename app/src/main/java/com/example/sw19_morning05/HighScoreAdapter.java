@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class HighScoreAdapter extends ArrayAdapter<HighScore> {
     private ArrayList<HighScore> highscore_list;

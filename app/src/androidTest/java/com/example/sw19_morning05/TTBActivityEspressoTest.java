@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 
@@ -142,9 +143,13 @@ public class TTBActivityEspressoTest {
 
         Button button = activity_test_rule.getActivity().findViewById(R.id.moving_block);
         CountDownTimer countDownTimer = this.activity_test_rule.getActivity().cdt_play_time;
+        Display display = activity_test_rule.getActivity().getWindowManager().getDefaultDisplay();
 
         float button_height = button.getHeight();
         float button_width = button.getWidth();
+        if (button_width > display.getWidth()) {
+            button_width = display.getWidth();
+        }
 
         onView(withId(R.id.moving_block)).perform(click());
         countDownTimer.cancel();
@@ -153,9 +158,9 @@ public class TTBActivityEspressoTest {
         float button_width_new = button.getWidth();
 
         if (button_height == button_height_new) {
-            assertEquals(button_width, button_width_new * 2, 0f);
+            assertEquals(button_width, button_width_new * 2, 1);
         } else {
-            assertEquals(button_height, button_height_new * 2 + 1, 0f);
+            assertEquals(button_height, button_height_new * 2, 1);
         }
 
         clickBackground();
@@ -327,6 +332,7 @@ public class TTBActivityEspressoTest {
 
         onView(withId(R.id.timer)).check(matches(isDisplayed()));
     }
+
     @Test
     public void testContinueButton() {
         onView(withId(R.id.btn_play)).perform(click());
