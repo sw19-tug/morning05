@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/games"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textv_title"
@@ -44,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:text="@string/str_title_ttt"
             tools:layout_editor_absoluteX="16dp"
@@ -54,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:text="@string/str_title_hm"
             tools:layout_editor_absoluteX="15dp"
@@ -64,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:text="@string/str_title_ttb"
             tools:layout_editor_absoluteX="14dp"
@@ -73,11 +83,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/buttons"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:visibility="visible">
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/games">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,10 +103,10 @@
                 android:id="@+id/btn_gamestatistic"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="@string/str_textv_gamestatistic"
                 tools:layout_editor_absoluteX="14dp"
@@ -101,10 +116,10 @@
                 android:id="@+id/btn_settings"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="@string/str_settings"
                 tools:layout_editor_absoluteX="14dp"
@@ -121,10 +136,10 @@
                 android:id="@+id/btn_help"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="@string/str_help"
                 tools:layout_editor_absoluteX="14dp"
@@ -134,9 +149,9 @@
                 android:id="@+id/btn_switch_lang"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="@string/str_switch_lang"
                 tools:layout_editor_absoluteX="14dp"
@@ -144,15 +159,7 @@
 
         </LinearLayout>
 
-
-
-        
-
-
-
-
     </LinearLayout>
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
 
