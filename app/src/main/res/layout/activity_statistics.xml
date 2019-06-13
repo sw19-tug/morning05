@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/ly_statistics_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="0dp">
+        android:padding="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ly_statistics_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textv_gamestatistic"
-            android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/str_textv_gamestatistic"
             android:layout_marginBottom="-12dp"
+            android:text="@string/str_textv_gamestatistic"
             android:textAlignment="center"
+            android:textColor="@color/colorAccent"
             android:textSize="36sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_marginTop="5dp"
             android:id="@+id/textv_user_hs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="@string/str_user_hs"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
@@ -35,11 +40,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_statistics_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:visibility="visible">
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/ly_statistics_list"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_statistics_title">
 
         <TextView
             android:id="@+id/textv_statistics_number_header"
@@ -80,12 +90,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_statistics_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="10dp"
         android:visibility="visible"
-        android:id="@+id/statistics_highscore_ly">
+        app:layout_constraintBottom_toTopOf="@+id/ly_statistics_buttons"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_statistics_text">
 
         <TextView
             android:id="@+id/textv_statistics_highscore_header"
@@ -98,25 +112,29 @@
             android:textStyle="bold" />
 
         <ListView
+            android:id="@+id/listview_statistics_hs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listview_statistics_hs">
-        </ListView>
+            android:layout_height="wrap_content"></ListView>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_statistics_buttons"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:padding="10dp">
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_statistics_list">
 
         <Button
             android:id="@+id/btn_share_score"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/str_share"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
@@ -124,12 +142,11 @@
         <Button
             android:id="@+id/btn_back_gamestatistic"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/str_back"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
     </LinearLayout>
 
-</LinearLayout>
-
+</android.support.constraint.ConstraintLayout>
