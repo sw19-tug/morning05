@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/ly_title_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/ly_settings_buttons"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textv_settings_title"
-            android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/str_settings"
             android:layout_marginBottom="20dp"
+            android:text="@string/str_settings"
             android:textAlignment="center"
+            android:textColor="@color/colorAccent"
             android:textSize="36sp"
             android:textStyle="bold" />
 
@@ -29,18 +34,22 @@
         android:id="@+id/ly_settings_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toTopOf="@id/ly_confirm_settings"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ly_title_settings">
 
         <Switch
             android:id="@+id/switch_music"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:paddingStart="4dp"
+            android:paddingTop="20dp"
             android:paddingEnd="0dp"
+            android:paddingBottom="20dp"
             android:text="@string/str_sett_backg_music"
             android:textSize="18sp" />
 
@@ -55,10 +64,10 @@
             android:id="@+id/switch_nightmode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:paddingStart="4dp"
+            android:paddingTop="20dp"
             android:paddingEnd="0dp"
+            android:paddingBottom="20dp"
             android:text="@string/str_sett_nightmode"
             android:textSize="18sp" />
 
@@ -66,10 +75,10 @@
             android:id="@+id/switch_physical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:paddingStart="4dp"
+            android:paddingTop="20dp"
             android:paddingEnd="0dp"
+            android:paddingBottom="20dp"
             android:text="@string/str_sett_physical_feedb"
             android:textSize="18sp" />
 
@@ -89,34 +98,38 @@
 
             <Button
                 android:id="@+id/btn_username_save"
-                android:background="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:text="@string/str_sett_username_save"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_confirm_settings"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
         android:gravity="bottom"
         android:orientation="vertical"
         android:padding="10dp"
-        android:visibility="visible">
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ly_settings_buttons">
 
         <Button
             android:id="@+id/btn_settings_back"
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"
+            android:background="@color/colorPrimary"
             android:text="@string/str_confirm"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
     </LinearLayout>
 
-</LinearLayout>
-
+</android.support.constraint.ConstraintLayout>
