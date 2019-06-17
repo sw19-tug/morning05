@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:id="@+id/textv_highscore_date"
+        android:id="@+id/textv_date_lih"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DATE"
@@ -17,7 +17,7 @@
         android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/textv_highscore_user"
+        android:id="@+id/textv_user_lih"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="USERNAME"
@@ -26,7 +26,7 @@
         android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/textv_highscore_value"
+        android:id="@+id/textv_value_lih"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"

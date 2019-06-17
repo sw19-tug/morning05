@@ -6,17 +6,17 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 
 public final class Vibration {
-    public static  boolean wasActive = false;
-
+    private static  boolean was_active = false;
 
     @SuppressWarnings("deprecation")
     public static void vibrate(Context context, long duration) {
-        wasActive = false;
+        was_active = false;
         boolean enabled = Settings.getPhysicalFeedback(context);
 
         if (enabled) {
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-            wasActive = true;
+            was_active = true;
+
             if(Build.VERSION.SDK_INT >= 26) {
                 vibrator.vibrate(VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE));
             } else {
@@ -26,7 +26,6 @@ public final class Vibration {
     }
 
     public static boolean checkVibrateActive() {
-        return wasActive;
+        return was_active;
     }
-
 }

@@ -4,8 +4,8 @@
     <string name="str_user_greeting">Welcome back</string>
     <string name="str_switch_lang">Switch to German</string>
     <string name="str_help">Help</string>
-    <string name="str_ok">OK</string>
-    <string name="str_cancel">CANCEL</string>
+    <string name="str_ok">Ok</string>
+    <string name="str_cancel">Cancel</string>
 
     <string name="str_description_hm">The aim of the game is to guess the wanted term while using the given keyboard. The game is over after 8 wrong guesses.
         There is the possibility to get a hint. For every correct guessed word the user gets a point.</string>
@@ -23,25 +23,25 @@
     <string name="str_textv_statistic_ttt">Tic Tac Toe:</string>
     <string name="str_textv_statistic_hm">Hangman:</string>
 
-    <string name="str_reset">RESET</string>
-    <string name="str_back">BACK</string>
+    <string name="str_reset">Reset</string>
+    <string name="str_back">Back</string>
     <string name="str_confirm">Confirm</string>
 
-    <string name="str_settings">SETTINGS</string>
+    <string name="str_settings">Settings</string>
 
     <string name="str_title_ttt">Tic Tac Toe</string>
-    <string name="str_textv_player1_turn">Player X turn!</string>
-    <string name="str_textv_player2_turn">Player O turn!</string>
-    <string name="str_textv_player1_wins">Player X wins!</string>
-    <string name="str_textv_player2_wins">Player O wins!</string>
-    <string name="str_textv_draw">Draw!</string>
-    <string name="str_cbox_text_autoplayer_easy">Enable Easy Autoplayer</string>
-    <string name="str_cbox_text_autoplayer_hard">Enable Hard Autoplayer</string>
-    <string name="str_textv_pick_color">Pick your Color:</string>
-    <string name="str_textv_pick_sign">Pick your Sign:</string>
+    <string name="str_textv_player1_turn_ttt">Player X turn!</string>
+    <string name="str_textv_player2_turn_ttt">Player O turn!</string>
+    <string name="str_textv_player1_wins_ttt">Player X wins!</string>
+    <string name="str_textv_player2_wins_ttt">Player O wins!</string>
+    <string name="str_textv_draw_ttt">Draw!</string>
+    <string name="str_cbox_text_autoplayer_easy_ttt">Enable Easy Autoplayer</string>
+    <string name="str_cbox_text_autoplayer_hard_ttt">Enable Hard Autoplayer</string>
+    <string name="str_textv_pick_color_ttt">Pick your Color:</string>
+    <string name="str_textv_pick_sign_ttt">Pick your Sign:</string>
 
     <string name="str_title_ttb">Touch The Block</string>
-    <string name="str_play_ttb">PLAY</string>
+    <string name="str_play_ttb">Play</string>
     <string name="str_loss_ttb">Ooops!</string>
     <string name="str_lose_ttb">You lose!</string>
     <string name="str_play_again_ttb">Play Again?</string>
@@ -49,38 +49,50 @@
     <string name="str_screen_color_ttb">Screen Color</string>
     <string name="str_continue_ttb">Continue (-10 p.)</string>
 
+    <string name="str_color_b_green_ttb">Green</string>
+    <string name="str_color_b_blue_ttb">Blue</string>
+    <string name="str_color_b_red_ttb">Red</string>
+    <string name="str_color_b_magenta_ttb">Magenta</string>
+
+    <string name="str_color_s_white_ttb">White</string>
+    <string name="str_color_s_black_ttb">Black</string>
+    <string name="str_color_s_grey_ttb">Grey</string>
+    <string name="str_color_s_magenta_ttb">Magenta</string>
+
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">You won! Score +1</string>
     <string name="str_textv_lose_hm">You lose!</string>
-    <string name="str_hint">Hint</string>
-    <string name="str_hm_extend_words">Extend words</string>
-    <string name="str_textv_gamestatistic">Game Statistics</string>
-    <string name="str_hm_title_extend_words">Manage words</string>
-
-    <string name="str_sett_nightmode">Night Mode</string>
-    <string name="str_sett_backg_music">Background Music</string>
-    <string name="str_sett_physical_feedb">Physical Feedback</string>
-    <string name="str_sett_username">Username</string>
-    <string name="str_sett_username_save">save</string>
+    <string name="str_hint_hm">Hint</string>
+    <string name="str_extend_words_hm">Extend words</string>
 
 
-    <string name="str_statistics_number_header">Number of Games Played</string>
-    <string name="str_user_hs">of</string>
-    <string name="str_share">SHARE</string>
-    <string name="str_statistics_highscore_header">Touch the Block - Highscore</string>
+    <string name="str_nightmode_sett">Night Mode</string>
+    <string name="str_backg_music_sett">Background Music</string>
+    <string name="str_physical_feedb_sett">Physical Feedback</string>
+    <string name="str_username_sett">Username</string>
+    <string name="str_username_save_sett">save</string>
 
-    <string name="str_hm_dialog_title">Add new word</string>
-    <string name="str_hm_dialog_warning">Invalid word</string>
-    <string name="str_hm_delete_warning">Cannot delete default word</string>
+    <string name="str_textv_gamestatistic_stat">Game Statistics</string>
+    <string name="str_number_header_stat">Number of Games Played</string>
+    <string name="str_user_hs_stat">of</string>
+    <string name="str_share_stat">Share</string>
+    <string name="str_highscore_header_stat">Touch the Block - Highscore</string>
     <string name="str_score_message">My highscore on morning05 - amazing Mini Games is </string>
     <string name="str_whatsapp_not_installed">WhatsApp is not Installed</string>
 
-    <string name="str_cantina_music">Cantina</string>
-    <string name="str_elevator_music">Elevator</string>
-    <string name="str_gummibear_music">Gummibear</string>
-    <string name="str_mario_music">Mario</string>
+    <string name="str_title_hm_ew">Manage words</string>
+    <string name="str_dialog_title_hw_ew">Add new word</string>
+    <string name="str_dialog_warning_hw_ew">Invalid word</string>
+    <string name="str_delete_warning_hw_ew">Cannot delete default word</string>
 
-    <string-array name="music_list">
+    <string name="str_cantina_music_sett">Cantina</string>
+    <string name="str_elevator_music_sett">Elevator</string>
+    <string name="str_gummibear_music_sett">Gummibear</string>
+    <string name="str_mario_music_sett">Mario</string>
+
+
+
+    <string-array name="music_list_sett">
         <item>Cantina</item>
         <item>Gummibear</item>
         <item>Elevator</item>

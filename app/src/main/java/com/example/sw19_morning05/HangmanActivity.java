@@ -13,8 +13,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class HangmanActivity extends AppCompatActivity {
+    public String word_to_guess;
 
-    int[] images = {
+    private String word_place_holder;
+
+    private int wrong_guesses = 0;
+
+    private int[] images = {
             R.drawable.image_hm_1,
             R.drawable.image_hm_2,
             R.drawable.image_hm_3,
@@ -25,11 +30,7 @@ public class HangmanActivity extends AppCompatActivity {
             R.drawable.image_hm_8,
     };
 
-    public static ArrayList<Pair<String, Boolean>>  word_list;
-
-    String word_to_guess;
-    String word_place_holder;
-    int wrong_guesses = 0;
+    public static ArrayList<Pair<String, Boolean>> word_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +39,12 @@ public class HangmanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
-        ImageView image = findViewById(R.id.image_hm);
+        ImageView image = findViewById(R.id.image_hang_hm);
         image.setContentDescription("wrongGuess" + wrong_guesses);
 
         word_list = Settings.getHangmanWordList(context);
 
-        final Button btn_a = findViewById(R.id.btn_a);
+        final Button btn_a = findViewById(R.id.btn_a_hm);
         btn_a.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_a.setEnabled(false);
@@ -51,7 +52,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_b = findViewById(R.id.btn_b);
+        final Button btn_b = findViewById(R.id.btn_b_hm);
         btn_b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_b.setEnabled(false);
@@ -59,7 +60,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_c = findViewById(R.id.btn_c);
+        final Button btn_c = findViewById(R.id.btn_c_hm);
         btn_c.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_c.setEnabled(false);
@@ -67,7 +68,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_d = findViewById(R.id.btn_d);
+        final Button btn_d = findViewById(R.id.btn_d_hm);
         btn_d.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_d.setEnabled(false);
@@ -75,7 +76,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_e = findViewById(R.id.btn_e);
+        final Button btn_e = findViewById(R.id.btn_e_hm);
         btn_e.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_e.setEnabled(false);
@@ -83,7 +84,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_f = findViewById(R.id.btn_f);
+        final Button btn_f = findViewById(R.id.btn_f_hm);
         btn_f.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_f.setEnabled(false);
@@ -91,7 +92,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_g = findViewById(R.id.btn_g);
+        final Button btn_g = findViewById(R.id.btn_g_hm);
         btn_g.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_g.setEnabled(false);
@@ -99,7 +100,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_h = findViewById(R.id.btn_h);
+        final Button btn_h = findViewById(R.id.btn_h_hm);
         btn_h.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_h.setEnabled(false);
@@ -107,7 +108,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_i = findViewById(R.id.btn_i);
+        final Button btn_i = findViewById(R.id.btn_i_hm);
         btn_i.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_i.setEnabled(false);
@@ -115,7 +116,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_j = findViewById(R.id.btn_j);
+        final Button btn_j = findViewById(R.id.btn_j_hm);
         btn_j.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_j.setEnabled(false);
@@ -123,7 +124,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_k = findViewById(R.id.btn_k);
+        final Button btn_k = findViewById(R.id.btn_k_hm);
         btn_k.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_k.setEnabled(false);
@@ -131,7 +132,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_l = findViewById(R.id.btn_l);
+        final Button btn_l = findViewById(R.id.btn_l_hm);
         btn_l.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_l.setEnabled(false);
@@ -139,7 +140,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_m = findViewById(R.id.btn_m);
+        final Button btn_m = findViewById(R.id.btn_m_hm);
         btn_m.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_m.setEnabled(false);
@@ -147,7 +148,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_n = findViewById(R.id.btn_n);
+        final Button btn_n = findViewById(R.id.btn_n_hm);
         btn_n.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_n.setEnabled(false);
@@ -155,7 +156,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_o = findViewById(R.id.btn_o);
+        final Button btn_o = findViewById(R.id.btn_o_hm);
         btn_o.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_o.setEnabled(false);
@@ -163,7 +164,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_p = findViewById(R.id.btn_p);
+        final Button btn_p = findViewById(R.id.btn_p_hm);
         btn_p.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_p.setEnabled(false);
@@ -171,7 +172,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_q = findViewById(R.id.btn_q);
+        final Button btn_q = findViewById(R.id.btn_q_hm);
         btn_q.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_q.setEnabled(false);
@@ -179,7 +180,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_r = findViewById(R.id.btn_r);
+        final Button btn_r = findViewById(R.id.btn_r_hm);
         btn_r.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_r.setEnabled(false);
@@ -187,7 +188,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_s = findViewById(R.id.btn_s);
+        final Button btn_s = findViewById(R.id.btn_s_hm);
         btn_s.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_s.setEnabled(false);
@@ -195,7 +196,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_t = findViewById(R.id.btn_t);
+        final Button btn_t = findViewById(R.id.btn_t_hm);
         btn_t.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_t.setEnabled(false);
@@ -203,7 +204,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_u = findViewById(R.id.btn_u);
+        final Button btn_u = findViewById(R.id.btn_u_hm);
         btn_u.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_u.setEnabled(false);
@@ -211,7 +212,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_v = findViewById(R.id.btn_v);
+        final Button btn_v = findViewById(R.id.btn_v_hm);
         btn_v.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_v.setEnabled(false);
@@ -219,7 +220,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_w = findViewById(R.id.btn_w);
+        final Button btn_w = findViewById(R.id.btn_w_hm);
         btn_w.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_w.setEnabled(false);
@@ -227,7 +228,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_x = findViewById(R.id.btn_x);
+        final Button btn_x = findViewById(R.id.btn_x_hm);
         btn_x.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_x.setEnabled(false);
@@ -235,7 +236,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_y = findViewById(R.id.btn_y);
+        final Button btn_y = findViewById(R.id.btn_y_hm);
         btn_y.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_y.setEnabled(false);
@@ -243,7 +244,7 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_z = findViewById(R.id.btn_z);
+        final Button btn_z = findViewById(R.id.btn_z_hm);
         btn_z.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_z.setEnabled(false);
@@ -258,10 +259,10 @@ public class HangmanActivity extends AppCompatActivity {
             }
         });
 
-        final Button btn_exit = findViewById(R.id.btn_exit);
+        final Button btn_exit = findViewById(R.id.btn_exit_hm);
         btn_exit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                HangmanActivity.this.finish();
+                navigateToWelcomeScreen();
             }
         });
 
@@ -271,7 +272,6 @@ public class HangmanActivity extends AppCompatActivity {
                 navigateToWelcomeScreen();
             }
         });
-
 
         final Button btn_hm_extend_words = findViewById(R.id.btn_hm_extend_words);
         btn_hm_extend_words.setOnClickListener(new View.OnClickListener() {
@@ -299,12 +299,12 @@ public class HangmanActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    void setWordView() {
+    private void setWordView() {
         word_place_holder = "";
 
         int random = randomWithRange(word_list.size());
 
-        TextView textv_word_view = findViewById(R.id.textv_word_to_guess);
+        TextView textv_word_view = findViewById(R.id.textv_word_to_guess_hm);
 
         word_to_guess = word_list.get(random).first;
 
@@ -320,35 +320,33 @@ public class HangmanActivity extends AppCompatActivity {
         textv_word_view.setText(word_place_holder);
     }
 
-    int randomWithRange(int max) {
+    private int randomWithRange(int max) {
         return (int) (Math.random() * max);
     }
 
-    void checkInput(char c) {
-        TextView textv_word_view = findViewById(R.id.textv_word_to_guess);
+    private void checkInput(char c) {
+        TextView textv_word_view = findViewById(R.id.textv_word_to_guess_hm);
         StringBuilder new_placeholder = new StringBuilder(word_place_holder);
-        boolean notFound = true;
+        boolean not_found = true;
 
         for (int pos_w = 0, pos_ph = 0; pos_w < word_to_guess.length(); pos_w++, pos_ph += 2) {
             if (word_to_guess.charAt(pos_w) == c) {
                 new_placeholder.setCharAt(pos_ph, c);
-                notFound = false;
+                not_found = false;
             }
         }
         word_place_holder = new_placeholder.toString();
         textv_word_view.setText(word_place_holder);
 
-        if (notFound) {
-            ImageView image = findViewById(R.id.image_hm);
+        if (not_found) {
+            ImageView image = findViewById(R.id.image_hang_hm);
             image.setImageResource(images[wrong_guesses]);
             wrong_guesses++;
             image.setContentDescription("wrongGuess" + wrong_guesses);
         }
-
         if (wrong_guesses == 8) {
             lost();
         }
-
         if (!word_place_holder.contains("_")) {
             win();
         }
@@ -386,43 +384,45 @@ public class HangmanActivity extends AppCompatActivity {
     private void lost() {
         Context context = this.getApplicationContext();
 
-        final TextView textv_2 = findViewById(R.id.textv_2);
-        textv_2.setText(getResources().getString(R.string.str_textv_lose_hm));
+        final TextView textv_win = findViewById(R.id.textv_win_hm);
+        textv_win.setText(getResources().getString(R.string.str_textv_lose_hm));
         disabledButtons();
 
         Score.decrementScore(context, 2);
         Vibration.vibrate(context, 1000);
     }
 
-    private void disabledButtons (){
-        findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
-        findViewById(R.id.win_ly).bringToFront();
+    private void disabledButtons() {
+        findViewById(R.id.ly_win_hm).setVisibility(View.VISIBLE);
+        findViewById(R.id.ly_win_hm).bringToFront();
 
-        findViewById(R.id.btn_q).setEnabled(false);
-        findViewById(R.id.btn_w).setEnabled(false);
-        findViewById(R.id.btn_e).setEnabled(false);
-        findViewById(R.id.btn_r).setEnabled(false);
-        findViewById(R.id.btn_t).setEnabled(false);
-        findViewById(R.id.btn_z).setEnabled(false);
-        findViewById(R.id.btn_u).setEnabled(false);
-        findViewById(R.id.btn_i).setEnabled(false);
-        findViewById(R.id.btn_o).setEnabled(false);
-        findViewById(R.id.btn_p).setEnabled(false);
-        findViewById(R.id.btn_a).setEnabled(false);
-        findViewById(R.id.btn_s).setEnabled(false);
-        findViewById(R.id.btn_d).setEnabled(false);
-        findViewById(R.id.btn_f).setEnabled(false);
-        findViewById(R.id.btn_g).setEnabled(false);
-        findViewById(R.id.btn_h).setEnabled(false);
-        findViewById(R.id.btn_j).setEnabled(false);
-        findViewById(R.id.btn_k).setEnabled(false);
-        findViewById(R.id.btn_l).setEnabled(false);
-        findViewById(R.id.btn_y).setEnabled(false);
-        findViewById(R.id.btn_x).setEnabled(false);
-        findViewById(R.id.btn_c).setEnabled(false);
-        findViewById(R.id.btn_v).setEnabled(false);
-        findViewById(R.id.btn_b).setEnabled(false);
-        findViewById(R.id.btn_n).setEnabled(false);
-        findViewById(R.id.btn_m).setEnabled(false);
+        findViewById(R.id.btn_q_hm).setEnabled(false);
+        findViewById(R.id.btn_w_hm).setEnabled(false);
+        findViewById(R.id.btn_e_hm).setEnabled(false);
+        findViewById(R.id.btn_r_hm).setEnabled(false);
+        findViewById(R.id.btn_t_hm).setEnabled(false);
+        findViewById(R.id.btn_z_hm).setEnabled(false);
+        findViewById(R.id.btn_u_hm).setEnabled(false);
+        findViewById(R.id.btn_i_hm).setEnabled(false);
+        findViewById(R.id.btn_o_hm).setEnabled(false);
+        findViewById(R.id.btn_p_hm).setEnabled(false);
+        findViewById(R.id.btn_a_hm).setEnabled(false);
+        findViewById(R.id.btn_s_hm).setEnabled(false);
+        findViewById(R.id.btn_d_hm).setEnabled(false);
+        findViewById(R.id.btn_f_hm).setEnabled(false);
+        findViewById(R.id.btn_g_hm).setEnabled(false);
+        findViewById(R.id.btn_h_hm).setEnabled(false);
+        findViewById(R.id.btn_j_hm).setEnabled(false);
+        findViewById(R.id.btn_k_hm).setEnabled(false);
+        findViewById(R.id.btn_l_hm).setEnabled(false);
+        findViewById(R.id.btn_y_hm).setEnabled(false);
+        findViewById(R.id.btn_x_hm).setEnabled(false);
+        findViewById(R.id.btn_c_hm).setEnabled(false);
+        findViewById(R.id.btn_v_hm).setEnabled(false);
+        findViewById(R.id.btn_b_hm).setEnabled(false);
+        findViewById(R.id.btn_n_hm).setEnabled(false);
+        findViewById(R.id.btn_m_hm).setEnabled(false);
+        findViewById(R.id.btn_hint_hm).setEnabled(false);
+        findViewById(R.id.btn_back_hm).setEnabled(false);
     }
 }

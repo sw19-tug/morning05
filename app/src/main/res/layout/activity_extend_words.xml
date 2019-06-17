@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ExtendWordsActivity">
 
     <TextView
-        android:id="@+id/textv_hm_title_extend_words"
+        android:id="@+id/textv_title_hm_ew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/str_hm_title_extend_words"
+        android:text="@string/str_title_hm_ew"
         android:layout_marginBottom="10dp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
@@ -19,21 +18,23 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/ly_list_hm_ew"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:baselineAligned="false">
 
         <ListView
-            android:id="@+id/listview_hm_words"
+            android:id="@+id/listv_list_hm_ew"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"></ListView>
+            android:layout_weight="1" />
     </LinearLayout>
 
-
     <FrameLayout
+        android:id="@+id/ly_buttons_hm_ew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
@@ -41,7 +42,7 @@
         android:layout_marginRight="5dp">
 
         <Button
-            android:id="@+id/btn_hm_back_extend_words"
+            android:id="@+id/btn_back_hm_ew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -51,13 +52,13 @@
             android:textColor="@color/colorWhite" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btn_hm_extend_words_add"
+            android:id="@+id/btn_add_hm_ew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
             android:background="@color/colorPrimary"
             android:src="@android:drawable/ic_input_add"
-            android:tint="@color/colorWhite"></android.support.design.widget.FloatingActionButton>
+            android:tint="@color/colorWhite" />
     </FrameLayout>
 </LinearLayout>
 

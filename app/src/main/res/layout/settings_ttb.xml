@@ -8,7 +8,7 @@
     tools:context=".TTBActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/ly_buttons_color_ttbsett"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/button_title"
+            android:id="@+id/textv_buttons_color_tttbsett"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_btn_color_ttb"
@@ -29,11 +29,12 @@
             android:textSize="30dp" />
 
         <LinearLayout
+            android:id="@+id/ly_buttons_color_up_ttbsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn_green"
+                android:id="@+id/btn_b_green_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -45,10 +46,10 @@
                 android:background="@color/colorGreen"
                 android:gravity="center"
                 android:padding="30dp"
-                android:text="green" />
+                android:text="@string/str_color_b_green_ttb" />
 
             <Button
-                android:id="@+id/btn_blue"
+                android:id="@+id/btn_b_blue_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -61,15 +62,16 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="blue" />
+                android:text="@string/str_color_b_blue_ttb" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ly_buttons_color_down_ttbsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn_red"
+                android:id="@+id/btn_b_red_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -82,10 +84,10 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="red" />
+                android:text="@string/str_color_b_red_ttb" />
 
             <Button
-                android:id="@+id/btn_magenta"
+                android:id="@+id/btn_b_magenta_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -98,12 +100,12 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="magenta" />
+                android:text="@string/str_color_b_magenta_ttb" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/ly_screen_color_ttbsett"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -111,13 +113,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/ly_buttons_ttbsett"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/ly_buttons_color_ttbsett">
 
         <TextView
-            android:id="@+id/background_title"
+            android:id="@+id/textv_screen_color_ttbsett"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_row="0"
@@ -129,11 +131,12 @@
             android:textSize="30dp" />
 
         <LinearLayout
+            android:id="@+id/ly_screen_color_up_ttbsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn_white_background"
+                android:id="@+id/btn_s_white_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -146,11 +149,11 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="white"
+                android:text="@string/str_color_s_white_ttb"
                 android:textColor="@color/colorBlack"/>
 
             <Button
-                android:id="@+id/btn_black_background"
+                android:id="@+id/btn_s_black_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -163,17 +166,17 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="black"
+                android:text="@string/str_color_s_black_ttb"
                 android:textColor="@color/colorWhite" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/ly_screen_color_down_ttbsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn_grey_background"
+                android:id="@+id/btn_s_grey_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -186,10 +189,10 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="grey" />
+                android:text="@string/str_color_s_grey_ttb" />
 
             <Button
-                android:id="@+id/btn_magenta_background"
+                android:id="@+id/btn_s_magenta_ttbsett"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -202,12 +205,12 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="30dp"
-                android:text="magenta" />
+                android:text="@string/str_color_s_magenta_ttb" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/ly_buttons_ttbsett"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -218,7 +221,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btn_settings_back_ttb"
+            android:id="@+id/btn_back_ttbsett"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
@@ -230,7 +233,7 @@
             android:text="@string/str_back" />
 
         <Button
-            android:id="@+id/btn_settings_ok_ttb"
+            android:id="@+id/btn_ok_ttbsett"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
@@ -239,7 +242,7 @@
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:orientation="horizontal"
-            android:text="OK" />
+            android:text="@string/str_ok" />
 
     </LinearLayout>
 

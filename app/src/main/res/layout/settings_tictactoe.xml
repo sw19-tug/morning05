@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/set_title_ly"
+        android:id="@+id/ly_title_tttsett"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button_ly"
+        app:layout_constraintBottom_toTopOf="@+id/ly_buttons_tttsett"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/set_title"
+            android:id="@+id/textv_title_tttsett"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_settings"
@@ -31,33 +30,34 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/button_ly"
+        android:id="@+id/ly_buttons_tttsett"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_title_ly">
+        app:layout_constraintTop_toBottomOf="@+id/ly_title_tttsett">
 
         <TextView
-            android:id="@+id/set_sign"
+            android:id="@+id/textv_sign_tttsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
             android:layout_marginTop="3dp"
-            android:text="@string/str_textv_pick_sign"
+            android:text="@string/str_textv_pick_sign_ttt"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <LinearLayout
+            android:id="@+id/ly_sign_tttsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_sign_x_ttt"
+                android:id="@+id/btn_sign_x_tttsett"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -67,7 +67,7 @@
                 android:textSize="24sp" />
 
             <Button
-                android:id="@+id/btn_sign_o_ttt"
+                android:id="@+id/btn_sign_o_tttsett"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -79,16 +79,17 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/set_color"
+            android:id="@+id/ly_color_tttsett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
             android:layout_marginTop="16dp"
-            android:text="@string/str_textv_pick_color"
+            android:text="@string/str_textv_pick_color_ttt"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <LinearLayout
+            android:id="@+id/ly_color_buttons_tttsett"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="34dp"
@@ -98,7 +99,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_color_01_ttt"
+                android:id="@+id/btn_color_01_tttsett"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -107,7 +108,7 @@
                 android:background="#ff000000" />
 
             <Button
-                android:id="@+id/btn_color_02_ttt"
+                android:id="@+id/btn_color_02_tttsett"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -116,7 +117,7 @@
                 android:background="#ffff234b" />
 
             <Button
-                android:id="@+id/btn_color_03_ttt"
+                android:id="@+id/btn_color_03_tttsett"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -125,7 +126,7 @@
                 android:background="#ff0000ff" />
 
             <Button
-                android:id="@+id/btn_color_04_ttt"
+                android:id="@+id/btn_color_04_tttsett"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -134,7 +135,7 @@
                 android:background="#ff00b235" />
 
             <Button
-                android:id="@+id/btn_settings_back_ttt"
+                android:id="@+id/btn_back_tttsett"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

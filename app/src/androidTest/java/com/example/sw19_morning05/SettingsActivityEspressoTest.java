@@ -27,11 +27,11 @@ public class SettingsActivityEspressoTest {
 
     @Test
     public void testSettingsVisible() {
-        onView(withId(R.id.switch_nightmode)).check(matches(isDisplayed()));
-        onView(withId(R.id.switch_music)).check(matches(isDisplayed()));
-        onView(withId(R.id.switch_physical)).check(matches(isDisplayed()));
-        onView(withId(R.id.input_username)).check(matches(isDisplayed()));
-        onView(withId(R.id.btn_username_save)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_nightmode_sett)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_music_sett)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_physical_sett)).check(matches(isDisplayed()));
+        onView(withId(R.id.input_username_sett)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_username_save_sett)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -42,17 +42,17 @@ public class SettingsActivityEspressoTest {
         boolean is_nightmode = Settings.getBackgroundMusic(context);
         boolean is_physical = Settings.getPhysicalFeedback(context);
 
-        onView(withId(R.id.switch_music)).perform(click());
-        onView(withId(R.id.switch_nightmode)).perform(click());
-        onView(withId(R.id.switch_physical)).perform(click());
+        onView(withId(R.id.switch_music_sett)).perform(click());
+        onView(withId(R.id.switch_nightmode_sett)).perform(click());
+        onView(withId(R.id.switch_physical_sett)).perform(click());
 
         Assert.assertNotEquals(is_music, Settings.getNightmode(context));
         Assert.assertNotEquals(is_nightmode, Settings.getBackgroundMusic(context));
         Assert.assertNotEquals(is_physical, Settings.getPhysicalFeedback(context));
 
-        onView(withId(R.id.switch_music)).perform(click());
-        onView(withId(R.id.switch_nightmode)).perform(click());
-        onView(withId(R.id.switch_physical)).perform(click());
+        onView(withId(R.id.switch_music_sett)).perform(click());
+        onView(withId(R.id.switch_nightmode_sett)).perform(click());
+        onView(withId(R.id.switch_physical_sett)).perform(click());
 
         Assert.assertEquals(is_music, Settings.getNightmode(context));
         Assert.assertEquals(is_nightmode, Settings.getBackgroundMusic(context));
@@ -63,8 +63,8 @@ public class SettingsActivityEspressoTest {
     @Test
     public void testUpdateUsername() {
         String new_username = "jon_snow_69";
-        onView(withId(R.id.input_username)).perform(replaceText(new_username));
-        onView(withId(R.id.btn_username_save)).perform(click());
+        onView(withId(R.id.input_username_sett)).perform(replaceText(new_username));
+        onView(withId(R.id.btn_username_save_sett)).perform(click());
 
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
         String username = Settings.getUsername(context);
@@ -75,10 +75,10 @@ public class SettingsActivityEspressoTest {
     @Test
     public void testNightMode() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
-        onView(withId(R.id.switch_nightmode)).perform(click());
+        onView(withId(R.id.switch_nightmode_sett)).perform(click());
 
-        onView(withId(R.id.btn_settings_back)).perform(click());
-        onView(withId(R.id.btn_settings)).perform(click());
+        onView(withId(R.id.btn_back_sett)).perform(click());
+        onView(withId(R.id.btn_settings_m)).perform(click());
 
         Configuration conf = context.getResources().getConfiguration();
         if (Settings.getNightmode(context)) {
@@ -88,7 +88,7 @@ public class SettingsActivityEspressoTest {
             int currentNightMode = conf.uiMode & Configuration.UI_MODE_NIGHT_MASK;
             Assert.assertEquals(currentNightMode, Configuration.UI_MODE_NIGHT_NO);
         }
-        onView(withId(R.id.switch_nightmode)).perform(click());
+        onView(withId(R.id.switch_nightmode_sett)).perform(click());
     }
 
     @Test
@@ -99,42 +99,42 @@ public class SettingsActivityEspressoTest {
         boolean is_music = Settings.getBackgroundMusic(context);
         boolean is_physical = Settings.getPhysicalFeedback(context);
 
-        onView(withId(R.id.switch_nightmode)).perform(click());
-        onView(withId(R.id.switch_music)).perform(click());
-        onView(withId(R.id.switch_physical)).perform(click());
+        onView(withId(R.id.switch_nightmode_sett)).perform(click());
+        onView(withId(R.id.switch_music_sett)).perform(click());
+        onView(withId(R.id.switch_physical_sett)).perform(click());
 
         Assert.assertNotEquals(is_nightmode, Settings.getNightmode(context));
         Assert.assertNotEquals(is_music, Settings.getBackgroundMusic(context));
         Assert.assertNotEquals(is_physical, Settings.getPhysicalFeedback(context));
 
-        onView(withId(R.id.switch_nightmode)).perform(click());
-        onView(withId(R.id.switch_music)).perform(click());
-        onView(withId(R.id.switch_physical)).perform(click());
+        onView(withId(R.id.switch_nightmode_sett)).perform(click());
+        onView(withId(R.id.switch_music_sett)).perform(click());
+        onView(withId(R.id.switch_physical_sett)).perform(click());
     }
 
     @Test
     public void testPhysicalFeedback() {
         Context context = settings_activity_test_rule.getActivity().getApplicationContext();
-        onView(withId(R.id.switch_physical)).perform(click());
+        onView(withId(R.id.switch_physical_sett)).perform(click());
 
         long duration_ms = 1000;
         Vibration.vibrate(context, duration_ms);
         Assert.assertEquals(Vibration.checkVibrateActive(), true);
 
-        onView(withId(R.id.switch_physical)).perform(click());
+        onView(withId(R.id.switch_physical_sett)).perform(click());
     }
 
     @Test
     public void testMusicSpinnerExists() {
-        onView(withId(R.id.spinn_backg_music)).check(matches(isDisplayed()));
+        onView(withId(R.id.spinn_backg_music_sett)).check(matches(isDisplayed()));
     }
 
     @Test
     public void testEnableBackgroundMusic() {
 
-        assert(!BackgroundMusicPlayer.isplayingAudio);
-        onView(withId(R.id.switch_music)).perform(click());
-        assert(BackgroundMusicPlayer.isplayingAudio);
-        onView(withId(R.id.switch_music)).perform(click());
+        assert(!BackgroundMusicPlayer.is_playing);
+        onView(withId(R.id.switch_music_sett)).perform(click());
+        assert(BackgroundMusicPlayer.is_playing);
+        onView(withId(R.id.switch_music_sett)).perform(click());
     }
 }

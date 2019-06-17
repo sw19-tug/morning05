@@ -8,19 +8,19 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/games"
+        android:id="@+id/ly_games_m"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttons"
+        app:layout_constraintBottom_toTopOf="@+id/ly_buttons_m"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textv_title"
+            android:id="@+id/textv_title_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -31,7 +31,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textv_greeting_user"
+            android:id="@+id/textv_greeting_user_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -39,7 +39,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textv_score"
+            android:id="@+id/textv_score_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -47,7 +47,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btn_ttt"
+            android:id="@+id/btn_ttt_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -58,7 +58,7 @@
             tools:layout_editor_absoluteY="16dp" />
 
         <Button
-            android:id="@+id/btn_hm"
+            android:id="@+id/btn_hm_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -69,7 +69,7 @@
             tools:layout_editor_absoluteY="72dp" />
 
         <Button
-            android:id="@+id/btn_ttb"
+            android:id="@+id/btn_ttb_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -83,7 +83,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/buttons"
+        android:id="@+id/ly_buttons_m"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -92,15 +92,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/games">
+        app:layout_constraintTop_toBottomOf="@id/ly_games_m">
 
         <LinearLayout
+            android:id="@+id/ly_buttons_up_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_gamestatistic"
+                android:id="@+id/btn_gamestatistic_m"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -108,12 +109,12 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
-                android:text="@string/str_textv_gamestatistic"
+                android:text="@string/str_textv_gamestatistic_stat"
                 tools:layout_editor_absoluteX="14dp"
                 tools:layout_editor_absoluteY="135dp" />
 
             <Button
-                android:id="@+id/btn_settings"
+                android:id="@+id/btn_settings_m"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -128,12 +129,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ly_buttons_down_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_help"
+                android:id="@+id/btn_help_m"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -146,7 +148,7 @@
                 tools:layout_editor_absoluteY="135dp" />
 
             <Button
-                android:id="@+id/btn_switch_lang"
+                android:id="@+id/btn_switch_lang_m"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"

@@ -3,7 +3,6 @@ package com.example.sw19_morning05;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -26,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Context context = this.getApplicationContext();
 
-        SharedPreferences preferences = context.getSharedPreferences("sett_file", MODE_PRIVATE);
         boolean nightmode = Settings.getNightmode(context);
         if (nightmode) {
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
@@ -35,64 +33,62 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
 
-        TextView textv_greeting_user = (TextView) findViewById((R.id.textv_greeting_user));
-        textv_greeting_user.setText(getResources().getString(R.string.str_user_greeting) + " " +
-                Settings.getUsername(context));
+        TextView textv_greeting_user = findViewById((R.id.textv_greeting_user_m));
+        textv_greeting_user.setText(getResources().getString(R.string.str_user_greeting) + " " + Settings.getUsername(context));
 
-        TextView textv_score = (TextView) findViewById((R.id.textv_score));
+        TextView textv_score = findViewById((R.id.textv_score_m));
         textv_score.setText(getResources().getString(R.string.str_textv_score) + " " + Score.getScore(context));
 
-        Button btn_switch_lang = (Button) findViewById(R.id.btn_switch_lang);
+        Button btn_switch_lang = findViewById(R.id.btn_switch_lang_m);
         btn_switch_lang.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 switchLanguage();
             }
         });
 
-        Button btn_start_ttt = (Button) findViewById(R.id.btn_ttt);
+        Button btn_start_ttt = findViewById(R.id.btn_ttt_m);
         btn_start_ttt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateTicTacToe();
             }
         });
 
-        Button btn_start_ttb = (Button) findViewById(R.id.btn_ttb);
+        Button btn_start_ttb = findViewById(R.id.btn_ttb_m);
         btn_start_ttb.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateTouchTheBlock();
             }
         });
 
-        Button btn_start_hm = (Button) findViewById(R.id.btn_hm);
+        Button btn_start_hm = findViewById(R.id.btn_hm_m);
         btn_start_hm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateHangman();
             }
         });
 
-        Button btn_gamestatistic = (Button) findViewById(R.id.btn_gamestatistic);
+        Button btn_gamestatistic = findViewById(R.id.btn_gamestatistic_m);
         btn_gamestatistic.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateStatistics();
             }
         });
 
-        Button btn_settings = (Button) findViewById(R.id.btn_settings);
+        Button btn_settings = findViewById(R.id.btn_settings_m);
         btn_settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateSettings();
             }
         });
 
-        Button btn_help = (Button) findViewById(R.id.btn_help);
+        Button btn_help = findViewById(R.id.btn_help_m);
         btn_help.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showHelp();
             }
         });
 
-        if(Settings.getBackgroundMusic(context) && !BackgroundMusicPlayer.isplayingAudio)
-        {
+        if (Settings.getBackgroundMusic(context) && !BackgroundMusicPlayer.is_playing) {
             BackgroundMusicPlayer.playAudio(context);
         }
     }
@@ -111,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         alert.setPositiveButton(R.string.str_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
         AlertDialog dialog = alert.create();
@@ -152,11 +147,6 @@ public class MainActivity extends AppCompatActivity {
     private void navigateTouchTheBlock() {
         Intent intent = new Intent(this, TTBActivity.class);
         Statistics.incrementGameCounterTTB(this.getApplicationContext());
-        startActivity(intent);
-    }
-
-    private void navigateWelcomeScreen() {
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

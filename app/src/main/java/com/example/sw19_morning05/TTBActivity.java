@@ -18,21 +18,19 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
 public class TTBActivity extends Activity {
+    private Context context;
 
-    Context context;
-    int block_color = 0;
-    int background_color = 0;
-    CountDownTimer cdt_play_time;
-    int ttb_block_counter = 0;
+    private int block_color = 0;
+    private int background_color = 0;
+    private int ttb_block_counter = 0;
 
-    ViewGroup.LayoutParams last_block_size;
-    float last_block_x_position;
-    float last_block_y_position;
+    private float last_block_x_position;
+    private float last_block_y_position;
+
+    public CountDownTimer cdt_play_time;
+
+    private ViewGroup.LayoutParams last_block_size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +42,9 @@ public class TTBActivity extends Activity {
     private void initTTB() {
         setContentView(R.layout.activity_ttb);
 
-        Button btn_play = (Button) findViewById(R.id.btn_play);
-        Button btn_settings = (Button) findViewById(R.id.btn_settings_ttb);
-        Button btn_backToWelcomeScreen = (Button) findViewById(R.id.btn_back_main);
+        Button btn_play = findViewById(R.id.btn_play_ttb);
+        Button btn_settings = findViewById(R.id.btn_settings_ttb);
+        Button btn_backToWelcomeScreen = findViewById(R.id.btn_back_ttb);
 
         btn_play.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -64,33 +62,28 @@ public class TTBActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-
-
             }
         });
     }
 
     private void playTTB() {
-
         setContentView(R.layout.play_ttb);
 
-        final Button btn_block = (Button) findViewById(R.id.moving_block);
-        final Button btn_background = (Button) findViewById(R.id.btn_background);
-        final TextView tv_timer = (TextView) findViewById(R.id.timer);
-        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        final Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
+                .getDefaultDisplay();
+        final Button btn_background = findViewById(R.id.btn_background_ttb);
+        final Button btn_block = findViewById(R.id.btn_moving_block_ttb);
+        final TextView tv_timer = findViewById(R.id.textv_timer_ttb);
 
         if (ttb_block_counter > 0) {
             btn_block.setLayoutParams(last_block_size);
             btn_block.setY(last_block_y_position);
             btn_block.setX(last_block_x_position);
-        }
-        else
-        {
+        } else {
             ViewGroup.LayoutParams new_params = btn_block.getLayoutParams();
             new_params.width = display.getWidth();
             btn_block.setLayoutParams(new_params);
         }
-
         final MediaPlayer mp_alarm = MediaPlayer.create(this, R.raw.alarm);
 
         tv_timer.setText("TIME: " + 3 + ":" + 000);
@@ -107,46 +100,35 @@ public class TTBActivity extends Activity {
                 if (mp_alarm.isPlaying()) {
                     mp_alarm.stop();
                 }
-                clickedBackground(btn_block, btn_background, tv_timer);
+                clickedBackground(btn_block, btn_background);
             }
         };
-
+        final String text = "Time: ";
+        Rect boundaries = new Rect();
+        Paint text_paint = tv_timer.getPaint();
 
         final int get_width = display.getWidth();
         final int get_height = display.getHeight();
-        double start_height = get_height / 2 * Math.random();
-        final Rect boundaries = new Rect();
-        Paint textPaint = tv_timer.getPaint();
-        String text = "Time: ";
-        textPaint.getTextBounds(text, 0, text.length(), boundaries);
-
         final int textview_height = boundaries.height() * 2;
 
-        if (start_height < textview_height) {
-            start_height += textview_height;
-        }
+        text_paint.getTextBounds(text, 0, text.length(), boundaries);
 
         if (ttb_block_counter == 0) {
             btn_block.setY((float) (textview_height));
         }
-
-        btn_block.setEnabled(false);
         btn_block.setVisibility(View.INVISIBLE);
         btn_background.setEnabled(false);
-
-
+        btn_block.setEnabled(false);
 
         if (background_color != 0) {
             btn_background.setBackgroundColor(background_color);
         }
-
         if (block_color != 0) {
             btn_block.setBackgroundColor(block_color);
         }
-
-        btn_block.setEnabled(true);
         btn_block.setVisibility(View.VISIBLE);
         btn_background.setEnabled(true);
+        btn_block.setEnabled(true);
 
         if (btn_block.getWidth() > get_width) {
             btn_block.setWidth(get_width);
@@ -165,34 +147,33 @@ public class TTBActivity extends Activity {
         btn_background.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mp_alarm.stop();
-                clickedBackground(btn_block, btn_background, tv_timer);
+                clickedBackground(btn_block, btn_background);
             }
         });
 
         final Button btn_restart = findViewById(R.id.btn_reset_ttb);
-        final Button btn_back = findViewById(R.id.btn_back_ttb);
-        final Button btn_continue = (Button) findViewById(R.id.btn_continue_ttb);
-
         btn_restart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Context context = getApplicationContext();
                 Score.incrementScore(context, ttb_block_counter);
-                Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
+                Statistics.addHighScore(context, ttb_block_counter);
                 ttb_block_counter = 0;
                 playTTB();
             }
         });
 
+        final Button btn_back = findViewById(R.id.btn_back_ttb);
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Context context = getApplicationContext();
                 Score.incrementScore(context, ttb_block_counter);
-                Statistics.addHighScore(context, Settings.getUsername(context), ttb_block_counter);
+                Statistics.addHighScore(context, ttb_block_counter);
                 ttb_block_counter = 0;
                 initTTB();
             }
         });
 
+        final Button btn_continue = findViewById(R.id.btn_continue_ttb);
         btn_continue.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getApplicationContext();
@@ -203,21 +184,19 @@ public class TTBActivity extends Activity {
     }
 
     private void settingsTTB() {
-
         setContentView(R.layout.settings_ttb);
 
-        final Button btn_block_green = findViewById(R.id.btn_green);
-        final Button btn_block_blue = findViewById(R.id.btn_blue);
-        final Button btn_block_red = findViewById(R.id.btn_red);
-        final Button btn_block_magenta = findViewById(R.id.btn_magenta);
-        final Button btn_background_white = findViewById(R.id.btn_white_background);
-        final Button btn_background_grey = findViewById(R.id.btn_grey_background);
-        final Button btn_background_black = findViewById(R.id.btn_black_background);
-        final Button btn_background_magenta = findViewById(R.id.btn_magenta_background);
+        final Button btn_block_red = findViewById(R.id.btn_b_red_ttbsett);
+        final Button btn_block_blue = findViewById(R.id.btn_b_blue_ttbsett);
+        final Button btn_block_green = findViewById(R.id.btn_b_green_ttbsett);
+        final Button btn_block_magenta = findViewById(R.id.btn_b_magenta_ttbsett);
 
-        final Button btn_back = findViewById(R.id.btn_settings_back_ttb);
-        final Button btn_ok = findViewById(R.id.btn_settings_ok_ttb);
+        final Button btn_background_grey = findViewById(R.id.btn_s_grey_ttbsett);
+        final Button btn_background_white = findViewById(R.id.btn_s_white_ttbsett);
+        final Button btn_background_black = findViewById(R.id.btn_s_black_ttbsett);
+        final Button btn_background_magenta = findViewById(R.id.btn_s_magenta_ttbsett);
 
+        final Button btn_back = findViewById(R.id.btn_back_ttbsett);
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 block_color = 0;
@@ -226,6 +205,7 @@ public class TTBActivity extends Activity {
             }
         });
 
+        final Button btn_ok = findViewById(R.id.btn_ok_ttbsett);
         btn_ok.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 initTTB();
@@ -239,14 +219,12 @@ public class TTBActivity extends Activity {
             }
         });
 
-
         btn_block_blue.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 block_color = getResources().getColor(R.color.colorBlue);
                 disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
             }
         });
-
 
         btn_block_red.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -255,14 +233,12 @@ public class TTBActivity extends Activity {
             }
         });
 
-
         btn_block_magenta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (background_color == getResources().getColor(R.color.colorMagenta)) {
                     btn_block_magenta.setError("");
                     return;
                 }
-
                 block_color = getResources().getColor(R.color.colorMagenta);
                 disableButtons(btn_block_green, btn_block_blue, btn_block_red, btn_block_magenta);
             }
@@ -295,25 +271,23 @@ public class TTBActivity extends Activity {
                     btn_background_magenta.setError("");
                     return;
                 }
-
                 background_color = getResources().getColor(R.color.colorMagenta);
                 disableButtons(btn_background_black, btn_background_grey, btn_background_white, btn_background_magenta);
             }
         });
     }
 
-    public void clickedBackground(Button block, Button background, TextView timer) {
+    public void clickedBackground(Button block, Button background) {
         Context context = this.getApplicationContext();
         if (Score.getScore(context) < 10) {
             findViewById(R.id.btn_continue_ttb).setEnabled(false);
         } else {
             findViewById(R.id.btn_continue_ttb).setEnabled(true);
         }
-
-        findViewById(R.id.win_ly).setVisibility(View.VISIBLE);
-        block.setVisibility(View.INVISIBLE);
+        findViewById(R.id.ly_win_ttb).setVisibility(View.VISIBLE);
         background.setVisibility((View.INVISIBLE));
         Vibration.vibrate(context, 1000);
+        block.setVisibility(View.INVISIBLE);
         cdt_play_time.cancel();
     }
 
@@ -324,11 +298,11 @@ public class TTBActivity extends Activity {
             alarm.pause();
             alarm.seekTo(0);
         }
-
         cdt_play_time.start();
 
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         ViewGroup.LayoutParams params = block.getLayoutParams();
+
         if (params.height > display.getHeight()) {
             params.height = display.getHeight();
         }
@@ -337,8 +311,9 @@ public class TTBActivity extends Activity {
         }
         if (Math.random() >= 0.5) {
             params.height = params.height / 2;
-        } else
+        } else {
             params.width = params.width / 2;
+        }
         last_block_size = params;
         block.setLayoutParams(params);
 
@@ -350,32 +325,27 @@ public class TTBActivity extends Activity {
         int range_width = randi.nextInt(width);
         int range_height = randi.nextInt(height - nav_bar_height);
 
-        if ((width - range_width) < params.width)
+        if ((width - range_width) < params.width) {
             block.setX(width - params.width);
-        else
+        } else {
             block.setX(range_width);
-
-        if (range_height < textview_height)
+        }
+        if (range_height < textview_height) {
             range_height += textview_height;
-
+        }
         if ((height - range_height) < params.height) {
             block.setY(height - params.height);
-        } else
+        } else {
             block.setY(range_height);
-
-        if((range_height + params.height) > (height - nav_bar_height))
-        {
+        }
+        if ((range_height + params.height) > (height - nav_bar_height)) {
             block.setY(height - params.height);
         }
-
         last_block_x_position = block.getX();
         last_block_y_position = block.getY();
-
     }
 
-
-    private void disableButtons(Button button_1, Button button_2, Button button_3,
-                                Button button_4) {
+    private void disableButtons(Button button_1, Button button_2, Button button_3, Button button_4) {
         button_1.setEnabled(false);
         button_1.setVisibility(View.INVISIBLE);
         button_2.setEnabled(false);
