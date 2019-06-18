@@ -36,7 +36,7 @@
     <string name="str_cbox_text_autoplayer_easy_ttt">Spiele gegen Computer - einfach</string>
     <string name="str_cbox_text_autoplayer_hard_ttt">Spiele gegen Computer - schwer</string>
     <string name="str_textv_pick_color_ttt">Wähle deine Farbe:</string>
-    <string name="str_textv_pick_sign_ttt">Pick your Sign:</string>
+    <string name="str_textv_pick_sign_ttt">Wähle dein Symbol:</string>
 
     <string name="str_title_ttb">Touch The Block</string>
     <string name="str_play_ttb">Spielen</string>

@@ -63,7 +63,7 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
                             Toast.makeText(
                                     context,
                                     context.getResources().getString(R.string.str_delete_warning_hw_ew),
-                                    Toast.LENGTH_LONG
+                                    Toast.LENGTH_SHORT
                             ).show();
                         }
                         break;

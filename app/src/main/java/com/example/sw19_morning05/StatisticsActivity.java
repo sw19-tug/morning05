@@ -48,7 +48,7 @@ public class StatisticsActivity extends AppCompatActivity {
                     Toast.makeText(
                             context,
                             getResources().getString(R.string.str_whatsapp_not_installed),
-                            Toast.LENGTH_LONG
+                            Toast.LENGTH_SHORT
                     ).show();
                 }
             }
