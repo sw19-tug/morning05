@@ -1,198 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="top"
-    tools:context=".TicTacToeActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textv_header"
-        android:text="@string/str_title_ttt"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:id="@+id/ly_title_ttt"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:textColor="@color/colorPrimary"/>
+        android:gravity="top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/fields_ttt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".TicTacToeActivity">
 
-    <TextView
-        android:id="@+id/textv_current_player"
-        android:text="@string/str_textv_player1_turn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/textv_header_ttt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_title_ttt"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-    <CheckBox
-        android:id="@+id/cbox_autoplayer_ttt"
-        android:text="@string/str_cbox_text_autoplayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/textv_current_player_ttt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_textv_player1_turn_ttt"
+            android:textAlignment="center"
+            android:textSize="25sp" />
 
+        <CheckBox
+            android:id="@+id/cbox_autoplayer_easy_ttt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/str_cbox_text_autoplayer_easy_ttt"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+        <CheckBox
+            android:id="@+id/cbox_autoplayer_hard_ttt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/str_cbox_text_autoplayer_hard_ttt"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+    </LinearLayout>
 
     <GridLayout
+        android:id="@+id/fields_ttt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:columnCount="3"
         android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:rowCount="3">
+
+        android:rowCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/ly_buttons_ttt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_title_ttt">
 
         <Button
-            android:id="@+id/bt_field00"
+            android:id="@+id/btn_field_00_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field01"
+            android:id="@+id/btn_field_01_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field02"
+            android:id="@+id/btn_field_02_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="2"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field10"
+            android:id="@+id/btn_field_10_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="0"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field11"
+            android:id="@+id/btn_field_11_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="1"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field12"
+            android:id="@+id/btn_field_12_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="2"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field20"
+            android:id="@+id/btn_field_20_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="0"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field21"
+            android:id="@+id/btn_field_21_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="1"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
 
         <Button
-            android:id="@+id/bt_field22"
+            android:id="@+id/btn_field_22_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="2"
+            android:layout_margin="5dp"
             android:text=""
-            android:textSize="50sp">
-        </Button>
+            android:textSize="50sp" />
     </GridLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/ly_buttons_ttt"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fields_ttt">
 
         <ImageButton
             android:id="@+id/btn_settings_ttt"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="85dp"
-            android:layout_marginTop="17dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
             android:background="@android:color/transparent"
             android:clickable="true"
+            android:contentDescription="@string/str_settings"
+            android:focusable="true"
             android:hapticFeedbackEnabled="false"
             android:scaleType="fitCenter"
             android:src="@android:drawable/ic_menu_preferences"
-            android:visibility="visible"
-            android:focusable="true"
-            android:contentDescription="@string/str_settings" />
+            android:visibility="visible" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_reset_ttt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/str_reset" />
 
-            <Button
-                android:id="@+id/btn_reset_ttt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/str_reset">
-            </Button>
-
-            <Button
-                android:id="@+id/btn_back_ttt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/str_back">
-            </Button>
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_back_ttt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/str_back" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/settings_ly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="16dp"
-        android:orientation="horizontal">
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

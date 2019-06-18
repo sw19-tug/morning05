@@ -1,32 +1,96 @@
 <resources>
     <string name="str_app_name">SW19-morning05</string>
     <string name="str_app_title">Spielesammlung</string>
+    <string name="str_user_greeting">Willkommen zurück</string>
     <string name="str_switch_lang">Wechsle zu Englisch</string>
+    <string name="str_help">Hilfe</string>
+    <string name="str_ok">Ok</string>
+    <string name="str_cancel">Abbrechen</string>
+
+    <string name="str_description_hm">Ziel des Spieles ist es, den gesuchten Begriff zu erraten, wobei die gegebene Tastatur zu benutzen ist. Nach 8 falsch geratenen Buchstaben hat der Spieler verloren.
+        Es gibt auch die Möglichkeit sich einen Hinweis anzeigen zu lassen. Pro richtig geratenen Wort bekommt der Spieler einen Punkt.</string>
+    <string name="str_description_ttt">Es wird abwechselnd ein X oder O in eines der freien Felder gesetzt. Der Spieler kann entscheiden, ob er gegen einen anderen Spieler spielt oder gegen den Autoplayer.
+        Der Spieler, der als Erster drei Zeichen in eine Zeile, Spalte oder Diagonale setzen kann, gewinnt. Der Spieler kann in den Einstelungen die Farben der X und O ändern. Pro gewonnenem Spiel bekommt
+        der Spieler einen Punkt und ansonsten verliert er 2 Punkte.</string>
+    <string name="str_description_ttb">Man hat 3 Sekunden Zeit um den Block zu berühren. Nach 2 Sekunden ertönt ein Alarm um den Spieler zu signalisieren, dass die Zeit fast vorbei ist.
+        Der Block verkleinert sich pro Berührung und das Spiel endet sobald der Block nicht mehr getroffen wird oder die Zeit verstrichen ist. Der Spieler kann in den Einstellungen die Farben des
+        Blockes und des Hintergrundes ändern. Pro Berührung des Blockes erhält der Spieler einen Punkt. Schafft der Spieler es nicht, den Block zu berühren,
+        kann er 10 seiner Score-Punkte ausgeben, um an dem Punkt weiterzumachen, an dem er gescheitert ist.</string>
+
     <string name="str_textv_score">Punkte:</string>
-    <string name="str_reset">NEUSTART</string>
-    <string name="str_back">ZURÜCK</string>
+    <string name="str_textv_statistic_ttb">Touch the Block:</string>
+    <string name="str_textv_statistic_ttt">Tic Tac Toe:</string>
+    <string name="str_textv_statistic_hm">Hangman:</string>
+
+    <string name="str_reset">Neustart</string>
+    <string name="str_back">Zurück</string>
+    <string name="str_confirm">Bestätigen</string>
     <string name="str_settings">Einstellungen</string>
 
     <string name="str_title_ttt">Tic Tac Toe</string>
-    <string name="str_textv_player1_turn">Spieler X Zug!</string>
-    <string name="str_textv_player2_turn">Spieler O Zug!</string>
-    <string name="str_textv_player1_wins">Spieler X gewinnt!</string>
-    <string name="str_textv_player2_wins">Spieler O gewinnt!</string>
-    <string name="str_textv_draw">Unentschieden!</string>
-    <string name="str_cbox_text_autoplayer">Spiele gegen Computer</string>
-    <string name="str_textv_pick_color">Wähle deine Farbe:</string>
-    <string name="str_textv_pick_sign">Pick your Sign:</string>
+    <string name="str_textv_player1_turn_ttt">Spieler X Zug!</string>
+    <string name="str_textv_player2_turn_ttt">Spieler O Zug!</string>
+    <string name="str_textv_player1_wins_ttt">Spieler X gewinnt!</string>
+    <string name="str_textv_player2_wins_ttt">Spieler O gewinnt!</string>
+    <string name="str_textv_draw_ttt">Unentschieden!</string>
+    <string name="str_cbox_text_autoplayer_easy_ttt">Spiele gegen Computer - einfach</string>
+    <string name="str_cbox_text_autoplayer_hard_ttt">Spiele gegen Computer - schwer</string>
+    <string name="str_textv_pick_color_ttt">Wähle deine Farbe:</string>
+    <string name="str_textv_pick_sign_ttt">Wähle dein Symbol:</string>
 
     <string name="str_title_ttb">Touch The Block</string>
     <string name="str_play_ttb">Spielen</string>
     <string name="str_loss_ttb">Ooops!</string>
     <string name="str_lose_ttb">du hast verloren!</string>
-    <string name="str_play_again_ttb">Nocheinmal Spielen?</string>
+    <string name="str_play_again_ttb">Noch einmal Spielen?</string>
     <string name="str_btn_color_ttb">Knopf Farbe</string>
     <string name="str_screen_color_ttb">Hintergrund Farbe</string>
+    <string name="str_continue_ttb">Weiter spielen (-10 P.)</string>
 
+    <string name="str_color_b_green_ttb">Grün</string>
+    <string name="str_color_b_blue_ttb">Blau</string>
+    <string name="str_color_b_red_ttb">Rot</string>
+    <string name="str_color_b_magenta_ttb">Magenta</string>
 
+    <string name="str_color_s_white_ttb">Weiß</string>
+    <string name="str_color_s_black_ttb">Schwarz</string>
+    <string name="str_color_s_grey_ttb">Grau</string>
+    <string name="str_color_s_magenta_ttb">Magenta</string>
 
     <string name="str_title_hm">Hangman</string>
     <string name="str_textv_win_hm">Gewonnen! Punkte +1</string>
+    <string name="str_textv_lose_hm">Verloren!</string>
+    <string name="str_hint_hm">Hinweis</string>
+    <string name="str_extend_words_hm">Wort hinzu</string>
+
+    <string name="str_nightmode_sett">Nachtmodus</string>
+    <string name="str_backg_music_sett">Hintergrundmusik</string>
+    <string name="str_physical_feedb_sett">Vibrationsrückmeldung</string>
+    <string name="str_username_sett">Benutzername</string>
+    <string name="str_username_save_sett">speichern</string>
+
+    <string name="str_textv_gamestatistic_stat">Spiel Statistik</string>
+    <string name="str_number_header_stat">Anzahl gespielter Spiele</string>
+    <string name="str_share_stat">Teilen</string>
+    <string name="str_user_hs_stat">von</string>
+    <string name="str_highscore_header_stat">Touch the Block - Rangliste</string>
+    <string name="str_score_message">Meine Punkteanzahl bei morning05 - Spielesammlung ist </string>
+    <string name="str_whatsapp_not_installed">WhatsApp ist nicht installiert</string>
+
+    <string name="str_title_hm_ew">Wörter verwalten</string>
+    <string name="str_dialog_title_hw_ew">Neues Wort hinzufügen</string>
+    <string name="str_dialog_warning_hw_ew">Ungültiges Wort</string>
+    <string name="str_delete_warning_hw_ew">Standard Wort nicht löschbar</string>
+
+    <string name="str_cantina_music_sett">Cantina</string>
+    <string name="str_elevator_music_sett">Fahrstuhl</string>
+    <string name="str_gummibear_music_sett">Gummibär</string>
+    <string name="str_mario_music_sett">Mario</string>
+
+    <string-array name="music_list_sett">
+        <item>Cantina</item>
+        <item>Gummibär</item>
+        <item>Fahrstuhl</item>
+        <item>Mario</item>
+    </string-array>
 </resources>

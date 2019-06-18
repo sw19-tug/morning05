@@ -3,62 +3,114 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorWhite"
+    android:id="@+id/ttb_play"
     android:layout_height="match_parent"
     tools:context=".TTBActivity">
 
-        <Button
-            android:id="@+id/btn_background"
-            android:layout_width="411dp"
-            android:layout_height="731dp"
-            android:background="@android:color/white"
-            android:color="@android:color/white"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+        <TextView
+            android:id="@+id/textv_timer_ttb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="top|left|right"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorBlack"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/moving_block"
-            android:layout_width="411dp"
+            android:id="@+id/btn_background_ttb"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textv_timer_ttb" />
+
+        <Button
+            android:id="@+id/btn_moving_block_ttb"
+            android:layout_width="412dp"
             android:layout_height="350dp"
             android:background="@android:color/black"
             tools:layout_editor_absoluteY="190dp" />
 
         <LinearLayout
-            android:id="@+id/win_ly"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:id="@+id/ly_win_ttb"
+            android:layout_width="396dp"
+            android:layout_height="683dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/word_container"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_background_ttb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ly_title">
+            app:layout_constraintTop_toTopOf="@+id/btn_background_ttb"
+            app:layout_constraintVertical_bias="0.44">
 
-                <TextView
-                    android:id="@+id/textv_2"
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/ly_inner_ttb"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/str_lose_ttb"
-                    android:textAlignment="center"
-                    android:textSize="24sp" />
-                <Button
-                    android:id="@+id/btn_reset_ttb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/str_play_again_ttb"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="18sp" />
-                <Button
-                    android:id="@+id/btn_back_ttb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/str_back"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="18sp" />
+                    android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textv_win_ttb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/str_lose_ttb"
+                            android:textAlignment="center"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toTopOf="@+id/ly_buttons_win_ttb"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:id="@+id/ly_buttons_win_ttb"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                                <Button
+                                    android:id="@+id/btn_reset_ttb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/str_play_again_ttb"
+                                    android:textAppearance="@style/TextAppearance.AppCompat"
+                                    android:textSize="18sp" />
+
+                                <Button
+                                    android:id="@+id/btn_back_ttb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/str_back"
+                                    android:textAppearance="@style/TextAppearance.AppCompat"
+                                    android:textSize="18sp" />
+
+                                <Button
+                                    android:id="@+id/btn_continue_ttb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/colorPrimary"
+                                    android:text="@string/str_continue_ttb"
+                                    android:textAppearance="@style/TextAppearance.AppCompat"
+                                    android:textSize="18sp" />
+                        </LinearLayout>
+
+                </android.support.constraint.ConstraintLayout>
 
         </LinearLayout>
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_help_dh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="45dp"
+    >
+
+    <TextView
+        android:id="@+id/textv_help_hm_dh"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_title_hm"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textv_description_hm_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_description_hm"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/textv_help_ttt_dh"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_title_ttt"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textv_description_ttt_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_description_ttt"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/textv_help_ttb_dh"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_title_ttb"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textv_description_ttb_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_description_ttb"
+        android:textSize="18sp" />
+
+</LinearLayout>
+</ScrollView>
