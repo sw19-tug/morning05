@@ -7,62 +7,62 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/ly_statistics_title"
+        android:id="@+id/ly_title_stat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/ly_statistics_text"
+        app:layout_constraintBottom_toTopOf="@+id/ly_text_stat"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textv_gamestatistic"
+            android:id="@+id/textv_gamestatistic_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="-12dp"
-            android:text="@string/str_textv_gamestatistic"
+            android:text="@string/str_textv_gamestatistic_stat"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="36sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textv_user_hs"
+            android:id="@+id/textv_user_hs_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/str_user_hs"
+            android:text="@string/str_user_hs_stat"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_statistics_text"
+        android:id="@+id/ly_text_stat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/ly_statistics_list"
+        app:layout_constraintBottom_toTopOf="@+id/ly_list_stat"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ly_statistics_title">
+        app:layout_constraintTop_toBottomOf="@id/ly_title_stat">
 
         <TextView
-            android:id="@+id/textv_statistics_number_header"
+            android:id="@+id/textv_number_header_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/str_statistics_number_header"
+            android:text="@string/str_number_header_stat"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textv_game_counter_ttb"
+            android:id="@+id/textv_game_counter_ttb_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -71,7 +71,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textv_game_counter_ttt"
+            android:id="@+id/textv_game_counter_ttt_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -80,7 +80,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textv_game_counter_hm"
+            android:id="@+id/textv_game_counter_hm_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -90,36 +90,36 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_statistics_list"
+        android:id="@+id/ly_list_stat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="10dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/ly_statistics_buttons"
+        app:layout_constraintBottom_toTopOf="@+id/ly_buttons_stat"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ly_statistics_text">
+        app:layout_constraintTop_toBottomOf="@id/ly_text_stat">
 
         <TextView
-            android:id="@+id/textv_statistics_highscore_header"
+            android:id="@+id/textv_highscore_header_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/str_statistics_highscore_header"
+            android:text="@string/str_highscore_header_stat"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <ListView
-            android:id="@+id/listview_statistics_hs"
+            android:id="@+id/listv_hs_stat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_statistics_buttons"
+        android:id="@+id/ly_buttons_stat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
@@ -128,19 +128,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ly_statistics_list">
+        app:layout_constraintTop_toBottomOf="@id/ly_list_stat">
 
         <Button
-            android:id="@+id/btn_share_score"
+            android:id="@+id/btn_share_stat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/str_share"
+            android:text="@string/str_share_stat"
             tools:layout_editor_absoluteX="14dp"
             tools:layout_editor_absoluteY="135dp" />
 
         <Button
-            android:id="@+id/btn_back_gamestatistic"
+            android:id="@+id/btn_back_stat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

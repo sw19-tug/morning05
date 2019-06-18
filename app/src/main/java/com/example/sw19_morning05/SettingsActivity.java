@@ -2,8 +2,6 @@ package com.example.sw19_morning05;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,14 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
-
-import java.util.Locale;
-import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -30,17 +22,17 @@ public class SettingsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_settings);
 
-        EditText input_username = (EditText) findViewById((R.id.input_username));
+        EditText input_username = findViewById((R.id.input_username_sett));
         input_username.setText(Settings.getUsername(context));
 
-        Button btnTicTacToe = (Button) findViewById(R.id.btn_settings_back);
-        btnTicTacToe.setOnClickListener(new View.OnClickListener() {
+        Button btn_tictactoe = findViewById(R.id.btn_back_sett);
+        btn_tictactoe.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateWelcomeScreen();
             }
         });
 
-        final Switch switch_nightmode = findViewById(R.id.switch_nightmode);
+        final Switch switch_nightmode = findViewById(R.id.switch_nightmode_sett);
         switch_nightmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -49,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
         switch_nightmode.setChecked(Settings.getNightmode(context));
 
-        final Switch switch_music = findViewById(R.id.switch_music);
+        final Switch switch_music = findViewById(R.id.switch_music_sett);
         switch_music.setChecked(Settings.getBackgroundMusic(context));
 
         switch_music.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -65,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
         switch_music.setChecked((Settings.getBackgroundMusic(context)));
 
-        final Switch switch_physical = findViewById(R.id.switch_physical);
+        final Switch switch_physical = findViewById(R.id.switch_physical_sett);
         switch_physical.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -75,19 +67,19 @@ public class SettingsActivity extends AppCompatActivity {
         });
         switch_physical.setChecked((Settings.getPhysicalFeedback(context)));
 
-        final Button btn_username_save = findViewById(R.id.btn_username_save);
+        final Button btn_username_save = findViewById(R.id.btn_username_save_sett);
         btn_username_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText input_username = findViewById(R.id.input_username);
+                EditText input_username = findViewById(R.id.input_username_sett);
                 String username = input_username.getText().toString();
                 Settings.setUsername(context, username);
             }
         });
 
-        final Spinner spinner = findViewById(R.id.spinn_backg_music);
+        final Spinner spinner = findViewById(R.id.spinn_backg_music_sett);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.music_list, android.R.layout.simple_spinner_item);
+                R.array.music_list_sett, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -108,26 +100,24 @@ public class SettingsActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String item = spinner.getSelectedItem().toString();
 
-
-                if(BackgroundMusicPlayer.getSelected() == spinner.getSelectedItemPosition())
-                {
+                if (BackgroundMusicPlayer.getSelected() == spinner.getSelectedItemPosition()) {
                     return;
                 }
                 BackgroundMusicPlayer.setSelected(spinner.getSelectedItemPosition());
 
-                if (item.equals(getResources().getString(R.string.str_cantina_music))) {
+                if (item.equals(getResources().getString(R.string.str_cantina_music_sett))) {
                     Settings.setBackgMusicFile(context, R.raw.cantina);
                     BackgroundMusicPlayer.stopAudio();
                     BackgroundMusicPlayer.playAudio(context);
-                } else if (item.equals(getResources().getString(R.string.str_elevator_music))) {
+                } else if (item.equals(getResources().getString(R.string.str_elevator_music_sett))) {
                     Settings.setBackgMusicFile(context, R.raw.fahrstuhl);
                     BackgroundMusicPlayer.stopAudio();
                     BackgroundMusicPlayer.playAudio(context);
-                } else if (item.equals(getResources().getString(R.string.str_mario_music))) {
+                } else if (item.equals(getResources().getString(R.string.str_mario_music_sett))) {
                     Settings.setBackgMusicFile(context, R.raw.mario);
                     BackgroundMusicPlayer.stopAudio();
                     BackgroundMusicPlayer.playAudio(context);
-                } else if (item.equals(getResources().getString(R.string.str_gummibear_music))) {
+                } else if (item.equals(getResources().getString(R.string.str_gummibear_music_sett))) {
                     Settings.setBackgMusicFile(context, R.raw.gummibaer);
                     BackgroundMusicPlayer.stopAudio();
                     BackgroundMusicPlayer.playAudio(context);
@@ -136,7 +126,6 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 

@@ -8,11 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class HighScoreAdapter extends ArrayAdapter<HighScore> {
-    private ArrayList<HighScore> highscore_list;
-    Context context;
 
     private static class ViewHolder {
         TextView textv_date;
@@ -22,38 +19,31 @@ public class HighScoreAdapter extends ArrayAdapter<HighScore> {
 
     public HighScoreAdapter(ArrayList<HighScore> data, Context context) {
         super(context, R.layout.list_item_highscore, data);
-        this.highscore_list = data;
-        this.context = context;
-
     }
 
     @Override
-    public View getView(int position, View listViewItem, ViewGroup parent) {
-
+    public View getView(int position, View list_view_item, ViewGroup parent) {
         HighScore hs = getItem(position);
-        ViewHolder viewHolder;
+        ViewHolder view_holder;
 
-        if (listViewItem == null) {
-
-            viewHolder = new ViewHolder();
+        if (list_view_item == null) {
+            view_holder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            listViewItem = inflater.inflate(R.layout.list_item_highscore, parent, false);
+            list_view_item = inflater.inflate(R.layout.list_item_highscore, parent, false);
 
-            viewHolder.textv_date = listViewItem.findViewById(R.id.textv_highscore_date);
-            viewHolder.textv_user = listViewItem.findViewById(R.id.textv_highscore_user);
-            viewHolder.textv_value = listViewItem.findViewById(R.id.textv_highscore_value);
+            view_holder.textv_date = list_view_item.findViewById(R.id.textv_date_lih);
+            view_holder.textv_user = list_view_item.findViewById(R.id.textv_user_lih);
+            view_holder.textv_value = list_view_item.findViewById(R.id.textv_value_lih);
 
-            listViewItem.setTag(viewHolder);
+            list_view_item.setTag(view_holder);
 
         } else {
-            viewHolder = (ViewHolder) listViewItem.getTag();
+            view_holder = (ViewHolder) list_view_item.getTag();
         }
+        view_holder.textv_date.setText(hs.getDate().toString());
+        view_holder.textv_user.setText(hs.getUser());
+        view_holder.textv_value.setText(String.valueOf(hs.getHighScore()));
 
-        viewHolder.textv_date.setText(hs.getDate().toString());
-        viewHolder.textv_user.setText(hs.getUser());
-        viewHolder.textv_value.setText(String.valueOf(hs.getHighScore()));
-
-        return listViewItem;
+        return list_view_item;
     }
-
 }

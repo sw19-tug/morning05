@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:actionBarNavMode="@tools:sample/avatars">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/win_ly"
+        android:id="@+id/ly_win_hm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textv_2"
+            android:id="@+id/textv_win_hm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_textv_win_hm"
@@ -39,83 +38,83 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btn_exit"
+            android:id="@+id/btn_exit_hm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_back" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/keyb_2"
+        android:id="@+id/ly_keyb_2_hm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/keyb_3"
+        app:layout_constraintBottom_toTopOf="@+id/ly_keyb_3_hm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/keyb_1">
+        app:layout_constraintTop_toBottomOf="@id/ly_keyb_1_hm">
 
         <Button
-            android:id="@+id/btn_a"
+            android:id="@+id/btn_a_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="A" />
 
         <Button
-            android:id="@+id/btn_s"
+            android:id="@+id/btn_s_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="S" />
 
         <Button
-            android:id="@+id/btn_d"
+            android:id="@+id/btn_d_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="D" />
 
         <Button
-            android:id="@+id/btn_f"
+            android:id="@+id/btn_f_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="F" />
 
         <Button
-            android:id="@+id/btn_g"
+            android:id="@+id/btn_g_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="G" />
 
         <Button
-            android:id="@+id/btn_h"
+            android:id="@+id/btn_h_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="H" />
 
         <Button
-            android:id="@+id/btn_j"
+            android:id="@+id/btn_j_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="J" />
 
         <Button
-            android:id="@+id/btn_k"
+            android:id="@+id/btn_k_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="K" />
 
         <Button
-            android:id="@+id/btn_l"
+            android:id="@+id/btn_l_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -123,83 +122,83 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/keyb_1"
+        android:id="@+id/ly_keyb_1_hm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/keyb_2"
+        app:layout_constraintBottom_toTopOf="@+id/ly_keyb_2_hm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/word_container">
+        app:layout_constraintTop_toBottomOf="@id/ly_word_container_hm">
 
         <Button
-            android:id="@+id/btn_q"
+            android:id="@+id/btn_q_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Q" />
 
         <Button
-            android:id="@+id/btn_w"
+            android:id="@+id/btn_w_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="W" />
 
         <Button
-            android:id="@+id/btn_e"
+            android:id="@+id/btn_e_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="E" />
 
         <Button
-            android:id="@+id/btn_r"
+            android:id="@+id/btn_r_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="R" />
 
         <Button
-            android:id="@+id/btn_t"
+            android:id="@+id/btn_t_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="T" />
 
         <Button
-            android:id="@+id/btn_z"
+            android:id="@+id/btn_z_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Z" />
 
         <Button
-            android:id="@+id/btn_u"
+            android:id="@+id/btn_u_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="U" />
 
         <Button
-            android:id="@+id/btn_i"
+            android:id="@+id/btn_i_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="I" />
 
         <Button
-            android:id="@+id/btn_o"
+            android:id="@+id/btn_o_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="O" />
 
         <Button
-            android:id="@+id/btn_p"
+            android:id="@+id/btn_p_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -207,20 +206,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/word_container"
+        android:id="@+id/ly_word_container_hm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/keyb_1"
+        app:layout_constraintBottom_toTopOf="@+id/ly_keyb_1_hm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_hm_ly">
+        app:layout_constraintTop_toBottomOf="@id/ly_image_hm">
 
         <TextView
-            android:id="@+id/textv_word_to_guess"
+            android:id="@+id/textv_word_to_guess_hm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -230,7 +229,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_buttons"
+        android:id="@+id/ly_buttons_hm"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -238,10 +237,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/image_hm_ly"
+        app:layout_constraintBottom_toTopOf="@+id/ly_image_hm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ly_title">
+        app:layout_constraintTop_toBottomOf="@+id/ly_title_hm">
 
         <Button
             android:id="@+id/btn_back_hm"
@@ -263,7 +262,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="@string/str_hint"
+            android:text="@string/str_hint_hm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -276,7 +275,7 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:singleLine="true"
-            android:text="@string/str_hm_extend_words"
+            android:text="@string/str_extend_words_hm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -284,7 +283,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/keyb_3"
+        android:id="@+id/ly_keyb_3_hm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -295,52 +294,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/keyb_2">
+        app:layout_constraintTop_toBottomOf="@id/ly_keyb_2_hm">
 
         <Button
-            android:id="@+id/btn_y"
+            android:id="@+id/btn_y_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Y" />
 
         <Button
-            android:id="@+id/btn_x"
+            android:id="@+id/btn_x_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="X" />
 
         <Button
-            android:id="@+id/btn_c"
+            android:id="@+id/btn_c_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="C" />
 
         <Button
-            android:id="@+id/btn_v"
+            android:id="@+id/btn_v_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="V" />
 
         <Button
-            android:id="@+id/btn_b"
+            android:id="@+id/btn_b_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="B" />
 
         <Button
-            android:id="@+id/btn_n"
+            android:id="@+id/btn_n_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="N" />
 
         <Button
-            android:id="@+id/btn_m"
+            android:id="@+id/btn_m_hm"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -348,38 +347,38 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/image_hm_ly"
+        android:id="@+id/ly_image_hm"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/word_container"
+        app:layout_constraintBottom_toTopOf="@id/ly_word_container_hm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ly_buttons">
+        app:layout_constraintTop_toBottomOf="@id/ly_buttons_hm">
 
         <ImageView
-            android:id="@+id/image_hm"
+            android:id="@+id/image_hang_hm"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/image_hm_0" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_title"
+        android:id="@+id/ly_title_hm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/ly_buttons"
+        app:layout_constraintBottom_toTopOf="@id/ly_buttons_hm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:id="@+id/textv_title_hm"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/str_title_hm"

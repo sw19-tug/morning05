@@ -13,8 +13,15 @@ public class HighScore {
         this.highscore = highscore;
     }
 
-    public Date getDate() { return date; }
-    public String getUser() { return user; }
-    public int getHighScore() { return highscore; }
+    public Date getDate() {
+        return date;
+    }
 
+    public String getUser() {
+        return user;
+    }
+
+    public int getHighScore() {
+        return highscore;
+    }
 }

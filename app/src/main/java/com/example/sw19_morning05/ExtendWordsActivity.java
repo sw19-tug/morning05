@@ -18,9 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ExtendWordsActivity extends AppCompatActivity {
-
-    private static HangmanWordAdapter hangman_word_adapter;
-    private String new_word;
+    private HangmanWordAdapter hangman_word_adapter;
     private ArrayList<Pair<String, Boolean>> word_list;
 
     @Override
@@ -30,21 +28,21 @@ public class ExtendWordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extend_words);
 
-        final Button btn_back = findViewById(R.id.btn_hm_back_extend_words);
+        final Button btn_back = findViewById(R.id.btn_back_hm_ew);
         btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 navigateToWelcomeScreen();
             }
         });
 
-        final FloatingActionButton btn_dialog = findViewById(R.id.btn_hm_extend_words_add);
+        final FloatingActionButton btn_dialog = findViewById(R.id.btn_add_hm_ew);
         btn_dialog.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 addWordDialog();
             }
         });
 
-        ListView lv = findViewById(R.id.listview_hm_words);
+        ListView lv = findViewById(R.id.listv_list_hm_ew);
         word_list = Settings.getHangmanWordList(context);
 
         hangman_word_adapter = new HangmanWordAdapter(word_list, getApplicationContext());
@@ -65,8 +63,7 @@ public class ExtendWordsActivity extends AppCompatActivity {
         final Context context = getApplicationContext();
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog builderd = builder.create();
-        builder.setTitle(R.string.str_hm_dialog_title);
+        builder.setTitle(R.string.str_dialog_title_hw_ew);
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -84,22 +81,22 @@ public class ExtendWordsActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-        final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-        Button theButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        theButton.setOnClickListener(new View.OnClickListener() {
+        final AlertDialog alert_dialog = builder.create();
+        alert_dialog.show();
+        Button btn_plus = alert_dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        btn_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String new_word = input.getText().toString().toUpperCase();
                 if (!isWordValid(new_word)) {
                     Toast.makeText(ExtendWordsActivity.this,
-                            getResources().getString(R.string.str_hm_dialog_warning),
+                            getResources().getString(R.string.str_dialog_warning_hw_ew),
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Settings.addNewHangmanWord(context, new_word);
                     word_list = Settings.getHangmanWordList(context);
                     hangman_word_adapter.add(word_list.get(word_list.size() - 1));
-                    alertDialog.dismiss();
+                    alert_dialog.dismiss();
                 }
             }
         });

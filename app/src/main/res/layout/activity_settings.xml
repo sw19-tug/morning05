@@ -7,18 +7,18 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/ly_title_settings"
+        android:id="@+id/ly_title_sett"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@id/ly_settings_buttons"
+        app:layout_constraintBottom_toTopOf="@id/ly_buttons_sett"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textv_settings_title"
+            android:id="@+id/textv_title_sett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -31,84 +31,85 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_settings_buttons"
+        android:id="@+id/ly_buttons_sett"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        app:layout_constraintBottom_toTopOf="@id/ly_confirm_settings"
+        app:layout_constraintBottom_toTopOf="@id/ly_confirm_sett"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ly_title_settings">
+        app:layout_constraintTop_toBottomOf="@+id/ly_title_sett">
 
         <Switch
-            android:id="@+id/switch_music"
+            android:id="@+id/switch_music_sett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
             android:paddingTop="20dp"
             android:paddingEnd="0dp"
             android:paddingBottom="20dp"
-            android:text="@string/str_sett_backg_music"
+            android:text="@string/str_backg_music_sett"
             android:textSize="18sp" />
 
         <Spinner
-            android:id="@+id/spinn_backg_music"
+            android:id="@+id/spinn_backg_music_sett"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:spinnerMode="dialog" />
 
         <Switch
-            android:id="@+id/switch_nightmode"
+            android:id="@+id/switch_nightmode_sett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
             android:paddingTop="20dp"
             android:paddingEnd="0dp"
             android:paddingBottom="20dp"
-            android:text="@string/str_sett_nightmode"
+            android:text="@string/str_nightmode_sett"
             android:textSize="18sp" />
 
         <Switch
-            android:id="@+id/switch_physical"
+            android:id="@+id/switch_physical_sett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
             android:paddingTop="20dp"
             android:paddingEnd="0dp"
             android:paddingBottom="20dp"
-            android:text="@string/str_sett_physical_feedb"
+            android:text="@string/str_physical_feedb_sett"
             android:textSize="18sp" />
 
         <LinearLayout
+            android:id="@+id/ly_username_sett"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/input_username"
+                android:id="@+id/input_username_sett"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/str_sett_username" />
+                android:text="@string/str_username_sett" />
 
             <Button
-                android:id="@+id/btn_username_save"
+                android:id="@+id/btn_username_save_sett"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
-                android:text="@string/str_sett_username_save"
+                android:text="@string/str_username_save_sett"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ly_confirm_settings"
+        android:id="@+id/ly_confirm_sett"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="bottom"
@@ -118,10 +119,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ly_settings_buttons">
+        app:layout_constraintTop_toBottomOf="@+id/ly_buttons_sett">
 
         <Button
-            android:id="@+id/btn_settings_back"
+            android:id="@+id/btn_back_sett"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="90dp"

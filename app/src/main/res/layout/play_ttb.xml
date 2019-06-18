@@ -8,33 +8,36 @@
     tools:context=".TTBActivity">
 
         <TextView
-            android:id="@+id/timer"
+            android:id="@+id/textv_timer_ttb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="top|left|right"
             android:gravity="center"
-            android:textColor="@color/colorBlack"
             android:textAppearance="@style/TextAppearance.AppCompat"
-            android:visibility="visible" />
+            android:textColor="@color/colorBlack"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_background"
+            android:id="@+id/btn_background_ttb"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timer" />
+            app:layout_constraintTop_toBottomOf="@+id/textv_timer_ttb" />
 
         <Button
-            android:id="@+id/moving_block"
+            android:id="@+id/btn_moving_block_ttb"
             android:layout_width="412dp"
             android:layout_height="350dp"
             android:background="@android:color/black"
             tools:layout_editor_absoluteY="190dp" />
 
         <LinearLayout
-            android:id="@+id/win_ly"
+            android:id="@+id/ly_win_ttb"
             android:layout_width="396dp"
             android:layout_height="683dp"
             android:layout_marginStart="8dp"
@@ -42,29 +45,30 @@
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_background"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_background_ttb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_background"
+            app:layout_constraintTop_toTopOf="@+id/btn_background_ttb"
             app:layout_constraintVertical_bias="0.44">
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/ly_inner_ttb"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/textv_2"
+                            android:id="@+id/textv_win_ttb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="@string/str_lose_ttb"
                             android:textAlignment="center"
                             android:textSize="24sp"
-                            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+                            app:layout_constraintBottom_toTopOf="@+id/ly_buttons_win_ttb"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
-                            android:id="@+id/linearLayout5"
+                            android:id="@+id/ly_buttons_win_ttb"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"

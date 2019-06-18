@@ -9,7 +9,7 @@
     tools:context=".TTBActivity">
 
         <TextView
-            android:id="@+id/textv_2"
+            android:id="@+id/textv_title_ttb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
@@ -20,7 +20,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_play"
+            android:id="@+id/btn_play_ttb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
@@ -40,7 +40,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btn_back_main"
+            android:id="@+id/btn_back_ttb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"

@@ -1,40 +1,32 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 
-public class BackgroundMusicPlayer {
-    public static MediaPlayer mediaPlayer;
+class BackgroundMusicPlayer {
+    private static int selected = 0;
+    public static boolean is_playing = false;
+    private static MediaPlayer media_player;
 
-    private static SoundPool soundPool;
-
-    public static boolean isplayingAudio = false;
-
-    public static int selected = 0;
-
-    public static void playAudio(Context c) {
-        mediaPlayer = MediaPlayer.create(c, Settings.getBackgMusicFile(c));
-        soundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
-        if (!mediaPlayer.isPlaying()) {
-            isplayingAudio = true;
-            mediaPlayer.start();
-            mediaPlayer.setLooping(true);
+    static void playAudio(Context c) {
+        media_player = MediaPlayer.create(c, Settings.getBackgMusicFile(c));
+        if (!media_player.isPlaying()) {
+            is_playing = true;
+            media_player.start();
+            media_player.setLooping(true);
         }
     }
-    public static void stopAudio() {
-        isplayingAudio = false;
-        mediaPlayer.stop();
+
+    static void stopAudio() {
+        is_playing = false;
+        media_player.stop();
     }
 
-    public static void setSelected(int sel)
-    {
+    static void setSelected(int sel) {
         selected = sel;
     }
 
-    public static int getSelected()
-    {
+    static int getSelected() {
         return selected;
     }
 }

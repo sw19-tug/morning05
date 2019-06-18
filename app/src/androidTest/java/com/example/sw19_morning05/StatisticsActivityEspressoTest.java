@@ -1,7 +1,6 @@
 package com.example.sw19_morning05;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.TextView;
@@ -15,10 +14,7 @@ import java.util.List;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.pressBack;
-import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -33,41 +29,40 @@ public class StatisticsActivityEspressoTest {
 
     @Test
     public void testHighScoreListDisplayed() {
-        onView(withId(R.id.statistics_highscore_ly)).check(matches(isDisplayed()));
+        onView(withId(R.id.ly_list_stat)).check(matches(isDisplayed()));
     }
 
     @Test
     public void testStatisticsOfUserDisplayed() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
-        onView(withId(R.id.textv_user_hs)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_user_hs_stat)).check(matches(isDisplayed()));
         String username = Settings.getUsername(context);
-        onView(withId(R.id.textv_user_hs)).check(matches(not(withText(R.string.str_user_hs + " " + username))));
+        onView(withId(R.id.textv_user_hs_stat)).check(matches(not(withText(R.string.str_user_hs_stat + " " + username))));
     }
 
     @Test
     public void testHeaderNumberOfGamesDisplayed() {
-        onView(withId(R.id.textv_statistics_number_header)).check(matches(isDisplayed()));
-        onView(withId(R.id.textv_statistics_number_header)).check(matches(withText(R.string.str_statistics_number_header)));
+        onView(withId(R.id.textv_number_header_stat)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_number_header_stat)).check(matches(withText(R.string.str_number_header_stat)));
     }
 
     @Test
     public void testHeaderHighScoreDisplayed() {
-        onView(withId(R.id.textv_statistics_highscore_header)).check(matches(isDisplayed()));
-        onView(withId(R.id.textv_statistics_highscore_header)).check(matches(withText(R.string.str_statistics_highscore_header)));
+        onView(withId(R.id.textv_highscore_header_stat)).check(matches(isDisplayed()));
+        onView(withId(R.id.textv_highscore_header_stat)).check(matches(withText(R.string.str_highscore_header_stat)));
     }
 
     @Test
     public void testNewHighscoreDisplayed() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
-        String username = Settings.getUsername(context);
         List<HighScore> current_highscore_list = Statistics.getHighScoreList(context);
         int new_highscore = current_highscore_list.get(0).getHighScore() + 1;
-        Statistics.addHighScore(context, username, new_highscore);
+        Statistics.addHighScore(context, new_highscore);
 
-        onView(withId(R.id.btn_back_gamestatistic)).perform(click());
-        onView(withId(R.id.btn_gamestatistic)).perform(click());
+        onView(withId(R.id.btn_back_stat)).perform(click());
+        onView(withId(R.id.btn_gamestatistic_m)).perform(click());
 
-        TextView highscore_view = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_highscore_value);
+        TextView highscore_view = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_value_lih);
         int highscore = Integer.parseInt(highscore_view.getText().toString());
 
         Assert.assertEquals(new_highscore, highscore);
@@ -85,11 +80,11 @@ public class StatisticsActivityEspressoTest {
     public void testShowCorrectStatisticsTTB() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
 
-        TextView game_counter_after = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttb);
+        TextView game_counter_after = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttb_stat);
         String game_counter_after_text = game_counter_after.getText().toString();
         Statistics.incrementGameCounterTTB(context);
 
-        onView(withId(R.id.textv_game_counter_ttb)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.textv_game_counter_ttb_stat)).check(matches((withText(game_counter_after_text))));
     }
 
     @Test
@@ -104,11 +99,11 @@ public class StatisticsActivityEspressoTest {
     public void testShowCorrectStatisticsTTT() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
 
-        TextView game_counter_after = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttt);
+        TextView game_counter_after = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_ttt_stat);
         String game_counter_after_text = game_counter_after.getText().toString();
         Statistics.incrementGameCounterTTT(context);
 
-        onView(withId(R.id.textv_game_counter_ttt)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.textv_game_counter_ttt_stat)).check(matches((withText(game_counter_after_text))));
     }
 
     @Test
@@ -123,16 +118,16 @@ public class StatisticsActivityEspressoTest {
     public void testShowCorrectStatisticsHM() {
         Context context = statistics_activity_test_rule.getActivity().getApplicationContext();
 
-        TextView game_counter_after = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_hm);
+        TextView game_counter_after = statistics_activity_test_rule.getActivity().findViewById(R.id.textv_game_counter_hm_stat);
         String game_counter_after_text = game_counter_after.getText().toString();
         Statistics.incrementGameCounterHM(context);
 
-        onView(withId(R.id.textv_game_counter_hm)).check(matches((withText(game_counter_after_text))));
+        onView(withId(R.id.textv_game_counter_hm_stat)).check(matches((withText(game_counter_after_text))));
     }
 
     @Test
     public void testGameButtonsVisible() {
-        onView(withId(R.id.btn_share_score)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_share_stat)).check(matches(isDisplayed()));
     }
 
     @Test

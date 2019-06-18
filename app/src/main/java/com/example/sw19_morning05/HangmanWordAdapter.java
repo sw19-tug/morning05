@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
     private ArrayList<Pair<String, Boolean>> word_list;
-    Context context;
+    private Context context;
 
     private static class ViewHolder {
         TextView textv_hm_word;
@@ -29,31 +29,32 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
     }
 
     @Override
-    public View getView(final int position, View listViewItem, ViewGroup parent) {
+    public View getView(final int position, View list_view_item, ViewGroup parent) {
         Pair<String, Boolean> pair = getItem(position);
-        ViewHolder viewHolder;
+        ViewHolder view_holder;
 
-        if (listViewItem == null) {
+        if (list_view_item == null) {
 
-            viewHolder = new ViewHolder();
+            view_holder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            listViewItem = inflater.inflate(R.layout.list_item_hm_word, parent, false);
+            list_view_item = inflater.inflate(R.layout.list_item_hm_word, parent, false);
 
-            viewHolder.textv_hm_word = listViewItem.findViewById(R.id.textv_hm_word);
-            viewHolder.btn_delete = listViewItem.findViewById(R.id.imagev_hm_word);
+            view_holder.textv_hm_word = list_view_item.findViewById(R.id.textv_word_liw);
+            view_holder.btn_delete = list_view_item.findViewById(R.id.imagev_word_liw);
 
-            listViewItem.setTag(viewHolder);
+            list_view_item.setTag(view_holder);
 
         } else {
-            viewHolder = (ViewHolder) listViewItem.getTag();
+            view_holder = (ViewHolder) list_view_item.getTag();
         }
 
-        viewHolder.textv_hm_word.setText(pair.first);
+        assert pair != null;
+        view_holder.textv_hm_word.setText(pair.first);
 
-        viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
+        view_holder.btn_delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.imagev_hm_word:
+                    case R.id.imagev_word_liw:
                         Pair<String, Boolean> word = word_list.get(position);
                         if (word.second == true) {
                             Settings.removeHangmanWord(context, position);
@@ -61,16 +62,14 @@ public class HangmanWordAdapter extends ArrayAdapter<Pair<String, Boolean>> {
                         } else {
                             Toast.makeText(
                                     context,
-                                    context.getResources().getString(R.string.str_hm_delete_warning),
-                                    Toast.LENGTH_LONG
+                                    context.getResources().getString(R.string.str_delete_warning_hw_ew),
+                                    Toast.LENGTH_SHORT
                             ).show();
                         }
                         break;
                 }
             }
         });
-
-        return listViewItem;
+        return list_view_item;
     }
-
 }
